@@ -41,10 +41,9 @@ function App() {
   }
 
   function itkl(sl, cl, objinarr, newteg, setitems) {
-    let teg;
-    newteg === "" ? (teg = "p") : (teg = newteg);
-    let item = objinarr(cl(sl(".text_block"), "item"));
-    return item.map((x, i) =>
+    
+  
+    return objinarr.map((x, i) =>
       x.textContent === ""
         ? (x.innerHTML = `<span><br></span>`)
         : (x.innerHTML =
@@ -68,7 +67,7 @@ function App() {
   }, [textbl.enter]);
 
   useEffect(() => {
-    itkl(sl, cl, objinarr, headerT, setitems);
+    itkl(objinarr(cl(sl(".text_block"), "item")), headerT, setitems);
   }, [headerT]);
 
   let sizesplus = (
