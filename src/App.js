@@ -40,7 +40,7 @@ function App() {
       }));
   }
 
-  function itkl(sl, cl, objinarr, newteg, setitems) {
+  function itkl(objinarr, newteg, setitems) {
     
   
     return objinarr.map((x, i) =>
