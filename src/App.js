@@ -5,9 +5,10 @@ import "./style.css";
 import "./bootstrap.css";
 function App() {
   const [sizes, setsizes] = useState(true);
-  const [textbl, settextbl] = useState({ enter: 0, el: 0 });
-  const [headerT, setheaderT] = useState("span");
-  const [items, setitems] = useState(-1);
+  const [textcont, settextcont] = useState(false);
+  const [textbl, settextbl] = useState({ enter: 'Enter', el: 0 });
+  const [headerT, setheaderT] = useState("p");
+  const [items, setitems] = useState(0);
 
   function fonts(a = []) {
     return a;
@@ -32,24 +33,27 @@ function App() {
     return Object.values(e);
   }
 
+  
   useEffect(() => {
-    onkeypress = e =>
-      settextbl({
-        enter: e.key === "Enter" ? textbl.enter + 1 : 0,
-        el: objinarr(tg(sl(document, ".text_block"), "div")).length - 1
-      });
-  }, [textbl.enter]);
-
+    //objinarr(tg(sl(document, ".text_block"), "div"))
+     /// .filter(item => item !== undefined)
+     /// .map(m => m.className = 'item');
+    ///  objinarr(getClass(document, 'item'))
+    //  .map(sp => sp.innerHTML = '<span className = items_n>' + sp.innerHTML + '</span>' )
+      ///.map((item, i) => (item.onclick = e => setitems(i)))
+    objinarr(getClass(document, 'text_block'))
+.map(textBlock => textBlock.innerHTML = '<div><span className = "item">' + ' ggggggg' + '</span></div>' )
+  }, []);
+useEffect(()=>{
+  (textcont === true)?
+objinarr(getClass(document, 'text_block'))
+.map(textBlock => textBlock.innerHTML = '<div><span className = "itemh" autofocus = "true">' + '_' + '</span></div>' ):''
+//getClass(document, 'item')[0].innerHTML = 'dddddd'
+},[textcont])
   useEffect(() => {
-    objinarr(tg(sl(document, ".text_block"), "div"))
-      .filter(item => item !== undefined)
-      .map((item, i) => (item.onclick = e => setitems(i)));
-  }, [textbl.el]);
-
-  useEffect(() => {
-    objinarr(tg(sl(document, ".text_block"), "div"))
-      .filter((item, i) => i === items)
-      .map(it => it.outerHTML = '<' + headerT + '>' + it.innerHTML + '</' + headerT + '>');
+    objinarr(getClass(document, 'item'))
+    ///.filter(it => console.log(it.tagName === headerT)  )
+      //.map((it, i) => (i === items)?it.outerHTML = '<' + headerT + '>' + it.innerHTML+ i + '</' + headerT + //'>':it.outerHTML  = '<span>' + it.innerHTML + '</span>');
   }, [items, headerT]);
   let sizesplus = (
     <svg
@@ -243,10 +247,11 @@ function App() {
         " " +
         "contentDtext"
       }
+      onClick = {()=>settextcont(true)}
     >
       <div className="row col text-right pt-2 panel">
         {panel()}
-        <div className="col-sm">{headerT}</div>
+        <div className="col-sm">{textcont + '/' + textbl.enter}</div>
         <div
           className="col-sm"
           className="sizes"
