@@ -40,6 +40,10 @@ function App() {
       }));
   }
 
+function lineClick(onclick){
+
+}
+
   function itkl(objinarr, newteg, setitems) {
     return objinarr.map((x, i) =>
       x.textContent === ""
