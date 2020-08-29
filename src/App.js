@@ -39,6 +39,12 @@ function App() {
         el: objinarr(tg(sl(document, ".text_block"), "div")).length - 1
       });
   }, [textbl.enter]);
+  
+  useEffect(() => {
+    objinarr(tg(sl(document, ".text_block"), "div"))
+      .filter(item => item !== undefined)
+      .map((item, i) => (item.onclick = e => console.log(i)));
+  }, [textbl.el]);
 
   let sizesplus = (
     <svg
