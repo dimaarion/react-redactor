@@ -6,7 +6,7 @@ import "./bootstrap.css";
 function App() {
   const [sizes, setsizes] = useState(true);
   const [textbl, settextbl] = useState({ enter: 0, el: 0 });
-  const [headerT, setheaderT] = useState("");
+  const [headerT, setheaderT] = useState("span");
   const [items, setitems] = useState(-1);
 
   function fonts(a = []) {
@@ -49,8 +49,8 @@ function App() {
   useEffect(() => {
     objinarr(tg(sl(document, ".text_block"), "div"))
       .filter((item, i) => i === items)
-      .map(it => it.innerHTML = '<span>' + it.innerHTML + '</span>');
-  }, [items]);
+      .map(it => it.outerHTML = '<' + headerT + '>' + it.innerHTML + '</' + headerT + '>');
+  }, [items, headerT]);
   let sizesplus = (
     <svg
       width="1em"
@@ -222,7 +222,7 @@ function App() {
         <div className="col">
           <select onChange={e => setheaderT(e.target.value)}>
             {fonts([
-              { n: "Заголовок", t: "" },
+              { n: "Заголовок", t: "span" },
               { n: "Заголовок 1", t: "h1" },
               { n: "Заголовок 2", t: "h2" }
             ]).map((font, i) => (
@@ -246,7 +246,7 @@ function App() {
     >
       <div className="row col text-right pt-2 panel">
         {panel()}
-        <div className="col-sm">{items}</div>
+        <div className="col-sm">{headerT}</div>
         <div
           className="col-sm"
           className="sizes"
