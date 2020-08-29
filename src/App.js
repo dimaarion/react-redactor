@@ -40,8 +40,8 @@ function App() {
       }));
   }
 
-function lineClick(onclick){
-
+function lineClick(onclick, setitems, objinarr){
+objinarr.map(item => item )
 }
 
   function itkl(objinarr, newteg, setitems) {
