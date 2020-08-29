@@ -6,7 +6,7 @@ import "./bootstrap.css";
 function App() {
   const [sizes, setsizes] = useState(true);
   const [textcont, settextcont] = useState(false);
-  const [textbl, settextbl] = useState({ enter: "Enter", el: 0 });
+  const [textbl, settextbl] = useState('');
   const [headerT, setheaderT] = useState("p");
   const [items, setitems] = useState(0);
 
@@ -45,18 +45,20 @@ function App() {
       ? objinarr(getClass(document, "text_block")).map(
           textBlock =>
             (textBlock.innerHTML =
-              '<div><span className = "itemh" focus = "true">' +
-              textBlock.innerText.replace(/\w+/, ".") +
+              '<div><span className = "item" >' +
+              (textBlock.innerText.replace(/\w+/, ".")) +
               "</span></div>")
         )
       : "";
-    //getClass(document, 'item')[0].innerHTML = 'dddddd'
   }, [textcont]);
   useEffect(() => {
-    objinarr(getClass(document, "item"));
-    ///.filter(it => console.log(it.tagName === headerT)  )
-    //.map((it, i) => (i === items)?it.outerHTML = '<' + headerT + '>' + it.innerHTML+ i + '</' + headerT + //'>':it.outerHTML  = '<span>' + it.innerHTML + '</span>');
-  }, [items, headerT]);
+    onkeypress = e => settextbl(e.key)
+   
+  }, [textcont]);
+
+  useEffect(()=>{
+
+  },[textbl])
   let sizesplus = (
     <svg
       width="1em"
@@ -253,7 +255,7 @@ function App() {
     >
       <div className="row col text-right pt-2 panel">
         {panel()}
-        <div className="col-sm">{textcont + "/" + textbl.enter}</div>
+        <div className="col-sm">{textcont + "/" + textbl}</div>
         <div
           className="col-sm"
           className="sizes"
