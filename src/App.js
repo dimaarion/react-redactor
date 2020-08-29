@@ -7,7 +7,7 @@ function App() {
   const [sizes, setsizes] = useState(true);
   const [textbl, settextbl] = useState({ enter: 0, el: 0 });
   const [headerT, setheaderT] = useState("");
-  const [items, setitems] = useState(0);
+  const [items, setitems] = useState(-1);
 
   function fonts(a = []) {
     return a;
@@ -48,8 +48,8 @@ function App() {
 
   useEffect(() => {
     objinarr(tg(sl(document, ".text_block"), "div"))
-      //.filter(item => item.toString() === items)
-      .map(it => console.log(it));
+      .filter((item, i) => i === items)
+      .map(it => it.innerHTML = '<span>' + it.innerHTML + '</span>');
   }, [items]);
   let sizesplus = (
     <svg
