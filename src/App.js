@@ -13,7 +13,7 @@ function App() {
     return a;
   }
 
-  function sl(selector) {
+  function sl(document, selector) {
     return document.querySelector(selector);
   }
 
@@ -32,45 +32,13 @@ function App() {
     return Object.values(e);
   }
 
-  function keyPress(onkeypress, settextbl, textbl, objinarr) {
-    return (onkeypress = e =>
+  useEffect(() => {
+    onkeypress = e =>
       settextbl({
         enter: e.key === "Enter" ? textbl.enter + 1 : 0,
-        el: objinarr.length - 1
-      }));
-  }
-
-function lineClick(onclick, setitems, objinarr){
-objinarr.map(item => item )
-}
-
-  function itkl(objinarr, newteg, setitems) {
-    return objinarr.map((x, i) =>
-      x.textContent === ""
-        ? (x.innerHTML = `<span><br></span>`)
-        : (x.innerHTML =
-            `<span className = "sp_item_t"}><${teg}>` +
-            x.textContent +
-            `</${teg}></span>`)
-    );
-  }
-  useEffect(() => {
-    keyPress(
-      onkeypress,
-      settextbl,
-      textbl,
-      objinarr(tg(sl(".text_block"), "div"))
-    );
-
-    objinarr(tg(sl(".text_block"), "div")).map((x, i) => {
-      x.className = "text_t_" + (i - 0 + 1) + " item";
-      settextbl({ enter: 0, el: i });
-    });
+        el: objinarr(tg(sl(document, ".text_block"), "div")).length - 1
+      });
   }, [textbl.enter]);
-
-  useEffect(() => {
-    itkl(objinarr(cl(sl(".text_block"), "item")), headerT, setitems);
-  }, [headerT]);
 
   let sizesplus = (
     <svg
@@ -267,7 +235,7 @@ objinarr.map(item => item )
     >
       <div className="row col text-right pt-2 panel">
         {panel()}
-        <div className="col-sm">{textbl.enter}</div>
+        <div className="col-sm">{textbl.el}</div>
         <div
           className="col-sm"
           className="sizes"
