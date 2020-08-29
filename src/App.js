@@ -40,6 +40,7 @@ function App() {
       });
   }, [textbl.enter]);
 
+
   useEffect(() => {
     objinarr(tg(sl(document, ".text_block"), "div"))
       .filter(item => item !== undefined)
@@ -48,7 +49,7 @@ function App() {
 
 useEffect(()=>{
  objinarr(tg(sl(document, ".text_block"), "div"))
- .filter(item => item !== items)
+ /.filter(item => item.toString() === items)
  .map(it => console.log(it))
 },[items])
   let sizesplus = (
@@ -246,7 +247,7 @@ useEffect(()=>{
     >
       <div className="row col text-right pt-2 panel">
         {panel()}
-        <div className="col-sm">{textbl.el}</div>
+        <div className="col-sm">{items}</div>
         <div
           className="col-sm"
           className="sizes"
