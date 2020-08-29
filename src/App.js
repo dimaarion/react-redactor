@@ -40,18 +40,17 @@ function App() {
       });
   }, [textbl.enter]);
 
-
   useEffect(() => {
     objinarr(tg(sl(document, ".text_block"), "div"))
       .filter(item => item !== undefined)
       .map((item, i) => (item.onclick = e => setitems(i)));
   }, [textbl.el]);
 
-useEffect(()=>{
- objinarr(tg(sl(document, ".text_block"), "div"))
- /.filter(item => item.toString() === items)
- .map(it => console.log(it))
-},[items])
+  useEffect(() => {
+    objinarr(tg(sl(document, ".text_block"), "div"))
+      //.filter(item => item.toString() === items)
+      .map(it => console.log(it));
+  }, [items]);
   let sizesplus = (
     <svg
       width="1em"
