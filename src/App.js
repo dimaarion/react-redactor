@@ -41,8 +41,6 @@ function App() {
   }
 
   function itkl(objinarr, newteg, setitems) {
-    
-  
     return objinarr.map((x, i) =>
       x.textContent === ""
         ? (x.innerHTML = `<span><br></span>`)
