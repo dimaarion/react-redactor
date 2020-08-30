@@ -1,8 +1,8 @@
-import React, { useState, useEffect,ContentBlock } from "react";
+import React, { useState, useEffect, ContentBlock } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Editor, EditorState, RichUtils,convertFromHTML } from "draft-js";
-import {stateToHTML} from 'draft-js-export-html';
+import { Editor, EditorState, RichUtils, convertFromHTML,ContentState } from "draft-js";
+import { stateToHTML } from "draft-js-export-html";
 import "draft-js/dist/Draft.css";
 import "./style.css";
 import "./bootstrap.css";
@@ -12,14 +12,11 @@ function App() {
   const [textbl, settextbl] = useState("");
   const [headerT, setheaderT] = useState("p");
   const [items, setitems] = useState(0);
-const [editorState, setEditorState] = useState(
-    () => EditorState.createEmpty(),
+  const [editorState, setEditorState] = useState(() =>
+    EditorState.createEmpty()
   );
-  const [value, setValue] = useState('');
+ 
   
- useEffect(()=>{
-   
- },[])
 
   function fonts(a = []) {
     return a;
@@ -69,15 +66,19 @@ const [editorState, setEditorState] = useState(
           x => (x.innerHTML = x.innerHTML.replace(/\|/, ""))
         )
       : "";
-      objinarr(
+    objinarr(
       document.querySelector(".text_block").getElementsByTagName("div")
-    ).map((x,i) => x.onclick = e => setitems(i));
-  }, [textcont, textbl,items]);
+    ).map((x, i) => (x.onclick = e => setitems(i)));
+  }, [textcont, textbl, items]);
 
   useEffect(() => {
     objinarr(document.querySelector(".text_block").getElementsByTagName("div"))
-    .filter((x,i) => i === items).map(x => x.innerHTML = x.innerHTML.replace(/span|div|p|h1|h2|h3/g, headerT));
-  }, [headerT,items]);
+      .filter((x, i) => i === items)
+      .map(
+        x =>
+          (x.innerHTML = x.innerHTML.replace(/span|div|p|h1|h2|h3/g, headerT))
+      );
+  }, [headerT, items]);
   let sizesplus = (
     <svg
       width="1em"
@@ -262,12 +263,21 @@ const [editorState, setEditorState] = useState(
       </div>
     );
   }
-function bold(){
-setEditorState(RichUtils.toggleInlineStyle(editorState, 'BOLD'))
-}
-function italik(){
-setEditorState(RichUtils.toggleInlineStyle(editorState, 'ITALIC'))
-}
+  function bold() {
+    setEditorState(RichUtils.toggleInlineStyle(editorState, "BOLD"));
+  }
+  function italik() {
+    setEditorState(RichUtils.toggleInlineStyle(editorState, "ITALIC"));
+  }
+  const sampleMarkup =
+            '<b>Bold text</b>, <i>Italic text</i><br/ ><br />' +
+            '<a href="http://www.facebook.com">Example link</a><br /><br/ >' +
+            '<img src="image.png" height="112" width="200" />';
+  const blocksFromHTML = convertFromHTML(sampleMarkup);
+  const state = ContentState.createFromBlockArray(
+            blocksFromHTML.contentBlocks,
+            blocksFromHTML.entityMap,
+          );
   return (
     <div
       className={
@@ -279,7 +289,7 @@ setEditorState(RichUtils.toggleInlineStyle(editorState, 'ITALIC'))
     >
       <div className="row col text-right pt-2 panel">
         {panel()}
-        
+
         <div className="col-sm">{textcont + "/" + items}</div>
         <div
           className="col-sm"
@@ -289,10 +299,14 @@ setEditorState(RichUtils.toggleInlineStyle(editorState, 'ITALIC'))
           {interat(sizesplus, sizesminus, sizes)}
         </div>
       </div>
-     <div onClick = {()=>bold()}>BOLD</div><div onClick = {()=>italik()}>ITALIK</div>
-      <Editor editorState={editorState} onChange={(editorState)=>setEditorState(editorState)} placeholder="Здесь можно печатать..."  />
+      <div onClick={() => bold()}>BOLD</div>
+      <div onClick={() => italik()}>ITALIK</div>
+      <Editor
+        editorState={editorState}
+        onChange={editorState => setEditorState(editorState)}
+        placeholder="Здесь можно печатать..."
+      />
       <div className="text_block" contentEditable={false} />
-      
     </div>
   );
 }
