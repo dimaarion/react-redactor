@@ -14,6 +14,8 @@ function App() {
 const [editorState, setEditorState] = React.useState(
     () => EditorState.createEmpty(),
   );
+  const [value, setValue] = useState('');
+  const onChange = (evt) => setValue(evt.target.value);
   function fonts(a = []) {
     return a;
   }
@@ -276,7 +278,10 @@ const [editorState, setEditorState] = React.useState(
           {interat(sizesplus, sizesminus, sizes)}
         </div>
       </div>
-      <div className="text_block" contentEditable={textcont} />
+     
+      <Editor editorState={editorState} onChange={setEditorState} />
+      <div className="text_block" contentEditable={false} />
+      
     </div>
   );
 }
