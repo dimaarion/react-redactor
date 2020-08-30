@@ -60,9 +60,15 @@ function App() {
           x => (x.innerHTML = x.innerHTML.replace(/\|/, ""))
         )
       : "";
-  }, [textcont, textbl]);
+      objinarr(
+      document.querySelector(".text_block").getElementsByTagName("div")
+    ).map((x,i) => x.onclick = e => setitems(i));
+  }, [textcont, textbl,items]);
 
-  useEffect(() => {}, [textbl]);
+  useEffect(() => {
+    objinarr(document.querySelector(".text_block").getElementsByTagName("div"))
+    .filter((x,i) => i === items).map(x => x.innerHTML = x.innerHTML.replace(/span|div|p|h1|h2|h3/g, headerT));
+  }, [headerT,items]);
   let sizesplus = (
     <svg
       width="1em"
@@ -259,7 +265,7 @@ function App() {
     >
       <div className="row col text-right pt-2 panel">
         {panel()}
-        <div className="col-sm">{textcont + "/" + textbl}</div>
+        <div className="col-sm">{textcont + "/" + items}</div>
         <div
           className="col-sm"
           className="sizes"
