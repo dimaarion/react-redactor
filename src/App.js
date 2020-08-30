@@ -47,16 +47,17 @@ function App() {
       ? objinarr(getClass(document, "text_block")).map(
           textBlock =>
             (textBlock.innerHTML =
-              '<div><span className = "item" >' +
-              (textBlock.innerText.replace(/\w+/, "_")) +
+              '<div className = "item_d"><span className = "item" >' +
+              (textBlock.innerText.replace(/\w+/, "|")) +
               "</span></div>")
         )
       : "";
   }, [textcont]);
   useEffect(() => {
     onkeypress = e => settextbl(e.key)
-   
-  }, [textcont]);
+    textbl === 'Enter'?
+    objinarr(document.getElementsByTagName('span')).map(x=>x.innerHTML = x.innerHTML.replace(/\|/,'')):''
+  }, [textcont,textbl]);
 
   useEffect(()=>{
 
