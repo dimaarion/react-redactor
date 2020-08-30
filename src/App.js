@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import {Editor, EditorState} from 'draft-js';
+import 'draft-js/dist/Draft.css';
 import "./style.css";
 import "./bootstrap.css";
 function App() {
