@@ -11,7 +11,9 @@ function App() {
   const [textbl, settextbl] = useState("");
   const [headerT, setheaderT] = useState("p");
   const [items, setitems] = useState(0);
-
+const [editorState, setEditorState] = React.useState(
+    () => EditorState.createEmpty(),
+  );
   function fonts(a = []) {
     return a;
   }
