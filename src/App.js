@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import {Editor, EditorState} from 'draft-js';
-import 'draft-js/dist/Draft.css';
+import { Editor, EditorState } from "draft-js";
+import "draft-js/dist/Draft.css";
 import "./style.css";
 import "./bootstrap.css";
 function App() {
   const [sizes, setsizes] = useState(true);
   const [textcont, settextcont] = useState(false);
-  const [textbl, settextbl] = useState('');
+  const [textbl, settextbl] = useState("");
   const [headerT, setheaderT] = useState("p");
   const [items, setitems] = useState(0);
 
@@ -48,20 +48,21 @@ function App() {
           textBlock =>
             (textBlock.innerHTML =
               '<div className = "item_d"><span className = "item" >' +
-              (textBlock.innerText.replace(/\w+/, "|")) +
+              textBlock.innerText.replace(/\w+/, "|") +
               "</span></div>")
         )
       : "";
   }, [textcont]);
   useEffect(() => {
-    onkeypress = e => settextbl(e.key)
-    textbl === 'Enter'?
-    objinarr(document.getElementsByTagName('span')).map(x=>x.innerHTML = x.innerHTML.replace(/\|/,'')):''
-  }, [textcont,textbl]);
+    onkeypress = e => settextbl(e.key);
+    textbl === "Enter"
+      ? objinarr(document.getElementsByTagName("span")).map(
+          x => (x.innerHTML = x.innerHTML.replace(/\|/, ""))
+        )
+      : "";
+  }, [textcont, textbl]);
 
-  useEffect(()=>{
-
-  },[textbl])
+  useEffect(() => {}, [textbl]);
   let sizesplus = (
     <svg
       width="1em"
