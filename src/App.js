@@ -39,7 +39,7 @@ function App() {
     objinarr(getClass(document, "text_block")).map(
       textBlock =>
         (textBlock.innerHTML =
-          '<div><span className = "item">' + "_uuuu" + "</span></div>")
+          '<div><span className = "item">' + "|" + "</span></div>")
     );
   }, []);
   useEffect(() => {
