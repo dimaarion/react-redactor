@@ -7,6 +7,7 @@ import {
   Editor,
   EditorState,
   RichUtils,
+  createWithContent,
   convertFromHTML,
   convertToRaw
 } from "draft-js";
@@ -19,7 +20,8 @@ function App() {
   const [sizes, setsizes] = useState(true);
   const [textcont, settextcont] = useState(false);
   const [textbl, settextbl] = useState("");
-  const [headerT, setheaderT] = useState("p");
+  const [headerT, setheaderT] = useState("unstyled***");
+  const [headerType, setheaderType] = useState("div");
   const [items, setitems] = useState(0);
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
@@ -28,7 +30,6 @@ function App() {
   function fonts(a = []) {
     return a;
   }
-
 
   let sizesplus = (
     <svg
@@ -199,14 +200,14 @@ function App() {
           </svg>
         </div>
         <div className="col">
-          <select onChange={e => setheaderT(e.target.value)}>
+          <select>
             {fonts([
-              { n: "Заголовок", t: "span" },
-              { n: "Заголовок 1", t: "h1" },
-              { n: "Заголовок 2", t: "h2" }
+              { n: "Заголовок", t: "span",type:"unstyled***" },
+              { n: "Заголовок 1", t: "h1",type:"header-one" },
+              { n: "Заголовок 2", t: "h2",type:"header-two" }
             ]).map((font, i) => (
-              <option key={i + 33} value={font.t}>
-                {font.n}
+              <option key={i + 33} onClick = {(e)=>{setheaderType(font.t);setheaderT(font.type) }}>
+                {font.n + font.t}
               </option>
             ))}
           </select>
@@ -222,13 +223,37 @@ function App() {
     setEditorState(RichUtils.toggleInlineStyle(editorState, "ITALIC"));
   }
   const blockRenderMap = Map({
-    "header-one": {
-      element: "h1"
+    'header-two': {
+      element:'h2'
     },
     unstyled: {
-      element: "h1"
+      element: 'h2'
     }
   });
+  const blockRenderMap2 = Map({
+    'header-one': {
+      element: 'h1'
+    },
+    unstyled: {
+      element: 'h1'
+    }
+  });
+const extendedBlockRenderMap = blockRenderMap2.merge(blockRenderMap);
+const sampleMarkup =
+  '<b>Bold text</b>, <i>Italic text</i><br/ ><br />' +
+  '<a href="http://www.facebook.com">Example link</a>';
+
+const blocksFromHTML = convertFromHTML(sampleMarkup);
+const state = ContentState.createFromBlockArray(
+  blocksFromHTML.contentBlocks,
+  blocksFromHTML.entityMap,
+);
+useEffect(()=>{
+setEditorState( 
+  EditorState.createWithContent(state),
+) 
+},[])
+ 
 
   return (
     <div
@@ -249,13 +274,14 @@ function App() {
           {interat(sizesplus, sizesminus, sizes)}
         </div>
       </div>
+      {headerT}
       <div onClick={() => bold()}>BOLD</div>
       <div onClick={() => italik()}>ITALIK</div>
       <Editor
         editorState={editorState}
         onChange={editorState => setEditorState(editorState)}
         placeholder="Здесь можно печатать..."
-        blockRenderMap={blockRenderMap}
+        blockRenderMap={extendedBlockRenderMap}
       />
       <div className="text_block" contentEditable={false} />
     </div>
