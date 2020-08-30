@@ -1,7 +1,16 @@
 import React, { useState, useEffect, ContentBlock } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Editor, EditorState, RichUtils, convertFromHTML,ContentState } from "draft-js";
+import {
+  CompositeDecorator,
+  ContentState,
+  Editor,
+  EditorState,
+  RichUtils,
+  convertFromHTML,
+  convertToRaw
+} from "draft-js";
+import { Map } from "immutable";
 import { stateToHTML } from "draft-js-export-html";
 import "draft-js/dist/Draft.css";
 import "./style.css";
@@ -15,70 +24,12 @@ function App() {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
- 
-  
 
   function fonts(a = []) {
     return a;
   }
 
-  function sl(document, selector) {
-    return document.querySelector(selector);
-  }
 
-  function getClass(document, cl) {
-    return document.getElementsByClassName(cl);
-  }
-
-  function tg(e, g) {
-    return e.getElementsByTagName(g);
-  }
-
-  function cl(e, g) {
-    return e.getElementsByClassName(g);
-  }
-  function objinarr(e) {
-    return Object.values(e);
-  }
-
-  useEffect(() => {
-    objinarr(getClass(document, "text_block")).map(
-      textBlock =>
-        (textBlock.innerHTML =
-          '<div><span className = "item">' + "|" + "</span></div>")
-    );
-  }, []);
-  useEffect(() => {
-    textcont === true
-      ? objinarr(getClass(document, "text_block")).map(
-          textBlock =>
-            (textBlock.innerHTML =
-              '<div className = "item_d"><span className = "item" >' +
-              textBlock.innerText.replace(/\w+/, "|") +
-              "</span></div>")
-        )
-      : "";
-  }, [textcont]);
-  useEffect(() => {
-    onkeypress = e => settextbl(e.key);
-    textbl === "Enter"
-      ? objinarr(document.getElementsByTagName("span")).map(
-          x => (x.innerHTML = x.innerHTML.replace(/\|/, ""))
-        )
-      : "";
-    objinarr(
-      document.querySelector(".text_block").getElementsByTagName("div")
-    ).map((x, i) => (x.onclick = e => setitems(i)));
-  }, [textcont, textbl, items]);
-
-  useEffect(() => {
-    objinarr(document.querySelector(".text_block").getElementsByTagName("div"))
-      .filter((x, i) => i === items)
-      .map(
-        x =>
-          (x.innerHTML = x.innerHTML.replace(/span|div|p|h1|h2|h3/g, headerT))
-      );
-  }, [headerT, items]);
   let sizesplus = (
     <svg
       width="1em"
@@ -263,21 +214,22 @@ function App() {
       </div>
     );
   }
+
   function bold() {
     setEditorState(RichUtils.toggleInlineStyle(editorState, "BOLD"));
   }
   function italik() {
     setEditorState(RichUtils.toggleInlineStyle(editorState, "ITALIC"));
   }
-  const sampleMarkup =
-            '<b>Bold text</b>, <i>Italic text</i><br/ ><br />' +
-            '<a href="http://www.facebook.com">Example link</a><br /><br/ >' +
-            '<img src="image.png" height="112" width="200" />';
-  const blocksFromHTML = convertFromHTML(sampleMarkup);
-  const state = ContentState.createFromBlockArray(
-            blocksFromHTML.contentBlocks,
-            blocksFromHTML.entityMap,
-          );
+  const blockRenderMap = Map({
+    "header-one": {
+      element: "h1"
+    },
+    unstyled: {
+      element: "h1"
+    }
+  });
+
   return (
     <div
       className={
@@ -289,8 +241,6 @@ function App() {
     >
       <div className="row col text-right pt-2 panel">
         {panel()}
-
-        <div className="col-sm">{textcont + "/" + items}</div>
         <div
           className="col-sm"
           className="sizes"
@@ -305,6 +255,7 @@ function App() {
         editorState={editorState}
         onChange={editorState => setEditorState(editorState)}
         placeholder="Здесь можно печатать..."
+        blockRenderMap={blockRenderMap}
       />
       <div className="text_block" contentEditable={false} />
     </div>
