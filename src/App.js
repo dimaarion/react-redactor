@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,ContentBlock } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Editor, EditorState } from "draft-js";
+import { Editor, EditorState, RichUtils,convertFromHTML } from "draft-js";
+import {stateToHTML} from 'draft-js-export-html';
 import "draft-js/dist/Draft.css";
 import "./style.css";
 import "./bootstrap.css";
@@ -11,11 +12,15 @@ function App() {
   const [textbl, settextbl] = useState("");
   const [headerT, setheaderT] = useState("p");
   const [items, setitems] = useState(0);
-const [editorState, setEditorState] = React.useState(
+const [editorState, setEditorState] = useState(
     () => EditorState.createEmpty(),
   );
   const [value, setValue] = useState('');
-  const onChange = (evt) => setValue(evt.target.value);
+  
+ useEffect(()=>{
+   
+ },[])
+
   function fonts(a = []) {
     return a;
   }
@@ -257,7 +262,12 @@ const [editorState, setEditorState] = React.useState(
       </div>
     );
   }
-
+function bold(){
+setEditorState(RichUtils.toggleInlineStyle(editorState, 'BOLD'))
+}
+function italik(){
+setEditorState(RichUtils.toggleInlineStyle(editorState, 'ITALIC'))
+}
   return (
     <div
       className={
@@ -269,6 +279,7 @@ const [editorState, setEditorState] = React.useState(
     >
       <div className="row col text-right pt-2 panel">
         {panel()}
+        
         <div className="col-sm">{textcont + "/" + items}</div>
         <div
           className="col-sm"
@@ -278,8 +289,8 @@ const [editorState, setEditorState] = React.useState(
           {interat(sizesplus, sizesminus, sizes)}
         </div>
       </div>
-     
-      <Editor editorState={editorState} onChange={setEditorState} />
+     <div onClick = {()=>bold()}>BOLD</div><div onClick = {()=>italik()}>ITALIK</div>
+      <Editor editorState={editorState} onChange={(editorState)=>setEditorState(editorState)} placeholder="Здесь можно печатать..."  />
       <div className="text_block" contentEditable={false} />
       
     </div>
