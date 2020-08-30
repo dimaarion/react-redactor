@@ -46,7 +46,7 @@ function App() {
           textBlock =>
             (textBlock.innerHTML =
               '<div><span className = "item" >' +
-              (textBlock.innerText.replace(/\w+/, ".")) +
+              (textBlock.innerText.replace(/\w+/, "_")) +
               "</span></div>")
         )
       : "";
