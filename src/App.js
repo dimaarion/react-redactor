@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ContentBlock } from "react";
+import React, { useState, useEffect} from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {
@@ -6,10 +6,13 @@ import {
   ContentState,
   Editor,
   EditorState,
+  Entity,
   RichUtils,
+  ContentBlock,
   createWithContent,
   convertFromHTML,
-  convertToRaw
+  convertToRaw,
+  contentState
 } from "draft-js";
 import { Map } from "immutable";
 import { stateToHTML } from "draft-js-export-html";
@@ -222,6 +225,14 @@ function App() {
   function italik() {
     setEditorState(RichUtils.toggleInlineStyle(editorState, "ITALIC"));
   }
+  function test() {
+   // setEditorState(contentState.createEntity('div', 'test',{}));
+  }
+
+  useEffect(()=>{
+ //console.log(RichUtils.handleKeyCommand(editorState, "not-handled"));
+    
+  },[])
   const blockRenderMap = Map({
     'header-two': {
       element:'h2'
@@ -238,10 +249,9 @@ function App() {
       element: 'h1'
     }
   });
-const extendedBlockRenderMap = blockRenderMap2.merge(blockRenderMap);
+const extendedBlockRenderMap = blockRenderMap2.concat(blockRenderMap);
 const sampleMarkup =
-  '<b>Bold text</b>, <i>Italic text</i><br/ ><br />' +
-  '<a href="http://www.facebook.com">Example link</a>';
+  '';
 
 const blocksFromHTML = convertFromHTML(sampleMarkup);
 const state = ContentState.createFromBlockArray(
@@ -277,6 +287,7 @@ setEditorState(
       {headerT}
       <div onClick={() => bold()}>BOLD</div>
       <div onClick={() => italik()}>ITALIK</div>
+      <div onClick={() => test()}>TEST</div>
       <Editor
         editorState={editorState}
         onChange={editorState => setEditorState(editorState)}
