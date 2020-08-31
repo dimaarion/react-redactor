@@ -17,8 +17,15 @@ function App() {
     return bol === true ? sizesplus : sizesminus;
   }
 useEffect(()=>{
-  document.querySelector('.text_block').innerHTML = '<div class = "col text-center"><div><h1 class = "text-center">Заголовок</h1></div></div>'
+  onkeypress = (e)=>setitems(e.key);
+ document.querySelector('.text_block').innerHTML = '<div class = "col text-center">|</div>'
 },[])
+useEffect(()=>{
+  items === 'Enter'?
+  Object.values(document.querySelector('.text_block').getElementsByTagName('div')).map((x)=>x.innerHTML =  '<h1>'+ x.innerText + '</h1>')
+  :''
+  Object.values(document.querySelector('.text_block').getElementsByTagName('div')).map((x)=>console.log( x.innerHTML))
+},[items])
   return (
     <div className="contentDtext">
       <div
