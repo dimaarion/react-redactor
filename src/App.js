@@ -17,7 +17,7 @@ function App() {
     return bol === true ? sizesplus : sizesminus;
   }
 useEffect(()=>{
-  document.querySelector('.text_block').innerHTML = '<div className = "col text-center"><div><h1 class = "text-center">Заголовок</h1></div></div>'
+  document.querySelector('.text_block').innerHTML = '<div class = "col text-center"><div><h1 class = "text-center">Заголовок</h1></div></div>'
 },[])
   return (
     <div className="contentDtext">
