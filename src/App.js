@@ -11,8 +11,6 @@ import {
   ContentBlock,
   createWithContent,
   convertFromHTML,
-  convertToRaw,
-  contentState,
   Modifier
 } from "draft-js";
 import { Map } from "immutable";
@@ -226,9 +224,7 @@ function App() {
   function italik() {
     setEditorState(RichUtils.toggleInlineStyle(editorState, "ITALIC"));
   }
-  function test() {
-   // setEditorState(contentState.createEntity('div', 'test',{}));
-  }
+  
 
   useEffect(()=>{
  //console.log(RichUtils.handleKeyCommand(editorState, "not-handled"));
@@ -263,19 +259,27 @@ const contentState = editorState.getCurrentContent();
 const contentStateWithEntity = contentState.createEntity('LINK', 'MUTABLE', {
   url: 'http://www.zombo.com',
 });
+
+ const newEditorState = EditorState.set(editorState, {currentContent: contentStateWithEntity});
 const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
 const contentStateWithLink = Modifier.applyEntity(
   contentStateWithEntity,
-  selectionState,
+  newEditorState.getSelection(),
   entityKey,
 );
 
- 
-const contentState = editorState.getCurrentContent();
-const blockWithLinkAtBeginning = contentState.getBlockForKey('...');
-const linkKey = blockWithLinkAtBeginning.getEntityAt(0);
-const linkInstance = contentState.getEntity(linkKey);
-const {url} = linkInstance.getData();
+ function test() {
+  setEditorState(RichUtils.toggleLink(
+        newEditorState,
+        newEditorState.getSelection(),
+        entityKey
+      ));
+  }
+///const contentState = editorState.getCurrentContent();
+//const blockWithLinkAtBeginning = contentState.getBlockForKey('...');
+//const linkKey = blockWithLinkAtBeginning.getEntityAt(0);
+//const linkInstance = contentState.getEntity(linkKey);
+//const {url} = linkInstance.getData();
 
   return (
     <div
