@@ -235,7 +235,7 @@ function App() {
       element:'h2'
     },
     unstyled: {
-      element: 'h2'
+      element: 'h5'
     }
   });
   const blockRenderMap2 = Map({
@@ -243,7 +243,7 @@ function App() {
       element: 'h1'
     },
     unstyled: {
-      element: 'h1'
+      element: 'h5'
     }
   });
 const extendedBlockRenderMap = blockRenderMap2.concat(blockRenderMap);
@@ -260,56 +260,12 @@ const contentStateWithEntity = contentState.createEntity('LINK', 'MUTABLE', {
   url: 'http://www.zombo.com',
 });
 
- const newEditorState = EditorState.set(editorState, {currentContent: contentStateWithEntity});
-const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
-const contentStateWithLink = Modifier.applyEntity(
-  contentStateWithEntity,
-  newEditorState.getSelection(),
-  entityKey,
-);
+ 
 
  function test() {
-  setEditorState(RichUtils.toggleLink(
-        newEditorState,
-        newEditorState.getSelection(),
-        entityKey
-      ));
+  
   }
-  function findLinkEntities(contentBlock, callback, contentState) {
-  contentBlock.findEntityRanges(
-    (character) => {
-      const entityKey = character.getEntity();
-      return (
-        entityKey !== null &&
-        contentState.getEntity(entityKey).getType() === 'LINK'
-      );
-    },
-    callback
-  );
-}
-
-const Link = (props) => {
-  const { url } = props.contentState
-    .getEntity(props.entityKey).getData();
-
-  return (
-    <a href={url} title={url} className="ed-link">
-      {props.children}
-    </a>
-  );
-};
-  const decorator = new CompositeDecorator([
-  {
-    strategy: findLinkEntities,
-    component: Link
-  }
-]);
-useEffect(()=>{
-  setEditorState({
-  inlineToolbar: { show: false },
-  editorState: EditorState.createEmpty(decorator)
-})
-},[])
+  
 
 ///const contentState = editorState.getCurrentContent();
 //const blockWithLinkAtBeginning = contentState.getBlockForKey('...');
