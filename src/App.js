@@ -1,20 +1,7 @@
-import React, { useState, useEffect} from "react";
-import Sizeplus from '../Sizeplus';
-import Sizeminus from '../Sizeminus';
-import {
-  CompositeDecorator,
-  ContentState,
-  Editor,
-  EditorState,
-  Entity,
-  RichUtils,
-  ContentBlock,
-  createWithContent,
-  convertFromHTML,
-  Modifier
-} from "draft-js";
-import { Map } from "immutable";
-import { stateToHTML } from "draft-js-export-html";
+import React, { useState, useEffect } from "react";
+import Sizeplus from "../Sizeplus";
+import Sizeminus from "../Sizeminus";
+import Panel from "../Panel";
 import "draft-js/dist/Draft.css";
 import "./style.css";
 import "./bootstrap.css";
@@ -25,219 +12,32 @@ function App() {
   const [headerT, setheaderT] = useState("unstyled***");
   const [headerType, setheaderType] = useState("div");
   const [items, setitems] = useState(0);
-  const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty()
-  );
 
-  function fonts(a = []) {
-    return a;
-  }
   function interat(sizesplus, sizesminus, bol) {
     return bol === true ? sizesplus : sizesminus;
   }
-  function panel() {
-    return (
-      <div className="col row">
-        <div className="col">
-          <select>
-            {fonts(["Tahoma", "Verdana", "Arial"]).map((font, i) => (
-              <option key={i + 14}>{font}</option>
-            ))}
-          </select>
-          <select>
-            {fonts([
-              8,
-              9,
-              10,
-              11,
-              12,
-              13,
-              14,
-              15,
-              16,
-              17,
-              18,
-              19,
-              20,
-              21,
-              22,
-              23
-            ]).map(font => (
-              <option key={font}>{font}</option>
-            ))}
-          </select>
-        </div>
-        <div className="col-4">
-          <div className="row">
-            <div className="col">
-              <svg
-                width="1em"
-                height="1em"
-                viewBox="0 0 16 16"
-                className="bi bi-justify-left"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
-                />
-              </svg>
-            </div>
-            <div className="col">
-              <svg
-                width="1em"
-                height="1em"
-                viewBox="0 0 16 16"
-                className="bi bi-justify"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
-                />
-              </svg>
-            </div>
-            <div className="col">
-              <svg
-                width="1em"
-                height="1em"
-                viewBox="0 0 16 16"
-                className="bi bi-justify-right"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M6 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
-                />
-              </svg>
-            </div>
+useEffect(()=>{
+  document.querySelector('.text_block').innerHTML = '<div className = "col text-center"><div><h1 className = "text-center"><span>Заголовок</span></h1></div></div>'
+},[])
+  return (
+    <div className="contentDtext">
+      <div
+        className={sizes === true ? "cintent_text" : "cintent_text_full"}
+        onClick={() => settextcont(true)}
+      >
+        <div className="row col text-right pt-2 panel">
+          <Panel setheaderType={setheaderType} />
+          <div
+            className="col-sm"
+            className="sizes"
+            onClick={() => setsizes(sizes === true ? false : true)}
+          >
+            <div> {sizes === true ? <Sizeplus /> : <Sizeminus />}</div>
           </div>
         </div>
-        <div className="col-1 images" title="Добавить изображение">
-          <svg
-            width="1em"
-            height="1em"
-            viewBox="0 0 16 16"
-            className="bi bi-image"
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M14.002 2h-12a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zm-12-1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12z"
-            />
-            <path d="M10.648 7.646a.5.5 0 0 1 .577-.093L15.002 9.5V14h-14v-2l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71z" />
-            <path
-              fillRule="evenodd"
-              d="M4.502 7a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"
-            />
-          </svg>
-        </div>
-        <div className="col">
-          <select>
-            {fonts([
-              { n: "Заголовок", t: "span",type:"unstyled***" },
-              { n: "Заголовок 1", t: "h1",type:"header-one" },
-              { n: "Заголовок 2", t: "h2",type:"header-two" }
-            ]).map((font, i) => (
-              <option key={i + 33} onClick = {(e)=>{setheaderType(font.t);setheaderT(font.type) }}>
-                {font.n + font.t}
-              </option>
-            ))}
-          </select>
-        </div>
+
+        <div className="text_block" contentEditable={textcont} />
       </div>
-    );
-  }
-
-  function bold() {
-    setEditorState(RichUtils.toggleInlineStyle(editorState, "BOLD"));
-  }
-  function italik() {
-    setEditorState(RichUtils.toggleInlineStyle(editorState, "ITALIC"));
-  }
-  
-
-  useEffect(()=>{
- //console.log(RichUtils.handleKeyCommand(editorState, "not-handled"));
-    
-  },[])
-  const blockRenderMap = Map({
-    'header-two': {
-      element:'h2'
-    },
-    unstyled: {
-      element: 'h5'
-    }
-  });
-  const blockRenderMap2 = Map({
-    'header-one': {
-      element: 'h1'
-    },
-    unstyled: {
-      element: 'h5'
-    }
-  });
-const extendedBlockRenderMap = blockRenderMap2.concat(blockRenderMap);
-const sampleMarkup =
-  '';
-
-const blocksFromHTML = convertFromHTML(sampleMarkup);
-const state = ContentState.createFromBlockArray(
-  blocksFromHTML.contentBlocks,
-  blocksFromHTML.entityMap,
-);
-const contentState = editorState.getCurrentContent();
-const contentStateWithEntity = contentState.createEntity('LINK', 'MUTABLE', {
-  url: 'http://www.zombo.com',
-});
-
- 
-
- function test() {
-  
-  }
-  
-
-///const contentState = editorState.getCurrentContent();
-//const blockWithLinkAtBeginning = contentState.getBlockForKey('...');
-//const linkKey = blockWithLinkAtBeginning.getEntityAt(0);
-//const linkInstance = contentState.getEntity(linkKey);
-//const {url} = linkInstance.getData();
-
-  return (
-    <div
-      className={
-        interat("cintent_text", "cintent_text_full", sizes) +
-        " " +
-        "contentDtext"
-      }
-      onClick={() => settextcont(true)}
-    >
-      <div className="row col text-right pt-2 panel">
-        {panel()}
-        <div
-          className="col-sm"
-          className="sizes"
-          onClick={() => setsizes(sizes === true ? false : true)}
-        >
-       <div> {sizes === true? <Sizeplus/>:<Sizeminus/>}</div>  
-        </div>
-      </div>
-      
-      <div onClick={() => bold()}>BOLD</div>
-      <div onClick={() => italik()}>ITALIK</div>
-      <div onClick={() => test()}>TEST</div>
-      <Editor
-        editorState={editorState}
-        onChange={editorState => setEditorState(editorState)}
-        placeholder="Здесь можно печатать..."
-        blockRenderMap={extendedBlockRenderMap}
-      />
-      <div className="text_block" contentEditable={false} />
     </div>
   );
 }
