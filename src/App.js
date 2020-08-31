@@ -24,7 +24,7 @@ useEffect(()=>{
   items === 'Enter'?
   Object.values(document.querySelector('.text_block').getElementsByTagName('div')).map((x)=>x.innerHTML =  '<h1>'+ x.innerText + '</h1>')
   :''
-  Object.values(document.querySelector('.text_block').getElementsByTagName('div')).map((x)=>console.log( x.innerHTML))
+  Object.values(document.querySelector('.text_block').getElementsByTagName('div')).map((x)=>console.log( x.innerHTML.replace(/[a-z_0-9]+/,'<h1>' + x.innerText + '</h1>')))
 },[items])
   return (
     <div className="contentDtext">
