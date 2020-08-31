@@ -12,7 +12,8 @@ import {
   createWithContent,
   convertFromHTML,
   convertToRaw,
-  contentState
+  contentState,
+  Modifier
 } from "draft-js";
 import { Map } from "immutable";
 import { stateToHTML } from "draft-js-export-html";
@@ -258,12 +259,23 @@ const state = ContentState.createFromBlockArray(
   blocksFromHTML.contentBlocks,
   blocksFromHTML.entityMap,
 );
-useEffect(()=>{
-setEditorState( 
-  EditorState.createWithContent(state),
-) 
-},[])
+const contentState = editorState.getCurrentContent();
+const contentStateWithEntity = contentState.createEntity('LINK', 'MUTABLE', {
+  url: 'http://www.zombo.com',
+});
+const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
+const contentStateWithLink = Modifier.applyEntity(
+  contentStateWithEntity,
+  selectionState,
+  entityKey,
+);
+
  
+const contentState = editorState.getCurrentContent();
+const blockWithLinkAtBeginning = contentState.getBlockForKey('...');
+const linkKey = blockWithLinkAtBeginning.getEntityAt(0);
+const linkInstance = contentState.getEntity(linkKey);
+const {url} = linkInstance.getData();
 
   return (
     <div
