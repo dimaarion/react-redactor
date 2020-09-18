@@ -20,8 +20,8 @@ function App() {
     let text_block = document.querySelector('.text_block');
     let d = Object.values(text_block.getElementsByTagName('div'));
     let f = 1
-    return (d.length === 0)?text_block.onclick = (el)=>{
-      console.log(el.target.id = "test" + f + 1)
+    return (d.length === 0)?text_block.onclick = (el)=>{f = f + 1;
+      console.log(el.target.id = "test" + f )
     }:'';
   }
   return (
