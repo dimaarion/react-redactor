@@ -16,7 +16,9 @@ function App() {
   function interat(sizesplus, sizesminus, bol) {
     return bol === true ? sizesplus : sizesminus;
   }
-
+  function test(e) {
+    return console.log(e);
+  }
   return (
     <div className="contentDtext">
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
@@ -34,11 +36,7 @@ function App() {
         <div
           className="text_block"
           contentEditable="true"
-          onClick = {(e)=>{settextcont(true);(textcont === true && e.currentTarget.innerText.length < 1)?console.log(e.currentTarget.innerHTML = '<p>' + e.currentTarget.innerText + '</p>'):""}}
-          onKeyPress={e => {
-            e.key ? console.log(e.currentTarget.innerText.length) : "";
-            
-          }}
+          onKeyPress={e => test(e)}
         />
       </div>
     </div>
