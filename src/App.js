@@ -17,7 +17,7 @@ function App() {
     return bol === true ? sizesplus : sizesminus;
   }
   function test(e) {
-    return console.log(e);
+    return console.log(e.currentTarget.innerHTML.split('<div>'));
   }
   return (
     <div className="contentDtext">
