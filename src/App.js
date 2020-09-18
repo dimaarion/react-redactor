@@ -24,7 +24,7 @@ function App() {
     let d = Object.values(text_block.getElementsByTagName("div"));
     let f = 1;
     console.log(e.key)
-    d.map(el =>  (e.key === 'Enter')?el.className = getRandomInt(100):'');
+    d.map((el, i) =>  (e.key === 'Enter')?el.className = getRandomInt(100):'');
   }
   return (
     <div className="contentDtext">
