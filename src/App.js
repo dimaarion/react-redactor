@@ -34,7 +34,7 @@ function App() {
         <div
           className="text_block"
           contentEditable="true"
-          onClick={e => {
+          onKeyPress={e => {
             
             console.log(e.target);
           }}
