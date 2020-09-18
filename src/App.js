@@ -35,8 +35,8 @@ function App() {
           className="text_block"
           contentEditable="true"
           onKeyPress={e => {
+            e.key ? console.log(e.target) : "";
             
-            console.log((e.key)?'es':'no');
           }}
         />
       </div>
