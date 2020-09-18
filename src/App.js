@@ -17,7 +17,7 @@ function App() {
     return bol === true ? sizesplus : sizesminus;
   }
   function test(e) {
-    return console.log(document.querySelector('text_block'));
+    return console.log(document.querySelector('.text_block'));
   }
   return (
     <div className="contentDtext">
