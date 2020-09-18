@@ -20,7 +20,7 @@ function App() {
     let text_block = document.querySelector('.text_block');
     let d = Object.values(text_block.getElementsByTagName('div'));
     return (d.length === 0)?text_block.onclick = (el)=>{
-      console.log(el)
+      console.log(el.target.className = "test")
     }:'';
   }
   return (
