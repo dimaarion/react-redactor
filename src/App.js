@@ -21,7 +21,7 @@ function App() {
     let d = Object.values(text_block.getElementsByTagName('div'));
     let f = 1
     return (d.length === 0)?text_block.onclick = (el)=>{f = f + 1;
-      console.log(el.target.id = "test" + f )
+      console.log(el.target.id = "test" + d.length )
     }:'';
   }
   return (
