@@ -19,10 +19,7 @@ function App() {
 
   return (
     <div className="contentDtext">
-      <div
-        className={sizes === true ? "cintent_text" : "cintent_text_full"}
-        onClick={() => settextcont(true)}
-      >
+      <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
         <div className="row col text-right pt-2 panel">
           <Panel setheaderType={setheaderType} />
           <div
@@ -34,7 +31,15 @@ function App() {
           </div>
         </div>
 
-        <div className="text_block" contentEditable={textcont} onClick = {(e)=>console.log(e.target)} /></div>
+        <div
+          className="text_block"
+          contentEditable={textcont}
+          onClick={e => {
+            settextcont(true);
+            console.log(e.target);
+          }}
+        />
+      </div>
     </div>
   );
 }
