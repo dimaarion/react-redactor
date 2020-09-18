@@ -34,7 +34,7 @@ function App() {
           </div>
         </div>
 
-        <div className="text_block" contentEditable={textcont} onClick = {(e)=>console.log(e)} /></div>
+        <div className="text_block" contentEditable={textcont} onClick = {(e)=>console.log(e.target)} /></div>
     </div>
   );
 }
