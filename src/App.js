@@ -33,9 +33,9 @@ function App() {
 
         <div
           className="text_block"
-          contentEditable={textcont}
+          contentEditable="true"
           onClick={e => {
-            settextcont(true);
+            
             console.log(e.target);
           }}
         />
