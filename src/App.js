@@ -23,7 +23,8 @@ function App() {
     let text_block = document.querySelector(".text_block");
     let d = Object.values(text_block.getElementsByTagName("div"));
     let f = 1;
-    d.map(el => console.log((el.className = getRandomInt(100))));
+    console.log(e.key)
+    d.map(el =>  (e.key === 'Enter')?el.className = getRandomInt(100):'');
   }
   return (
     <div className="contentDtext">
