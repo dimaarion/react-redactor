@@ -35,7 +35,7 @@ function App() {
           className="text_block"
           contentEditable="true"
           onKeyPress={e => {
-            e.key ? console.log(e) : "";
+            e.key ? console.log(e.currentTarget.innerText.length) : "";
             
           }}
         />
