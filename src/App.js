@@ -16,16 +16,7 @@ function App() {
   function interat(sizesplus, sizesminus, bol) {
     return bol === true ? sizesplus : sizesminus;
   }
-useEffect(()=>{
-  onkeypress = (e)=>setitems(e.key);
- document.querySelector('.text_block').innerHTML = '<div class = "col text-center">|</div>'
-},[])
-useEffect(()=>{
-  items === 'Enter'?
-  Object.values(document.querySelector('.text_block').getElementsByTagName('div')).map((x)=>x.innerHTML =  '<h1>'+ x.innerText + '</h1>')
-  :''
-  Object.values(document.querySelector('.text_block').getElementsByTagName('div')).map((x)=>console.log( x.innerHTML.replace(/[a-z_0-9]+/,'<h1>' + x.innerText + '</h1>')))
-},[items])
+
   return (
     <div className="contentDtext">
       <div
@@ -43,8 +34,7 @@ useEffect(()=>{
           </div>
         </div>
 
-        <div className="text_block" contentEditable={textcont} />
-      </div>
+        <div className="text_block" contentEditable={textcont} /></div>
     </div>
   );
 }
