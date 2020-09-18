@@ -25,7 +25,7 @@ function App() {
     let f = 1;
     f = f + 1
     console.log(e.key)
-    d.map((el, i) =>  el.className = 'test' + i );
+    d.map((el, i) =>  el.className = 'item' + i + 1 );
   }
   return (
     <div className="contentDtext">
