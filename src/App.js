@@ -36,7 +36,7 @@ function App() {
           contentEditable="true"
           onKeyPress={e => {
             
-            console.log(e.target);
+            console.log((e.key)?'es':'no');
           }}
         />
       </div>
