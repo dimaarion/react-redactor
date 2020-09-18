@@ -17,12 +17,13 @@ function App() {
     return bol === true ? sizesplus : sizesminus;
   }
   function test(e) {
-    let text_block = document.querySelector('.text_block');
-    let d = Object.values(text_block.getElementsByTagName('div'));
-    let f = 1
-    return (d.length === 0)?text_block.onclick = (el)=>{f = f + 1;
-      console.log(el.target.id = "test" + d.length )
-    }:'';
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max));
+    }
+    let text_block = document.querySelector(".text_block");
+    let d = Object.values(text_block.getElementsByTagName("div"));
+    let f = 1;
+    d.map(el => console.log((el.className = getRandomInt(100))));
   }
   return (
     <div className="contentDtext">
