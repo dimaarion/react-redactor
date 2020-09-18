@@ -34,7 +34,7 @@ function App() {
         <div
           className="text_block"
           contentEditable="true"
-          onClick = {(e)=>console.log(e.currentTarget)}
+          onClick = {(e)=>console.log(e.currentTarget.outerHTML = '<p>' + e.currentTarget.innetText + '</p>')}
           onKeyPress={e => {
             e.key ? console.log(e.currentTarget.innerText.length) : "";
             
