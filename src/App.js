@@ -23,15 +23,31 @@ function App() {
     let text_block = document.querySelector(".text_block");
     let d = Object.values(text_block.getElementsByTagName("div"));
     let f = 1;
-    f = f + 1
-    console.log(e.key)
-    d.map((el, i) =>  el.className = 'item' + i + 1 );
+    f = f + 1;
+
+    let y = d.map((el, i) => (el.className = "item-" + (i + 1)));
+    let c = Object.values(text_block.getElementsByClassName("item-" + items));
+    console.log(c)
+    d.map((el, i) => (el.onclick = els => setitems(i + 1)));
   }
+   
+  useEffect(() => {}, [items]);
   return (
     <div className="contentDtext">
+      {items}
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
         <div className="row col text-right pt-2 panel">
           <Panel setheaderType={setheaderType} />
+          <div
+            onClick={() => {
+              let text_block = document.querySelector(".text_block");
+              let d = Object.values(text_block.getElementsByClassName("item-" + items));
+           ( d[0] !== undefined)? d[0].outerHTML = '<h1 class = "item-"'+ items +' >' + d[0].innerText + '</h1>':''
+           console.log(d)
+            }}
+          >
+            test
+          </div>
           <div
             className="col-sm"
             className="sizes"
