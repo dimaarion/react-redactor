@@ -42,7 +42,7 @@ function App() {
             onClick={() => {
               let text_block = document.querySelector(".text_block");
               let d = Object.values(text_block.getElementsByClassName("item-" + items));
-           ( d[0] !== undefined)? d[0].outerHTML = '<h1 class = "item-"'+ items +' >' + d[0].innerText + '</h1>':''
+           ( d[0] !== undefined)? d[0].outerHTML = '<h1 class = "item-'+ items +'" >' + d[0].innerText + '</h1>':''
            console.log(d)
             }}
           >
