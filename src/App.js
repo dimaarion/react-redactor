@@ -69,24 +69,6 @@ useEffect(()=>{
         <div className="row col text-right pt-2 panel">
           <Panel setheaderType={setheaderType}settextbl ={settextbl}setitemss ={setitemss} items ={items} />
           <div
-            lassName="col"
-            onClick={() => {settextbl('h1');setitemss(items)}}
-          >
-            h1
-          </div>
-          <div
-            className="col"
-            onClick={() => {settextbl('h2');setitemss(items)}}
-          >
-            h2
-          </div>
-          <div
-            className="col"
-            onClick={() => {settextbl('h3');setitemss(items)}}
-          >
-            div
-          </div>
-          <div
             className="col-sm"
             className="sizes"
             onClick={() => setsizes(sizes === true ? false : true)}
