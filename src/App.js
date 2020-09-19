@@ -7,57 +7,84 @@ import "./style.css";
 import "./bootstrap.css";
 function App() {
   const [sizes, setsizes] = useState(true);
-  const [textcont, settextcont] = useState(false);
+  const [xs, setx] = useState(0);
   const [textbl, settextbl] = useState("div");
   const [headerT, setheaderT] = useState("unstyled***");
   const [headerType, setheaderType] = useState("div");
+  const [tegs, settegs] = useState("div");
   const [items, setitems] = useState(0);
+  const [itemss, setitemss] = useState(0);
 
   function interat(sizesplus, sizesminus, bol) {
     return bol === true ? sizesplus : sizesminus;
   }
-  function test(e) {
+
+  function izmtegs(settextbl,tegs,items){
+             
+             
+              let text_block = document.querySelector(".text_block");
+              let j = Object.values(text_block.children)
+                .filter((x, i) => (x.tagName === tegs && i === items))
+                .map(
+                  s =>
+                    (s.outerHTML =
+                      "<" +
+                      textbl +
+                      ' class = "' +
+                      s.className +
+                      '" >' +
+                      s.innerText +
+                      "</" +
+                      textbl +
+                      ">")
+                );
+
+              console.log(j);
+            
+  }
+  function test() {
    
     let text_block = document.querySelector(".text_block");
-    /*
-    let d = Object.values(text_block.getElementsByTagName("div"));
-    let f = 1;
-    f = f + 1;
-
-    let y = d.map((el, i) => (el.className = "item-" + (i + 1)));
-    let c = Object.values(text_block.getElementsByClassName("item-" + items));
-    console.log(c)
-    d.map((el, i) => (el.onclick = els => setitems(i + 1)));*/
-
-    let a = ['div', 'h1', 'p'];
-    let y = a.filter((x)=> Object.values(text_block.getElementsByTagName(x)).length > 0)
-    .map((x)=>Object.values(text_block.getElementsByTagName(x)));
-     let gh = y[0];
-     if(gh !== undefined){
-      
-       let ghj = gh.map((x,i)=>x.onclick = x => setitems(i + 1))
-      gh.map((el, i) => (el.className = "item-" + (i + 1)));
-     }
-     
+    let j = Object.values(text_block.children).map(
+      (x, i) =>
+        (x.onclick = () => {
+          setitems(i);
+          settegs(x.tagName);
+        })
+    );
   }
-   
-  useEffect(() => {}, [items]);
+useEffect(()=>{
+ onmousemove = (e)=>setx(e.x)
+},[])
+  useEffect(() => {
+    test();
+  }, [items, tegs, textbl,xs]);
+  useEffect(() => {
+    izmtegs(settextbl(textbl),tegs,items)
+  }, [ textbl,itemss]);
   return (
     <div className="contentDtext">
-      {items}
+      {items +' '+ tegs + ' ' +  textbl}
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
         <div className="row col text-right pt-2 panel">
-          <Panel setheaderType={setheaderType} />
+          <Panel setheaderType={setheaderType}settextbl ={settextbl}setitemss ={setitemss} items ={items} />
           <div
-            onClick={() => {
-              settextbl('h1')
-              let text_block = document.querySelector(".text_block");
-              let d = Object.values(text_block.getElementsByClassName("item-" + items));
-           ( d[0] !== undefined)? d[0].outerHTML = '<' + textbl + ' class = "item-'+ items + '" >' + d[0].innerText + '</'+textbl +'>':''
-           console.log(d)
-            }}
+            lassName="col"
+            onClick={() => {settextbl('h1');setitemss(items)}}
           >
-            test
+            h1
+          </div>
+          <div
+            className="col"
+            onClick={() => {settextbl('h2');setitemss(items)}}
+          >
+            h2
+          </div>
+          <div
+            className="col"
+            onClick={() => {settextbl('h3');setitemss(items)}}
+          >
+            div
           </div>
           <div
             className="col-sm"

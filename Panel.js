@@ -104,11 +104,11 @@ function Panel(props){
         <div className="col">
           <select>
             {[
-              { n: "Заголовок", t: "span",type:"unstyled***" },
+              { n: "Заголовок", t: "div",type:"unstyled***" },
               { n: "Заголовок 1", t: "h1",type:"header-one" },
               { n: "Заголовок 2", t: "h2",type:"header-two" }
             ].map((font, i) => (
-              <option key={i + 33} onChange = {(e)=>{props.setheaderType(font.t)}}>
+              <option key={i + 33}  onClick={() => {props.settextbl(font.t);props.setitemss(props.items)}}>
                 {font.n}
               </option>
             ))}
