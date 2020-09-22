@@ -19,7 +19,8 @@ function App() {
     return bol === true ? sizesplus : sizesminus;
   }
 
-  function izmtegs(settextbl, tegs, items) {
+  function izmtegs(settextbl, tegs, items, selecttedtext) {
+    let fg = selecttedtext
     let text_block = document.querySelector(".text_block");
     let j = Object.values(text_block.children)
       .filter((x, i) => x.tagName === tegs && i === items)
@@ -36,7 +37,7 @@ function App() {
             textbl +
             ">")
       );
-      console.log(text_block.innerHTML = '<div>rtrhthrthrth</div><div>regergergregerg<br></div>')
+      console.log(text_block.innerHTML = text_block.innerHTML.replace(fg,'h1'))
   }
   function updateElements() {
     let text_block = document.querySelector(".text_block");
@@ -61,7 +62,7 @@ function focusText(e){
     updateElements();
   }, [items, tegs, textbl, xs]);
   useEffect(() => {
-    izmtegs(settextbl(textbl), tegs, items);
+    izmtegs(settextbl(textbl), tegs, items,selectedtext);
   }, [textbl, itemss]);
   return (
     <div className="contentDtext">
