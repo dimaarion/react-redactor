@@ -20,6 +20,7 @@ function App() {
   }
 
   function izmtegs(settextbl, tegs, items, selecttedtext) {
+    let arrteds = ['div','h1','h2']
     let fg = selecttedtext
     let text_block = document.querySelector(".text_block");
    /* let j = Object.values(text_block.children)
@@ -36,8 +37,10 @@ function App() {
             "</" +
             textbl +
             ">")
-      );*/
-     text_block.innerHTML = text_block.innerHTML.replace('<div>' + fg + '</div>','<'+textbl+'>' + fg + '</'+textbl+'>')
+      );
+      */
+      text_block.innerHTML = text_block.innerHTML.replace('<div>' + fg + '<br></div>','<'+textbl+'>' + fg + '</'+textbl+'>');
+     text_block.innerHTML = text_block.innerHTML.replace('<div>' + fg + '</div>','<'+textbl+'>' + fg + '</'+textbl+'>');
    
      
 
