@@ -83,8 +83,8 @@ function focusText(e){
         <div
           className="text_block"
           contentEditable="true"
-          onKeyPress={e => updateElements(e)}
-          onFocus = {e => focusText(e)}
+          onKeyPress={e => {updateElements(e)}}
+          
         />
       </div>
     </div>
