@@ -37,7 +37,7 @@ function App() {
             ">")
       );
   }
-  function test() {
+  function updateElements() {
     let text_block = document.querySelector(".text_block");
     let j = Object.values(text_block.children).map(
       (x, i) =>
@@ -47,11 +47,16 @@ function App() {
         })
     );
   }
+
+function focusText(){
+  onfocus = (e)=>console.log(e);
+}
+
   useEffect(() => {
     onmousemove = e => setx(e.x);
   }, []);
   useEffect(() => {
-    test();
+    updateElements();
   }, [items, tegs, textbl, xs]);
   useEffect(() => {
     izmtegs(settextbl(textbl), tegs, items);
