@@ -22,7 +22,7 @@ function App() {
   function izmtegs(settextbl, tegs, items, selecttedtext) {
     let fg = selecttedtext
     let text_block = document.querySelector(".text_block");
-    let j = Object.values(text_block.children)
+   /* let j = Object.values(text_block.children)
       .filter((x, i) => x.tagName === tegs && i === items)
       .map(
         s =>
@@ -36,9 +36,13 @@ function App() {
             "</" +
             textbl +
             ">")
-      );
-      console.log(text_block.innerHTML = text_block.innerHTML.replace(fg,'h1'))
-  }
+      );*/
+     text_block.innerHTML = text_block.innerHTML.replace('<div>' + fg + '</div>','<'+textbl+'>' + fg + '</'+textbl+'>')
+   
+     
+
+      
+}
   function updateElements() {
     let text_block = document.querySelector(".text_block");
     let j = Object.values(text_block.children).map(
