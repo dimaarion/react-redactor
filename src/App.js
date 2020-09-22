@@ -56,15 +56,17 @@ function App() {
     );
   }
 
-  function focusText(items, selecttedtext) {
+  function focusText(items,selectedtext) {
     let text_block = document.querySelector(".text_block");
     let j = Object.values(text_block.children)
       .filter((x, i) => i === items)
-      .map(s => console.log(s));
+      .map(s => console.log(selectedtext));
   }
+
   useEffect(() => {
-    focusText(items, selecttedtext);
-  }, [selecttedtext, items]);
+    focusText(items,selectedtext);
+  }, [items,selectedtext]);
+
   useEffect(() => {
     onmousemove = e => setx(e.x);
   }, []);
