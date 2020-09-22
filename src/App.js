@@ -48,7 +48,7 @@ function App() {
     );
   }
 
-function focusText(){
+function focusText(e){
   onfocus = (e)=>console.log(e);
 }
 
