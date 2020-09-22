@@ -9,7 +9,7 @@ function App() {
   const [sizes, setsizes] = useState(true);
   const [xs, setx] = useState(0);
   const [textbl, settextbl] = useState("div");
-  const [headerT, setheaderT] = useState("unstyled***");
+  const [selectedtext, setselectedtext] = useState("");
   
   const [tegs, settegs] = useState("div");
   const [items, setitems] = useState(0);
@@ -36,6 +36,7 @@ function App() {
             textbl +
             ">")
       );
+      console.log(text_block.innerHTML = '<div>rtrhthrthrth</div><div>regergergregerg<br></div>')
   }
   function updateElements() {
     let text_block = document.querySelector(".text_block");
@@ -44,12 +45,13 @@ function App() {
         (x.onclick = () => {
           setitems(i);
           settegs(x.tagName);
-        })
+          x.tabIndex = 0
+        },x.onmousemove = ()=>setselectedtext(window.getSelection().toString()))
     );
   }
 
 function focusText(e){
-  onfocus = (e)=>console.log(e);
+ 
 }
 
   useEffect(() => {
@@ -71,6 +73,7 @@ function focusText(e){
             setitemss={setitemss}
             items={items}
           />
+          {selectedtext}
           <div
             className="col-sm"
             className="sizes"
