@@ -10,7 +10,7 @@ function App() {
   const [xs, setx] = useState(0);
   const [textbl, settextbl] = useState("div");
   const [headerT, setheaderT] = useState("unstyled***");
-  const [headerType, setheaderType] = useState("div");
+  
   const [tegs, settegs] = useState("div");
   const [items, setitems] = useState(0);
   const [itemss, setitemss] = useState(0);
@@ -19,31 +19,25 @@ function App() {
     return bol === true ? sizesplus : sizesminus;
   }
 
-  function izmtegs(settextbl,tegs,items){
-             
-             
-              let text_block = document.querySelector(".text_block");
-              let j = Object.values(text_block.children)
-                .filter((x, i) => (x.tagName === tegs && i === items))
-                .map(
-                  s =>
-                    (s.outerHTML =
-                      "<" +
-                      textbl +
-                      ' class = "' +
-                      s.className +
-                      '" >' +
-                      s.innerText +
-                      "</" +
-                      textbl +
-                      ">")
-                );
-
-              console.log(j);
-            
+  function izmtegs(settextbl, tegs, items) {
+    let text_block = document.querySelector(".text_block");
+    let j = Object.values(text_block.children)
+      .filter((x, i) => x.tagName === tegs && i === items)
+      .map(
+        s =>
+          (s.outerHTML =
+            "<" +
+            textbl +
+            ' class = "' +
+            s.className +
+            '" >' +
+            s.innerText +
+            "</" +
+            textbl +
+            ">")
+      );
   }
   function test() {
-   
     let text_block = document.querySelector(".text_block");
     let j = Object.values(text_block.children).map(
       (x, i) =>
@@ -53,21 +47,25 @@ function App() {
         })
     );
   }
-useEffect(()=>{
- onmousemove = (e)=>setx(e.x)
-},[])
+  useEffect(() => {
+    onmousemove = e => setx(e.x);
+  }, []);
   useEffect(() => {
     test();
-  }, [items, tegs, textbl,xs]);
+  }, [items, tegs, textbl, xs]);
   useEffect(() => {
-    izmtegs(settextbl(textbl),tegs,items)
-  }, [ textbl,itemss]);
+    izmtegs(settextbl(textbl), tegs, items);
+  }, [textbl, itemss]);
   return (
     <div className="contentDtext">
-      {items +' '+ tegs + ' ' +  textbl}
+      {items + " " + tegs + " " + textbl}
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
         <div className="row col text-right pt-2 panel">
-          <Panel setheaderType={setheaderType}settextbl ={settextbl}setitemss ={setitemss} items ={items} />
+          <Panel
+            settextbl={settextbl}
+            setitemss={setitemss}
+            items={items}
+          />
           <div
             className="col-sm"
             className="sizes"
