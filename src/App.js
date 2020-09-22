@@ -39,8 +39,7 @@ function App() {
             ">")
       );
       */
-      arrteds.map((x)=>text_block.innerHTML = text_block.innerHTML.replace('<'+x+'>' + fg + '<br></'+x+'>','<'+textbl+'>' + fg + '</'+textbl+'>'));
-      arrteds.map((x)=>text_block.innerHTML = text_block.innerHTML.replace('<'+x+'>' + fg + '</'+x+'>','<'+textbl+'>' + fg + '</'+textbl+'>'))
+      
       //text_block.innerHTML = text_block.innerHTML.replace('<div>' + fg + '<br></div>','<'+textbl+'>' + fg + '</'+textbl+'>');
      //text_block.innerHTML = text_block.innerHTML.replace('<div>' + fg + '</div>','<'+textbl+'>' + fg + '</'+textbl+'>');
    
