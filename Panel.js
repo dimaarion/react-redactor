@@ -37,8 +37,8 @@ function Panel(props) {
           </div>
         </div>
         <div className="col-4">
-          <div className="row">
-            <div className="col">
+          <div className="row text-left">
+            <div className="col-2">
               <svg
                 width="1em"
                 height="1em"
@@ -53,7 +53,7 @@ function Panel(props) {
                 />
               </svg>
             </div>
-            <div className="col">
+            <div className="col-2">
               <svg
                 width="1em"
                 height="1em"
@@ -68,7 +68,7 @@ function Panel(props) {
                 />
               </svg>
             </div>
-            <div className="col">
+            <div className="col-2">
               <svg
                 width="1em"
                 height="1em"
