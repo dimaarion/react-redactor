@@ -1,21 +1,40 @@
 import React, { useState, useEffect } from "react";
 function Panel(props) {
   return (
-    <div>
+    <div className="container">
       <div className="col row">
-        <div className="col form-group">
-          <select>
-            {["Tahoma", "Verdana", "Arial"].map((font, i) => (
-              <option key={i + 14}>{font}</option>
-            ))}
-          </select>
-          <select>
-            {[8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23].map(
-              font => (
+        <div className="col-3 row">
+          <div className="col-8 form-group text-left p-0">
+            <select className="col form-control custom-select">
+              {["Tahoma", "Verdana", "Arial"].map((font, i) => (
+                <option key={i + 14}>{font}</option>
+              ))}
+            </select>
+          </div>
+          <div className="col-4 p-0">
+            <select className=" col form-control custom-select">
+              {[
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23
+              ].map(font => (
                 <option key={font}>{font}</option>
-              )
-            )}
-          </select>
+              ))}
+            </select>
+          </div>
         </div>
         <div className="col-4">
           <div className="row">
@@ -86,8 +105,8 @@ function Panel(props) {
             />
           </svg>
         </div>
-        <div className="col form-group">
-          <select>
+        <div className="col-5 form-group form-control-lg">
+          <select className="form-control custom-select">
             {[
               { n: "Заголовок", t: "div", type: "unstyled***" },
               { n: "Заголовок 1", t: "h1", type: "header-one" },
