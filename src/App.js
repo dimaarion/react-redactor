@@ -13,8 +13,8 @@ function App() {
   const [tegs, settegs] = useState("div");
   const [items, setitems] = useState(0);
   const [itemss, setitemss] = useState(0);
-   const [selectedTextLen, setSelectedTextLen] = useState(0);
-
+  const [selectedTextLen, setSelectedTextLen] = useState(0);
+  const [selectedTextAncor, setSelectedTextAncor] = useState(0);
   function interat(sizesplus, sizesminus, bol) {
     return bol === true ? sizesplus : sizesminus;
   }
@@ -44,7 +44,7 @@ function App() {
     //text_block.innerHTML = text_block.innerHTML.replace('<div>' + fg + '<br></div>','<'+textbl+'>' + fg + '</'+textbl+'>');
     //text_block.innerHTML = text_block.innerHTML.replace('<div>' + fg + '</div>','<'+textbl+'>' + fg + '</'+textbl+'>');
   }
-  function updateElements(ititalTegs,setselectedtext,setSelectedTextLen) {
+  function updateElements(ititalTegs,setselectedtext,setSelectedTextLen,setSelectedTextAncor) {
     ititalTegs().map(
       (x, i) => (
         (x.onclick = () => {
@@ -56,7 +56,7 @@ function App() {
           {
             setselectedtext(window.getSelection().toString());
             setSelectedTextLen(window.getSelection().toString().length);
-            console.log(window.getSelection());
+            setSelectedTextAncor(window.getSelection().anchorOffset);
           }
           
           )
@@ -88,7 +88,7 @@ function App() {
     onmousemove = e => setx(e.x);
   }, []);
   useEffect(() => {
-    updateElements(ititalTegs,setselectedtext,setSelectedTextLen);
+    updateElements(ititalTegs,setselectedtext,setSelectedTextLen,setSelectedTextAncor);
   }, [items, tegs, textbl, xs]);
   useEffect(() => {
     izmtegs(ititalTegs, textbl, tegs, items, selectedtext);
@@ -118,7 +118,7 @@ function App() {
           className="text_block"
           contentEditable="true"
           onKeyPress={e => {
-            updateElements(ititalTegs,setselectedtext,setSelectedTextLen);
+            updateElements(ititalTegs,setselectedtext,setSelectedTextLen,setSelectedTextAncor);
           }}
         />
       </div>
