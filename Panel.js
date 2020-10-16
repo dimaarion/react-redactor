@@ -85,7 +85,7 @@ function Panel(props) {
             </div>
           </div>
         </div>
-        <div className="col-1 text-left h-22 images" title="Добавить изображение">
+        <div className="col-1 text-center h-22 images" title="Добавить изображение">
           <svg
             width="1em"
             height="1em"
@@ -105,7 +105,7 @@ function Panel(props) {
             />
           </svg>
         </div>
-        <div className="col-5 form-group form-control-lg">
+        <div className="col-2 form-group">
           <select className="form-control custom-select">
             {[
               { n: "Заголовок", t: "div", type: "unstyled***" },
