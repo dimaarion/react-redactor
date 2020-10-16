@@ -10,20 +10,24 @@ function App() {
   const [xs, setx] = useState(0);
   const [textbl, settextbl] = useState("div");
   const [selectedtext, setselectedtext] = useState("");
-
   const [tegs, settegs] = useState("div");
   const [items, setitems] = useState(0);
   const [itemss, setitemss] = useState(0);
+
 
   function interat(sizesplus, sizesminus, bol) {
     return bol === true ? sizesplus : sizesminus;
   }
 
-  function izmtegs(settextbl, tegs, items, selecttedtext) {
-    let arrteds = ["div", "h1", "h2"];
+function ititalTegs(){
+  let text_block = document.querySelector(".text_block");
+   return Object.values(text_block.children)
+}
+
+  function izmtegs(ititalTegs,settextbl, tegs, items, selecttedtext) {
+  
     let fg = selecttedtext;
-    let text_block = document.querySelector(".text_block");
-    let j = Object.values(text_block.children)
+      ititalTegs()
       .filter((x, i) => x.tagName === tegs && i === items)
       .map(s => {
         s.outerHTML =
@@ -60,14 +64,11 @@ function App() {
     let text_block = document.querySelector(".text_block");
     let j = Object.values(text_block.children)
       .filter((x, i) => i === items)
-      .map(s =>
-        console.log(
-          (s.innerText = s.innerText.replace(
-            selectedtext,
-            "<b>" + selectedtext + "</b>"
-          ))
-        )
-      );
+      .map(s => selectedtext);
+  }
+
+  function test(){
+alert('test')
   }
 
   useEffect(() => {
@@ -81,13 +82,14 @@ function App() {
     updateElements();
   }, [items, tegs, textbl, xs]);
   useEffect(() => {
-    izmtegs(settextbl(textbl), tegs, items, selectedtext);
+    izmtegs(ititalTegs,settextbl(textbl), tegs, items, selectedtext);
   }, [textbl, itemss]);
   return (
     <div className="contentDtext">
       {items + " " + tegs + " " + textbl}
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
         <div className="row col text-right pt-2 panel">
+        <div onClick = {()=>test()}>test</div>
           <Panel settextbl={settextbl} setitemss={setitemss} items={items} />
           {selectedtext}
           <div
