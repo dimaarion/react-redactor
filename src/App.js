@@ -14,20 +14,18 @@ function App() {
   const [items, setitems] = useState(0);
   const [itemss, setitemss] = useState(0);
 
-
   function interat(sizesplus, sizesminus, bol) {
     return bol === true ? sizesplus : sizesminus;
   }
 
-function ititalTegs(){
-  let text_block = document.querySelector(".text_block");
-   return Object.values(text_block.children)
-}
+  function ititalTegs() {
+    let text_block = document.querySelector(".text_block");
+    return Object.values(text_block.children);
+  }
 
-  function izmtegs(ititalTegs,settextbl, tegs, items, selecttedtext) {
-  
+  function izmtegs(ititalTegs, textbl, tegs, items, selecttedtext = "") {
     let fg = selecttedtext;
-      ititalTegs()
+    ititalTegs()
       .filter((x, i) => x.tagName === tegs && i === items)
       .map(s => {
         s.outerHTML =
@@ -45,9 +43,8 @@ function ititalTegs(){
     //text_block.innerHTML = text_block.innerHTML.replace('<div>' + fg + '<br></div>','<'+textbl+'>' + fg + '</'+textbl+'>');
     //text_block.innerHTML = text_block.innerHTML.replace('<div>' + fg + '</div>','<'+textbl+'>' + fg + '</'+textbl+'>');
   }
-  function updateElements() {
-    let text_block = document.querySelector(".text_block");
-    let j = Object.values(text_block.children).map(
+  function updateElements(ititalTegs) {
+    ititalTegs().map(
       (x, i) => (
         (x.onclick = () => {
           setitems(i);
@@ -67,8 +64,12 @@ function ititalTegs(){
       .map(s => selectedtext);
   }
 
-  function test(){
-alert('test')
+  function test(ititalTegs, items) {
+    ititalTegs().map((x, i) =>
+      i === items
+        ? console.log((x.outerHTML = "<b>" + x.innerText + "</b>"))
+        : ""
+    );
   }
 
   useEffect(() => {
@@ -79,17 +80,21 @@ alert('test')
     onmousemove = e => setx(e.x);
   }, []);
   useEffect(() => {
-    updateElements();
+    updateElements(ititalTegs);
   }, [items, tegs, textbl, xs]);
   useEffect(() => {
-    izmtegs(ititalTegs,settextbl(textbl), tegs, items, selectedtext);
+    izmtegs(ititalTegs, textbl, tegs, items, selectedtext);
   }, [textbl, itemss]);
   return (
     <div className="contentDtext">
       {items + " " + tegs + " " + textbl}
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
         <div className="row col text-right pt-2 panel">
-        <div onClick = {()=>test()}>test</div>
+          <div
+            onClick={() => izmtegs(ititalTegs, "b", tegs, items, selecttedtext)}
+          >
+            test
+          </div>
           <Panel settextbl={settextbl} setitemss={setitemss} items={items} />
           {selectedtext}
           <div
@@ -105,7 +110,7 @@ alert('test')
           className="text_block"
           contentEditable="true"
           onKeyPress={e => {
-            updateElements(e);
+            updateElements(ititalTegs);
           }}
         />
       </div>
