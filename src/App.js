@@ -91,7 +91,7 @@ function App() {
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
         <div className="row col text-right pt-2 panel">
           <div
-            onClick={() => izmtegs(ititalTegs, "b", tegs, items, selecttedtext)}
+            onClick={() => test(ititalTegs, "b")}
           >
             test
           </div>
