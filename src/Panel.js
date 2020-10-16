@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Fonts from "./Fonts";
 function Panel(props) {
   return (
     <div className="container">
@@ -11,30 +12,7 @@ function Panel(props) {
               ))}
             </select>
           </div>
-          <div className="col-4 p-0">
-            <select className=" col form-control custom-select" onChange = {(e)=>props.setfontPt(e.target.value)}>
-              {[
-                8,
-                9,
-                10,
-                11,
-                12,
-                13,
-                14,
-                15,
-                16,
-                17,
-                18,
-                19,
-                20,
-                21,
-                22,
-                23
-              ].map(font => (
-                <option key={font}>{font}</option>
-              ))}
-            </select>
-          </div>
+          <Fonts setfontPt={props.setfontPt} />
         </div>
         <div className="col-2">
           <div className="row text-left">
@@ -85,7 +63,10 @@ function Panel(props) {
             </div>
           </div>
         </div>
-        <div className="col-1 text-center h-22 images" title="Добавить изображение">
+        <div
+          className="col-1 text-center h-22 images"
+          title="Добавить изображение"
+        >
           <svg
             width="1em"
             height="1em"

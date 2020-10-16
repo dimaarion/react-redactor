@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Sizeplus from "../Sizeplus";
-import Sizeminus from "../Sizeminus";
-import Panel from "../Panel";
+import Sizeplus from "./Sizeplus";
+import Sizeminus from "./Sizeminus";
+import Panel from "./Panel";
 import "draft-js/dist/Draft.css";
 import "./style.css";
 import "./bootstrap.css";
