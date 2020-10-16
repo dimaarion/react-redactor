@@ -1,35 +1,20 @@
-import React, { useState, useEffect} from "react";
-function Panel(props){
-  return(
+import React, { useState, useEffect } from "react";
+function Panel(props) {
+  return (
     <div>
-    <div className="col row">
-        <div className="col">
+      <div className="col row">
+        <div className="col form-group">
           <select>
             {["Tahoma", "Verdana", "Arial"].map((font, i) => (
               <option key={i + 14}>{font}</option>
             ))}
           </select>
           <select>
-            {[
-              8,
-              9,
-              10,
-              11,
-              12,
-              13,
-              14,
-              15,
-              16,
-              17,
-              18,
-              19,
-              20,
-              21,
-              22,
-              23
-            ].map(font => (
-              <option key={font}>{font}</option>
-            ))}
+            {[8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23].map(
+              font => (
+                <option key={font}>{font}</option>
+              )
+            )}
           </select>
         </div>
         <div className="col-4">
@@ -101,14 +86,20 @@ function Panel(props){
             />
           </svg>
         </div>
-        <div className="col">
+        <div className="col form-group">
           <select>
             {[
-              { n: "Заголовок", t: "div",type:"unstyled***" },
-              { n: "Заголовок 1", t: "h1",type:"header-one" },
-              { n: "Заголовок 2", t: "h2",type:"header-two" }
+              { n: "Заголовок", t: "div", type: "unstyled***" },
+              { n: "Заголовок 1", t: "h1", type: "header-one" },
+              { n: "Заголовок 2", t: "h2", type: "header-two" }
             ].map((font, i) => (
-              <option key={i + 33}  onClick={() => {props.settextbl(font.t);props.setitemss(props.items)}}>
+              <option
+                key={i + 33}
+                onClick={() => {
+                  props.settextbl(font.t);
+                  props.setitemss(props.items);
+                }}
+              >
                 {font.n}
               </option>
             ))}
@@ -116,6 +107,6 @@ function Panel(props){
         </div>
       </div>
     </div>
-  )
-
-}export default Panel;
+  );
+}
+export default Panel;

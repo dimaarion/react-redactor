@@ -15,6 +15,7 @@ function App() {
   const [itemss, setitemss] = useState(0);
   const [selectedTextLen, setSelectedTextLen] = useState(0);
   const [selectedTextAncor, setSelectedTextAncor] = useState(0);
+  const [selectedTextFocus, setSelectedTextFocus] = useState(0);
   function interat(sizesplus, sizesminus, bol) {
     return bol === true ? sizesplus : sizesminus;
   }
@@ -44,7 +45,7 @@ function App() {
     //text_block.innerHTML = text_block.innerHTML.replace('<div>' + fg + '<br></div>','<'+textbl+'>' + fg + '</'+textbl+'>');
     //text_block.innerHTML = text_block.innerHTML.replace('<div>' + fg + '</div>','<'+textbl+'>' + fg + '</'+textbl+'>');
   }
-  function updateElements(ititalTegs,setselectedtext,setSelectedTextLen,setSelectedTextAncor) {
+  function updateElements(ititalTegs,setselectedtext,setSelectedTextLen,setSelectedTextAncor,setSelectedTextFocus) {
     ititalTegs().map(
       (x, i) => (
         (x.onclick = () => {
@@ -57,6 +58,7 @@ function App() {
             setselectedtext(window.getSelection().toString());
             setSelectedTextLen(window.getSelection().toString().length);
             setSelectedTextAncor(window.getSelection().anchorOffset);
+            setSelectedTextFocus(window.getSelection().focusOffset);
           }
           
           )
@@ -72,10 +74,10 @@ function App() {
   }
 
   function test(ititalTegs, items,t,selectedtext) {
-   
+   let re = new RegExp(selectedtext + '{1,'+ (selectedTextAncor + 1) +'}','i');;
     ititalTegs().map((x, i) =>
       i === items
-        ? (x.innerHTML =  x.innerText.replace(selectedtext,'<'+ t +'>' + selectedtext + '</'+ t +'>'))
+        ? (x.innerHTML =  x.innerText.replace(re,'<'+ t +'>' + selectedtext + '</'+ t +'>'))
         : ""
     );
   }
@@ -88,7 +90,7 @@ function App() {
     onmousemove = e => setx(e.x);
   }, []);
   useEffect(() => {
-    updateElements(ititalTegs,setselectedtext,setSelectedTextLen,setSelectedTextAncor);
+    updateElements(ititalTegs,setselectedtext,setSelectedTextLen,setSelectedTextAncor,setSelectedTextFocus);
   }, [items, tegs, textbl, xs]);
   useEffect(() => {
     izmtegs(ititalTegs, textbl, tegs, items, selectedtext);
@@ -99,12 +101,12 @@ function App() {
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
         <div className="row col text-right pt-2 panel">
           <div
-            onClick={() => test(ititalTegs,items,'b',selectedtext)}
+            onClick={() => test(ititalTegs,items,'h1',selectedtext)}
           >
             test
           </div>
           <Panel settextbl={settextbl} setitemss={setitemss} items={items} />
-          {selectedtext + selectedTextLen}
+        
           <div
             className="col-sm"
             className="sizes"
@@ -118,7 +120,7 @@ function App() {
           className="text_block"
           contentEditable="true"
           onKeyPress={e => {
-            updateElements(ititalTegs,setselectedtext,setSelectedTextLen,setSelectedTextAncor);
+            updateElements(ititalTegs,setselectedtext,setSelectedTextLen,setSelectedTextAncor,setSelectedTextFocus);
           }}
         />
       </div>
