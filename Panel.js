@@ -12,7 +12,7 @@ function Panel(props) {
             </select>
           </div>
           <div className="col-4 p-0">
-            <select className=" col form-control custom-select">
+            <select className=" col form-control custom-select" onClick = {(e)=>props.setfontPt(e.target.value)}>
               {[
                 8,
                 9,

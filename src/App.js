@@ -16,6 +16,7 @@ function App() {
   const [selectedTextLen, setSelectedTextLen] = useState(0);
   const [selectedTextAncor, setSelectedTextAncor] = useState(0);
   const [selectedTextFocus, setSelectedTextFocus] = useState(0);
+  const [fontPt, setfontPt] = useState(9);
   function interat(sizesplus, sizesminus, bol) {
     return bol === true ? sizesplus : sizesminus;
   }
@@ -25,8 +26,7 @@ function App() {
     return Object.values(text_block.children);
   }
 
-  function izmtegs(ititalTegs, textbl, tegs, items, selecttedtext = "") {
-    let fg = selecttedtext;
+  function izmtegs(ititalTegs, textbl, tegs, items) {
     ititalTegs()
       .filter((x, i) => x.tagName === tegs && i === items)
       .map(s => {
@@ -45,7 +45,13 @@ function App() {
     //text_block.innerHTML = text_block.innerHTML.replace('<div>' + fg + '<br></div>','<'+textbl+'>' + fg + '</'+textbl+'>');
     //text_block.innerHTML = text_block.innerHTML.replace('<div>' + fg + '</div>','<'+textbl+'>' + fg + '</'+textbl+'>');
   }
-  function updateElements(ititalTegs,setselectedtext,setSelectedTextLen,setSelectedTextAncor,setSelectedTextFocus) {
+  function updateElements(
+    ititalTegs,
+    setselectedtext,
+    setSelectedTextLen,
+    setSelectedTextAncor,
+    setSelectedTextFocus
+  ) {
     ititalTegs().map(
       (x, i) => (
         (x.onclick = () => {
@@ -53,15 +59,12 @@ function App() {
           settegs(x.tagName);
           x.tabIndex = 0;
         }),
-        (x.onmousemove = () =>
-          {
-            setselectedtext(window.getSelection().toString());
-            setSelectedTextLen(window.getSelection().toString().length);
-            setSelectedTextAncor(window.getSelection().anchorOffset);
-            setSelectedTextFocus(window.getSelection().focusOffset);
-          }
-          
-          )
+        (x.onmousemove = () => {
+          setselectedtext(window.getSelection().toString());
+          setSelectedTextLen(window.getSelection().toString().length);
+          setSelectedTextAncor(window.getSelection().anchorOffset);
+          setSelectedTextFocus(window.getSelection().focusOffset);
+        })
       )
     );
   }
@@ -73,13 +76,23 @@ function App() {
       .map(s => selectedtext);
   }
 
-  function test(ititalTegs, items,t,selectedtext) {
-   let re = new RegExp(selectedtext + '{1,'+ (selectedTextAncor + 1) +'}','i');;
+  function test(ititalTegs, items, t, selectedtext) {
+    let re = new RegExp(
+      selectedtext + "{1," + (selectedTextAncor + 1) + "}",
+      "i"
+    );
     ititalTegs().map((x, i) =>
       i === items
-        ? (x.innerHTML =  x.innerText.replace(re,'<'+ t +'>' + selectedtext + '</'+ t +'>'))
+        ? (x.innerHTML = x.innerText.replace(
+            re,
+            "<" + t + ">" + selectedtext + "</" + t + ">"
+          ))
         : ""
     );
+  }
+
+  function fonts(ititalTegs, items) {
+    ititalTegs().map((x, i) => (i === items ? (x.style.fontSize = "pt") : ""));
   }
 
   useEffect(() => {
@@ -90,7 +103,13 @@ function App() {
     onmousemove = e => setx(e.x);
   }, []);
   useEffect(() => {
-    updateElements(ititalTegs,setselectedtext,setSelectedTextLen,setSelectedTextAncor,setSelectedTextFocus);
+    updateElements(
+      ititalTegs,
+      setselectedtext,
+      setSelectedTextLen,
+      setSelectedTextAncor,
+      setSelectedTextFocus
+    );
   }, [items, tegs, textbl, xs]);
   useEffect(() => {
     izmtegs(ititalTegs, textbl, tegs, items, selectedtext);
@@ -100,13 +119,16 @@ function App() {
       {items + " " + tegs + " " + textbl}
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
         <div className="row col text-right pt-2 panel">
-          <div
-            onClick={() => test(ititalTegs,items,'h1',selectedtext)}
-          >
+          <div onClick={() => test(ititalTegs, items, "h1", selectedtext)}>
             test
           </div>
-          <Panel settextbl={settextbl} setitemss={setitemss} items={items} />
-        
+          <Panel
+            settextbl={settextbl}
+            setitemss={setitemss}
+            items={items}
+            setfontPt={setfontPt}
+          />
+          {fontPt}
           <div
             className="col-sm"
             className="sizes"
@@ -120,7 +142,13 @@ function App() {
           className="text_block"
           contentEditable="true"
           onKeyPress={e => {
-            updateElements(ititalTegs,setselectedtext,setSelectedTextLen,setSelectedTextAncor,setSelectedTextFocus);
+            updateElements(
+              ititalTegs,
+              setselectedtext,
+              setSelectedTextLen,
+              setSelectedTextAncor,
+              setSelectedTextFocus
+            );
           }}
         />
       </div>
