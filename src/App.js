@@ -70,7 +70,7 @@ function App() {
   }
 
   function test(ititalTegs, items,t,selectedtext) {
-    console.log(selectedtext);
+   
     ititalTegs().map((x, i) =>
       i === items
         ? (x.innerHTML =  x.innerText.replace(selectedtext,'<'+ t +'>' + selectedtext + '</'+ t +'>'))
