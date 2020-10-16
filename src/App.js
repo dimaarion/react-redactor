@@ -52,7 +52,12 @@ function App() {
           x.tabIndex = 0;
         }),
         (x.onmousemove = () =>
-          setselectedtext(window.getSelection().toString()))
+          {
+            setselectedtext(window.getSelection().toString());
+            console.log('rthrh')
+          }
+          
+          )
       )
     );
   }
