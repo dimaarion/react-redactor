@@ -36,9 +36,9 @@ function Panel(props) {
             </select>
           </div>
         </div>
-        <div className="col-4">
+        <div className="col-2">
           <div className="row text-left">
-            <div className="col-2">
+            <div className="col">
               <svg
                 width="1em"
                 height="1em"
@@ -53,7 +53,7 @@ function Panel(props) {
                 />
               </svg>
             </div>
-            <div className="col-2">
+            <div className="col">
               <svg
                 width="1em"
                 height="1em"
@@ -68,7 +68,7 @@ function Panel(props) {
                 />
               </svg>
             </div>
-            <div className="col-2">
+            <div className="col">
               <svg
                 width="1em"
                 height="1em"
@@ -85,7 +85,7 @@ function Panel(props) {
             </div>
           </div>
         </div>
-        <div className="col-1 images" title="Добавить изображение">
+        <div className="col-1 text-left h-22 images" title="Добавить изображение">
           <svg
             width="1em"
             height="1em"
