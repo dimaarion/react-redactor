@@ -1,68 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Fonts from "./Fonts";
+import Aligns from "./Aligns";
 function Panel(props) {
   return (
     <div className="container">
       <div className="col row">
         <div className="col-3 row">
-          <div className="col-8 form-group text-left p-0">
-            <select className="col form-control custom-select">
-              {["Tahoma", "Verdana", "Arial"].map((font, i) => (
-                <option key={i + 14}>{font}</option>
-              ))}
-            </select>
-          </div>
+         
           <Fonts setfontPt={props.setfontPt} />
         </div>
-        <div className="col-2">
-          <div className="row text-left">
-            <div className="col">
-              <svg
-                width="1em"
-                height="1em"
-                viewBox="0 0 16 16"
-                className="bi bi-justify-left"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
-                />
-              </svg>
-            </div>
-            <div className="col">
-              <svg
-                width="1em"
-                height="1em"
-                viewBox="0 0 16 16"
-                className="bi bi-justify"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
-                />
-              </svg>
-            </div>
-            <div className="col">
-              <svg
-                width="1em"
-                height="1em"
-                viewBox="0 0 16 16"
-                className="bi bi-justify-right"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M6 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
+      <Aligns/>
         <div
           className="col-1 text-center h-22 images"
           title="Добавить изображение"
