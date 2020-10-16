@@ -64,10 +64,11 @@ function App() {
       .map(s => selectedtext);
   }
 
-  function test(ititalTegs, items) {
+  function test(ititalTegs, items,t,selectedtext) {
+    console.log(selectedtext);
     ititalTegs().map((x, i) =>
       i === items
-        ? console.log((x.outerHTML = "<b>" + x.innerText + "</b>"))
+        ? (x.innerHTML =  x.innerText.replace(selectedtext,'<'+ t +'>' + selectedtext + '</'+ t +'>'))
         : ""
     );
   }
@@ -91,7 +92,7 @@ function App() {
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
         <div className="row col text-right pt-2 panel">
           <div
-            onClick={() => test(ititalTegs, "b")}
+            onClick={() => test(ititalTegs,items,'b',selectedtext)}
           >
             test
           </div>
