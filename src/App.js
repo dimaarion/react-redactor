@@ -130,7 +130,6 @@ useEffect(()=>{
             items={items}
             setfontPt={setfontPt}
           />
-          {fontPt}
           <div
             className="col-sm"
             className="sizes"
