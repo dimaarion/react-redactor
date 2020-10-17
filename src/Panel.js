@@ -15,7 +15,7 @@ function Panel(props) {
        
         <Aligns/>
        <Images/>
-     <Headers settextbl = {props.settextbl}/>
+     <Headers settextbl = {props.settextbl} setitemss={props.setitemss}/>
       </div>
     </div>
   );
