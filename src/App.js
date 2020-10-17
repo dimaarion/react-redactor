@@ -91,10 +91,12 @@ function App() {
     );
   }
 
-  function fonts(ititalTegs, items) {
-    ititalTegs().map((x, i) => (i === items ? (x.style.fontSize = "pt") : ""));
+  function fonts(ititalTegs, items,fontPt) {
+    ititalTegs().map((x, i) => (i === items ? (x.style.fontSize = fontPt + "pt") : ""));
   }
-
+useEffect(()=>{
+ fonts(ititalTegs, items,fontPt)
+},[fontPt])
   useEffect(() => {
     focusText(items, selectedtext);
   }, [items, selectedtext]);
