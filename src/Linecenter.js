@@ -1,8 +1,9 @@
 import React from "react";
 
 function Linecenter() {
+  let st = {cursor:'pointer'}
   return (
-    <svg
+    <svg style = {st}
             width="1em"
             height="1em"
             viewBox="0 0 16 16"

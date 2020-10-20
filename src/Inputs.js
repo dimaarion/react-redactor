@@ -8,6 +8,7 @@ function Inputs(props) {
 }else{
   c = props.c;
 }
+
   return (
     <div className={"col-" + props.col + ' text-left ' + c }>
      <label htmlFor={props.id}>{props.name}</label>

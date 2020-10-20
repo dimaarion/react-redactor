@@ -8,11 +8,11 @@ function ImgRemove(props) {
     <div className="col">
     <h2 className = "text-left">Редактирование изображения</h2>
     <div className = "row">
-    <div className = "col">
-     <Inputs name = 'Ширина' id = "width" col = "3" cange = {()=>{}} />
-     <Inputs name = 'Высота' id = "height" col = "3" cange = {()=>{}} />
+    <div className = "col-3">
+     <Inputs name = 'Ширина' id = "width" col = "sm" cange = {()=>{}} />
+     <Inputs name = 'Высота' id = "height" col = "sm" cange = {()=>{}} />
      </div>
-     <div className = "col">
+     <div className = "col-2 text-left row mt-4">
      <div className = "col">
       <Lineleft/>
       </div>
