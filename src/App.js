@@ -19,6 +19,7 @@ function App() {
   const [fontPt, setfontPt] = useState(9);
   const [fontFm, setfontFm] = useState("Georgia, serif");
   const [align, setalign] = useState("left");
+  const [cildTeg, setcildTeg] = useState("");
   function interat(sizesplus, sizesminus, bol) {
     return bol === true ? sizesplus : sizesminus;
   }
@@ -111,19 +112,25 @@ function App() {
   useEffect(() => {
     fonts(ititalTegs, items, fontPt);
   }, [fontPt]);
+  //
   useEffect(() => {
     fontsFm(ititalTegs, items, fontFm);
   }, [fontFm]);
+  //
   useEffect(() => {
-    fontsFm(ititalTegs, items, fontFm);
-  }, [fontFm]);
+    aligns(ititalTegs, items, align);
+  }, [align]);
+  //
   useEffect(() => {
     focusText(items, selectedtext);
+     ititalTegs().map((x)=>Object.values(x.children).map((el)=>el.onclick = function(e){
+       setcildTeg(e.target.tagName);
+     }))
   }, [items, selectedtext]);
-
+//
   useEffect(() => {
     onmousemove = e => setx(e.x);
-   
+  
   }, []);
   
   useEffect(() => {
@@ -143,7 +150,7 @@ function App() {
       {items + " " + tegs + " " + textbl}
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
         <div className="row col text-right pt-2 panel">
-          <div onClick={() => test(ititalTegs, items, "h1", selectedtext)}>
+          <div onClick={() => ititalTegs().map((x)=>console.log(Object.values(x.children)))}>
             test
           </div>
           <Panel

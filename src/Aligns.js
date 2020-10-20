@@ -5,7 +5,7 @@ function Aligns(props) {
      <div className="col-2 aligns">
           <div className="row text-left">
             <div className="col">
-              <svg
+              <svg onClick = {()=>props.setalign('left')}
                 width="1em"
                 height="1em"
                 viewBox="0 0 16 16"
@@ -20,7 +20,7 @@ function Aligns(props) {
               </svg>
             </div>
             <div className="col">
-              <svg
+              <svg onClick = {()=>props.setalign('center')}
                 width="1em"
                 height="1em"
                 viewBox="0 0 16 16"
@@ -35,7 +35,7 @@ function Aligns(props) {
               </svg>
             </div>
             <div className="col">
-              <svg
+              <svg onClick = {()=>props.setalign('right')}
                 width="1em"
                 height="1em"
                 viewBox="0 0 16 16"
