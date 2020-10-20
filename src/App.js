@@ -95,9 +95,15 @@ function App() {
   function fonts(ititalTegs, items,fontPt) {
     ititalTegs().map((x, i) => (i === items ? (x.style.fontSize = fontPt + "pt") : ""));
   }
+  function fontsFm(ititalTegs, items,fontFm) {
+    ititalTegs().map((x, i) => (i === items ? (x.style.fontFamily = fontFm) : ""));
+  }
 useEffect(()=>{
  fonts(ititalTegs, items,fontPt)
 },[fontPt])
+useEffect(()=>{
+ fontsFm(ititalTegs, items,fontFm)
+},[fontFm])
   useEffect(() => {
     focusText(items, selectedtext);
   }, [items, selectedtext]);
@@ -132,6 +138,7 @@ useEffect(()=>{
             setfontPt={setfontPt}
             setfontFm = {setfontFm}
           />
+          {fontFm}
           <div
             className="col-sm"
             className="sizes"
