@@ -13,7 +13,7 @@ function Panel(props) {
           <Fonts setfontPt={props.setfontPt} />
         </div>
        
-        <Aligns/>
+        <Aligns setalign = {props.setalign}/>
        <Images/>
      <Headers settextbl = {props.settextbl} setitemss={props.setitemss}/>
       </div>

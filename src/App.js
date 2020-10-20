@@ -18,7 +18,7 @@ function App() {
   const [selectedTextFocus, setSelectedTextFocus] = useState(0);
   const [fontPt, setfontPt] = useState(9);
   const [fontFm, setfontFm] = useState("Georgia, serif");
- 
+  const [align, setalign] = useState("left");
   function interat(sizesplus, sizesminus, bol) {
     return bol === true ? sizesplus : sizesminus;
   }
@@ -103,9 +103,17 @@ function App() {
       i === items ? (x.style.fontFamily = fontFm) : ""
     );
   }
+  function aligns(ititalTegs, items, align) {
+    ititalTegs().map((x, i) =>
+      i === items ? (x.style.textAlign = align) : ""
+    );
+  }
   useEffect(() => {
     fonts(ititalTegs, items, fontPt);
   }, [fontPt]);
+  useEffect(() => {
+    fontsFm(ititalTegs, items, fontFm);
+  }, [fontFm]);
   useEffect(() => {
     fontsFm(ititalTegs, items, fontFm);
   }, [fontFm]);
@@ -117,9 +125,7 @@ function App() {
     onmousemove = e => setx(e.x);
    
   }, []);
-  useEffect(() => {
-    document.head.appendChild(document.createElement('Link')).setAttribute('href','https://fonts.googleapis.com/css2?family=Commissioner:wght@100;200;300;400;500;600;900&family=Montserrat:wght@100&family=Open+Sans:wght@300&family=Roboto:wght@100&display=swap" rel="stylesheet')
-  }, []);
+  
   useEffect(() => {
     updateElements(
       ititalTegs,
@@ -146,6 +152,7 @@ function App() {
             items={items}
             setfontPt={setfontPt}
             setfontFm={setfontFm}
+            setalign = {setalign}
           />
 
           <div
