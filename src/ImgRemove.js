@@ -13,9 +13,15 @@ function ImgRemove(props) {
      <Inputs name = 'Высота' id = "height" col = "3" cange = {()=>{}} />
      </div>
      <div className = "col">
+     <div className = "col">
       <Lineleft/>
+      </div>
+      <div className = "col">
       <Linecenter/>
+        </div>
+      <div className = "col">
       <Lineright/>
+        </div>
      </div>
      </div>
     </div>
