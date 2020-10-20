@@ -100,7 +100,7 @@ function App() {
   }
   function fontsFm(ititalTegs, items, fontFm) {
     ititalTegs().map((x, i) =>
-      i === items ? (x.style.fontFamily = fontFm + ', sans-serif') : ""
+      i === items ? (x.style.fontFamily = fontFm) : ""
     );
   }
   useEffect(() => {
