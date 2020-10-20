@@ -1,8 +1,8 @@
 import React from "react";
 
-function LineLeft(props) {
+function Lineleft() {
   return (
-    <svg onClick = {()=>props.setalign('left')}
+    <svg 
                 width="1em"
                 height="1em"
                 viewBox="0 0 16 16"
@@ -17,4 +17,4 @@ function LineLeft(props) {
               </svg>
   );
 }
-export default LineLeft;
+export default Lineleft;
