@@ -9,7 +9,7 @@ function Panel(props) {
     <div className="container">
       <div className="col row">
         <div className="col-3 row">
-         <FamelyF/>
+         <FamelyF setfontFm = {props.setfontFm}/>
           <Fonts setfontPt={props.setfontPt} />
         </div>
        
