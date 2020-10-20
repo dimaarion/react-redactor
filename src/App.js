@@ -17,7 +17,8 @@ function App() {
   const [selectedTextAncor, setSelectedTextAncor] = useState(0);
   const [selectedTextFocus, setSelectedTextFocus] = useState(0);
   const [fontPt, setfontPt] = useState(9);
-  const [fontFm, setfontFm] = useState('Georgia, serif');
+  const [fontFm, setfontFm] = useState("Georgia, serif");
+ 
   function interat(sizesplus, sizesminus, bol) {
     return bol === true ? sizesplus : sizesminus;
   }
@@ -92,24 +93,32 @@ function App() {
     );
   }
 
-  function fonts(ititalTegs, items,fontPt) {
-    ititalTegs().map((x, i) => (i === items ? (x.style.fontSize = fontPt + "pt") : ""));
+  function fonts(ititalTegs, items, fontPt) {
+    ititalTegs().map((x, i) =>
+      i === items ? (x.style.fontSize = fontPt + "pt") : ""
+    );
   }
-  function fontsFm(ititalTegs, items,fontFm) {
-    ititalTegs().map((x, i) => (i === items ? (x.style.fontFamily = fontFm) : ""));
+  function fontsFm(ititalTegs, items, fontFm) {
+    ititalTegs().map((x, i) =>
+      i === items ? (x.style.fontFamily = fontFm) : ""
+    );
   }
-useEffect(()=>{
- fonts(ititalTegs, items,fontPt)
-},[fontPt])
-useEffect(()=>{
- fontsFm(ititalTegs, items,fontFm)
-},[fontFm])
+  useEffect(() => {
+    fonts(ititalTegs, items, fontPt);
+  }, [fontPt]);
+  useEffect(() => {
+    fontsFm(ititalTegs, items, fontFm);
+  }, [fontFm]);
   useEffect(() => {
     focusText(items, selectedtext);
   }, [items, selectedtext]);
 
   useEffect(() => {
     onmousemove = e => setx(e.x);
+   
+  }, []);
+  useEffect(() => {
+    document.head.appendChild(document.createElement('Linck')).setAttribute('href','dddddd')
   }, []);
   useEffect(() => {
     updateElements(
@@ -136,9 +145,9 @@ useEffect(()=>{
             setitemss={setitemss}
             items={items}
             setfontPt={setfontPt}
-            setfontFm = {setfontFm}
+            setfontFm={setfontFm}
           />
-          {fontFm}
+
           <div
             className="col-sm"
             className="sizes"
