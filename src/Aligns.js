@@ -2,7 +2,7 @@ import React from "react";
 
 function Aligns(props) {
   return (
-     <div className="col-2">
+     <div className="col-2 aligns">
           <div className="row text-left">
             <div className="col">
               <svg
