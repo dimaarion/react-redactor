@@ -2,7 +2,7 @@ import React from "react";
 
 function LineLeft(props) {
   return (
-    <svg onClick = {()=>props.setalign('left')}>
+    <svg onClick = {()=>props.setalign('left')}
                 width="1em"
                 height="1em"
                 viewBox="0 0 16 16"
