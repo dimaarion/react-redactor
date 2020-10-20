@@ -17,6 +17,7 @@ function App() {
   const [selectedTextAncor, setSelectedTextAncor] = useState(0);
   const [selectedTextFocus, setSelectedTextFocus] = useState(0);
   const [fontPt, setfontPt] = useState(9);
+  const [fontFm, setfontFm] = useState('Georgia, serif');
   function interat(sizesplus, sizesminus, bol) {
     return bol === true ? sizesplus : sizesminus;
   }
@@ -129,6 +130,7 @@ useEffect(()=>{
             setitemss={setitemss}
             items={items}
             setfontPt={setfontPt}
+            setfontFm = {setfontFm}
           />
           <div
             className="col-sm"
