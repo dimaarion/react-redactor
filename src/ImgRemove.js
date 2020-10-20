@@ -9,8 +9,8 @@ function ImgRemove(props) {
     <h2 className = "text-left">Редактирование изображения</h2>
     <div className = "row">
     <div className = "col-3">
-     <Inputs name = 'Ширина' id = "width" col = "sm" c = "text-center" cange = {()=>{}} />
-     <Inputs name = 'Высота' id = "height" col = "sm" cange = {()=>{}} />
+     <Inputs name = 'Ширина' style = {{textAlign:'center'}} value = {500} id = "width" col = "sm" c = "text-center" cange = {()=>{}} />
+     <Inputs name = 'Высота' style = {{textAlign:'center'}} value = {500} id = "height" col = "sm" cange = {()=>{}} />
      </div>
      <div className = "col-2 text-left row mt-4">
      <div className = "col">
@@ -22,7 +22,7 @@ function ImgRemove(props) {
       <div className = "col">
       <Lineright/>
         </div>
-        <Inputs name = 'Отступ' id = "padding" col = "9" c = "mt-4 pt-2" cange = {()=>{}} />
+        <Inputs style = {{textAlign:'center'}} name = 'Отступ' id = "padding" col = "9" c = "mt-4 pt-2" cange = {()=>{}} />
      </div>
      <div className = "col text-left"><div className = "btn btn-primary mb-2">Сохранить</div></div>
      </div>
