@@ -4,6 +4,7 @@ import Aligns from "./Aligns";
 import FamelyF from "./FamelyF";
 import Images from "./Images";
 import Headers from "./Headers";
+import ImgRemove from "./ImgRemove";
 function Panel(props) {
   return (
     <div className="container">
@@ -17,6 +18,7 @@ function Panel(props) {
        <Images/>
      <Headers settextbl = {props.settextbl} setitemss={props.setitemss}/>
       </div>
+      <ImgRemove/>
     </div>
   );
 }
