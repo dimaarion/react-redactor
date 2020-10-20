@@ -100,7 +100,7 @@ function App() {
   }
   function fontsFm(ititalTegs, items, fontFm) {
     ititalTegs().map((x, i) =>
-      i === items ? (x.style.fontFamily = fontFm) : ""
+      i === items ? (x.style.fontFamily = fontFm + ', sans-serif') : ""
     );
   }
   useEffect(() => {
@@ -118,7 +118,7 @@ function App() {
    
   }, []);
   useEffect(() => {
-    document.head.appendChild(document.createElement('Linck')).setAttribute('href','dddddd')
+    document.head.appendChild(document.createElement('Link')).setAttribute('href','https://fonts.googleapis.com/css2?family=Commissioner:wght@100;200;300;400;500;600;900&family=Montserrat:wght@100&family=Open+Sans:wght@300&family=Roboto:wght@100&display=swap" rel="stylesheet')
   }, []);
   useEffect(() => {
     updateElements(
