@@ -20,6 +20,10 @@ function App() {
   const [fontFm, setfontFm] = useState("Georgia, serif");
   const [align, setalign] = useState("left");
   const [cildTeg, setcildTeg] = useState("");
+  const [imgWidth, setimgWidth] = useState("auto");
+  const [imgHeight, setimgHeight] = useState("auto");
+  const [imgPadding, setimgPadding] = useState("0");
+  const [imgdisplay, setimgdisplay] = useState("none");
   function interat(sizesplus, sizesminus, bol) {
     return bol === true ? sizesplus : sizesminus;
   }
@@ -124,9 +128,9 @@ function App() {
   useEffect(() => {
     focusText(items, selectedtext);
      ititalTegs().map((x)=>Object.values(x.children).map((el)=>el.onclick = function(e){
-       setcildTeg(e.target.tagName);
+       setcildTeg(e.target.tagName);e.target.style.width = imgWidth + 'px';e.target.style.height = imgHeight + 'px';
      }))
-  }, [items, selectedtext]);
+  }, [items, selectedtext,imgWidth,imgHeight]);
 //
   useEffect(() => {
     onmousemove = e => setx(e.x);
@@ -160,6 +164,8 @@ function App() {
             setfontPt={setfontPt}
             setfontFm={setfontFm}
             setalign = {setalign}
+            setimgWidth = {setimgWidth}
+            setimgHeight = {setimgHeight}
           />
 
           <div

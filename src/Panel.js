@@ -18,7 +18,7 @@ function Panel(props) {
        <Images/>
      <Headers settextbl = {props.settextbl} setitemss={props.setitemss}/>
       </div>
-      <ImgRemove/>
+      <ImgRemove setimgWidth = {props.setimgWidth} setimgHeight = {props.setimgHeight}/>
     </div>
   );
 }
