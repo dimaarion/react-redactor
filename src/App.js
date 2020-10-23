@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import Sizeplus from "./Sizeplus";
 import Sizeminus from "./Sizeminus";
 import Panel from "./Panel";
-import "./css/style.css";
 import "./css/bootstrap.css";
+import "./css/style.css";
+
 function App() {
   const [sizes, setsizes] = useState(true);
   const [xs, setx] = useState(0);
@@ -16,7 +17,7 @@ function App() {
   const [selectedTextAncor, setSelectedTextAncor] = useState(0);
   const [selectedTextFocus, setSelectedTextFocus] = useState(0);
   const [fontPt, setfontPt] = useState(14);
-  const [fontFm, setfontFm] = useState("Georgia, serif");
+  const [fontFm, setfontFm] = useState("Georgia");
   const [align, setalign] = useState("left");
   const [cildTeg, setcildTeg] = useState("");
   const [imgWidth, setimgWidth] = useState("auto");
@@ -65,6 +66,9 @@ function App() {
         (x.onclick = () => {
           setitems(i);
           settegs(x.tagName);
+          setfontPt((x.style.fontSize.replace(/[a-z]+/, '') === '')?14:x.style.fontSize.replace(/[a-z]+/,''));
+          setfontFm((x.style.fontFamily) ? x.style.fontFamily:'Georgia');
+          setalign((x.style.textAlign) ? x.style.textAlign : 'left');
           x.tabIndex = 0;
         }),
         (x.onmousemove = () => {
@@ -113,6 +117,12 @@ function App() {
     );
   }
   
+  function cleanerTxt(ititalTegs, items){
+    ititalTegs().map((x, i) =>
+      (i === items) ? x.outerHTML = '<div>' + x.innerText + '</div>' : ""
+    );
+  }
+
   useEffect(() => {
     focusText(items, selectedtext);
      ititalTegs().map((x)=>Object.values(x.children).map((el)=>el.onclick = function(e){
@@ -163,6 +173,10 @@ function App() {
             selectedtext={selectedtext}
             selectedTextAncor = {selectedTextAncor}
             selectedTextFocus={selectedTextFocus}
+            tegs={tegs}
+            fontPt={fontPt}
+            fontFm={fontFm}
+            align={align}
             setimgPadding={setimgPadding}
             setimgFloat={setimgFloat}
             setimgdisplay={setimgdisplay}
@@ -173,6 +187,7 @@ function App() {
             aligns={aligns}
             listItem={listItem}
             types={types}
+            cleanerTxt={cleanerTxt}
             
           />
 

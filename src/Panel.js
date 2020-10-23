@@ -18,19 +18,12 @@ function Panel(props) {
   return (
     <div className="container controlPanel">
       <div className="col-sm row ">
-        <FamelyF setfontFm={props.setfontFm} fontsFm={props.fontsFm} ititalTegs={props.ititalTegs} items={props.items} />
-        <Fonts setfontPt={props.setfontPt} fonts={props.fonts} ititalTegs={props.ititalTegs} items={props.items} />
-        <Headers izmtegs={props.izmtegs} settextbl={props.settextbl} setitemss={props.setitemss} ititalTegs={props.ititalTegs} items={props.items} />
+        <FamelyF setfontFm={props.setfontFm} fontFm={props.fontFm} fontsFm={props.fontsFm} ititalTegs={props.ititalTegs} items={props.items} />
+        <Fonts fontPt={props.fontPt} setfontPt={props.setfontPt} fonts={props.fonts} ititalTegs={props.ititalTegs} items={props.items} />
+        <Headers tegs={props.tegs} izmtegs={props.izmtegs} settextbl={props.settextbl} setitemss={props.setitemss} ititalTegs={props.ititalTegs} items={props.items} />
+        <Aligns align={props.align} aligns={props.aligns} style={{ height: 'auto' }} ititalTegs={props.ititalTegs} items={props.items}/>
+          
         <div className="row  p-2">
-          <div className="col-sm text-left">
-            <Lineleft aligns={props.aligns} style={{ height: 'auto' }} ititalTegs={props.ititalTegs} items={props.items} />
-          </div>
-          <div className="col-sm text-left">
-            <Linecenter aligns={props.aligns} style={{ height: 'auto' }} ititalTegs={props.ititalTegs} items={props.items} />
-          </div>
-          <div className="col-sm text-left">
-            <Lineright aligns={props.aligns} style={{ height: 'auto' }} ititalTegs={props.ititalTegs} items={props.items} />
-          </div>
           <ListUl listItem={props.listItem} ititalTegs={props.ititalTegs} class="col-sm text-left " />
           <ListOl listItem={props.listItem} ititalTegs={props.ititalTegs} class="col-sm text-left " />
         </div>
@@ -40,7 +33,7 @@ function Panel(props) {
           <Italic items={props.items} ititalTegs={props.ititalTegs} selectedtext={props.selectedtext} types={props.types} class=" col-sm text-left " />
           <Strikethrough items={props.items} ititalTegs={props.ititalTegs} selectedtext={props.selectedtext} types={props.types} class=" col-sm text-left " />
           <Underline items={props.items} ititalTegs={props.ititalTegs} selectedtext={props.selectedtext} types={props.types} class=" col-sm text-left " />
-          <ClinerText items={props.items} ititalTegs={props.ititalTegs} selectedtext={props.selectedtext} types={props.types} class=" col-sm text-left " />
+          <ClinerText cleanerTxt={props.cleanerTxt} items={props.items} ititalTegs={props.ititalTegs} selectedtext={props.selectedtext} types={props.types} class=" col-sm text-left " />
 
         </div>
       </div>

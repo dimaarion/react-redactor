@@ -4,7 +4,7 @@ function ClinerText(props) {
 
     return (
         <div className={props.class}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="210mm" height="297mm" viewBox="0 0 210 297" version="1.1" id="svg8" style={{width: "30px", height: "auto" }}>
+            <svg onClick={() => props.cleanerTxt(props.ititalTegs, props.items)} xmlns="http://www.w3.org/2000/svg" width="210mm" height="297mm" viewBox="0 0 210 297" version="1.1" id="svg8" style={{width: "30px", height: "auto" }}>
                 <defs id="defs2" />
                 <g id="layer1">
                     <g transform="matrix(2.2394478,0,0,2.2560042,-101.09892,-187.15278)" id="g17">
