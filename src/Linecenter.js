@@ -1,12 +1,11 @@
 import React from "react";
 
-function Linecenter() {
+function Linecenter(props) {
   let st = {cursor:'pointer'}
   return (
-    <svg style = {st}
-            width="1em"
-            height="1em"
-            viewBox="0 0 16 16"
+    <svg style={props.style} onClick={() => props.aligns(props.ititalTegs, props.items, "center")}
+      width="2em"
+      viewBox="0 0 16 16"
             className="bi bi-justify"
             fill="currentColor"
             xmlns="http://www.w3.org/2000/svg"

@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import Sizeplus from "./Sizeplus";
 import Sizeminus from "./Sizeminus";
 import Panel from "./Panel";
-import "draft-js/dist/Draft.css";
-import "./style.css";
-import "./bootstrap.css";
+import "./css/style.css";
+import "./css/bootstrap.css";
 function App() {
   const [sizes, setsizes] = useState(true);
   const [xs, setx] = useState(0);
@@ -16,7 +15,7 @@ function App() {
   const [selectedTextLen, setSelectedTextLen] = useState(0);
   const [selectedTextAncor, setSelectedTextAncor] = useState(0);
   const [selectedTextFocus, setSelectedTextFocus] = useState(0);
-  const [fontPt, setfontPt] = useState(9);
+  const [fontPt, setfontPt] = useState(14);
   const [fontFm, setfontFm] = useState("Georgia, serif");
   const [align, setalign] = useState("left");
   const [cildTeg, setcildTeg] = useState("");
@@ -24,6 +23,11 @@ function App() {
   const [imgHeight, setimgHeight] = useState("auto");
   const [imgPadding, setimgPadding] = useState("0");
   const [imgdisplay, setimgdisplay] = useState("none");
+  const [imgurls, setimgurls] = useState("");
+  const [imgFloat, setimgFloat] = useState("none");
+  
+
+
   function interat(sizesplus, sizesminus, bol) {
     return bol === true ? sizesplus : sizesminus;
   }
@@ -35,7 +39,7 @@ function App() {
 
   function izmtegs(ititalTegs, textbl, tegs, items) {
     ititalTegs()
-      .filter((x, i) => x.tagName === tegs && i === items)
+      .filter((x, i) =>i === items)
       .map(s => {
         s.outerHTML =
           "<" +
@@ -43,14 +47,11 @@ function App() {
           ' class = "' +
           s.className +
           '" >' +
-          s.innerText +
+          s.innerHTML +
           "</" +
           textbl +
           ">";
       });
-
-    //text_block.innerHTML = text_block.innerHTML.replace('<div>' + fg + '<br></div>','<'+textbl+'>' + fg + '</'+textbl+'>');
-    //text_block.innerHTML = text_block.innerHTML.replace('<div>' + fg + '</div>','<'+textbl+'>' + fg + '</'+textbl+'>');
   }
   function updateElements(
     ititalTegs,
@@ -82,20 +83,18 @@ function App() {
       .filter((x, i) => i === items)
       .map(s => selectedtext);
   }
-
-  function test(ititalTegs, items, t, selectedtext) {
-    let re = new RegExp(
-      selectedtext + "{1," + (selectedTextAncor + 1) + "}",
-      "i"
+  function listItem(ititalTegs, list) { 
+    ititalTegs()
+    .filter((x, i) => i === items)
+      .map((p) => p.innerHTML = '<' + list + '><li>' + p.innerHTML + '</' + list +'></ul>');
+ }
+ 
+  function types(ititalTegs, items, selectedtext, teg, selectedTextAncor = 0, selectedTextFocus = 0) {
+    
+      ititalTegs().map((x, i) =>
+        (i === items) ? console.log(x.innerHTML = x.innerHTML.replace(selectedtext, '<' + teg + '>' + selectedtext + '</' + teg +'>')): ""
     );
-    ititalTegs().map((x, i) =>
-      i === items
-        ? (x.innerHTML = x.innerText.replace(
-            re,
-            "<" + t + ">" + selectedtext + "</" + t + ">"
-          ))
-        : ""
-    );
+   
   }
 
   function fonts(ititalTegs, items, fontPt) {
@@ -113,24 +112,20 @@ function App() {
       i === items ? (x.style.textAlign = align) : ""
     );
   }
-  useEffect(() => {
-    fonts(ititalTegs, items, fontPt);
-  }, [fontPt]);
-  //
-  useEffect(() => {
-    fontsFm(ititalTegs, items, fontFm);
-  }, [fontFm]);
-  //
-  useEffect(() => {
-    aligns(ititalTegs, items, align);
-  }, [align]);
-  //
+  
   useEffect(() => {
     focusText(items, selectedtext);
      ititalTegs().map((x)=>Object.values(x.children).map((el)=>el.onclick = function(e){
-       setcildTeg(e.target.tagName);e.target.style.width = imgWidth + 'px';e.target.style.height = imgHeight + 'px';
+       setcildTeg(e.target.tagName);
+       e.target.style.width = imgWidth + 'px';
+       e.target.style.height = imgHeight + 'px';
+       setimgurls(e.target.src);
+       e.target.style.padding = imgPadding + 'px';
+       e.target.style.float = imgFloat;
+       setimgdisplay('block');
      }))
-  }, [items, selectedtext,imgWidth,imgHeight]);
+   //imgCreate(ititalTegs, items, imgurls)
+  }, [items, selectedtext, imgWidth, imgHeight, imgPadding, imgFloat]);
 //
   useEffect(() => {
     onmousemove = e => setx(e.x);
@@ -146,28 +141,42 @@ function App() {
       setSelectedTextFocus
     );
   }, [items, tegs, textbl, xs]);
-  useEffect(() => {
-    izmtegs(ititalTegs, textbl, tegs, items, selectedtext);
-  }, [textbl, itemss]);
+ 
   return (
     <div className="contentDtext">
-      {items + " " + tegs + " " + textbl}
+      {cildTeg + " > " + sizes + " > " + xs + " > " + itemss + " > " + items + " > " + selectedTextAncor +  " > " + tegs + " > " + textbl + " > " + selectedtext + " > " + fontPt + " > " + fontFm}
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
         <div className="row col text-right pt-2 panel">
-          <div onClick={() => ititalTegs().map((x)=>console.log(Object.values(x.children)))}>
-            test
-          </div>
           <Panel
             settextbl={settextbl}
             setitemss={setitemss}
-            items={items}
             setfontPt={setfontPt}
             setfontFm={setfontFm}
             setalign = {setalign}
             setimgWidth = {setimgWidth}
             setimgHeight = {setimgHeight}
+            setimgurls={setimgurls} 
+            items={items}
+            imgurls={imgurls}
+            imgdisplay={imgdisplay}
+            cildTeg={cildTeg}
+            selectedtext={selectedtext}
+            selectedTextAncor = {selectedTextAncor}
+            selectedTextFocus={selectedTextFocus}
+            setimgPadding={setimgPadding}
+            setimgFloat={setimgFloat}
+            setimgdisplay={setimgdisplay}
+            fonts={fonts}
+            fontsFm={fontsFm}
+            ititalTegs={ititalTegs}
+            izmtegs={izmtegs}
+            aligns={aligns}
+            listItem={listItem}
+            types={types}
+            
           />
 
+        
           <div
             className="col-sm"
             className="sizes"

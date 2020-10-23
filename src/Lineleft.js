@@ -1,11 +1,11 @@
 import React from "react";
 
-function Lineleft() {
-  let st = {cursor:'pointer'}
+function Lineleft(props) {
+  
   return (
-    <svg style = {st}
-                width="1em"
-                height="1em"
+    <svg style={props.style} onClick={() => props.aligns(props.ititalTegs, props.items, "left")}
+                
+                width="2em"
                 viewBox="0 0 16 16"
                 className="bi bi-justify-left"
                 fill="currentColor"
