@@ -4,7 +4,7 @@ import Sizeminus from "./Sizeminus";
 import Panel from "./Panel";
 import "./css/bootstrap.css";
 import "./css/style.css";
-
+import "./css/listitems.css";
 function App() {
   const [sizes, setsizes] = useState(true);
   const [xs, setx] = useState(0);
@@ -58,7 +58,12 @@ function App() {
     setselectedtext,
     setSelectedTextLen,
     setSelectedTextAncor,
-    setSelectedTextFocus
+    setSelectedTextFocus,
+    setitems,
+    settegs,
+    setfontPt,
+    setfontFm,
+    setalign
   ) {
     ititalTegs().map(
       (x, i) =>
@@ -88,11 +93,12 @@ function App() {
 
   function focusText(items, selectedtext) {
     let text_block = document.querySelector(".text_block");
-    let j = Object.values(text_block.children)
+    Object.values(text_block.children)
       .filter((x, i) => i === items)
       .map((s) => selectedtext);
   }
-  function listItem(ititalTegs, list) {
+
+  function listItem(ititalTegs, items, list) {
     ititalTegs()
       .filter((x, i) => i === items)
       .map(
@@ -173,33 +179,17 @@ function App() {
       setselectedtext,
       setSelectedTextLen,
       setSelectedTextAncor,
-      setSelectedTextFocus
+      setSelectedTextFocus,
+      setitems,
+      settegs,
+      setfontPt,
+      setfontFm,
+      setalign
     );
   }, [items, tegs, textbl, xs]);
 
   return (
     <div className="contentDtext">
-      {cildTeg +
-        " > " +
-        sizes +
-        " > " +
-        xs +
-        " > " +
-        itemss +
-        " > " +
-        items +
-        " > " +
-        selectedTextAncor +
-        " > " +
-        tegs +
-        " > " +
-        textbl +
-        " > " +
-        selectedtext +
-        " > " +
-        fontPt +
-        " > " +
-        fontFm}
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
         <div className="row col text-right pt-2 panel">
           <Panel
@@ -236,8 +226,7 @@ function App() {
           />
 
           <div
-            className="col-sm"
-            className="sizes"
+            className="col-sm sizes"
             onClick={() => setsizes(sizes === true ? false : true)}
           >
             <div> {sizes === true ? <Sizeplus /> : <Sizeminus />}</div>
