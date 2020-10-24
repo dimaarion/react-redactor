@@ -155,8 +155,38 @@ function App() {
   }
 
   function imgWidthR(ititalTegs, imgurls, imgWidth) {
-    ititalTegs().map((x) => console.log(x));
+    ititalTegs().map((x) =>
+      Object.values(x.children)
+        .filter((l) => l.src === imgurls)
+        .map((ed) => console.log((ed.style.width = imgWidth + "px")))
+    );
   }
+  function imgHeightR(ititalTegs, imgurls, imgHeight) {
+    ititalTegs().map((x) =>
+      Object.values(x.children)
+        .filter((l) => l.src === imgurls)
+        .map((ed) =>
+          console.log(
+            (ed.style.height =
+              imgHeight === 0 || imgHeight === "" ? "auto" : imgHeight + "px")
+          )
+        )
+    );
+  }
+
+  useEffect(
+    function () {
+      imgWidthR(ititalTegs, imgurls, imgWidth);
+    },
+    [imgurls, imgWidth]
+  );
+
+  useEffect(
+    function () {
+      imgHeightR(ititalTegs, imgurls, imgHeight);
+    },
+    [imgurls, imgHeight]
+  );
 
   useEffect(() => {
     focusText(items, selectedtext);
@@ -164,10 +194,9 @@ function App() {
       Object.values(x.children).map(
         (el, ix) =>
           (el.onclick = function (e) {
-            console.log(el);
             setitemsElT(ix);
             setcildTeg(e.target.tagName);
-            e.target.style.width = imgWidth + "px";
+            //e.target.style.width = imgWidth + "px";
             e.target.style.height = imgHeight + "px";
             setimgurls(e.target.src);
             e.target.style.padding = imgPadding + "px";
@@ -210,6 +239,7 @@ function App() {
   return (
     <div className="contentDtext">
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
+        {imgWidth}
         <div className="row col text-right pt-2 panel">
           <Panel
             settextbl={settextbl}
@@ -269,7 +299,6 @@ function App() {
               setalign
             );
             settextBox(innerTextBox());
-            imgWidthR(ititalTegs, imgurls, imgWidth);
           }}
         />
       </div>

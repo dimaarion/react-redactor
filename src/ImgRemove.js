@@ -36,12 +36,12 @@ function ImgRemove(props) {
         style={{ textAlign: "center" }}
         value={props.imgurls}
         id="width"
-        col="8"
+        col="sm"
         c="text-center"
         cange={props.setimgurls}
       />
       <div className="row">
-        <div className="col-3">
+        <div className="col-sm">
           <Inputs
             name="Ширина"
             style={{ textAlign: "center" }}
@@ -67,22 +67,11 @@ function ImgRemove(props) {
             cange={props.setimgPadding}
           />
         </div>
-        <div className=" text-left row mt-4">
-          <div className="col-2" onClick={() => props.setalign("left")}>
-            <Lineleft />
-          </div>
-          <div className="col-2" onClick={() => props.setalign("center")}>
-            <Linecenter />
-          </div>
-          <div className="col-2" onClick={() => props.setalign("right")}>
-            <Lineright />
-          </div>
-          <div className="col">
-            <FloatImage
-              setimgFloat={props.setimgFloat}
-              setalign={props.setalign}
-            />
-          </div>
+        <div className="col-sm mt-5">
+          <FloatImage
+            setimgFloat={props.setimgFloat}
+            setalign={props.setalign}
+          />
         </div>
       </div>
     </div>

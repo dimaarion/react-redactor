@@ -1,59 +1,60 @@
-.cintent_text{
-    width: 100%;
-    height: 500px;
-    border: solid 1px #000;
-    overflow: scroll;
-    background-color: #ffffff;
+.cintent_text {
+  width: 100%;
+  height: 500px;
+  border: solid 1px #000;
+  overflow: scroll;
+  background-color: #ffffff;
 }
 .cintent_text_full {
-	border: solid 1px #000;
-	z-index: 80000;
-	overflow: scroll;
-	position: fixed;
-	top: 0px;
-	bottom: 0px;
-	right: 0px;
-	left: 0px;
-    margin: auto;
-    background-color: #ffffff;
+  border: solid 1px #000;
+  z-index: 80000;
+  overflow: scroll;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  margin: auto;
+  background-color: #ffffff;
 }
-.sizes{
-    cursor: pointer;
-}
-.panel .images{
-    cursor: pointer; 
-    
-}
-
-.contentDtext .text_block{
-    width: 100%;
-    height: 100%;
-    z-index: 10000;
-}
-.contentDtext .text{
-    width: 100%;
-    height: 100%;
-     background-color: #ffffff;
-     display: block;
-}
-.contentDtext .textno{
-    width: 100%;
-    height: 100%;
-     background-color: #ffffff;
-     display: none;
-}
-.aligns svg{
+.sizes {
   cursor: pointer;
 }
-.imgRemove{
-   position: absolute;
-z-index: 8000;
-background-color: antiquewhite;
-width: 50%;
+.panel .images {
+  cursor: pointer;
 }
-.imgRemove svg{
-    cursor: pointer;
+
+.contentDtext .text_block {
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
 }
-.controlPanel svg{
-cursor: pointer;
+.contentDtext .text {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  display: block;
+}
+.contentDtext .textno {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  display: none;
+}
+.aligns svg {
+  cursor: pointer;
+}
+.imgRemove {
+  position: fixed;
+  z-index: 8000;
+  background-color: antiquewhite;
+  width: 400px;
+  margin: auto;
+  right: 0px;
+}
+.imgRemove svg {
+  cursor: pointer;
+}
+.controlPanel svg {
+  cursor: pointer;
 }

@@ -102,7 +102,7 @@ function Panel(props) {
           />
         </div>
       </div>
-      {props.imgdisplay === "block" && props.cildTeg === "IMG" ? (
+      {props.imgdisplay === "block" ? (
         <ImgRemove
           ititalTegs={props.ititalTegs}
           items={props.items}
