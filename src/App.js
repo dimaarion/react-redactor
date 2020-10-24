@@ -26,6 +26,7 @@ function App() {
   const [imgdisplay, setimgdisplay] = useState("none");
   const [imgurls, setimgurls] = useState("");
   const [imgFloat, setimgFloat] = useState("none");
+  const [textBox, settextBox] = useState("");
 
   function interat(sizesplus, sizesminus, bol) {
     return bol === true ? sizesplus : sizesminus;
@@ -34,6 +35,10 @@ function App() {
   function ititalTegs() {
     let text_block = document.querySelector(".text_block");
     return Object.values(text_block.children);
+  }
+
+  function innerTextBox() {
+    return document.querySelector(".text_block").innerHTML;
   }
 
   function izmtegs(ititalTegs, textbl, tegs, items) {
@@ -186,6 +191,7 @@ function App() {
       setfontFm,
       setalign
     );
+    settextBox(innerTextBox());
   }, [items, tegs, textbl, xs]);
 
   return (
@@ -235,17 +241,26 @@ function App() {
 
         <div
           className="text_block"
-          contentEditable="true"
+          contentEditable={true}
           onKeyPress={(e) => {
             updateElements(
               ititalTegs,
               setselectedtext,
               setSelectedTextLen,
               setSelectedTextAncor,
-              setSelectedTextFocus
+              setSelectedTextFocus,
+              setitems,
+              settegs,
+              setfontPt,
+              setfontFm,
+              setalign
             );
+            settextBox(innerTextBox());
           }}
         />
+      </div>
+      <div className="col-sm">
+        <textarea defaultValue={textBox} type="text" name="" />
       </div>
     </div>
   );
