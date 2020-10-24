@@ -27,6 +27,7 @@ function App() {
   const [imgurls, setimgurls] = useState("");
   const [imgFloat, setimgFloat] = useState("none");
   const [textBox, settextBox] = useState("");
+  const [itemsElT, setitemsElT] = useState(0);
 
   function interat(sizesplus, sizesminus, bol) {
     return bol === true ? sizesplus : sizesminus;
@@ -123,12 +124,10 @@ function App() {
   ) {
     ititalTegs().map((x, i) =>
       i === items
-        ? console.log(
-            (x.innerHTML = x.innerHTML.replace(
-              selectedtext,
-              "<" + teg + ">" + selectedtext + "</" + teg + ">"
-            ))
-          )
+        ? (x.innerHTML = x.innerHTML.replace(
+            selectedtext,
+            "<" + teg + ">" + selectedtext + "</" + teg + ">"
+          ))
         : ""
     );
   }
@@ -155,12 +154,16 @@ function App() {
     );
   }
 
+  function imgWidthR() {}
+
   useEffect(() => {
     focusText(items, selectedtext);
     ititalTegs().map((x) =>
       Object.values(x.children).map(
-        (el) =>
+        (el, ix) =>
           (el.onclick = function (e) {
+            console.log(el);
+            setitemsElT(ix);
             setcildTeg(e.target.tagName);
             e.target.style.width = imgWidth + "px";
             e.target.style.height = imgHeight + "px";
@@ -172,7 +175,15 @@ function App() {
       )
     );
     //imgCreate(ititalTegs, items, imgurls)
-  }, [items, selectedtext, imgWidth, imgHeight, imgPadding, imgFloat]);
+  }, [
+    items,
+    selectedtext,
+    imgWidth,
+    imgHeight,
+    imgPadding,
+    imgFloat,
+    itemsElT
+  ]);
   //
   useEffect(() => {
     onmousemove = (e) => setx(e.x);
@@ -260,7 +271,11 @@ function App() {
         />
       </div>
       <div className="col-sm">
-        <textarea defaultValue={textBox} type="text" name="" />
+        <textarea
+          style={{ display: "none" }}
+          defaultValue={textBox}
+          name={document.querySelector("#Dredactor").className}
+        />
       </div>
     </div>
   );
