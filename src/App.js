@@ -154,7 +154,9 @@ function App() {
     );
   }
 
-  function imgWidthR() {}
+  function imgWidthR(ititalTegs, imgurls, imgWidth) {
+    ititalTegs().map((x) => console.log(x));
+  }
 
   useEffect(() => {
     focusText(items, selectedtext);
@@ -267,6 +269,7 @@ function App() {
               setalign
             );
             settextBox(innerTextBox());
+            imgWidthR(ititalTegs, imgurls, imgWidth);
           }}
         />
       </div>
