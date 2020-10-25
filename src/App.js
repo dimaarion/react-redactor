@@ -158,7 +158,7 @@ function App() {
     ititalTegs().map((x) =>
       Object.values(x.children)
         .filter((l) => l.src === imgurls)
-        .map((ed) => console.log((ed.style.width = imgWidth + "px")))
+        .map((ed) => (ed.style.width = imgWidth + "px"))
     );
   }
   function imgHeightR(ititalTegs, imgurls, imgHeight) {
@@ -196,8 +196,8 @@ function App() {
           (el.onclick = function (e) {
             setitemsElT(ix);
             setcildTeg(e.target.tagName);
-            //e.target.style.width = imgWidth + "px";
-            e.target.style.height = imgHeight + "px";
+            setimgWidth("");
+            setimgHeight("");
             setimgurls(e.target.src);
             e.target.style.padding = imgPadding + "px";
             e.target.style.float = imgFloat;
@@ -205,16 +205,18 @@ function App() {
           })
       )
     );
-    //imgCreate(ititalTegs, items, imgurls)
   }, [
     items,
+    itemsElT,
     selectedtext,
     imgWidth,
     imgHeight,
     imgPadding,
     imgFloat,
-    itemsElT
+    itemsElT,
+    imgurls
   ]);
+
   //
   useEffect(() => {
     onmousemove = (e) => setx(e.x);
@@ -239,7 +241,7 @@ function App() {
   return (
     <div className="contentDtext">
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
-        {imgWidth}
+        {imgWidth + " " + itemsElT}
         <div className="row col text-right pt-2 panel">
           <Panel
             settextbl={settextbl}
@@ -250,20 +252,21 @@ function App() {
             setimgWidth={setimgWidth}
             setimgHeight={setimgHeight}
             setimgurls={setimgurls}
-            items={items}
-            imgurls={imgurls}
-            imgdisplay={imgdisplay}
-            cildTeg={cildTeg}
             selectedtext={selectedtext}
             selectedTextAncor={selectedTextAncor}
             selectedTextFocus={selectedTextFocus}
+            setimgPadding={setimgPadding}
+            setimgFloat={setimgFloat}
+            setimgdisplay={setimgdisplay}
+            cildTeg={cildTeg}
+            items={items}
+            imgurls={imgurls}
+            imgdisplay={imgdisplay}
+            imgWidth={imgWidth}
             tegs={tegs}
             fontPt={fontPt}
             fontFm={fontFm}
             align={align}
-            setimgPadding={setimgPadding}
-            setimgFloat={setimgFloat}
-            setimgdisplay={setimgdisplay}
             fonts={fonts}
             fontsFm={fontsFm}
             ititalTegs={ititalTegs}

@@ -104,6 +104,7 @@ function Panel(props) {
       </div>
       {props.imgdisplay === "block" ? (
         <ImgRemove
+          imgWidth={props.imgWidth}
           ititalTegs={props.ititalTegs}
           items={props.items}
           setimgdisplay={props.setimgdisplay}

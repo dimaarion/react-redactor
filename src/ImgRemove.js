@@ -1,8 +1,5 @@
 import React from "react";
 import Inputs from "./Inputs";
-import Lineleft from "./Lineleft";
-import Linecenter from "./Linecenter";
-import Lineright from "./Lineright";
 import FloatImage from "./FloatImage";
 function ImgRemove(props) {
   return (
@@ -41,8 +38,10 @@ function ImgRemove(props) {
         cange={props.setimgurls}
       />
       <div className="row">
+        {props.imgWidth}
         <div className="col-sm">
           <Inputs
+            value={props.imgWidth}
             name="Ширина"
             style={{ textAlign: "center" }}
             id="width"
