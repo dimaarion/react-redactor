@@ -4,13 +4,12 @@ import FloatImage from "./FloatImage";
 function ImgRemove(props) {
   return (
     <div className="imgRemove">
-      <div className="row col">
-        <div className="col">
-          <h2 className="text-left">Редактирование изображения</h2>
+      <div className="row">
+      
+        <div className="col-sm">
+          <h5 className="text-left pl-3">Редактирование изображения</h5>
         </div>
-        <div className="col">
-          <div className="col">
-            <div className="mt-3">
+        <div className="col-sm text-right mt-1">
               <svg
                 onClick={() => props.setimgdisplay("none")}
                 width="2em"
@@ -24,11 +23,10 @@ function ImgRemove(props) {
                   d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
                 />
               </svg>
-            </div>
-          </div>
-        </div>
+        </div>  
       </div>
       <Inputs
+        title={props.imgurls}
         name="Путь к изображению"
         style={{ textAlign: "center" }}
         value={props.imgurls}
@@ -37,10 +35,10 @@ function ImgRemove(props) {
         c="text-center"
         cange={props.setimgurls}
       />
-      <div className="row">
-        <div className="col-sm">
+      <div className="col-sm">
+        
           <Inputs
-            value={props.imgWidth}
+            value={props.imgWidth + 'px'}
             name="Ширина"
             style={{ textAlign: "center" }}
             id="width"
@@ -49,6 +47,7 @@ function ImgRemove(props) {
             cange={props.setimgWidth}
           />
           <Inputs
+            value={props.imgHeight + 'px'}
             name="Высота"
             style={{ textAlign: "center" }}
             id="height"
@@ -57,20 +56,19 @@ function ImgRemove(props) {
             cange={props.setimgHeight}
           />
           <Inputs
+            value={props.imgPadding.replace(/px/,'')}
             style={{ textAlign: "center" }}
             name="Отступ"
             id="padding"
             col="sm"
-            c=" mb-4 text-center"
+            c="text-center"
             cange={props.setimgPadding}
           />
-        </div>
-        <div className="col-sm mt-5">
           <FloatImage
             setimgFloat={props.setimgFloat}
             setalign={props.setalign}
           />
-        </div>
+        
       </div>
     </div>
   );

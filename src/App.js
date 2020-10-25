@@ -28,6 +28,8 @@ function App() {
   const [imgFloat, setimgFloat] = useState("none");
   const [textBox, settextBox] = useState("");
   const [itemsElT, setitemsElT] = useState(0);
+  const [windSize, setwindSize] = useState(100);
+  const [panelStyle, setpanelStyle] = useState({position: 'relative'});
 
   function interat(sizesplus, sizesminus, bol) {
     return bol === true ? sizesplus : sizesminus;
@@ -126,9 +128,9 @@ function App() {
     ititalTegs().map((x, i) =>
       i === items
         ? (x.innerHTML = x.innerHTML.replace(
-            selectedtext,
-            "<" + teg + ">" + selectedtext + "</" + teg + ">"
-          ))
+          selectedtext,
+          "<" + teg + ">" + selectedtext + "</" + teg + ">"
+        ))
         : ""
     );
   }
@@ -159,7 +161,7 @@ function App() {
     ititalTegs().map((x) =>
       Object.values(x.children)
         .filter((l) => l.src === imgurls)
-        .map((ed) => (ed.style.width = imgWidth + "px"))
+        .map((ed) => (ed.style.width = imgWidth))
     );
   }
   function imgHeightR(ititalTegs, imgurls, imgHeight) {
@@ -168,8 +170,7 @@ function App() {
         .filter((l) => l.src === imgurls)
         .map((ed) =>
           console.log(
-            (ed.style.height =
-              imgHeight === 0 || imgHeight === "" ? "auto" : imgHeight + "px")
+            (ed.style.height = imgHeight)
           )
         )
     );
@@ -178,7 +179,7 @@ function App() {
     ititalTegs().map((x) =>
       Object.values(x.children)
         .filter((l) => l.src === imgurls)
-        .map((ed) => (ed.style.padding = imgPadding + "px"))
+        .map((ed) => (ed.style.padding = imgPadding))
     );
   }
 
@@ -189,24 +190,37 @@ function App() {
         .map((ed) => (ed.style.float = imgFloat))
     );
   }
+
+  function mTop(setwindSize) {
+    window.onresize = function (e) {
+      setwindSize(window.innerWidth)
+    }
+  }
+
+  
+
+  useEffect(() => {
+    mTop(setwindSize)
+  }, [windSize]);
+
   useEffect(
     function () {
       imgPaddingR(ititalTegs, imgurls, imgPadding);
     },
-    [imgurls, imgPadding]
+    [imgPadding]
   );
   useEffect(
     function () {
       imgWidthR(ititalTegs, imgurls, imgWidth);
     },
-    [imgurls, imgWidth]
+    [imgWidth]
   );
 
   useEffect(
     function () {
       imgHeightR(ititalTegs, imgurls, imgHeight);
     },
-    [imgurls, imgHeight]
+    [imgHeight]
   );
   useEffect(
     function () {
@@ -223,9 +237,9 @@ function App() {
           (el.onclick = function (e) {
             setitemsElT(ix);
             setcildTeg(e.target.tagName);
-            setimgWidth("");
-            setimgHeight("");
-            setimgPadding("");
+            setimgWidth(e.target.width );
+            setimgHeight(e.target.height );
+            setimgPadding(e.target.style.padding = e.target.style.padding + 'px'); 
             setimgurls(e.target.src);
             setimgFloat("");
             setimgdisplay("block");
@@ -264,11 +278,15 @@ function App() {
     );
     settextBox(innerTextBox());
   }, [items, tegs, textbl, xs]);
-
+  function createMarkup() {
+    return { __html: document.getElementById('Dtext').innerHTML};
+  }
+  
   return (
     <div className="contentDtext">
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
-        <div className="row col text-right pt-2 panel">
+        <div className="row col text-right pt-2 panel" style={(sizes === true) ? { position: 'absolute', backgroundColor: '#ffffff', margin: 'auto',left:'0px' } :panelStyle }>
+
           <Panel
             settextbl={settextbl}
             setitemss={setitemss}
@@ -293,6 +311,8 @@ function App() {
             fontPt={fontPt}
             fontFm={fontFm}
             align={align}
+            imgHeight={imgHeight}
+            imgPadding={imgPadding}
             fonts={fonts}
             fontsFm={fontsFm}
             ititalTegs={ititalTegs}
@@ -301,17 +321,16 @@ function App() {
             listItem={listItem}
             types={types}
             cleanerTxt={cleanerTxt}
+            setsizes={setsizes} 
+            sizes={sizes}
           />
 
-          <div
-            className="col-sm sizes"
-            onClick={() => setsizes(sizes === true ? false : true)}
-          >
-            <div> {sizes === true ? <Sizeplus /> : <Sizeminus />}</div>
-          </div>
+          
         </div>
-
+        
         <div
+          onClick={() => setpanelStyle({position:'fixed',backgroundColor:'#ffffff',margin: 'auto',top: '0px' })}
+          style={{ marginTop: windSize > 600?100:100 + 'px'}}
           className="text_block"
           contentEditable={true}
           onKeyPress={(e) => {
@@ -329,7 +348,11 @@ function App() {
             );
             settextBox(innerTextBox());
           }}
+          dangerouslySetInnerHTML={createMarkup()}
         />
+         
+         
+        
       </div>
       <div className="col-sm">
         <textarea

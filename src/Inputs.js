@@ -17,6 +17,7 @@ function Inputs(props) {
     <div className={"col-" + props.col + " text-left " + c}>
       <label htmlFor={props.id}>{props.name}</label>
       <input
+      title = {props.title}
         style={props.style}
         id={props.id}
         defaultValue={props.value}

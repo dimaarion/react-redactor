@@ -45,12 +45,11 @@
   cursor: pointer;
 }
 .imgRemove {
-  position: fixed;
+  position: absolute;
   z-index: 8000;
   background-color: antiquewhite;
-  width: 400px;
-  margin: auto;
-  right: 0px;
+  width: 250px;
+  
 }
 .imgRemove svg {
   cursor: pointer;
@@ -58,3 +57,8 @@
 .controlPanel svg {
   cursor: pointer;
 }
+.imgRemove input{
+  font-size: initial;
+}
+
+

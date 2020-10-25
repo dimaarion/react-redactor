@@ -11,11 +11,13 @@ import Italic from "./Italic";
 import Strikethrough from "./Strikethrough";
 import Underline from "./Underline";
 import ClinerText from "./ClinerText";
+import CloseControl from "./CloseControl";
 
 function Panel(props) {
   return (
     <div className="container controlPanel">
       <div className="col-sm row ">
+        
         <FamelyF
           setfontFm={props.setfontFm}
           fontFm={props.fontFm}
@@ -100,12 +102,15 @@ function Panel(props) {
             types={props.types}
             class=" col-sm text-left listItems"
           />
+          <CloseControl setsizes={props.setsizes} sizes={props.sizes} />
         </div>
       </div>
-      {props.imgdisplay === "block" ? (
+      {props.imgdisplay === "block" && props.cildTeg ==="IMG" ? (
         <ImgRemove
           imgWH={props.imgWH}
           imgWidth={props.imgWidth}
+          imgHeight={props.imgHeight}
+          imgPadding={props.imgPadding}
           ititalTegs={props.ititalTegs}
           items={props.items}
           setimgdisplay={props.setimgdisplay}
