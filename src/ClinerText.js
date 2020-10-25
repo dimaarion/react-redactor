@@ -1,5 +1,4 @@
 import React from "react";
-
 function ClinerText(props) {
   return (
     <div className={props.class}>

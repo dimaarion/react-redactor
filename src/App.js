@@ -52,6 +52,8 @@ function App() {
             textbl +
             ' class = "' +
             s.className +
+            '" data-d="1' +
+            items +
             '" >' +
             s.innerHTML +
             "</" +
@@ -83,7 +85,6 @@ function App() {
           );
           setfontFm(x.style.fontFamily ? x.style.fontFamily : "Georgia");
           setalign(x.style.textAlign ? x.style.textAlign : "left");
-          x.tabIndex = 0;
         })
     );
     ititalTegs().map(
@@ -173,7 +174,27 @@ function App() {
         )
     );
   }
+  function imgPaddingR(ititalTegs, imgurls, imgPadding) {
+    ititalTegs().map((x) =>
+      Object.values(x.children)
+        .filter((l) => l.src === imgurls)
+        .map((ed) => (ed.style.padding = imgPadding + "px"))
+    );
+  }
 
+  function imgFloatR(ititalTegs, imgurls, imgFloat) {
+    ititalTegs().map((x) =>
+      Object.values(x.children)
+        .filter((l) => l.src === imgurls)
+        .map((ed) => (ed.style.float = imgFloat))
+    );
+  }
+  useEffect(
+    function () {
+      imgPaddingR(ititalTegs, imgurls, imgPadding);
+    },
+    [imgurls, imgPadding]
+  );
   useEffect(
     function () {
       imgWidthR(ititalTegs, imgurls, imgWidth);
@@ -187,6 +208,12 @@ function App() {
     },
     [imgurls, imgHeight]
   );
+  useEffect(
+    function () {
+      imgFloatR(ititalTegs, imgurls, imgFloat);
+    },
+    [imgurls, imgFloat]
+  );
 
   useEffect(() => {
     focusText(items, selectedtext);
@@ -198,9 +225,9 @@ function App() {
             setcildTeg(e.target.tagName);
             setimgWidth("");
             setimgHeight("");
+            setimgPadding("");
             setimgurls(e.target.src);
-            e.target.style.padding = imgPadding + "px";
-            e.target.style.float = imgFloat;
+            setimgFloat("");
             setimgdisplay("block");
           })
       )
@@ -241,7 +268,6 @@ function App() {
   return (
     <div className="contentDtext">
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
-        {imgWidth + " " + itemsElT}
         <div className="row col text-right pt-2 panel">
           <Panel
             settextbl={settextbl}

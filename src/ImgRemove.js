@@ -38,7 +38,6 @@ function ImgRemove(props) {
         cange={props.setimgurls}
       />
       <div className="row">
-        {props.imgWidth}
         <div className="col-sm">
           <Inputs
             value={props.imgWidth}
@@ -62,7 +61,7 @@ function ImgRemove(props) {
             name="Отступ"
             id="padding"
             col="sm"
-            c="mt-4 pt-2 text-center"
+            c=" mb-4 text-center"
             cange={props.setimgPadding}
           />
         </div>
