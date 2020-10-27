@@ -9,7 +9,7 @@ function Fonts(props) {
    
   }, [props.fontPt]);
   return (
-    <div className="col-sm text-left" >
+    <div className="text-left" style ={{width:'105px'}}>
       <ul id = "fontsTxt">
         <li>{nf}
         <ul>

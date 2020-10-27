@@ -1,5 +1,6 @@
 #fontsTxtFamely{
     margin-top: 8px;
+     z-index: 8000;
 }
 #fontsTxtFamely li{
     position: relative;
@@ -15,6 +16,7 @@
 }
 #fontsTxtFamely li:hover{
     background-color: #cccccc;
+    z-index: 8000;
 }
 #fontsTxtFamely li ul{
     position: absolute;
@@ -24,12 +26,14 @@
     width: 200px;
     overflow: scroll;
     height: 250px;
+      
 }
 #fontsTxtFamely li ul li{
     cursor: pointer;
 }
 #fontsTxtFamely li:hover ul{
     display: block;
+    z-index: 8000;
     
    
 }

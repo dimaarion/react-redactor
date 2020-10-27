@@ -1,3 +1,12 @@
+.headers {
+    display: inline-flex;
+    margin-top: 8px;
+    margin-left: 35px;
+    margin-right: 5px;
+}
+.headers svg{
+margin-right: 20px;
+}
 .headers svg:hover{
 
 padding: 2px;

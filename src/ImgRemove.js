@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Inputs from "./Inputs";
 import FloatImage from "./FloatImage";
 function ImgRemove(props) {
+  const [state, setstate] = useState('');
+  useEffect(() => {
+    setstate(props.imgurls)
+  }, [props.imgurls]);
   return (
-    <div className="imgRemove">
+    <div className="imgRemove" style={{
+      marginLeft: props.eX - 400 + 'px' ,
+      marginTop: props.eY - 200 + 'px'
+      }}>
       <div className="row">
       
         <div className="col-sm">
@@ -11,7 +18,7 @@ function ImgRemove(props) {
         </div>
         <div className="col-sm text-right mt-1">
               <svg
-                onClick={() => props.setimgdisplay("none")}
+            onClick={() => { props.setimgdisplay("none"); Array.from(document.getElementsByTagName('img') !== undefined ? document.getElementsByTagName('img'):[1,2]).filter((f) => '/' + f.src.split('/').filter((f, i) => i > 2).join('/') === props.imgurls)[1].src = state }}
                 width="2em"
                 viewBox="0 0 16 16"
                 className="bi bi-x"
@@ -33,7 +40,7 @@ function ImgRemove(props) {
         id="width"
         col="sm"
         c="text-center"
-        cange={props.setimgurls}
+        cange={setstate}
       />
       <div className="col-sm">
         
@@ -67,6 +74,7 @@ function ImgRemove(props) {
           <FloatImage
             setimgFloat={props.setimgFloat}
             setalign={props.setalign}
+            imgFloat={props.imgFloat}
           />
         
       </div>

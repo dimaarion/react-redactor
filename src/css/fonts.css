@@ -1,6 +1,8 @@
 #fontsTxt{
     margin-top: 8px;
     width: 50px;
+    margin-left: 25px;
+
 }
 #fontsTxt li{
     position: relative;

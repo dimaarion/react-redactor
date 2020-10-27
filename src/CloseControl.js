@@ -5,8 +5,8 @@ function CloseControl(props) {
 
     return (
         <div
-            className="col-sm-1 sizes"
-            onClick={() => props.setsizes(props.sizes === true ? false : true)}
+            className="col-sm sizes"
+            onClick={() =>{return(props.setsizes(props.sizes === true ? false : true),props.setpanelStyle({ position: 'fixed',maxWidth: '100%' })) }}
         >
             <div> {props.sizes === true ? <Sizeplus /> : <Sizeminus />}</div>
         </div>

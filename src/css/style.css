@@ -1,12 +1,10 @@
 .cintent_text {
   width: 100%;
-  height: 500px;
-  border: solid 1px #000;
+  height: 860px;
   overflow: scroll;
   background-color: #ffffff;
 }
 .cintent_text_full {
-  border: solid 1px #000;
   z-index: 80000;
   overflow: scroll;
   position: fixed;
@@ -19,6 +17,14 @@
 }
 .sizes {
   cursor: pointer;
+}
+.panel{
+  border-bottom: solid 1px #cccccc;
+  background-color: #ffffff;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  max-width: 1110px;
 }
 .panel .images {
   cursor: pointer;
@@ -58,7 +64,32 @@
   cursor: pointer;
 }
 .imgRemove input{
-  font-size: initial;
+  font-size: large;
+}
+.indent{
+  z-index: 8500;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  font-size: 20pt;
+  text-align: center;
+  background-color: #fff;
+  margin-top: 0px;
+
+}
+.indent div{
+  
+  margin-top: -4px;
+  
+}
+.indent:hover{
+  padding: 2px;
+  background-color: #cccccc;
+  font-size: 18pt;
 }
 
-
+.P4{
+  padding: 2px;
+  background-color: #cccccc;
+  font-size: 18pt;
+}
