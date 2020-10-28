@@ -14,10 +14,13 @@ function Inputs(props) {
     t = "text";
   }
   return (
-    <div className={"col-" + props.col + " text-left " + c}>
+    <div
+      style={props.divStyle}
+      className={"col-" + props.col + " text-left " + c}
+    >
       <label htmlFor={props.id}>{props.name}</label>
       <input
-      title = {props.title}
+        title={props.title}
         style={props.style}
         id={props.id}
         defaultValue={props.value}

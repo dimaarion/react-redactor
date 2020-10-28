@@ -3,7 +3,7 @@ import Panel from "./Panel";
 import "./css/bootstrap.css";
 import "./css/style.css";
 import "./css/listitems.css";
-import * as PIXI from "pixi.js";
+
 function Controller(props) {
   const baseSelector = props.baseSelector;
   const textId = props.textId;
@@ -45,24 +45,28 @@ function Controller(props) {
   function innerTextBox() {
     return document.querySelector("." + baseSelector).innerHTML;
   }
-
+  function elMoveUpDown(ititalTegs) {
+    let c = 0;
+    ititalTegs().map((x) => x.setAttribute("data-d", "1" + c++));
+  }
   function izmtegs(ititalTegs, textbl, tegs, items) {
+    let dataD = " data-d=1" + items;
+    let brackedL = "<";
+    let brackedR = ">";
+    let brackedS = "</";
     ititalTegs()
-      .filter((x, i) => i === items)
+      .filter((f, i) => i === items)
       .map(
         (s) =>
           (s.outerHTML =
-            "<" +
+            brackedL +
             textbl +
-            ' class = "' +
-            s.className +
-            '" data-d="1' +
-            items +
-            '" >' +
+            dataD +
+            brackedR +
             s.innerHTML +
-            "</" +
+            brackedS +
             textbl +
-            ">")
+            brackedR)
       );
   }
   function updateElements(
@@ -102,20 +106,33 @@ function Controller(props) {
     );
   }
 
-  function focusText(items, selectedtext) {
-    let text_block = document.querySelector("." + baseSelector);
-    Object.values(text_block.children)
-      .filter((x, i) => i === items)
-      .map((s) => selectedtext);
-  }
-
-  function listItem(ititalTegs, items, list) {
+  function listItem(ititalTegs, items, list, subList) {
+    let c = 0;
+    let dataD = " data-d=1" + items;
+    let dataS = " data-s=2";
+    let brackedL = "<";
+    let brackedR = " >";
+    let brackedS = "</";
     ititalTegs()
       .filter((x, i) => i === items)
       .map(
         (p) =>
-          (p.innerHTML =
-            "<" + list + "><li>" + p.innerHTML + "</" + list + "></ul>")
+          (p.outerHTML =
+            brackedL +
+            list +
+            dataD +
+            brackedR +
+            brackedL +
+            subList +
+            dataS +
+            brackedR +
+            p.innerHTML +
+            brackedS +
+            subList +
+            brackedR +
+            brackedS +
+            list +
+            brackedR)
       );
   }
 
@@ -159,7 +176,7 @@ function Controller(props) {
   function cleanerTxt(ititalTegs, items) {
     ititalTegs()
       .filter((f, i) => i === items)
-      .map((x) => (x.outerHTML = "<div data-d=>" + x.innerText + "</div>"));
+      .map((x) => (x.outerHTML = `<div data-d=1${items}>${x.innerText}</div>`));
   }
 
   function imgWidthR(ititalTegs, imgurls, imgWidth) {
@@ -291,7 +308,6 @@ function Controller(props) {
   );
 
   useEffect(() => {
-    focusText(items, selectedtext);
     ititalTegs().map((x) =>
       Object.values(x.getElementsByTagName("img")).map(
         (el, ix) =>
@@ -431,6 +447,7 @@ function Controller(props) {
             );
             settextBox(innerTextBox());
             clicEvEl(setgTags);
+            elMoveUpDown(ititalTegs);
           }}
           dangerouslySetInnerHTML={createMarkup(textId)}
         />

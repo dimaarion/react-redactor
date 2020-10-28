@@ -4,7 +4,9 @@ function ListUl(props) {
   return (
     <div className={props.class}>
       <svg
-        onClick={() => props.listItem(props.ititalTegs, props.items, "ul")}
+        onClick={() =>
+          props.listItem(props.ititalTegs, props.items, "ul", "li")
+        }
         width="2em"
         viewBox="0 0 16 16"
         className="bi bi-list-ul"
