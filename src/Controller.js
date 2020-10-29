@@ -45,9 +45,30 @@ function Controller(props) {
   function innerTextBox() {
     return document.querySelector("." + baseSelector).innerHTML;
   }
-  function elMoveUpDown(ititalTegs) {
+
+  function getStart(baseSelector) {
+    let bSelector = document.getElementsByClassName(baseSelector)[0];
+    console.log((bSelector.innerHTML = "<div>text</div>"));
+  }
+
+  function startEl(baseSelector) {
+    var ua = navigator.userAgent.search(/Chrome/);
+    console.log(ua);
+    if (ua) {
+      let text_block = document.querySelector("." + baseSelector);
+      let a = Array.from(text_block.children).length;
+      let txt = text_block.innerHTML.split("<")[0];
+      if (a === 1) {
+        text_block.innerHTML = text_block.innerHTML.replace(
+          txt,
+          "<div>" + txt + "</div>"
+        );
+      }
+    }
+  }
+  function elMoveUpDown(ititalTegs, baseSelector) {
     let c = 0;
-    ititalTegs().map((x) => x.setAttribute("data-d", "1" + c++));
+    // ititalTegs().map((x) => x.setAttribute("data-d", "1" + c++));
   }
   function izmtegs(ititalTegs, textbl, tegs, items) {
     let dataD = " data-d=1" + items;
@@ -275,6 +296,7 @@ function Controller(props) {
   }
   useEffect(() => {
     clicEvEl(setgTags);
+    getStart(baseSelector);
   }, []);
 
   useEffect(() => {
@@ -431,7 +453,9 @@ function Controller(props) {
           style={{ marginTop: 250 + "px", height: "100%" }}
           className={baseSelector}
           contentEditable={true}
-          onClick={() => clicEvEl(setgTags)}
+          onClick={() => {
+            clicEvEl(setgTags);
+          }}
           onKeyPress={(e) => {
             updateElements(
               ititalTegs,
@@ -447,7 +471,8 @@ function Controller(props) {
             );
             settextBox(innerTextBox());
             clicEvEl(setgTags);
-            elMoveUpDown(ititalTegs);
+            elMoveUpDown(ititalTegs, baseSelector);
+            //  startEl(baseSelector);
           }}
           dangerouslySetInnerHTML={createMarkup(textId)}
         />
