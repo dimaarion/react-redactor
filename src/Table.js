@@ -55,7 +55,15 @@ function Table(props) {
             <tr>
               <td></td>
               <td>
-                <button type="button" class="btn btn-primary ">
+                <button
+                  onClick={() => {
+                    props.createTable(props.baseSelector, props.items);
+                    props.createTr(props.baseSelector, props.items, 6);
+                    props.createTd(props.baseSelector, 6, 6);
+                  }}
+                  type="button"
+                  class="btn btn-primary "
+                >
                   Ок
                 </button>
                 <button type="button" class="btn btn-primary ml-2">

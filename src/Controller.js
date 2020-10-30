@@ -149,38 +149,37 @@ function Controller(props) {
       );
   }
 
-  function createTable(baseSelector, items) {
-    let bs = document.querySelector("." + baseSelector);
+  function createTable(bas, it) {
+    let bs = document.querySelector("." + bas);
     let div = document.createElement("div");
     let tb = document.createElement("table");
     document.body.appendChild(div);
     document.body.appendChild(tb);
-    tb.className = "tb table table-hover";
+    tb.className = `tb${it} table table-hover`;
     Array.from(bs.children)
-      .filter((f, i) => i === items)
+      .filter((f, i) => i === it)
       .map((x) => x.appendChild(div));
     div.appendChild(tb);
   }
 
-  function createTr(baseSelector, items) {
+  function createTr(bs, it, trn) {
     let tb = document
-      .getElementsByClassName(baseSelector)[0]
-      .getElementsByClassName("tb")[0];
-    for (let i = 0; i < 6; i++) {
+      .getElementsByClassName(bs)[0]
+      .getElementsByClassName("tb" + it)[0];
+    for (let i = 0; i < trn; i++) {
       let tr = document.createElement("tr");
       tr = document.body.appendChild(tr);
-      tr.className = "tableTr";
-
+      tr.className = "tableTr" + i;
       tb.appendChild(tr);
     }
   }
 
-  function createTd(baseSelector, items) {
-    for (let i = 0; i < 6; i++) {
+  function createTd(bs, trn, tdn) {
+    for (let i = 0; i < trn; i++) {
       let tr = document
-        .getElementsByClassName(baseSelector)[0]
-        .getElementsByClassName("tableTr")[i];
-      for (let j = 0; j < 6; j++) {
+        .getElementsByClassName(bs)[0]
+        .getElementsByClassName("tableTr" + i)[0];
+      for (let j = 0; j < tdn; j++) {
         let td = document.createElement("td");
         td = document.body.appendChild(td);
         td.className = "itemsTd";
@@ -482,6 +481,8 @@ function Controller(props) {
             imgFloat={imgFloat}
             createTable={createTable}
             baseSelector={baseSelector}
+            createTr={createTr}
+            createTd={createTd}
           />
         </div>
 
