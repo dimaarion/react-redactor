@@ -1,0 +1,8 @@
+.itemsTd {
+  border: solid 1px #cccccc;
+}
+.tableRedactor {
+  position: fixed;
+  background-color: #ffffff;
+  z-index: 8000;
+}

@@ -13,6 +13,7 @@ import Underline from "./Underline";
 import ClinerText from "./ClinerText";
 import CloseControl from "./CloseControl";
 import LinkRemove from "./LinkRemove";
+import Table from "./Table";
 
 function Panel(props) {
   const [state, setstate] = useState({ link: false });
@@ -83,6 +84,7 @@ function Panel(props) {
               <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 0 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 0 0-4.243-4.243L6.586 4.672z" />
             </svg>
           </div>
+          <Table baseSelector={props.baseSelector} items={props.items} />
         </div>
 
         <div className="row p-2">

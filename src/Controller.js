@@ -3,6 +3,7 @@ import Panel from "./Panel";
 import "./css/bootstrap.css";
 import "./css/style.css";
 import "./css/listitems.css";
+import "./css/table.css";
 
 function Controller(props) {
   const baseSelector = props.baseSelector;
@@ -48,27 +49,18 @@ function Controller(props) {
 
   function getStart(baseSelector) {
     let bSelector = document.getElementsByClassName(baseSelector)[0];
-    console.log((bSelector.innerHTML = "<div>text</div>"));
+    bSelector.innerHTML = "<div class='strStart'>text</div>";
+    let strStart = document.getElementsByClassName("strStart");
+    strStart = Array.from(strStart);
+    function integer(e) {
+      return (e.target.innerText = "");
+    }
+    strStart.map((x) => x.addEventListener("click", integer, { once: true }));
   }
 
-  function startEl(baseSelector) {
-    var ua = navigator.userAgent.search(/Chrome/);
-    console.log(ua);
-    if (ua) {
-      let text_block = document.querySelector("." + baseSelector);
-      let a = Array.from(text_block.children).length;
-      let txt = text_block.innerHTML.split("<")[0];
-      if (a === 1) {
-        text_block.innerHTML = text_block.innerHTML.replace(
-          txt,
-          "<div>" + txt + "</div>"
-        );
-      }
-    }
-  }
   function elMoveUpDown(ititalTegs, baseSelector) {
     let c = 0;
-    // ititalTegs().map((x) => x.setAttribute("data-d", "1" + c++));
+    ititalTegs().map((x) => x.setAttribute("data-d", "1" + c++));
   }
   function izmtegs(ititalTegs, textbl, tegs, items) {
     let dataD = " data-d=1" + items;
@@ -155,6 +147,46 @@ function Controller(props) {
             list +
             brackedR)
       );
+  }
+
+  function createTable(baseSelector, items) {
+    let bs = document.querySelector("." + baseSelector);
+    let div = document.createElement("div");
+    let tb = document.createElement("table");
+    document.body.appendChild(div);
+    document.body.appendChild(tb);
+    tb.className = "tb table table-hover";
+    Array.from(bs.children)
+      .filter((f, i) => i === items)
+      .map((x) => x.appendChild(div));
+    div.appendChild(tb);
+  }
+
+  function createTr(baseSelector, items) {
+    let tb = document
+      .getElementsByClassName(baseSelector)[0]
+      .getElementsByClassName("tb")[0];
+    for (let i = 0; i < 6; i++) {
+      let tr = document.createElement("tr");
+      tr = document.body.appendChild(tr);
+      tr.className = "tableTr";
+
+      tb.appendChild(tr);
+    }
+  }
+
+  function createTd(baseSelector, items) {
+    for (let i = 0; i < 6; i++) {
+      let tr = document
+        .getElementsByClassName(baseSelector)[0]
+        .getElementsByClassName("tableTr")[i];
+      for (let j = 0; j < 6; j++) {
+        let td = document.createElement("td");
+        td = document.body.appendChild(td);
+        td.className = "itemsTd";
+        tr.appendChild(td);
+      }
+    }
   }
 
   function types(
@@ -399,6 +431,8 @@ function Controller(props) {
 
   return (
     <div className="contentDtext">
+      <div onClick={() => createTd(baseSelector, items)}>td</div>
+      <div onClick={() => createTr(baseSelector, items)}>tr</div>
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
         <div
           className="row container text-right p-4  panel"
@@ -446,6 +480,8 @@ function Controller(props) {
             gTags={gTags}
             setgTags={setgTags}
             imgFloat={imgFloat}
+            createTable={createTable}
+            baseSelector={baseSelector}
           />
         </div>
 
