@@ -1,19 +1,31 @@
 .left-iteml {
-  padding: 2px;
   background-color: #cccccc;
+}
+.left-iteml svg {
+  padding: 2px;
 }
 .center-itemc {
-  padding: 2px;
   background-color: #cccccc;
 }
-.right-itemr {
+.center-itemc svg {
   padding: 2px;
+}
+.right-itemr {
   background-color: #cccccc;
+}
+.right-itemr svg {
+  padding: 2px;
 }
 .aligns svg:hover {
   padding: 2px;
   background-color: #cccccc;
 }
-.list{
+.aligns button {
+  border: none;
+}
+.aligns button:hover {
+  background-color: #cccccc;
+}
+.list {
   margin-left: 5px;
 }

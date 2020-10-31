@@ -12,6 +12,7 @@ function Aligns(props) {
   return (
     <div className="row  p-2 aligns">
       <Lineleft
+        typeStyle={props.typeStyle}
         itemsLine={itemsLine}
         setitemsLine={setitemsLine}
         a={"left"}

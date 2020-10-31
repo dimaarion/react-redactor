@@ -1,29 +1,33 @@
 .headers {
-    display: inline-flex;
-    margin-top: 8px;
-    margin-left: 35px;
-    margin-right: 5px;
+  display: inline-flex;
+  margin-top: 8px;
+  margin-left: 35px;
+  margin-right: 5px;
 }
-.headers svg{
-margin-right: 20px;
+.headers button {
+  margin-right: 8px;
 }
-.headers svg:hover{
+.headers svg:hover {
+  padding: 2px;
+  background-color: #cccccc;
+}
+.headers button:hover {
+  background-color: #cccccc;
+}
+.H11 {
+  padding: 2px;
+  background-color: #cccccc;
+}
 
-padding: 2px;
-background-color: #cccccc;
+.H22 {
+  background-color: #cccccc;
+  padding: 2px;
 }
-.H11{
-     
-     padding: 2px;
-     background-color: #cccccc;
-     
+.H33 {
+  background-color: #cccccc;
+  padding: 2px;
 }
-
-.H22{
-   background-color: #cccccc;
-    padding: 2px;
-}
-.H33{
-    background-color: #cccccc;
-    padding: 2px;
+.P6 {
+  padding: 2px;
+  background-color: #cccccc;
 }

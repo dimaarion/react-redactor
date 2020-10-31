@@ -15,6 +15,24 @@ import CloseControl from "./CloseControl";
 import LinkRemove from "./LinkRemove";
 import Table from "./Table";
 
+function typeStyle(t, g, o) {
+  if (o === "button") {
+    if (t === g) {
+      return { backgroundColor: "#cccccc", border: "none" };
+    } else {
+      return { border: "none" };
+    }
+  } else if (o === "svg") {
+    if (t === g) {
+      return { backgroundColor: "#cccccc" };
+    } else {
+      return {};
+    }
+  } else {
+    return {};
+  }
+}
+
 function Panel(props) {
   const [state, setstate] = useState({ link: false });
   return (
@@ -35,6 +53,7 @@ function Panel(props) {
           items={props.items}
         />
         <Headers
+          typeStyle={typeStyle}
           tegs={props.tegs}
           gTags={props.gTags}
           izmtegs={props.izmtegs}
@@ -44,6 +63,7 @@ function Panel(props) {
           items={props.items}
         />
         <Aligns
+          typeStyle={typeStyle}
           align={props.align}
           aligns={props.aligns}
           style={{ height: "auto" }}

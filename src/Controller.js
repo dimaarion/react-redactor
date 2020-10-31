@@ -56,7 +56,10 @@ function Controller(props) {
 
   function getStart(baseSelector) {
     let bSelector = document.getElementsByClassName(baseSelector)[0];
-    bSelector.innerHTML = "<div class='strStart'>text</div>";
+    if (bSelector.innerHTML === "") {
+      bSelector.innerHTML = "<div class='strStart'>text</div>";
+    }
+
     let strStart = document.getElementsByClassName("strStart");
     strStart = Array.from(strStart);
     function integer(e) {
@@ -313,6 +316,8 @@ function Controller(props) {
       "img",
       "h2",
       "h3",
+      "h4",
+      "h5",
       "b",
       "i",
       "u",
@@ -373,6 +378,7 @@ function Controller(props) {
       Object.values(x.getElementsByTagName("img")).map(
         (el, ix) =>
           (el.onclick = function (e) {
+            document.execCommand("enableObjectResizing", false, null);
             setitemsElT(ix);
             setcildTeg(e.target.tagName);
             setimgWidth(e.target.width);
@@ -438,14 +444,14 @@ function Controller(props) {
 
   return (
     <div className="contentDtext">
-      <button
-        onClick={() => document.execCommand("createLink", false, "gggggggg")}
-        className="test"
-      >
-        td
-      </button>
-
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
+        <div
+          onClick={() =>
+            document.execCommand("enableObjectResizing", false, null)
+          }
+        >
+          test
+        </div>
         <div
           className="row container text-right p-4  panel"
           style={sizes === true ? { position: "absolute" } : panelStyle}
