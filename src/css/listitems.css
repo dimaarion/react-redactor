@@ -1,4 +1,21 @@
+.listItems button:hover {
+  background-color: #cccccc;
+}
 .listItems svg:hover {
   padding: 2px;
+}
+.listType {
+  margin-top: 0px;
+}
+.listType button {
+  font-size: 20pt;
+  text-align: center;
+  height: 32px;
+}
+.listType button div {
+  margin-top: -11px;
+}
+.listType button:hover {
+  font-size: 18pt;
   background-color: #cccccc;
 }

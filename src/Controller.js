@@ -38,9 +38,16 @@ function Controller(props) {
   const [urlRemove, seturlRemove] = useState("");
   const [gTags, setgTags] = useState({});
 
-  function ititalTegs() {
+  function ititalTegs(bs = false) {
     let text_block = document.querySelector("." + baseSelector);
-    return Object.values(text_block.children);
+    function textChildren(text_block) {
+      return Object.values(text_block.children);
+    }
+    if (bs === true) {
+      return text_block;
+    } else {
+      return textChildren(text_block);
+    }
   }
 
   function innerTextBox() {
@@ -63,24 +70,20 @@ function Controller(props) {
     ititalTegs().map((x) => x.setAttribute("data-d", "1" + c++));
   }
   function izmtegs(ititalTegs, textbl, tegs, items) {
-    let dataD = " data-d=1" + items;
-    let brackedL = "<";
-    let brackedR = ">";
-    let brackedS = "</";
+    let dataD = "1" + items;
+    let oldteg = document.createElement(textbl);
+    let bs = ititalTegs(true);
+    function att(o, d) {
+      return o.setAttribute("data-d", d);
+    }
+    function rCild(b, n, d) {
+      b.replaceChild(n, d);
+      n.innerHTML = d.innerHTML;
+    }
     ititalTegs()
       .filter((f, i) => i === items)
-      .map(
-        (s) =>
-          (s.outerHTML =
-            brackedL +
-            textbl +
-            dataD +
-            brackedR +
-            s.innerHTML +
-            brackedS +
-            textbl +
-            brackedR)
-      );
+      .map((s) => rCild(bs, oldteg, s));
+    att(oldteg, dataD);
   }
   function updateElements(
     ititalTegs,
@@ -120,33 +123,23 @@ function Controller(props) {
   }
 
   function listItem(ititalTegs, items, list, subList) {
-    let c = 0;
-    let dataD = " data-d=1" + items;
-    let dataS = " data-s=2";
-    let brackedL = "<";
-    let brackedR = " >";
-    let brackedS = "</";
+    let oldteg = document.createElement(list);
+    let dataD = "1" + items;
+    let bs = ititalTegs(true);
+    function att(o, d) {
+      return o.setAttribute("data-d", d);
+    }
+    function rCild(b, n, d) {
+      let li = document.createElement(subList);
+      document.body.appendChild(li);
+      b.replaceChild(n, d);
+      n.appendChild(li);
+      li.innerHTML = d.innerHTML;
+    }
     ititalTegs()
       .filter((x, i) => i === items)
-      .map(
-        (p) =>
-          (p.outerHTML =
-            brackedL +
-            list +
-            dataD +
-            brackedR +
-            brackedL +
-            subList +
-            dataS +
-            brackedR +
-            p.innerHTML +
-            brackedS +
-            subList +
-            brackedR +
-            brackedS +
-            list +
-            brackedR)
-      );
+      .map((p) => rCild(bs, oldteg, p));
+    att(oldteg, dataD);
   }
 
   function createTable(bas, it) {
@@ -156,29 +149,51 @@ function Controller(props) {
     document.body.appendChild(div);
     document.body.appendChild(tb);
     tb.className = `tb${it} table table-hover`;
+    div.className = "divTable";
     Array.from(bs.children)
       .filter((f, i) => i === it)
       .map((x) => x.appendChild(div));
     div.appendChild(tb);
+    let removeDiv = document.createElement("div");
+
+    function delTb(e) {
+      document.body.appendChild(removeDiv);
+      div.insertBefore(removeDiv, tb);
+      removeDiv.className = "removeDiv";
+      removeDiv.innerHTML = "<h5>&times;</h5>";
+      removeDiv.title = "Удалить таблицу";
+      removeDiv.addEventListener(
+        "click",
+        () => {
+          div.remove();
+        },
+        false
+      );
+    }
+    function removeDelTb() {
+      removeDiv.remove();
+    }
+    tb.addEventListener("mouseover", delTb, false);
+    tb.addEventListener("mouseut", removeDelTb, false);
   }
 
-  function createTr(bs, it, trn) {
+  function createTr(bs, it, script, trn) {
     let tb = document
       .getElementsByClassName(bs)[0]
       .getElementsByClassName("tb" + it)[0];
     for (let i = 0; i < trn; i++) {
       let tr = document.createElement("tr");
       tr = document.body.appendChild(tr);
-      tr.className = "tableTr" + i;
+      tr.className = "tableTr" + i + it + script[it];
       tb.appendChild(tr);
     }
   }
 
-  function createTd(bs, trn, tdn) {
+  function createTd(bs, it, script, trn, tdn) {
     for (let i = 0; i < trn; i++) {
       let tr = document
         .getElementsByClassName(bs)[0]
-        .getElementsByClassName("tableTr" + i)[0];
+        .getElementsByClassName("tableTr" + i + it + script[it])[0];
       for (let j = 0; j < tdn; j++) {
         let td = document.createElement("td");
         td = document.body.appendChild(td);
@@ -196,16 +211,9 @@ function Controller(props) {
     selectedTextAncor = 0,
     selectedTextFocus = 0
   ) {
-    if (selectedtext.length > 0) {
-      ititalTegs()
-        .filter((f, i) => i === items)
-        .map(
-          (x, i) =>
-            (x.innerHTML = x.innerHTML.replace(
-              selectedtext,
-              "<" + teg + ">" + selectedtext + "</" + teg + ">"
-            ))
-        );
+    if (teg === "B" || teg === "b") {
+    }
+    if (teg === "I" || teg === "i") {
     }
   }
 
@@ -430,8 +438,8 @@ function Controller(props) {
 
   return (
     <div className="contentDtext">
-      <div onClick={() => createTd(baseSelector, items)}>td</div>
-      <div onClick={() => createTr(baseSelector, items)}>tr</div>
+      <div className="test">td</div>
+
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
         <div
           className="row container text-right p-4  panel"
