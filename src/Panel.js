@@ -53,6 +53,7 @@ function Panel(props) {
           items={props.items}
         />
         <Headers
+          find={props.find}
           typeStyle={typeStyle}
           tegs={props.tegs}
           gTags={props.gTags}

@@ -5,7 +5,7 @@ function Htype(props) {
     <button
       style={props.typeStyle(props.tegsLocal, props.t, "button", props.s)}
       onClick={() => {
-        props.izmtegs(props.ititalTegs, props.t, "t", props.items);
+        props.izmtegs(props.ititalTegs, props.t, props.find, props.items);
         props.settegsLocal(props.t);
       }}
     >

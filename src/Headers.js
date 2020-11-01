@@ -92,6 +92,7 @@ function Headers(props) {
             svg={x.svg}
             t={x.t}
             n={x.n}
+            find={props.find}
             tegsLocal={tegsLocal}
             settegsLocal={settegsLocal}
             izmtegs={props.izmtegs}

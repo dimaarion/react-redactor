@@ -37,7 +37,7 @@ function Controller(props) {
   const [eY, seteY] = useState(0);
   const [urlRemove, seturlRemove] = useState("");
   const [gTags, setgTags] = useState({});
-
+  const [find, setfind] = useState({});
   function ititalTegs(bs = false) {
     let text_block = document.querySelector("." + baseSelector);
     function textChildren(text_block) {
@@ -76,17 +76,26 @@ function Controller(props) {
     let dataD = "1" + items;
     let oldteg = document.createElement(textbl);
     let bs = ititalTegs(true);
+    if (tegs) {
+      if (tegs.className !== "text_block") {
+        bs.replaceChild(oldteg, tegs);
+        oldteg.innerHTML = tegs.innerHTML;
+        console.log(tegs);
+      }
+    }
+
     function att(o, d) {
       return o.setAttribute("data-d", d);
     }
     function rCild(b, n, d) {
-      b.replaceChild(n, d);
-      n.innerHTML = d.innerHTML;
+      console.log(b);
+      if (b.className !== "text_block") {
+        //b.replaceChild(n, b.children);
+      }
     }
-    ititalTegs()
-      .filter((f, i) => i === items)
-      .map((s) => rCild(bs, oldteg, s));
-    att(oldteg, dataD);
+
+    // rCild(bs, oldteg, tegs);
+    // att(oldteg, dataD);
   }
   function updateElements(
     ititalTegs,
@@ -339,7 +348,6 @@ function Controller(props) {
     );
   }
   useEffect(() => {
-    clicEvEl(setgTags);
     getStart(baseSelector);
   }, []);
 
@@ -502,6 +510,7 @@ function Controller(props) {
             baseSelector={baseSelector}
             createTr={createTr}
             createTd={createTd}
+            find={find}
           />
         </div>
 
@@ -509,8 +518,8 @@ function Controller(props) {
           style={{ marginTop: 250 + "px", height: "100%" }}
           className={baseSelector}
           contentEditable={true}
-          onClick={() => {
-            clicEvEl(setgTags);
+          onClick={(e) => {
+            setfind(e.target);
           }}
           onKeyPress={(e) => {
             updateElements(
@@ -526,7 +535,7 @@ function Controller(props) {
               setalign
             );
             settextBox(innerTextBox());
-            clicEvEl(setgTags);
+
             elMoveUpDown(ititalTegs, baseSelector);
             //  startEl(baseSelector);
           }}
