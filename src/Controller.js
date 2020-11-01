@@ -79,21 +79,19 @@ function Controller(props) {
     let bs = ititalTegs(true);
 
     if (tegs.className !== "text_block") {
-      rCild(bs, oldteg, tegs);
+      rCild(bs, oldteg, tegs, textbl);
       att(oldteg, dataD);
     }
 
     function att(o, d) {
       return o.setAttribute("data-d", d);
     }
-    function rCild(b, o, t) {
+    function rCild(b, o, t, te) {
       console.log(t.parentNode);
       if (t.parentNode) {
         console.log(t.parentNode.tagName);
         if (t.parentNode.tagName === "TR") {
-          t.appendChild(o);
-          o.innerHTML = t.innerHTML;
-          //t.innerText = "";
+          t.innerHTML = "<" + te + ">" + t.innerHTML + "</" + te + ">";
         } else {
           t.parentNode.replaceChild(o, t);
 
