@@ -38,6 +38,7 @@ function Controller(props) {
   const [urlRemove, seturlRemove] = useState("");
   const [gTags, setgTags] = useState({});
   const [find, setfind] = useState({});
+  const [active, setActive] = useState(false);
   function ititalTegs(bs = false) {
     let text_block = document.querySelector("." + baseSelector);
     function textChildren(text_block) {
@@ -72,25 +73,32 @@ function Controller(props) {
     let c = 0;
     ititalTegs().map((x) => x.setAttribute("data-d", "1" + c++));
   }
-  function izmtegs(ititalTegs, textbl, tegs, items) {
+  function izmtegs(ititalTegs, textbl, tegs, items, options) {
     let dataD = "1" + items;
     let oldteg = document.createElement(textbl);
     let bs = ititalTegs(true);
-    if (tegs) {
-      if (tegs.className !== "text_block") {
-        bs.replaceChild(oldteg, tegs);
-        oldteg.innerHTML = tegs.innerHTML;
-        console.log(tegs);
-      }
+
+    if (tegs.className !== "text_block") {
+      rCild(bs, oldteg, tegs);
+      att(oldteg, dataD);
     }
 
     function att(o, d) {
       return o.setAttribute("data-d", d);
     }
-    function rCild(b, n, d) {
-      console.log(b);
-      if (b.className !== "text_block") {
-        //b.replaceChild(n, b.children);
+    function rCild(b, o, t) {
+      console.log(t.parentNode);
+      if (t.parentNode) {
+        console.log(t.parentNode.tagName);
+        if (t.parentNode.tagName === "TR") {
+          t.appendChild(o);
+          o.innerHTML = t.innerHTML;
+          //t.innerText = "";
+        } else {
+          t.parentNode.replaceChild(o, t);
+
+          o.innerHTML = t.innerHTML;
+        }
       }
     }
 
@@ -511,6 +519,8 @@ function Controller(props) {
             createTr={createTr}
             createTd={createTd}
             find={find}
+            setActive={setActive}
+            active={active}
           />
         </div>
 
@@ -520,6 +530,7 @@ function Controller(props) {
           contentEditable={true}
           onClick={(e) => {
             setfind(e.target);
+            setActive(false);
           }}
           onKeyPress={(e) => {
             updateElements(

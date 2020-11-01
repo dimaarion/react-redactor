@@ -5,8 +5,15 @@ function Htype(props) {
     <button
       style={props.typeStyle(props.tegsLocal, props.t, "button", props.s)}
       onClick={() => {
-        props.izmtegs(props.ititalTegs, props.t, props.find, props.items);
+        props.izmtegs(
+          props.ititalTegs,
+          props.t,
+          props.find,
+          props.items,
+          props.active
+        );
         props.settegsLocal(props.t);
+        props.setActive(true);
       }}
     >
       <svg

@@ -53,6 +53,8 @@ function Panel(props) {
           items={props.items}
         />
         <Headers
+          setActive={props.setActive}
+          active={props.active}
           find={props.find}
           typeStyle={typeStyle}
           tegs={props.tegs}

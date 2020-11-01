@@ -89,6 +89,8 @@ function Headers(props) {
       <div>
         {H.map((x) => (
           <Htype
+            setActive={props.setActive}
+            active={props.active}
             svg={x.svg}
             t={x.t}
             n={x.n}
