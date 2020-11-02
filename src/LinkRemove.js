@@ -7,29 +7,23 @@ function LinkRemove(props) {
   return (
     <div className="col-sm text-right">
       <Inputs
-        divStyle = {{ position: "absolute" }}
+        name="Ссылка"
+        divStyle={{ position: "absolute" }}
         type="text"
-        col="sm-8"
-        value={props.gTags.link}
+        col="sm-4"
         c="link"
         cange={setlinks}
       />
-      <div
+      <button
+        className="closeLinck"
         onClick={() => {
-          props.types(
-            props.ititalTegs,
-            props.items,
-            props.selectedtext,
-            'a href="' + links + '"',
-            props.selectedTextAncor,
-            props.selectedTextFocus
-          );
+          props.types(links);
           props.setstate({ link: false });
         }}
-        style={{ cursor: "pointer" }}
+        style={{ cursor: "pointer", border: "none" }}
       >
         ok
-      </div>
+      </button>
     </div>
   );
 }

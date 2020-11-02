@@ -58,7 +58,8 @@ function Controller(props) {
   function getStart(baseSelector) {
     let bSelector = document.getElementsByClassName(baseSelector)[0];
     if (bSelector.innerHTML === "") {
-      bSelector.innerHTML = "<div class='strStart'>text</div>";
+      bSelector.innerHTML =
+        "<div style = 'font-size:14pt;' class='strStart'>Текст</div>";
     }
 
     let strStart = document.getElementsByClassName("strStart");
@@ -71,26 +72,29 @@ function Controller(props) {
 
   function elMoveUpDown(ititalTegs, baseSelector) {
     let c = 0;
-    ititalTegs().map((x) => x.setAttribute("data-d", "1" + c++));
+    ititalTegs().map((x) => {
+      return x.setAttribute("data-d", "1" + c++), (x.style.fontSize = "14pt");
+    });
   }
-  function izmtegs(ititalTegs, textbl, tegs, items, options) {
+  function izmtegs(textbl, tegs, items) {
     let dataD = "1" + items;
     let oldteg = document.createElement(textbl);
-    let bs = ititalTegs(true);
-
     if (tegs.className !== "text_block") {
-      rCild(bs, oldteg, tegs, textbl);
+      rCild(oldteg, tegs, textbl);
       att(oldteg, dataD);
     }
 
     function att(o, d) {
-      return o.setAttribute("data-d", d);
+      o.setAttribute("data-d", d);
+      o.style.fontSize = "auto";
     }
-    function rCild(b, o, t, te) {
-      console.log(t.parentNode);
+    function rCild(o, t, te) {
       if (t.parentNode) {
-        console.log(t.parentNode.tagName);
-        if (t.parentNode.tagName === "TR") {
+        if (
+          t.parentNode.tagName === "TR" ||
+          t.parentNode.tagName === "UL" ||
+          t.parentNode.tagName === "OL"
+        ) {
           t.innerHTML = "<" + te + ">" + t.innerHTML + "</" + te + ">";
         } else {
           t.parentNode.replaceChild(o, t);
@@ -99,9 +103,6 @@ function Controller(props) {
         }
       }
     }
-
-    // rCild(bs, oldteg, tegs);
-    // att(oldteg, dataD);
   }
   function updateElements(
     ititalTegs,
@@ -143,20 +144,25 @@ function Controller(props) {
   function listItem(ititalTegs, items, list, subList) {
     let oldteg = document.createElement(list);
     let dataD = "1" + items;
-    let bs = ititalTegs(true);
+
     function att(o, d) {
       return o.setAttribute("data-d", d);
     }
-    function rCild(b, n, d) {
-      let li = document.createElement(subList);
-      document.body.appendChild(li);
-      b.replaceChild(n, d);
-      n.appendChild(li);
-      li.innerHTML = d.innerHTML;
+    function rCild(b, n, l, s) {
+      if (b.parentNode) {
+        if (b.tagName === "LI" || b.tagName === "OL") {
+          b.innerHTML =
+            "<" + l + "><" + s + ">" + b.innerHTML + "</" + s + "></" + l + ">";
+        } else {
+          b.parentNode.replaceChild(n, b);
+          let li = document.body.appendChild(document.createElement(s));
+          n.appendChild(li);
+          li.innerHTML = b.innerHTML;
+        }
+      }
     }
-    ititalTegs()
-      .filter((x, i) => i === items)
-      .map((p) => rCild(bs, oldteg, p));
+
+    rCild(ititalTegs, oldteg, list, subList);
     att(oldteg, dataD);
   }
 
@@ -221,24 +227,12 @@ function Controller(props) {
     }
   }
 
-  function types(
-    ititalTegs,
-    items,
-    selectedtext,
-    teg,
-    selectedTextAncor = 0,
-    selectedTextFocus = 0
-  ) {
-    if (teg === "B" || teg === "b") {
-    }
-    if (teg === "I" || teg === "i") {
-    }
+  function types(l) {
+    document.execCommand("createLink", false, l);
   }
 
   function fonts(ititalTegs, items, fontPt) {
-    ititalTegs()
-      .filter((f, i) => i === items)
-      .map((x) => (x.style.fontSize = fontPt + "pt"));
+    return (ititalTegs.style.fontSize = fontPt + "pt");
   }
   function fontsFm(ititalTegs, items, fontFm) {
     ititalTegs()
@@ -324,35 +318,7 @@ function Controller(props) {
       setwindSize(window.innerWidth);
     };
   }
-  function clicEvEl(setgTags) {
-    [
-      "div",
-      "h1",
-      "img",
-      "h2",
-      "h3",
-      "h4",
-      "h5",
-      "b",
-      "i",
-      "u",
-      "ul",
-      "li",
-      "ol",
-      "s",
-      "em",
-      "strong",
-      "p"
-    ].map((x) =>
-      Array.from(document.getElementsByClassName(baseSelector)).map((x2) =>
-        Array.from(x2.getElementsByTagName(x)).map((x3) =>
-          x3.addEventListener("click", (e) => {
-            setgTags({ teg: e.target.tagName, link: e.target.href });
-          })
-        )
-      )
-    );
-  }
+
   useEffect(() => {
     getStart(baseSelector);
   }, []);
@@ -459,13 +425,6 @@ function Controller(props) {
   return (
     <div className="contentDtext">
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
-        <div
-          onClick={() =>
-            document.execCommand("enableObjectResizing", false, null)
-          }
-        >
-          test
-        </div>
         <div
           className="row container text-right p-4  panel"
           style={sizes === true ? { position: "absolute" } : panelStyle}

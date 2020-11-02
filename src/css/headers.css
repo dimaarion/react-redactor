@@ -14,20 +14,20 @@
 .headers button:hover {
   background-color: #cccccc;
 }
-.H11 {
-  padding: 2px;
+.head-button-H1,
+.head-button-H2,
+.head-button-H3,
+.head-button-H4,
+.head-button-H5,
+.head-button-P {
   background-color: #cccccc;
 }
-
-.H22 {
-  background-color: #cccccc;
-  padding: 2px;
-}
-.H33 {
-  background-color: #cccccc;
-  padding: 2px;
-}
-.P6 {
+.head-button-H1 svg,
+.head-button-H2 svg,
+.head-button-H3 svg,
+.head-button-H4 svg,
+.head-button-H5 svg,
+.head-button-P svg {
   padding: 2px;
   background-color: #cccccc;
 }

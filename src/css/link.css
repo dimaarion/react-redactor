@@ -1,5 +1,8 @@
-.link{
-    position: absolute;
-    right: 0px;
-    margin-top: -80px;
+.link {
+  position: absolute;
+  right: 0px;
+  margin-top: -80px;
+}
+.closeLinck:hover {
+  background-color: #cccccc;
 }

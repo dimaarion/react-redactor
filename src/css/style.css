@@ -17,6 +17,16 @@
 }
 .sizes {
   cursor: pointer;
+  margin-left: 15px;
+}
+.sizes button {
+  border: none;
+}
+.sizes button:hover {
+  background-color: #cccccc;
+}
+.sizes svg:hover {
+  padding: 2px;
 }
 .panel {
   border-bottom: solid 1px #cccccc;
@@ -25,6 +35,7 @@
   right: 0px;
   margin: auto;
   max-width: 1110px;
+  z-index: 9000;
 }
 .panel .images {
   cursor: pointer;
@@ -65,4 +76,8 @@
 }
 .imgRemove input {
   font-size: large;
+}
+.controlPanel {
+  z-index: 9000;
+  background-color: #ffffff;
 }

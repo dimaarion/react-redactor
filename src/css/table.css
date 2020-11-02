@@ -22,3 +22,14 @@
 .divTable:hover .removeDiv {
   display: block;
 }
+.tableButton {
+  border: none;
+  margin-right: 30px;
+  margin-left: 15px;
+}
+.tableButton:hover {
+  background-color: #cccccc;
+}
+.tableButton:hover svg {
+  padding: 2px;
+}

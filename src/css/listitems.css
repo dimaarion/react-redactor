@@ -1,7 +1,9 @@
+.listItems button {
+  border: none;
+}
 .listItems button:hover {
   background-color: #cccccc;
 }
 .listItems svg:hover {
   padding: 2px;
 }
-
