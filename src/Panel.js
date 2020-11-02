@@ -159,31 +159,30 @@ function Panel(props) {
           />
         </div>
       </div>
-     
-        <ImgRemove
-          imgWH={props.imgWH}
-          imgWidth={props.imgWidth}
-          imgHeight={props.imgHeight}
-          imgPadding={props.imgPadding}
-          ititalTegs={props.ititalTegs}
-          items={props.items}
-          setimgdisplay={props.setimgdisplay}
-          setimgFloat={props.setimgFloat}
-          setalign={props.setalign}
-          setimgPadding={props.setimgPadding}
-          setimgWidth={props.setimgWidth}
-          setimgHeight={props.setimgHeight}
-          setimgurls={props.setimgurls}
-          imgurls={props.imgurls}
-          eX={props.eX}
-          eY={props.eY}
-          seturlLen={props.seturlLen}
-          urlLen={props.urlLen}
-          imgFloat={props.imgFloat}
-        />
-      
-      
-    
+
+      <ImgRemove
+        find={props.find}
+        imgWH={props.imgWH}
+        imgWidth={props.imgWidth}
+        imgHeight={props.imgHeight}
+        imgPadding={props.imgPadding}
+        ititalTegs={props.ititalTegs}
+        items={props.items}
+        setimgdisplay={props.setimgdisplay}
+        setimgFloat={props.setimgFloat}
+        setalign={props.setalign}
+        setimgPadding={props.setimgPadding}
+        setimgWidth={props.setimgWidth}
+        setimgHeight={props.setimgHeight}
+        setimgurls={props.setimgurls}
+        imgurls={props.imgurls}
+        eX={props.eX}
+        eY={props.eY}
+        seturlLen={props.seturlLen}
+        urlLen={props.urlLen}
+        imgFloat={props.imgFloat}
+      />
+
       {state.link === true || props.gTags.link ? (
         <LinkRemove
           setstate={setstate}

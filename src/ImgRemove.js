@@ -6,7 +6,9 @@ function ImgRemove(props) {
   useEffect(() => {
     setstate(props.imgurls);
   }, [props.imgurls]);
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log(props.find.tagName);
+  }, []);
   return (
     <div
       className="imgRemove"
