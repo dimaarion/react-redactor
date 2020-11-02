@@ -159,7 +159,7 @@ function Panel(props) {
           />
         </div>
       </div>
-      {props.imgdisplay === "block" && props.cildTeg === "IMG" ? (
+     
         <ImgRemove
           imgWH={props.imgWH}
           imgWidth={props.imgWidth}
@@ -181,9 +181,9 @@ function Panel(props) {
           urlLen={props.urlLen}
           imgFloat={props.imgFloat}
         />
-      ) : (
-        ""
-      )}
+      
+      
+    
       {state.link === true || props.gTags.link ? (
         <LinkRemove
           setstate={setstate}
