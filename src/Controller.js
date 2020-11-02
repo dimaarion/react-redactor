@@ -358,31 +358,31 @@ function Controller(props) {
       Object.values(x.getElementsByTagName("img")).map(
         (el, ix) =>
           (el.onclick = function (e) {
-            document.execCommand("enableObjectResizing", false, null);
-            setitemsElT(ix);
-            setcildTeg(e.target.tagName);
-            setimgWidth(e.target.width);
-            setimgHeight(e.target.height);
-            setimgPadding(
-              (e.target.style.padding = e.target.style.padding + "px")
-            );
-            seteX(e.x);
-            seteY(e.y);
-            setimgurls(
-              "/" +
-                e.target.src
-                  .split("/")
-                  .filter((f, i) => i > 2)
-                  .join("/")
-            );
-            e.target.src =
-              "/" +
-              e.target.src
-                .split("/")
-                .filter((f, i) => i > 2)
-                .join("/");
-            setimgFloat(e.target.style.float);
-            setimgdisplay("block");
+            //     document.execCommand("enableObjectResizing", false, null);
+            // setitemsElT(ix);
+            // setcildTeg(e.target.tagName);
+            //  setimgWidth(e.target.width);
+            //  setimgHeight(e.target.height);
+            //  setimgPadding(
+            //   (e.target.style.padding = e.target.style.padding + "px")
+            //  );
+            // seteX(e.x);
+            // seteY(e.y);
+            //  setimgurls(
+            //  "/" +
+            //    e.target.src
+            //      .split("/")
+            //      .filter((f, i) => i > 2)
+            //      .join("/")
+            //  );
+            //  e.target.src =
+            //    "/" +
+            ///    e.target.src
+            //      .split("/")
+            //      .filter((f, i) => i > 2)
+            //      .join("/");
+            //  setimgFloat(e.target.style.float);
+            //   setimgdisplay("block");
           })
       )
     );

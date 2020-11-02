@@ -1,102 +1,153 @@
 import React, { useState, useEffect } from "react";
-import Inputs from "./Inputs";
+
 import FloatImage from "./FloatImage";
 function ImgRemove(props) {
-  const [state, setstate] = useState("");
+  const [urlImj, seturlImj] = useState("");
+  const [imgWidthR, setimgWidthR] = useState("");
+  const [imgHeightR, setimgHeightR] = useState("");
+  const [imgPaddingR, setimgPaddingR] = useState("");
+  const [imgFloatR, setimgFloatR] = useState("");
+  const [close, setclose] = useState("none");
+  function imgUrlR(src) {
+    if (src) {
+      return src;
+    } else {
+      return "Нет изображения";
+    }
+  }
+
+  function imgRemove(w, options = "px") {
+    if (w) {
+      let s = w.toString();
+      return s + options;
+    } else {
+      return "auto";
+    }
+  }
+
   useEffect(() => {
-    setstate(props.imgurls);
-  }, [props.imgurls]);
+    seturlImj(imgUrlR(props.find.src));
+    setimgWidthR(imgRemove(props.find.width));
+    setimgHeightR(imgRemove(props.find.height));
+    setclose(props.find.tagName);
+    setimgPaddingR(
+      imgRemove(props.find.style !== undefined ? props.find.style.padding : "")
+    );
+    setimgFloatR(
+      imgRemove(
+        props.find.style !== undefined ? props.find.style.float : "",
+        " "
+      )
+    );
+  }, [props.find]);
   useEffect(() => {
-    console.log(props.find.tagName);
-  }, []);
-  return (
-    <div
-      className="imgRemove"
-      style={{
-        marginLeft: props.eX - 400 + "px",
-        marginTop: props.eY - 200 + "px"
-      }}
-    >
-      <div className="row">
-        <div className="col-sm">
-          <h5 className="text-left pl-3">Редактирование изображения</h5>
-        </div>
-        <div className="col-sm text-right mt-1">
-          <svg
-            onClick={() => {
-              props.setimgdisplay("none");
-              Array.from(
-                document.getElementsByTagName("img") !== undefined
-                  ? document.getElementsByTagName("img")
-                  : [1, 2]
-              ).filter(
-                (f) =>
-                  "/" +
-                    f.src
-                      .split("/")
-                      .filter((f, i) => i > 2)
-                      .join("/") ===
-                  props.imgurls
-              )[1].src = state;
-            }}
-            width="2em"
-            viewBox="0 0 16 16"
-            className="bi bi-x"
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+    seturlImj(urlImj);
+  }, [urlImj]);
+  useEffect(() => {
+    setimgWidthR(imgWidthR);
+  }, [imgWidthR]);
+  useEffect(() => {
+    setimgHeightR(imgHeightR);
+  }, [imgHeightR]);
+  useEffect(() => {
+    setimgPaddingR(imgPaddingR);
+  }, [imgPaddingR]);
+  useEffect(() => {
+    setimgPaddingR(imgFloatR);
+  }, [imgFloatR]);
+  let wtp = { width: "100px" };
+  let u = { width: "400px" };
+  if (close === "IMG") {
+    return (
+      <table className="imgRemove">
+        <tr>
+          <td className="text-left">
+            url
+            <input
+              className="form-control"
+              style={u}
+              type="text"
+              defaultValue={urlImj}
+              onChange={(e) => seturlImj(e.target.value)}
             />
-          </svg>
-        </div>
-      </div>
-      <Inputs
-        title={props.imgurls}
-        name="Путь к изображению"
-        style={{ textAlign: "center" }}
-        value={props.imgurls}
-        id="width"
-        col="sm"
-        c="text-center"
-        cange={setstate}
-      />
-      <div className="col-sm">
-        <Inputs
-          value={props.imgWidth + "px"}
-          name="Ширина"
-          style={{ textAlign: "center" }}
-          id="width"
-          col="sm"
-          c="text-center"
-          cange={props.setimgWidth}
-        />
-        <Inputs
-          value={props.imgHeight + "px"}
-          name="Высота"
-          style={{ textAlign: "center" }}
-          id="height"
-          col="sm"
-          c="text-center"
-          cange={props.setimgHeight}
-        />
-        <Inputs
-          value={props.imgPadding.replace(/px/, "")}
-          style={{ textAlign: "center" }}
-          name="Отступ"
-          id="padding"
-          col="sm"
-          c="text-center"
-          cange={props.setimgPadding}
-        />
-        <FloatImage
-          setimgFloat={props.setimgFloat}
-          setalign={props.setalign}
-          imgFloat={props.imgFloat}
-        />
-      </div>
-    </div>
-  );
+          </td>
+          <td className="text-left">
+            Ширина
+            <input
+              className="form-control"
+              style={wtp}
+              type="text"
+              defaultValue={imgWidthR}
+              onChange={(e) => setimgWidthR(e.target.value)}
+            />
+          </td>
+          <td className="text-left">
+            Высота
+            <input
+              className="form-control"
+              style={wtp}
+              type="text"
+              defaultValue={imgHeightR}
+              onChange={(e) => setimgHeightR(e.target.value)}
+            />
+          </td>
+
+          <td className="text-left">
+            Отступ
+            <input
+              className="form-control"
+              style={wtp}
+              type="text"
+              defaultValue={imgPaddingR}
+              onChange={(e) => setimgPaddingR(e.target.value)}
+            />
+          </td>
+          <td>
+            <svg
+              onClick={() => setclose("none")}
+              width="2em"
+              viewBox="0 0 16 16"
+              className="bi bi-x"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+              />
+            </svg>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <FloatImage
+              setimgFloat={setimgFloatR}
+              setalign={props.setalign}
+              imgFloat={imgFloatR}
+            />
+          </td>
+
+          <td>
+            <button
+              onClick={() => {
+                if (props.find.style !== undefined) {
+                  props.find.src = urlImj;
+                  props.find.style.width = imgWidthR;
+                  props.find.style.height = imgHeightR;
+                  props.find.style.padding = imgPaddingR;
+                  props.find.style.float = imgFloatR;
+                }
+              }}
+              className="col-sm"
+            >
+              ok
+            </button>
+          </td>
+        </tr>
+      </table>
+    );
+  } else {
+    return <div></div>;
+  }
 }
 export default ImgRemove;

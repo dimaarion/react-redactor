@@ -24,6 +24,7 @@ function Inputs(props) {
         className={`form-control form-control-lg ${props.inputClass}`}
         type={t}
         placeholder={props.text}
+        onClick={(e) => props.cange(e.target.value)}
         onChange={(e) => props.cange(e.target.value)}
       />
     </div>
