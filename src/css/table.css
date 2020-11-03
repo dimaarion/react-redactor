@@ -2,7 +2,7 @@
   border: solid 1px #cccccc;
 }
 .tableRedactor {
-  position: fixed;
+  position: absolute;
   background-color: #ffffff;
   z-index: 8000;
 }
