@@ -104,7 +104,7 @@ function ImgRemove(props) {
           </td>
           <td>
             <svg
-              onClick={() => setclose("none")}
+              onClick={() => { setclose("none"); props.setActive((props.active === false) ? true : false);}}
               width="2em"
               viewBox="0 0 16 16"
               className="bi bi-x"
@@ -129,6 +129,7 @@ function ImgRemove(props) {
 
           <td>
             <button
+              type="button"
               onClick={() => {
                 if (props.find.style !== undefined) {
                   props.find.src = urlImj;
@@ -136,6 +137,7 @@ function ImgRemove(props) {
                   props.find.style.height = imgHeightR;
                   props.find.style.padding = imgPaddingR;
                   props.find.style.float = imgFloatR;
+                  props.setActive((props.active === false) ? true : false);
                 }
               }}
               className="col-sm"

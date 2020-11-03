@@ -2,9 +2,9 @@ import React from "react";
 function ClinerText(props) {
   return (
     <div className={props.class}>
-      <button>
+      <button type="button">
         <svg
-          onClick={() => props.cleanerTxt(props.ititalTegs, props.items)}
+          onClick={() => { props.cleanerTxt(props.ititalTegs, props.items); props.setActive((props.active === false) ? true : false);}}
           xmlns="http://www.w3.org/2000/svg"
           width="210mm"
           height="297mm"

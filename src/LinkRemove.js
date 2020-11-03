@@ -15,10 +15,12 @@ function LinkRemove(props) {
         cange={setlinks}
       />
       <button
+        type="button"
         className="closeLinck"
         onClick={() => {
           props.types(links);
           props.setstate({ link: false });
+          props.setActive((props.active === false) ? true : false);
         }}
         style={{ cursor: "pointer", border: "none" }}
       >

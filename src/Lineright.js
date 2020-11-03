@@ -3,12 +3,13 @@ import React from "react";
 function Lineright(props) {
   return (
     <div className="col-sm text-left">
-      <button className={"bi bi-justify-left " + props.itemsLine + "-itemr"}>
+      <button type="button" className={"bi bi-justify-left " + props.itemsLine + "-itemr"}>
         <svg
           style={props.style}
           onClick={() => {
             props.aligns(props.ititalTegs, props.items, props.a);
             props.setitemsLine(props.a);
+            props.setActive((props.active === false) ? true : false);
           }}
           width="2em"
           viewBox="0 0 16 16"

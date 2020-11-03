@@ -4,12 +4,13 @@ function Bold(props) {
   return (
     <div className={props.class}>
       <button
+      type = "button"
         style={
           props.gTags.teg === "B"
             ? { backgroundColor: "#cccccc", border: "none" }
             : { border: "none" }
         }
-        onClick={() => document.execCommand("bold", false, null)}
+        onClick={() => { document.execCommand("bold", false, null); props.setActive((props.active === false) ? true : false);}}
       >
         <svg
           style={

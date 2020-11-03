@@ -25,6 +25,7 @@ function Fonts(props) {
                 onClick={() => {
                   props.fonts(props.find, props.items, x);
                   setnf(x);
+                  props.setActive((props.active === false) ? true : false);
                 }}
               >
                 {x}

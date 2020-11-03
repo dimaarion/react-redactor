@@ -1,7 +1,7 @@
 import React from "react";
 function Sizeminus(props) {
   return (
-    <button>
+    <button type="button">
       <svg
         width="2em"
         viewBox="0 0 16 16"

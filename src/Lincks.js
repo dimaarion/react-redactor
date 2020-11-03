@@ -3,7 +3,7 @@ import React from "react";
 function Lincks(props) {
   return (
     <div className={props.class}>
-      <button>
+      <button type="button">
         <svg
           style={
             props.gTags.teg === "A"
@@ -12,6 +12,7 @@ function Lincks(props) {
           }
           onClick={() => {
             props.setstate({ link: true });
+            props.setActive((props.active === false) ? true : false);
           }}
           width="2em"
           viewBox="0 0 16 16"

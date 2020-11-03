@@ -8,7 +8,8 @@ function CloseControl(props) {
       onClick={() => {
         return (
           props.setsizes(props.sizes === true ? false : true),
-          props.setpanelStyle({ position: "fixed", maxWidth: "100%" })
+          props.setpanelStyle({ position: "fixed", maxWidth: "100%" }),
+          props.setActive((props.active === false) ? true : false)
         );
       }}
     >

@@ -40,6 +40,8 @@ function Panel(props) {
     <div className="container controlPanel">
       <div className="row ">
         <FamelyF
+          setActive={props.setActive}
+          active={props.active}
           setfontFm={props.setfontFm}
           fontFm={props.fontFm}
           fontsFm={props.fontsFm}
@@ -47,6 +49,8 @@ function Panel(props) {
           items={props.items}
         />
         <Fonts
+          setActive={props.setActive}
+          active={props.active}
           find={props.find}
           fontPt={props.fontPt}
           setfontPt={props.setfontPt}
@@ -68,6 +72,8 @@ function Panel(props) {
           items={props.items}
         />
         <Aligns
+          setActive={props.setActive}
+          active={props.active}
           typeStyle={typeStyle}
           align={props.align}
           aligns={props.aligns}
@@ -78,6 +84,8 @@ function Panel(props) {
 
         <div className="row  p-2 list">
           <ListUl
+            setActive={props.setActive}
+            active={props.active}
             find={props.find}
             listItem={props.listItem}
             ititalTegs={props.ititalTegs}
@@ -85,6 +93,8 @@ function Panel(props) {
             class="col-sm text-left listItems"
           />
           <ListOl
+            setActive={props.setActive}
+            active={props.active}
             find={props.find}
             listItem={props.listItem}
             ititalTegs={props.ititalTegs}
@@ -93,12 +103,16 @@ function Panel(props) {
           />
 
           <Lincks
+            setActive={props.setActive}
+            active={props.active}
             class=" col-sm text-left listItems"
             gTags={props.gTags}
             setstate={setstate}
           />
 
           <Table
+            setActive={props.setActive}
+            active={props.active}
             baseSelector={props.baseSelector}
             items={props.items}
             createTd={props.createTd}
@@ -109,6 +123,8 @@ function Panel(props) {
 
         <div className="row p-2">
           <Bold
+            setActive={props.setActive}
+            active={props.active}
             gTags={props.gTags}
             selectedTextAncor={props.selectedTextAncor}
             selectedTextFocus={props.selectedTextFocus}
@@ -119,6 +135,8 @@ function Panel(props) {
             class="col-sm text-left listItems"
           />
           <Italic
+            setActive={props.setActive}
+            active={props.active}
             gTags={props.gTags}
             items={props.items}
             ititalTegs={props.ititalTegs}
@@ -127,6 +145,8 @@ function Panel(props) {
             class=" col-sm text-left listItems"
           />
           <Strikethrough
+            setActive={props.setActive}
+            active={props.active}
             gTags={props.gTags}
             items={props.items}
             ititalTegs={props.ititalTegs}
@@ -135,6 +155,8 @@ function Panel(props) {
             class=" col-sm text-left listItems"
           />
           <Underline
+            setActive={props.setActive}
+            active={props.active}
             gTags={props.gTags}
             items={props.items}
             ititalTegs={props.ititalTegs}
@@ -144,6 +166,8 @@ function Panel(props) {
           />
 
           <ClinerText
+            setActive={props.setActive}
+            active={props.active}
             cleanerTxt={props.cleanerTxt}
             items={props.items}
             ititalTegs={props.ititalTegs}
@@ -153,6 +177,8 @@ function Panel(props) {
           />
 
           <CloseControl
+            setActive={props.setActive}
+            active={props.active}
             setsizes={props.setsizes}
             sizes={props.sizes}
             setpanelStyle={props.setpanelStyle}
@@ -161,6 +187,8 @@ function Panel(props) {
       </div>
 
       <ImgRemove
+        setActive={props.setActive}
+        active={props.active}
         find={props.find}
         imgWH={props.imgWH}
         imgWidth={props.imgWidth}
@@ -185,6 +213,8 @@ function Panel(props) {
 
       {state.link === true || props.gTags.link ? (
         <LinkRemove
+          setActive={props.setActive}
+          active={props.active}
           setstate={setstate}
           gTags={props.gTags}
           setgTags={props.setgTags}

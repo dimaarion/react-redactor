@@ -12,6 +12,8 @@ function Aligns(props) {
   return (
     <div className="row  p-2 aligns">
       <Lineleft
+        setActive={props.setActive}
+        active={props.active}
         typeStyle={props.typeStyle}
         itemsLine={itemsLine}
         setitemsLine={setitemsLine}
@@ -23,6 +25,8 @@ function Aligns(props) {
         items={props.items}
       />
       <Linecenter
+        setActive={props.setActive}
+        active={props.active}
         itemsLine={itemsLine}
         setitemsLine={setitemsLine}
         a={"center"}
@@ -32,6 +36,8 @@ function Aligns(props) {
         items={props.items}
       />
       <Lineright
+        setActive={props.setActive}
+        active={props.active}
         itemsLine={itemsLine}
         setitemsLine={setitemsLine}
         a={"right"}

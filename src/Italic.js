@@ -4,12 +4,13 @@ function Italic(props) {
   return (
     <div className={props.class}>
       <button
+        type="button"
         style={
           props.gTags.teg === "I"
             ? { backgroundColor: "#cccccc", border: "none" }
             : { border: "none" }
         }
-        onClick={() => document.execCommand("italic", false, null)}
+        onClick={() => { document.execCommand("italic", false, null); props.setActive((props.active === false) ? true : false);}}
       >
         {" "}
         <svg

@@ -4,12 +4,13 @@ function Strikethrough(props) {
   return (
     <div className={props.class}>
       <button
+        type="button"
         style={
           props.gTags.teg === "S"
             ? { backgroundColor: "#cccccc", border: "none" }
             : { border: "none" }
         }
-        onClick={() => document.execCommand("strikeThrough", false, null)}
+        onClick={() => { document.execCommand("strikeThrough", false, null); props.setActive((props.active === false) ? true : false);}}
       >
         <svg
           style={

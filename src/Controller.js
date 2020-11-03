@@ -39,6 +39,10 @@ function Controller(props) {
   const [gTags, setgTags] = useState({});
   const [find, setfind] = useState({});
   const [active, setActive] = useState(false);
+
+
+
+
   function ititalTegs(bs = false) {
     let text_block = document.querySelector("." + baseSelector);
     function textChildren(text_block) {
@@ -354,52 +358,6 @@ function Controller(props) {
   );
 
   useEffect(() => {
-    ititalTegs().map((x) =>
-      Object.values(x.getElementsByTagName("img")).map(
-        (el, ix) =>
-          (el.onclick = function (e) {
-            //     document.execCommand("enableObjectResizing", false, null);
-            // setitemsElT(ix);
-            // setcildTeg(e.target.tagName);
-            //  setimgWidth(e.target.width);
-            //  setimgHeight(e.target.height);
-            //  setimgPadding(
-            //   (e.target.style.padding = e.target.style.padding + "px")
-            //  );
-            // seteX(e.x);
-            // seteY(e.y);
-            //  setimgurls(
-            //  "/" +
-            //    e.target.src
-            //      .split("/")
-            //      .filter((f, i) => i > 2)
-            //      .join("/")
-            //  );
-            //  e.target.src =
-            //    "/" +
-            ///    e.target.src
-            //      .split("/")
-            //      .filter((f, i) => i > 2)
-            //      .join("/");
-            //  setimgFloat(e.target.style.float);
-            //   setimgdisplay("block");
-          })
-      )
-    );
-  }, [
-    items,
-    itemsElT,
-    selectedtext,
-    imgWidth,
-    imgHeight,
-    imgPadding,
-    imgFloat,
-    itemsElT,
-    imgurls
-  ]);
-
-  //
-  useEffect(() => {
     onmousemove = (e) => setx(e.x);
   }, []);
 
@@ -421,9 +379,12 @@ function Controller(props) {
   function createMarkup(x) {
     return { __html: document.getElementById(x).innerHTML };
   }
-
+useEffect(() => {
+  settextBox(innerTextBox());
+}, [textBox, find, active]);
   return (
     <div className="contentDtext">
+    
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
         <div
           className="row container text-right p-4  panel"
@@ -505,7 +466,7 @@ function Controller(props) {
             settextBox(innerTextBox());
 
             elMoveUpDown(ititalTegs, baseSelector);
-            //  startEl(baseSelector);
+            
           }}
           dangerouslySetInnerHTML={createMarkup(textId)}
         />

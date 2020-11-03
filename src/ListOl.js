@@ -3,9 +3,9 @@ import React from "react";
 function ListOl(props) {
   return (
     <div className={props.class}>
-      <button>
+      <button type="button">
         <svg
-          onClick={() => props.listItem(props.find, props.items, "ol", "li")}
+          onClick={() => { props.listItem(props.find, props.items, "ol", "li"); props.setActive((props.active === false) ? true : false);}}
           width="2em"
           viewBox="0 0 16 16"
           className="bi bi-list-ol"

@@ -34,7 +34,7 @@ function Table(props) {
 
   return (
     <div>
-      <button className="tableButton">
+      <button type="button" className="tableButton">
         <svg
           onClick={() => setopenTb(true)}
           width="2em"
@@ -59,6 +59,7 @@ function Table(props) {
                   <svg
                     onClick={() => {
                       setopenTb(false);
+                      props.setActive((props.active === false) ? true : false);
                     }}
                     width="2em"
                     viewBox="0 0 16 16"
@@ -101,6 +102,7 @@ function Table(props) {
                 <td></td>
                 <td>
                   <button
+                    type="button"
                     onClick={
                       col > 0 || str > 0
                         ? () => {
@@ -127,8 +129,10 @@ function Table(props) {
                     Ок
                   </button>
                   <button
+                    type="button"
                     onClick={() => {
                       setopenTb(false);
+                      props.setActive((props.active === false) ? true : false);
                     }}
                     type="button"
                     class="btn btn-primary ml-2"

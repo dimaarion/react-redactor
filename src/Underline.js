@@ -4,12 +4,13 @@ function Underline(props) {
   return (
     <div className={props.class}>
       <button
+        type="button"
         style={
           props.gTags.teg === "S"
             ? { backgroundColor: "#cccccc", border: "none" }
             : { border: "none" }
         }
-        onClick={() => document.execCommand("underline", false, null)}
+        onClick={() => { document.execCommand("underline", false, null); props.setActive((props.active === false) ? true : false);}}
       >
         <svg
           style={

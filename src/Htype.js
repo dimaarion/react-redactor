@@ -8,11 +8,12 @@ function Htype(props) {
   }
   return (
     <button
+      type="button"
       style={props.typeStyle(props.find.tagName, props.t, "button", props.s)}
       onClick={() => {
         props.izmtegs(props.t, props.find, props.items);
         props.settegsLocal(props.t);
-        props.setActive(true);
+        props.setActive((props.active === false) ? true : false);
       }}
       className={hActive(props.tegsLocal, props.t)}
     >
