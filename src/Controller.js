@@ -234,9 +234,7 @@ function Controller(props) {
       .map((x) => (x.style.fontFamily = fontFm));
   }
   function aligns(ititalTegs, items, align) {
-    ititalTegs()
-      .filter((f, i) => i === items)
-      .map((x) => (x.style.textAlign = align));
+    ititalTegs.style.textAlign = align;
   }
 
   function cleanerTxt(ititalTegs, items) {

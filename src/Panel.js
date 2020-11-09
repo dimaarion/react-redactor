@@ -72,6 +72,7 @@ function Panel(props) {
           items={props.items}
         />
         <Aligns
+          find={props.find}
           setActive={props.setActive}
           active={props.active}
           typeStyle={typeStyle}
