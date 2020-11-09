@@ -40,9 +40,6 @@ function Controller(props) {
   const [find, setfind] = useState({});
   const [active, setActive] = useState(false);
 
-
-
-
   function ititalTegs(bs = false) {
     let text_block = document.querySelector("." + baseSelector);
     function textChildren(text_block) {
@@ -65,13 +62,6 @@ function Controller(props) {
       bSelector.innerHTML =
         "<div style = 'font-size:14pt;' class='strStart'>Текст</div>";
     }
-
-    let strStart = document.getElementsByClassName("strStart");
-    strStart = Array.from(strStart);
-    function integer(e) {
-      return (e.target.innerText = "");
-    }
-    strStart.map((x) => x.addEventListener("click", integer, { once: true }));
   }
 
   function elMoveUpDown(ititalTegs, baseSelector) {
@@ -379,12 +369,11 @@ function Controller(props) {
   function createMarkup(x) {
     return { __html: document.getElementById(x).innerHTML };
   }
-useEffect(() => {
-  settextBox(innerTextBox());
-}, [textBox, find, active]);
+  useEffect(() => {
+    settextBox(innerTextBox());
+  }, [textBox, find, active]);
   return (
     <div className="contentDtext">
-    
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
         <div
           className="row container text-right p-4  panel"
@@ -466,7 +455,6 @@ useEffect(() => {
             settextBox(innerTextBox());
 
             elMoveUpDown(ititalTegs, baseSelector);
-            
           }}
           dangerouslySetInnerHTML={createMarkup(textId)}
         />
