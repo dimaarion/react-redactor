@@ -27,8 +27,12 @@ function ImgRemove(props) {
 
   useEffect(() => {
     seturlImj(imgUrlR(props.find.src));
-    setimgWidthR(imgRemove(props.find.width));
-    setimgHeightR(imgRemove(props.find.height));
+    setimgWidthR(
+      imgRemove(props.find.style !== undefined ? props.find.style.width : "")
+    );
+    setimgHeightR(
+      imgRemove(props.find.style !== undefined ? props.find.style.height : "")
+    );
     setclose(props.find.tagName);
     setimgPaddingR(
       imgRemove(props.find.style !== undefined ? props.find.style.padding : "")
@@ -77,7 +81,7 @@ function ImgRemove(props) {
               className="form-control"
               style={wtp}
               type="text"
-              defaultValue={imgWidthR}
+              defaultValue={imgWidthR.replace(/[px]{2}/, "")}
               onChange={(e) => setimgWidthR(e.target.value)}
             />
           </td>
@@ -87,7 +91,7 @@ function ImgRemove(props) {
               className="form-control"
               style={wtp}
               type="text"
-              defaultValue={imgHeightR}
+              defaultValue={imgHeightR.replace(/[px]{2}/, "")}
               onChange={(e) => setimgHeightR(e.target.value)}
             />
           </td>
@@ -98,13 +102,16 @@ function ImgRemove(props) {
               className="form-control"
               style={wtp}
               type="text"
-              defaultValue={imgPaddingR}
+              defaultValue={imgPaddingR.replace(/[px]{2}/, "")}
               onChange={(e) => setimgPaddingR(e.target.value)}
             />
           </td>
           <td>
             <svg
-              onClick={() => { setclose("none"); props.setActive((props.active === false) ? true : false);}}
+              onClick={() => {
+                setclose("none");
+                props.setActive(props.active === false ? true : false);
+              }}
               width="2em"
               viewBox="0 0 16 16"
               className="bi bi-x"
@@ -137,7 +144,7 @@ function ImgRemove(props) {
                   props.find.style.height = imgHeightR;
                   props.find.style.padding = imgPaddingR;
                   props.find.style.float = imgFloatR;
-                  props.setActive((props.active === false) ? true : false);
+                  props.setActive(props.active === false ? true : false);
                 }
               }}
               className="col-sm"
