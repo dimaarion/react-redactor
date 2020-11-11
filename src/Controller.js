@@ -59,15 +59,14 @@ function Controller(props) {
   function getStart(baseSelector) {
     let bSelector = document.getElementsByClassName(baseSelector)[0];
     if (bSelector.innerHTML === "") {
-      bSelector.innerHTML =
-        "<div style = 'font-size:14pt;' class='strStart'>Текст</div>";
+      bSelector.innerHTML = "<div class='strStart'>Текст</div>";
     }
   }
 
   function elMoveUpDown(ititalTegs, baseSelector) {
     let c = 0;
     ititalTegs().map((x) => {
-      return x.setAttribute("data-d", "1" + c++), (x.style.fontSize = "14pt");
+      return x.setAttribute("data-d", "1" + c++);
     });
   }
   function izmtegs(textbl, tegs, items) {
