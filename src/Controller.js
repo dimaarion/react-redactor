@@ -165,33 +165,12 @@ function Controller(props) {
     let tb = document.createElement("table");
     document.body.appendChild(div);
     document.body.appendChild(tb);
-    tb.className = `tb${it} table table-hover`;
+    tb.className = `tb${it} table`;
     div.className = "divTable";
     Array.from(bs.children)
       .filter((f, i) => i === it)
       .map((x) => x.appendChild(div));
     div.appendChild(tb);
-    let removeDiv = document.createElement("div");
-
-    function delTb(e) {
-      document.body.appendChild(removeDiv);
-      div.insertBefore(removeDiv, tb);
-      removeDiv.className = "removeDiv";
-      removeDiv.innerHTML = "<h5>&times;</h5>";
-      removeDiv.title = "Удалить таблицу";
-      removeDiv.addEventListener(
-        "click",
-        () => {
-          div.remove();
-        },
-        false
-      );
-    }
-    function removeDelTb() {
-      removeDiv.remove();
-    }
-    tb.addEventListener("mouseover", delTb, false);
-    tb.addEventListener("mouseut", removeDelTb, false);
   }
 
   function createTr(bs, it, script, trn) {
