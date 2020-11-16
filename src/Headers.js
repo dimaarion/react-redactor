@@ -83,6 +83,24 @@ function Headers(props) {
         </text>
       )
     }
+    ,
+    {
+      t: "div",
+      n: 7,
+      svg: (
+        <text
+          transform="scale(1.0095382,0.99055193)"
+          y="12"
+          x="0"
+          style={{
+            fontSize: "12px",
+            fill: "#000000"
+          }}
+        >
+          div
+        </text>
+      )
+    }
   ];
   return (
     <div className="headers">

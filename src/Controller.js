@@ -59,7 +59,7 @@ function Controller(props) {
   function getStart(baseSelector) {
     let bSelector = document.getElementsByClassName(baseSelector)[0];
     if (bSelector.innerHTML === "") {
-      bSelector.innerHTML = "<div class='strStart'>Текст</div>";
+      bSelector.innerHTML = "<div class='strStart col-sm'>Текст</div>";
     }
   }
 
@@ -69,16 +69,17 @@ function Controller(props) {
       return x.setAttribute("data-d", "1" + c++);
     });
   }
-  function izmtegs(textbl, tegs, items) {
+  function izmtegs(textbl, tegs, items,cl = '') {
     let dataD = "1" + items;
     let oldteg = document.createElement(textbl);
     if (tegs.className !== "text_block") {
       rCild(oldteg, tegs, textbl);
-      att(oldteg, dataD);
+      att(oldteg, dataD, cl);
     }
 
-    function att(o, d) {
+    function att(o, d,c) {
       o.setAttribute("data-d", d);
+      o.setAttribute("class", c);
       o.style.fontSize = "auto";
     }
     function rCild(o, t, te) {
