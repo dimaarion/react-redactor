@@ -165,7 +165,7 @@ function Controller(props) {
     let tb = document.createElement("table");
     document.body.appendChild(div);
     document.body.appendChild(tb);
-    tb.className = `tb${it} table`;
+    tb.className = `tb${it} tbl`;
     div.className = "divTable";
     Array.from(bs.children)
       .filter((f, i) => i === it)

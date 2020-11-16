@@ -33,3 +33,10 @@
 .tableButton:hover svg {
   padding: 2px;
 }
+.tbl {
+  width: 100%;
+  min-height: 50px;
+}
+.tbl td {
+  height: 50px;
+}
