@@ -11,7 +11,7 @@ function Htype(props) {
       type="button"
       style={props.typeStyle(props.find.tagName, props.t, "button", props.s)}
       onClick={() => {
-        props.izmtegs(props.t, props.find, props.items, props.t);
+        props.izmtegs(props.t, props.find, props.items);
         props.settegsLocal(props.t);
         props.setActive((props.active === false) ? true : false);
       }}

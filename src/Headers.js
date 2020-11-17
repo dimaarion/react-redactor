@@ -82,8 +82,7 @@ function Headers(props) {
           P
         </text>
       )
-    }
-    ,
+    },
     {
       t: "div",
       n: 7,
