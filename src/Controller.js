@@ -30,12 +30,10 @@ function Controller(props) {
   const [imgurls, setimgurls] = useState("");
   const [imgFloat, setimgFloat] = useState("none");
   const [textBox, settextBox] = useState("");
-  const [itemsElT, setitemsElT] = useState(0);
   const [windSize, setwindSize] = useState(100);
   const [panelStyle, setpanelStyle] = useState({ position: "relative" });
   const [eX, seteX] = useState(0);
   const [eY, seteY] = useState(0);
-  const [urlRemove, seturlRemove] = useState("");
   const [gTags, setgTags] = useState({});
   const [find, setfind] = useState({});
   const [active, setActive] = useState(false);
@@ -59,7 +57,7 @@ function Controller(props) {
   function getStart(baseSelector) {
     let bSelector = document.getElementsByClassName(baseSelector)[0];
     if (bSelector.innerHTML === "") {
-      bSelector.innerHTML = "<div class='strStart col-sm'>Текст</div>";
+      bSelector.innerHTML = "<div class='strStart'>Текст</div>";
     }
   }
 
@@ -69,17 +67,16 @@ function Controller(props) {
       return x.setAttribute("data-d", "1" + c++);
     });
   }
-  function izmtegs(textbl, tegs, items, cl = '') {
+  function izmtegs(textbl, tegs, items) {
     let dataD = "1" + items;
     let oldteg = document.createElement(textbl);
     if (tegs.className !== "text_block") {
       rCild(oldteg, tegs, textbl);
-      att(oldteg, dataD, cl);
+      att(oldteg, dataD);
     }
 
-    function att(o, d, c) {
+    function att(o, d) {
       o.setAttribute("data-d", d);
-      o.setAttribute("class", c);
       o.style.fontSize = "auto";
     }
     function rCild(o, t, te) {
@@ -228,10 +225,10 @@ function Controller(props) {
         .filter(
           (l) =>
             "/" +
-            l.src
-              .split("/")
-              .filter((f, i) => i > 2)
-              .join("/") ===
+              l.src
+                .split("/")
+                .filter((f, i) => i > 2)
+                .join("/") ===
             imgurls
         )
         .map((ed) => (ed.style.width = imgWidth))
@@ -243,10 +240,10 @@ function Controller(props) {
         .filter(
           (l) =>
             "/" +
-            l.src
-              .split("/")
-              .filter((f, i) => i > 2)
-              .join("/") ===
+              l.src
+                .split("/")
+                .filter((f, i) => i > 2)
+                .join("/") ===
             imgurls
         )
         .map((ed) => (ed.style.height = imgHeight))
@@ -258,10 +255,10 @@ function Controller(props) {
         .filter(
           (l) =>
             "/" +
-            l.src
-              .split("/")
-              .filter((f, i) => i > 2)
-              .join("/") ===
+              l.src
+                .split("/")
+                .filter((f, i) => i > 2)
+                .join("/") ===
             imgurls
         )
         .map((ed) => (ed.style.padding = imgPadding))
@@ -274,10 +271,10 @@ function Controller(props) {
         .filter(
           (l) =>
             "/" +
-            l.src
-              .split("/")
-              .filter((f, i) => i > 2)
-              .join("/") ===
+              l.src
+                .split("/")
+                .filter((f, i) => i > 2)
+                .join("/") ===
             imgurls
         )
         .map((ed) => (ed.style.float = imgFloat))
