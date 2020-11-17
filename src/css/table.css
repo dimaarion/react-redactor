@@ -40,3 +40,9 @@
 .tbl td {
   height: 50px;
 }
+.tableRedactor svg {
+  margin-right: 15px;
+}
+.tableRedactor svg:hover {
+  padding: 2px;
+}

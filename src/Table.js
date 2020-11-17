@@ -3,6 +3,8 @@ function Table(props) {
   const [col, setCol] = useState(4);
   const [str, setStr] = useState(2);
   const [openTb, setopenTb] = useState(false);
+  const [width, setWidth] = useState("100%");
+  const [float, setFloat] = useState("none");
   let arr_en = [
     "a",
     "b",
@@ -31,7 +33,7 @@ function Table(props) {
     "y",
     "z"
   ];
-
+  let active = { padding: "2px", border: "solid 1px #cccccc" };
   return (
     <div>
       <button type="button" className="tableButton">
@@ -59,7 +61,7 @@ function Table(props) {
                   <svg
                     onClick={() => {
                       setopenTb(false);
-                      props.setActive((props.active === false) ? true : false);
+                      props.setActive(props.active === false ? true : false);
                     }}
                     width="2em"
                     viewBox="0 0 16 16"
@@ -83,6 +85,7 @@ function Table(props) {
                 <td>
                   <input
                     type="number"
+                    className="form-control"
                     defaultValue={col}
                     onChange={(e) => setCol(e.target.value)}
                   />
@@ -93,10 +96,67 @@ function Table(props) {
                 <td>
                   <input
                     type="number"
+                    className="form-control"
                     defaultValue={str}
                     onChange={(e) => setStr(e.target.value)}
                   />
                 </td>
+              </tr>
+              <tr>
+                <td>Ширина</td>
+                <td>
+                  <input
+                    type="text"
+                    className="form-control"
+                    onChange={(e) => setWidth(e.target.value)}
+                    value={width}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td className="text-right"></td>
+                <td className="text-left">
+                  <svg
+                    style={float === "left" ? active : {}}
+                    onClick={() => setFloat("left")}
+                    width="2em"
+                    viewBox="0 0 16 16"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
+                    />
+                  </svg>
+                  <svg
+                    style={float === "none" ? active : {}}
+                    onClick={() => setFloat("none")}
+                    width="2em"
+                    viewBox="0 0 16 16"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
+                    />
+                  </svg>
+                  <svg
+                    style={float === "right" ? active : {}}
+                    onClick={() => setFloat("right")}
+                    width="2em"
+                    viewBox="0 0 16 16"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M6 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
+                    />
+                  </svg>
+                </td>
+                <td className="text-left"></td>
               </tr>
               <tr>
                 <td></td>
@@ -106,7 +166,12 @@ function Table(props) {
                     onClick={
                       col > 0 || str > 0
                         ? () => {
-                            props.createTable(props.baseSelector, props.items);
+                            props.createTable(
+                              props.baseSelector,
+                              props.items,
+                              width,
+                              float
+                            );
                             props.createTr(
                               props.baseSelector,
                               props.items,
@@ -132,7 +197,7 @@ function Table(props) {
                     type="button"
                     onClick={() => {
                       setopenTb(false);
-                      props.setActive((props.active === false) ? true : false);
+                      props.setActive(props.active === false ? true : false);
                     }}
                     type="button"
                     class="btn btn-primary ml-2"

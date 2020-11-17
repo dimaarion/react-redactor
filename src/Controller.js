@@ -157,13 +157,14 @@ function Controller(props) {
     att(oldteg, dataD);
   }
 
-  function createTable(bas, it) {
+  function createTable(bas, it, w = "100%", f = "none") {
     let bs = document.querySelector("." + bas);
     let div = document.createElement("div");
     let tb = document.createElement("table");
     document.body.appendChild(div);
     document.body.appendChild(tb);
     tb.className = `tb${it} tbl`;
+    tb.setAttribute("style", "width:" + w + ";float:" + f + ";");
     div.className = "divTable";
     Array.from(bs.children)
       .filter((f, i) => i === it)
