@@ -69,7 +69,7 @@ function Controller(props) {
       return x.setAttribute("data-d", "1" + c++);
     });
   }
-  function izmtegs(textbl, tegs, items,cl = '') {
+  function izmtegs(textbl, tegs, items, cl = '') {
     let dataD = "1" + items;
     let oldteg = document.createElement(textbl);
     if (tegs.className !== "text_block") {
@@ -77,7 +77,7 @@ function Controller(props) {
       att(oldteg, dataD, cl);
     }
 
-    function att(o, d,c) {
+    function att(o, d, c) {
       o.setAttribute("data-d", d);
       o.setAttribute("class", c);
       o.style.fontSize = "auto";
@@ -228,10 +228,10 @@ function Controller(props) {
         .filter(
           (l) =>
             "/" +
-              l.src
-                .split("/")
-                .filter((f, i) => i > 2)
-                .join("/") ===
+            l.src
+              .split("/")
+              .filter((f, i) => i > 2)
+              .join("/") ===
             imgurls
         )
         .map((ed) => (ed.style.width = imgWidth))
@@ -243,10 +243,10 @@ function Controller(props) {
         .filter(
           (l) =>
             "/" +
-              l.src
-                .split("/")
-                .filter((f, i) => i > 2)
-                .join("/") ===
+            l.src
+              .split("/")
+              .filter((f, i) => i > 2)
+              .join("/") ===
             imgurls
         )
         .map((ed) => (ed.style.height = imgHeight))
@@ -258,10 +258,10 @@ function Controller(props) {
         .filter(
           (l) =>
             "/" +
-              l.src
-                .split("/")
-                .filter((f, i) => i > 2)
-                .join("/") ===
+            l.src
+              .split("/")
+              .filter((f, i) => i > 2)
+              .join("/") ===
             imgurls
         )
         .map((ed) => (ed.style.padding = imgPadding))
@@ -274,10 +274,10 @@ function Controller(props) {
         .filter(
           (l) =>
             "/" +
-              l.src
-                .split("/")
-                .filter((f, i) => i > 2)
-                .join("/") ===
+            l.src
+              .split("/")
+              .filter((f, i) => i > 2)
+              .join("/") ===
             imgurls
         )
         .map((ed) => (ed.style.float = imgFloat))
