@@ -66,6 +66,7 @@
   position: absolute;
   z-index: 8000;
   background-color: #ffffff;
+  
 }
 .imgRemove svg {
   cursor: pointer;
@@ -75,6 +76,9 @@
 }
 .imgRemove input {
   font-size: large;
+}
+.imgRemove tr {
+  margin-left: 10px;
 }
 .imgRemove button {
   padding: 2px;
@@ -86,6 +90,7 @@
   padding-bottom: 4px;
   border: none;
   background-color: #cccccc;
+  
 }
 .controlPanel {
   z-index: 9000;

@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import Panel from "./Panel";
 import "./css/bootstrap.css";
@@ -58,6 +60,7 @@ function Controller(props) {
     let bSelector = document.getElementsByClassName(baseSelector)[0];
     if (bSelector.innerHTML === "") {
       bSelector.innerHTML = "<div class='strStart'>Текст</div>";
+      
     }
   }
 
@@ -244,8 +247,7 @@ function Controller(props) {
               l.src
                 .split("/")
                 .filter((f, i) => i > 2)
-                .join("/") ===
-            imgurls
+                .join("/") === imgurls
         )
         .map((ed) => (ed.style.height = imgHeight))
     );

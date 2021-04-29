@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-duplicate-props */
 import React, { useState } from "react";
 function Table(props) {
   const [col, setCol] = useState(4);
