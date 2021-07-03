@@ -143,6 +143,8 @@ function Panel(props) {
             ititalTegs={props.ititalTegs}
             selectedtext={props.selectedtext}
             types={props.types}
+            selectedTextFocus={props.selectedTextFocus}
+            selectedTextAncor={props.selectedTextAncor}
             class=" col-sm text-left listItems"
           />
           <Strikethrough

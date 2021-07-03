@@ -10,7 +10,34 @@ function Italic(props) {
             ? { backgroundColor: "#cccccc", border: "none" }
             : { border: "none" }
         }
-        onClick={() => { document.execCommand("italic", false, null); props.setActive((props.active === false) ? true : false);}}
+        onClick={() => {
+          document.execCommand("italic", false, null);
+          props.setActive(props.active === false ? true : false);
+          console.log(
+            Array.from(
+              document
+                .getElementsByClassName("text_block")[0]
+                .getElementsByTagName("div")
+            )
+              .filter((f, i) => i === props.items)
+              .map((x) => {
+                x.innerHTML =
+                  "<span>" +
+                  x.innerText.slice(0, props.selectedTextAncor) +
+                  "</span><i>" +
+                  x.innerText.slice(
+                    props.selectedTextAncor,
+                    props.selectedTextFocus
+                  ) +
+                  "</i><span>" +
+                  x.innerText.slice(props.selectedTextFocus, -1) +
+                  "</span>";
+              })
+          );
+          console.log(
+            props.selectedTextAncor + " / " + props.selectedTextFocus
+          );
+        }}
       >
         {" "}
         <svg

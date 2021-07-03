@@ -104,9 +104,9 @@ function Headers(props) {
   return (
     <div className="headers">
       <div>
-        {H.map((x,i) => (
+        {H.map((x, i) => (
           <Htype
-            key = {i}
+            key={i * 4}
             setActive={props.setActive}
             active={props.active}
             svg={x.svg}
