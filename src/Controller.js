@@ -350,7 +350,7 @@ function Controller(props) {
   return (
     <div className="contentDtext">
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
-        {selectedTextFocus + " / " + items}
+        {selectedtext + " / " + items}
         <div
           className="row container text-right p-4  panel"
           style={sizes === true ? { position: "absolute" } : panelStyle}
