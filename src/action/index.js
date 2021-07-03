@@ -6,7 +6,7 @@ export function selectedStyles(props, tag) {
           "<" + tag + ">" + props.selectedtext + "</" + tag + ">",
         "g"
       );
-      console.log(regex);
+
       x.innerHTML = x.innerHTML.replace(
         regex,
         "<" + tag + ">" + props.selectedtext + "</" + tag + ">"
