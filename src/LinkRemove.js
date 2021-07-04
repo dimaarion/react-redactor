@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Inputs from "./Inputs";
+import { selectedStyles } from "./action";
 import "./css/link.css";
 function LinkRemove(props) {
   const [links, setlinks] = useState("");
@@ -20,7 +21,8 @@ function LinkRemove(props) {
         onClick={() => {
           props.types(links);
           props.setstate({ link: false });
-          props.setActive((props.active === false) ? true : false);
+          props.setActive(props.active === false ? true : false);
+          selectedStyles(props, "a", links);
         }}
         style={{ cursor: "pointer", border: "none" }}
       >

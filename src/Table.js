@@ -189,7 +189,7 @@ function Table(props) {
                         : () => {}
                     }
                     type="button"
-                    class="btn btn-primary "
+                    className="btn btn-primary "
                   >
                     Ок
                   </button>
