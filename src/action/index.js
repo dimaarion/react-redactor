@@ -7,7 +7,7 @@ export function selectedStyles(props, tag, href = false) {
       attr = "";
     }
     function replaceSelected(x) {
-      let regex = new RegExp(props.selectedtext, "g");
+      let regex = new RegExp(`${props.selectedtext}`, "g");
 
       x.innerHTML = x.innerHTML.replace(
         regex,
