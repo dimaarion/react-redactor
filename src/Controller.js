@@ -17,6 +17,7 @@ function Controller(props) {
   const [items, setitems] = useState(0);
   const [itemss, setitemss] = useState(0);
   const [selectedTextLen, setSelectedTextLen] = useState(0);
+  const [selectedTest, setSelectedTest] = useState("");
   const [selectedTextAncor, setSelectedTextAncor] = useState(0);
   const [selectedTextFocus, setSelectedTextFocus] = useState(0);
   const [fontPt, setfontPt] = useState(14);
@@ -124,10 +125,13 @@ function Controller(props) {
     ititalTegs().map(
       (x, i) =>
         (x.onmousemove = () => {
-          setselectedtext(window.getSelection().toString());
-          setSelectedTextLen(window.getSelection().toString().length);
-          setSelectedTextAncor(window.getSelection().anchorOffset);
-          setSelectedTextFocus(window.getSelection().focusOffset);
+          if (window.getSelection().focusOffset > 0) {
+            setselectedtext(window.getSelection().toString());
+            setSelectedTextLen(window.getSelection().toString().length);
+            setSelectedTextAncor(window.getSelection().anchorOffset);
+            setSelectedTextFocus(window.getSelection().focusOffset);
+            setSelectedTest(window.getSelection().focusOffset);
+          }
         })
     );
   }
@@ -325,6 +329,9 @@ function Controller(props) {
   useEffect(() => {
     onmousemove = (e) => setx(e.x);
   }, []);
+  useEffect(() => {
+    console.log(selectedTest);
+  }, [{ selectedTest }]);
 
   useEffect(() => {
     updateElements(
@@ -350,7 +357,6 @@ function Controller(props) {
   return (
     <div className="contentDtext">
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
-        {selectedtext + " / " + items}
         <div
           className="row container text-right p-4  panel"
           style={sizes === true ? { position: "absolute" } : panelStyle}
