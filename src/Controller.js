@@ -130,7 +130,7 @@ function Controller(props) {
             setSelectedTextLen(window.getSelection().toString().length);
             setSelectedTextAncor(window.getSelection().anchorOffset);
             setSelectedTextFocus(window.getSelection().focusOffset);
-            setSelectedTest(window.getSelection().focusOffset);
+            setSelectedTest(window.getSelection().type);
           }
         })
     );
@@ -329,9 +329,6 @@ function Controller(props) {
   useEffect(() => {
     onmousemove = (e) => setx(e.x);
   }, []);
-  useEffect(() => {
-    console.log(selectedTest);
-  }, [{ selectedTest }]);
 
   useEffect(() => {
     updateElements(

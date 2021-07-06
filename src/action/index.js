@@ -8,15 +8,46 @@ export function selectedStyles(props, tag, href = false) {
     }
     function replaceSelected(x) {
       let regex = new RegExp(`${props.selectedtext}`, "g");
-      let reg = new RegExp(/[<i>]/, "g");
+
       let text = x.innerHTML.split("");
       let textSelectArr = props.selectedtext.split("");
       let textSelect = props.selectedTextFocus;
       let rezText = text.length - textSelect;
 
-      console.log(text + " ~ " + textSelectArr);
+      let ancor, n, t;
+      if (!ancor) {
+        ancor = 0;
+      } else {
+        ancor = props.selectedTextAncor;
+      }
+      if (textSelectArr.length < 1) {
+        n = 1;
+      } else {
+        n = textSelectArr.length;
+      }
+      console.log(props.selectedTextAncor);
+      let reg = new RegExp(
+        `[<i>||</i>]{${props.selectedTextAncor},${
+          props.selectedTextAncor + n
+        }}`,
+        "g"
+      );
+      let child = x.childNodes[0].innerHTML;
+      if (child) {
+        child = x.childNodes[0].innerHTML;
+      } else {
+        child = x.innerHTML;
+      }
+      // t = child.replace(reg, "");
+      //x.innerHTML = t;
 
-      // console.log(regex);
+      console.log(
+        x.innerHTML.slice(props.selectedTextAncor, props.selectedTextAncor + n)
+      );
+      let selection = window.getSelection();
+      console.log(x.getAttribute("class"));
+      console.log(x.firstChild);
+      console.log(selection.collapseToEnd());
       text.map((j) => {
         let ind = props.selectedtext.indexOf(j);
         if (ind) {
@@ -42,7 +73,7 @@ export function selectedStyles(props, tag, href = false) {
       }
 
       x.innerHTML = x.innerHTML.replace(
-        regex,
+        props.selectedtext,
         "<" + tag + " " + attr + ">" + props.selectedtext + "</" + tag + ">"
       );
     }
