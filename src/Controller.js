@@ -110,7 +110,7 @@ function Controller(props) {
   ) {
     ititalTegs().map(
       (x, i) =>
-        (x.onclick = () => {
+        (x.onclick = (e) => {
           setitems(i);
           settegs(x.tagName);
           setfontPt(
@@ -122,6 +122,7 @@ function Controller(props) {
           setalign(x.style.textAlign ? x.style.textAlign : "left");
         })
     );
+
     ititalTegs().map(
       (x, i) =>
         (x.onmousemove = (e) => {
@@ -130,10 +131,7 @@ function Controller(props) {
             setSelectedTextLen(window.getSelection().toString().length);
             setSelectedTextAncor(window.getSelection().anchorOffset);
             setSelectedTextFocus(window.getSelection().focusOffset);
-            setSelectedTest(window.getSelection().focusNode.innerHTML);
-            if (e.target.children.length > 0) {
-             Array.from(e.target.children).map((x) => console.log(x));
-            }
+            setSelectedTest(window.getSelection().focusNode);
           }
         })
     );
