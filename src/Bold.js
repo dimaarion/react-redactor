@@ -1,16 +1,19 @@
 import React from "react";
-
+import { selectedStyles } from "./action";
 function Bold(props) {
   return (
     <div className={props.class}>
       <button
-      type = "button"
+        type="button"
         style={
           props.gTags.teg === "B"
             ? { backgroundColor: "#cccccc", border: "none" }
             : { border: "none" }
         }
-        onClick={() => { document.execCommand("bold", false, null); props.setActive((props.active === false) ? true : false);}}
+        onClick={() => {
+          selectedStyles(props, "b");
+          props.setActive(props.active === false ? true : false);
+        }}
       >
         <svg
           style={
