@@ -124,13 +124,16 @@ function Controller(props) {
     );
     ititalTegs().map(
       (x, i) =>
-        (x.onmousemove = () => {
-          if (window.getSelection().focusOffset > 0) {
+        (x.onmousemove = (e) => {
+          if (window.getSelection().toString().length > 0) {
             setselectedtext(window.getSelection().toString());
             setSelectedTextLen(window.getSelection().toString().length);
             setSelectedTextAncor(window.getSelection().anchorOffset);
             setSelectedTextFocus(window.getSelection().focusOffset);
-            setSelectedTest(window.getSelection().type);
+            setSelectedTest(window.getSelection().focusNode.innerHTML);
+            if (e.target.children.length > 0) {
+             Array.from(e.target.children).map((x) => console.log(x));
+            }
           }
         })
     );

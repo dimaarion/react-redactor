@@ -25,46 +25,43 @@ export function selectedStyles(props, tag, href = false) {
       } else {
         n = textSelectArr.length;
       }
-      console.log(props.selectedTextAncor);
+      // console.log(x.innerHTML.match(regex));
+      //console.log(
+      // x.innerHTML.matchAll("/[<i>" + props.selectedtext + "</i>]/")
+      //);
+      //console.log(x.innerHTML.matchAll("<i>" + props.selectedtext));
+      //console.log(x.innerHTML.matchAll(props.selectedtext + "</i>"));
       let reg = new RegExp(
         `[<i>||</i>]{${props.selectedTextAncor},${
           props.selectedTextAncor + n
         }}`,
         "g"
       );
-      let child = x.childNodes[0].innerHTML;
+      /*let child = x.childNodes[0].innerHTML;
       if (child) {
         child = x.childNodes[0].innerHTML;
       } else {
         child = x.innerHTML;
-      }
+      }*/
       // t = child.replace(reg, "");
       //x.innerHTML = t;
 
-      console.log(
-        x.innerHTML.slice(props.selectedTextAncor, props.selectedTextAncor + n)
-      );
+      // console.log(
+      // x.innerHTML.slice(props.selectedTextAncor, props.selectedTextAncor + n)
+      //  );
       let selection = window.getSelection();
-      console.log(x.getAttribute("class"));
-      console.log(x.firstChild);
-      console.log(selection.collapseToEnd());
+      // console.log(x.getAttribute("class"));
+      //console.log(text);
+      //let regex2 = new RegExp(`${props.selectedtext}`, "g");
+      // let regex3 = new RegExp(`${x.innerHTML}{0,5}`, "g");
+      let selectEl = window.getSelection().anchorOffset;
+      let selectEl2 = window.getSelection().focusNode;
+
       text.map((j) => {
         let ind = props.selectedtext.indexOf(j);
+
         if (ind) {
           //console.log(ind);
-          /*console.log(
-            rezText +
-              " ~ " +
-              text.length +
-              " ~ " +
-              textSelect +
-              " ~ " +
-              text +
-              " ~ " +
-              textSelectArr +
-              " ~ " +
-              j
-          );*/
         }
       });
 
