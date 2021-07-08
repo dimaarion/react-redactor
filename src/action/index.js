@@ -10,7 +10,6 @@ export function selectedStyles(props, tag, href = false) {
       }
       b.appendChild(documentFragment);
       range.getRangeAt(0).insertNode(b);
-      let test = "test";
     }
 
     props
