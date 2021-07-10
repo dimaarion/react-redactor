@@ -18,3 +18,12 @@ export function selectedStyles(props, tag, href = false) {
       .map((x) => replaceSelected(x));
   }
 }
+
+
+export function countArray(n){
+    let a = [];
+    for(let i = 0; i < n ; i++){
+      a[i] = i;
+    }
+    return a;
+}

@@ -1,4 +1,45 @@
 .selectpanel{
-    position: absolute;
     z-index: 10000;
+    background-color: #ffffff;
+    
+}
+.selectpanel ul{
+    margin: 0px;
+    padding: 0px;
+}
+.selectpanel ul li div{
+    text-align: left;
+}
+.selectpanel ul li ul{
+    margin: 0px;
+    padding: 0px;
+    display: none;
+    position: absolute;
+}
+.selectpanel li{
+    text-decoration: none;
+    list-style: none;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+.selectpanel ul li:hover ul{
+    margin-top: 10px;
+    padding: 0px;
+    display: block;
+}
+.selectpanel ul li ul li{
+    padding-bottom: 0px;
+    background-color: #ffffff;
+}
+.selectpanel ul li ul li:hover{
+    background-color: #cccccc;
+}
+.selectpanel ul li div:hover{
+    background-color: #cccccc;
+}
+.selectpanel ul li{
+    padding-bottom: 15px;
+}
+.selectpanel td{
+    padding-bottom: 10px;
 }

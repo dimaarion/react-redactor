@@ -35,11 +35,11 @@ function Controller(props) {
   const [windSize, setwindSize] = useState(100);
   const [panelStyle, setpanelStyle] = useState({ position: "relative" });
   const [eX, seteX] = useState(0);
-  const [eY, seteY] = useState(0);
+  const [eY, seteY] = useState(-10000);
   const [gTags, setgTags] = useState({});
   const [find, setfind] = useState({});
   const [active, setActive] = useState(false);
-
+  const [selectPanelDicplay, setSelectPanelDicplay] = useState(false);
 
 
 
@@ -133,8 +133,9 @@ function Controller(props) {
         );
         setfontFm(x.style.fontFamily ? x.style.fontFamily : "Georgia");
         setalign(x.style.textAlign ? x.style.textAlign : "left");
-        seteY(e.y);
-        seteX(e.x);
+        if (window.getSelection().toString().length > 0) {
+        seteY(e.y);seteX(e.x);
+        }
       })
     );
 
@@ -147,7 +148,8 @@ function Controller(props) {
           setSelectedTextAncor(window.getSelection().anchorOffset);
           setSelectedTextFocus(window.getSelection().focusOffset);
           setSelectedTest(window.getSelection().focusNode);
-          
+           
+        
           
         }
       })
@@ -370,6 +372,16 @@ function Controller(props) {
     settextBox(innerTextBox());
 
   }, [textBox, find, active, innerTextBox]);
+
+  useEffect(() => {
+if(selectedtext.length > 0){
+  setSelectPanelDicplay(true);
+}else{
+  setSelectPanelDicplay(false);
+}
+    
+
+  }, [selectedtext]);
   return (
     <div className="contentDtext">
 
@@ -378,7 +390,7 @@ function Controller(props) {
           className="row container text-right p-4  panel"
           style={sizes === true ? { position: "absolute" } : panelStyle}
         >
-          <SelectPanel find={find} selectedtext={selectedtext} eX = {eX} eY = {eY} sizes = {sizes}/>
+        { selectPanelDicplay === true? <SelectPanel find={find} selectedtext={selectedtext} eX = {eX} eY = {eY} sizes = {sizes} baseSelector = {baseSelector}/>:""}
           <Panel
             settextbl={settextbl}
             setitemss={setitemss}
@@ -428,6 +440,7 @@ function Controller(props) {
             find={find}
             setActive={setActive}
             active={active}
+            
           />
         </div>
 
