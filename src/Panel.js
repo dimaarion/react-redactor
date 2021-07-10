@@ -70,6 +70,7 @@ function Panel(props) {
           setitemss={props.setitemss}
           ititalTegs={props.ititalTegs}
           items={props.items}
+          selectedtext={props.selectedtext}
         />
         <Aligns
           find={props.find}

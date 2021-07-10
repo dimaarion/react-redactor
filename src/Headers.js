@@ -119,6 +119,8 @@ function Headers(props) {
             typeStyle={props.typeStyle}
             ititalTegs={props.ititalTegs}
             items={props.items}
+            selectedtext={props.selectedtext}  
+            gTags={props.gTags}
           />
         ))}
       </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Panel from "./Panel";
+import SelectPanel from "./SelectPanel";
 import "./css/bootstrap.css";
 import "./css/style.css";
 import "./css/listitems.css";
@@ -39,10 +40,21 @@ function Controller(props) {
   const [find, setfind] = useState({});
   const [active, setActive] = useState(false);
 
+
+
+
+
+
+
+
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function ititalTegs(bs = false) {
+
     let text_block = document.querySelector("." + baseSelector);
     function textChildren(text_block) {
       return Object.values(text_block.children);
+
     }
     if (bs === true) {
       return text_block;
@@ -51,6 +63,7 @@ function Controller(props) {
     }
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function innerTextBox() {
     return document.querySelector("." + baseSelector).innerHTML;
   }
@@ -110,30 +123,34 @@ function Controller(props) {
   ) {
     ititalTegs().map(
       (x, i) =>
-        (x.onclick = (e) => {
-          setitems(i);
-          settegs(x.tagName);
-          setfontPt(
-            x.style.fontSize.replace(/[a-z]+/, "") === ""
-              ? 14
-              : x.style.fontSize.replace(/[a-z]+/, "")
-          );
-          setfontFm(x.style.fontFamily ? x.style.fontFamily : "Georgia");
-          setalign(x.style.textAlign ? x.style.textAlign : "left");
-        })
+      (x.onclick = (e) => {
+        setitems(i);
+        settegs(x.tagName);
+        setfontPt(
+          x.style.fontSize.replace(/[a-z]+/, "") === ""
+            ? 14
+            : x.style.fontSize.replace(/[a-z]+/, "")
+        );
+        setfontFm(x.style.fontFamily ? x.style.fontFamily : "Georgia");
+        setalign(x.style.textAlign ? x.style.textAlign : "left");
+        seteY(e.y);
+        seteX(e.x);
+      })
     );
 
     ititalTegs().map(
       (x, i) =>
-        (x.onmousemove = (e) => {
-          if (window.getSelection().toString().length > 0) {
-            setselectedtext(window.getSelection().toString());
-            setSelectedTextLen(window.getSelection().toString().length);
-            setSelectedTextAncor(window.getSelection().anchorOffset);
-            setSelectedTextFocus(window.getSelection().focusOffset);
-            setSelectedTest(window.getSelection().focusNode);
-          }
-        })
+      (x.onmousemove = (e) => {
+        if (window.getSelection().toString().length > 0) {
+          setselectedtext(window.getSelection().toString());
+          setSelectedTextLen(window.getSelection().toString().length);
+          setSelectedTextAncor(window.getSelection().anchorOffset);
+          setSelectedTextFocus(window.getSelection().focusOffset);
+          setSelectedTest(window.getSelection().focusNode);
+          
+          
+        }
+      })
     );
   }
 
@@ -231,10 +248,10 @@ function Controller(props) {
         .filter(
           (l) =>
             "/" +
-              l.src
-                .split("/")
-                .filter((f, i) => i > 2)
-                .join("/") ===
+            l.src
+              .split("/")
+              .filter((f, i) => i > 2)
+              .join("/") ===
             imgurls
         )
         .map((ed) => (ed.style.width = imgWidth))
@@ -246,10 +263,10 @@ function Controller(props) {
         .filter(
           (l) =>
             "/" +
-              l.src
-                .split("/")
-                .filter((f, i) => i > 2)
-                .join("/") ===
+            l.src
+              .split("/")
+              .filter((f, i) => i > 2)
+              .join("/") ===
             imgurls
         )
         .map((ed) => (ed.style.height = imgHeight))
@@ -261,10 +278,10 @@ function Controller(props) {
         .filter(
           (l) =>
             "/" +
-              l.src
-                .split("/")
-                .filter((f, i) => i > 2)
-                .join("/") ===
+            l.src
+              .split("/")
+              .filter((f, i) => i > 2)
+              .join("/") ===
             imgurls
         )
         .map((ed) => (ed.style.padding = imgPadding))
@@ -277,10 +294,10 @@ function Controller(props) {
         .filter(
           (l) =>
             "/" +
-              l.src
-                .split("/")
-                .filter((f, i) => i > 2)
-                .join("/") ===
+            l.src
+              .split("/")
+              .filter((f, i) => i > 2)
+              .join("/") ===
             imgurls
         )
         .map((ed) => (ed.style.float = imgFloat))
@@ -295,7 +312,7 @@ function Controller(props) {
 
   useEffect(() => {
     getStart(baseSelector);
-  }, []);
+  }, [baseSelector]);
 
   useEffect(() => {
     mTop(setwindSize);
@@ -305,26 +322,26 @@ function Controller(props) {
     function () {
       imgPaddingR(ititalTegs, imgurls, imgPadding);
     },
-    [imgPadding]
+    [ititalTegs, imgurls, imgPadding]
   );
   useEffect(
     function () {
       imgWidthR(ititalTegs, imgurls, imgWidth);
     },
-    [imgWidth]
+    [ititalTegs, imgurls, imgWidth]
   );
 
   useEffect(
     function () {
       imgHeightR(ititalTegs, imgurls, imgHeight);
     },
-    [imgHeight]
+    [imgHeight, ititalTegs, imgurls]
   );
   useEffect(
     function () {
       imgFloatR(ititalTegs, imgurls, imgFloat);
     },
-    [imgurls, imgFloat]
+    [imgurls, imgFloat, ititalTegs]
   );
 
   useEffect(() => {
@@ -345,20 +362,23 @@ function Controller(props) {
       setalign
     );
     settextBox(innerTextBox());
-  }, [items, tegs, textbl, xs]);
+  }, [items, tegs, textbl, xs, ititalTegs, innerTextBox]);
   function createMarkup(x) {
     return { __html: document.getElementById(x).innerHTML };
   }
   useEffect(() => {
     settextBox(innerTextBox());
-  }, [textBox, find, active]);
+
+  }, [textBox, find, active, innerTextBox]);
   return (
     <div className="contentDtext">
+
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
         <div
           className="row container text-right p-4  panel"
           style={sizes === true ? { position: "absolute" } : panelStyle}
         >
+          <SelectPanel find={find} selectedtext={selectedtext} eX = {eX} eY = {eY} sizes = {sizes}/>
           <Panel
             settextbl={settextbl}
             setitemss={setitemss}
@@ -439,6 +459,7 @@ function Controller(props) {
           dangerouslySetInnerHTML={createMarkup(textId)}
         />
       </div>
+
       <div className="col-sm">
         <textarea
           style={{ display: "none" }}
@@ -446,6 +467,7 @@ function Controller(props) {
           name={document.querySelector(textAreraId).className}
         />
       </div>
+
     </div>
   );
 }
