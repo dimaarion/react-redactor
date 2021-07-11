@@ -25,8 +25,8 @@ useEffect(()=>{
 },[props.baseSelector])
 const STYLES = {
     selectPanel:{
-        marginLeft: props.eX - widthMax + "px",
-        marginTop: props.eY - topMax + "px",
+        marginLeft: props.eX  + "px",
+        marginTop: props.eY  + "px",
         position: "absolute",
     },
     heeaders:{

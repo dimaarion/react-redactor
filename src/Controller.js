@@ -133,9 +133,7 @@ function Controller(props) {
         );
         setfontFm(x.style.fontFamily ? x.style.fontFamily : "Georgia");
         setalign(x.style.textAlign ? x.style.textAlign : "left");
-        if (window.getSelection().toString().length > 0) {
-        seteY(e.y);seteX(e.x);
-        }
+       
       })
     );
 
@@ -451,6 +449,10 @@ if(selectedtext.length > 0){
           onClick={(e) => {
             setfind(e.target);
             setActive(false);
+            if (window.getSelection().toString().length > 0) {
+              seteY(e.clientY);seteX(e.clientX);
+              console.log(e.clientY)
+              }
           }}
           onKeyPress={(e) => {
             updateElements(
