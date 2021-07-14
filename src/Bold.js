@@ -13,6 +13,7 @@ function Bold(props) {
         onClick={() => {
           selectedStyles(props, "b");
           props.setActive(props.active === false ? true : false);
+          props.setSelectPanelDicplay(false);
         }}
       >
         <svg

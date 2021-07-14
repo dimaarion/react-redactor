@@ -13,6 +13,7 @@ function Linecenter(props) {
             props.aligns(props.find, props.items, props.a);
             props.setitemsLine(props.a);
             props.setActive(props.active === false ? true : false);
+            props.setSelectPanelDicplay(false);
           }}
           width="2em"
           viewBox="0 0 16 16"

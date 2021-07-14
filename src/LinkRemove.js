@@ -23,6 +23,7 @@ function LinkRemove(props) {
           props.setstate({ link: false });
           props.setActive(props.active === false ? true : false);
           selectedStyles(props, "a", links);
+          props.setSelectPanelDicplay(false);
         }}
         style={{ cursor: "pointer", border: "none" }}
       >

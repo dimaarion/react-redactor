@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TableColRedactor from "./TableColRedactor";
 function Table(props) {
   const [col, setCol] = useState(4);
   const [str, setStr] = useState(2);
@@ -51,6 +52,9 @@ function Table(props) {
           />
         </svg>
       </button>
+     <div>
+       <TableColRedactor/>
+     </div>
       {openTb === true ? (
         <div className="tableRedactor">
           <table className="table table-hover">
@@ -188,7 +192,7 @@ function Table(props) {
                           }
                         : () => {}
                     }
-                    type="button"
+                    
                     className="btn btn-primary "
                   >
                     Ок
@@ -199,8 +203,8 @@ function Table(props) {
                       setopenTb(false);
                       props.setActive(props.active === false ? true : false);
                     }}
-                    type="button"
-                    class="btn btn-primary ml-2"
+                   
+                    className="btn btn-primary ml-2"
                   >
                     Отмена
                   </button>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Panel from "./Panel";
-import SelectPanel from "./SelectPanel";
 import "./css/bootstrap.css";
 import "./css/style.css";
 import "./css/listitems.css";
@@ -35,12 +34,12 @@ function Controller(props) {
   const [windSize, setwindSize] = useState(100);
   const [panelStyle, setpanelStyle] = useState({ position: "relative" });
   const [eX, seteX] = useState(0);
-  const [eY, seteY] = useState(-10000);
+  const [eY, seteY] = useState(0);
   const [gTags, setgTags] = useState({});
   const [find, setfind] = useState({});
   const [active, setActive] = useState(false);
   const [selectPanelDicplay, setSelectPanelDicplay] = useState(false);
-
+  const [iconTags, setIconTags] = useState("div");
 
 
 
@@ -233,7 +232,10 @@ function Controller(props) {
       .map((x) => (x.style.fontFamily = fontFm));
   }
   function aligns(ititalTegs, items, align) {
-    ititalTegs.style.textAlign = align;
+    if(ititalTegs.style !== undefined){
+      ititalTegs.style.textAlign = align;
+    }
+    
   }
 
   function cleanerTxt(ititalTegs, items) {
@@ -371,24 +373,21 @@ function Controller(props) {
 
   }, [textBox, find, active, innerTextBox]);
 
-  useEffect(() => {
-if(selectedtext.length > 0){
-  setSelectPanelDicplay(true);
-}else{
-  setSelectPanelDicplay(false);
-}
-    
-
-  }, [selectedtext]);
+  
+ 
+ 
   return (
-    <div className="contentDtext">
+    <div className="contentDtext container-fluid"> 
+   
+      <div className="contentDtext container">
 
       <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
+     
         <div
           className="row container text-right p-4  panel"
           style={sizes === true ? { position: "absolute" } : panelStyle}
         >
-        { selectPanelDicplay === true? <SelectPanel find={find} selectedtext={selectedtext} eX = {eX} eY = {eY} sizes = {sizes} baseSelector = {baseSelector}/>:""}
+      
           <Panel
             settextbl={settextbl}
             setitemss={setitemss}
@@ -404,6 +403,9 @@ if(selectedtext.length > 0){
             setimgPadding={setimgPadding}
             setimgFloat={setimgFloat}
             setimgdisplay={setimgdisplay}
+            setIconTags = {setIconTags}
+            setActive={setActive}
+            setSelectPanelDicplay = {setSelectPanelDicplay}
             cildTeg={cildTeg}
             items={items}
             imgurls={imgurls}
@@ -426,6 +428,7 @@ if(selectedtext.length > 0){
             setsizes={setsizes}
             sizes={sizes}
             setpanelStyle={setpanelStyle}
+            
             eX={eX}
             eY={eY}
             gTags={gTags}
@@ -436,22 +439,24 @@ if(selectedtext.length > 0){
             createTr={createTr}
             createTd={createTd}
             find={find}
-            setActive={setActive}
             active={active}
             
+            
           />
+          
         </div>
-
+       
         <div
           style={{ marginTop: 250 + "px", height: "100%" }}
           className={baseSelector}
           contentEditable={true}
+         
           onClick={(e) => {
             setfind(e.target);
             setActive(false);
+            console.log(e.target)
             if (window.getSelection().toString().length > 0) {
               seteY(e.clientY);seteX(e.clientX);
-              console.log(e.clientY)
               }
           }}
           onKeyPress={(e) => {
@@ -474,7 +479,7 @@ if(selectedtext.length > 0){
           dangerouslySetInnerHTML={createMarkup(textId)}
         />
       </div>
-
+      
       <div className="col-sm">
         <textarea
           style={{ display: "none" }}
@@ -482,7 +487,7 @@ if(selectedtext.length > 0){
           name={document.querySelector(textAreraId).className}
         />
       </div>
-
+      </div>
     </div>
   );
 }

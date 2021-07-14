@@ -14,6 +14,8 @@ function Htype(props) {
         props.izmtegs(props.t, props.find, props.items);
         props.settegsLocal(props.t);
         props.setActive((props.active === false) ? true : false);
+        props.setIconTags(props.t);
+        props.setSelectPanelDicplay(false);
       }}
       className={hActive(props.tegsLocal, props.t)}
     >
@@ -26,6 +28,7 @@ function Htype(props) {
       >
         {props.svg}
       </svg>
+     
     </button>
   );
 }

@@ -12,7 +12,7 @@ function Italic(props) {
         }
         onClick={() => {
           props.setActive(props.active === false ? true : false);
-
+          props.setSelectPanelDicplay(false);
           selectedStyles(props, "i");
         }}
       >

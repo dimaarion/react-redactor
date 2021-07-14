@@ -8,10 +8,14 @@
     padding: 0px;
 }
 .selectpanel ul li div{
-    text-align: left;
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 .selectpanel ul li ul{
-    margin: 0px;
+   margin-left: -10px;
     padding: 0px;
     display: none;
     position: absolute;
@@ -29,17 +33,24 @@
 }
 .selectpanel ul li ul li{
     padding-bottom: 0px;
-    background-color: #ffffff;
+   
 }
-.selectpanel ul li ul li:hover{
-    background-color: #cccccc;
-}
-.selectpanel ul li div:hover{
-    background-color: #cccccc;
-}
+
 .selectpanel ul li{
     padding-bottom: 15px;
 }
 .selectpanel td{
     padding-bottom: 10px;
+}
+.selectpanel td div{
+    padding: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.selectpanel .listStyle{
+    width: 40px;
+}
+.selectpanel button{
+    border: none;
 }

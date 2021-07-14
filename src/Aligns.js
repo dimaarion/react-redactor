@@ -24,6 +24,7 @@ function Aligns(props) {
         style={{ height: "auto" }}
         ititalTegs={props.ititalTegs}
         items={props.items}
+        setSelectPanelDicplay = {props.setSelectPanelDicplay}
       />
       <Linecenter
         find={props.find}
@@ -36,6 +37,7 @@ function Aligns(props) {
         style={{ height: "auto" }}
         ititalTegs={props.ititalTegs}
         items={props.items}
+        setSelectPanelDicplay = {props.setSelectPanelDicplay}
       />
       <Lineright
         find={props.find}
@@ -48,6 +50,7 @@ function Aligns(props) {
         style={{ height: "auto" }}
         ititalTegs={props.ititalTegs}
         items={props.items}
+        setSelectPanelDicplay = {props.setSelectPanelDicplay}
       />
     </div>
   );
