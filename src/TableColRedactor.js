@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./css/tablecolredactor.css";
 export default function TableColRedactor(props) {
   const [col, setCol] = useState("");
-  const [row, setRow] = useState("0");
+  const [row, setRow] = useState("50");
   const [colr, setColr] = useState("");
   const [rowr, setRowr] = useState("");
   const [val, setVal] = useState(false);
