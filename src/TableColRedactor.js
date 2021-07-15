@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
 import "./css/tablecolredactor.css";
 export default function TableColRedactor(props) {
-  const [col, setCol] = useState(0);
-  const [colr, setColr] = useState(0);
+  const [col, setCol] = useState("");
+  const [row, setRow] = useState("0");
+  const [colr, setColr] = useState("");
+  const [rowr, setRowr] = useState("");
+  const [val, setVal] = useState(false);
 
   useEffect(() => {
     if (props.find !== undefined && props.find.tagName === "TD") {
       if (props.find.getAttribute("style") !== null) {
-        setColr(props.find.getAttribute("style").replace(/[a-z:]/g, ""));
+        setColr(props.find.style.width.replace(/[a-z\-;:]/g, ""));
+        setRowr(props.find.style.height.replace(/[a-z\-;:]/g, ""));
       }
     }
-  }, [props.find, colr]);
+  }, [props.find, colr, rowr]);
 
   const STYLES = {
     close: {
@@ -57,7 +61,20 @@ export default function TableColRedactor(props) {
                 onChange={(e) => setCol(e.target.value)}
                 className="form-control "
                 type="text"
+                placeholder={colr}
                 defaultValue={colr}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>Высота строки</td>
+            <td>
+              <input
+                onChange={(e) => setRow(e.target.value)}
+                className="form-control "
+                type="text"
+                placeholder={rowr}
+                defaultValue={rowr}
               />
             </td>
           </tr>
@@ -68,7 +85,10 @@ export default function TableColRedactor(props) {
                 className="btn btn-primary"
                 onClick={() => {
                   if (props.find !== undefined && props.find.tagName === "TD") {
-                    props.find.setAttribute("style", "width:" + col + "px");
+                    props.find.setAttribute(
+                      "style",
+                      "width:" + col + "px;height:" + row + "px;"
+                    );
                   }
                 }}
               >
