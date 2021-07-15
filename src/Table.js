@@ -73,7 +73,7 @@ function Table(props) {
       </button>
       <div>
         {dSittens === true ? (
-          <TableColRedactor setDSittens={setDSittens} />
+          <TableColRedactor setDSittens={setDSittens} find={props.find} />
         ) : (
           ""
         )}

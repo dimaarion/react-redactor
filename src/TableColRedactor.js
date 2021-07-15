@@ -6,20 +6,26 @@ export default function TableColRedactor(props) {
 
   useEffect(() => {
     if (props.find !== undefined && props.find.tagName === "TD") {
-      props.find.setAttribute("style", "width:" + col + "px");
-      setColr(props.find.getAttribute("style"));
+      if (props.find.getAttribute("style") !== null) {
+        setColr(props.find.getAttribute("style").replace(/[a-z:]/g, ""));
+      }
     }
-  }, [col, props.find]);
+  }, [props.find, colr]);
+
   const STYLES = {
     close: {
       textAlign: "right"
     },
-    but: {
-      textAlign: "center"
+    butOk: {
+      textAlign: "right"
+    },
+    butOt: {
+      textAlign: "left"
     }
   };
   return (
     <div className="tableRedactor tablecolredactor">
+      {colr}
       <table className="table table-hover">
         <thead>
           <tr>
@@ -51,15 +57,33 @@ export default function TableColRedactor(props) {
                 onChange={(e) => setCol(e.target.value)}
                 className="form-control "
                 type="text"
-                placeholder="0"
-                aria-label="default input example"
+                defaultValue={colr}
               />
             </td>
           </tr>
           <tr>
-            <td>
-              <button type="button" className="btn btn-primary">
+            <td style={STYLES.butOk}>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => {
+                  if (props.find !== undefined && props.find.tagName === "TD") {
+                    props.find.setAttribute("style", "width:" + col + "px");
+                  }
+                }}
+              >
                 Ок
+              </button>
+            </td>
+            <td style={STYLES.butOt}>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => {
+                  props.setDSittens(false);
+                }}
+              >
+                Отмена
               </button>
             </td>
           </tr>

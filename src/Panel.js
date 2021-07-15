@@ -48,7 +48,7 @@ function Panel(props) {
           fontsFm={props.fontsFm}
           ititalTegs={props.ititalTegs}
           items={props.items}
-          setSelectPanelDicplay = {props.setSelectPanelDicplay}
+          setSelectPanelDicplay={props.setSelectPanelDicplay}
         />
         <Fonts
           setActive={props.setActive}
@@ -59,10 +59,10 @@ function Panel(props) {
           fonts={props.fonts}
           ititalTegs={props.ititalTegs}
           items={props.items}
-          setSelectPanelDicplay = {props.setSelectPanelDicplay}
+          setSelectPanelDicplay={props.setSelectPanelDicplay}
         />
         <Headers
-          type = {"block"}
+          type={"block"}
           setActive={props.setActive}
           active={props.active}
           find={props.find}
@@ -75,8 +75,8 @@ function Panel(props) {
           ititalTegs={props.ititalTegs}
           items={props.items}
           selectedtext={props.selectedtext}
-          setIconTags = {props.setIconTags}
-          setSelectPanelDicplay = {props.setSelectPanelDicplay}
+          setIconTags={props.setIconTags}
+          setSelectPanelDicplay={props.setSelectPanelDicplay}
         />
         <Aligns
           find={props.find}
@@ -88,7 +88,7 @@ function Panel(props) {
           style={{ height: "auto" }}
           ititalTegs={props.ititalTegs}
           items={props.items}
-          setSelectPanelDicplay = {props.setSelectPanelDicplay}
+          setSelectPanelDicplay={props.setSelectPanelDicplay}
         />
 
         <div className="row  p-2 list">
@@ -100,7 +100,7 @@ function Panel(props) {
             ititalTegs={props.ititalTegs}
             items={props.items}
             class="col-sm text-left listItems"
-            setSelectPanelDicplay = {props.setSelectPanelDicplay}
+            setSelectPanelDicplay={props.setSelectPanelDicplay}
           />
           <ListOl
             setActive={props.setActive}
@@ -110,7 +110,7 @@ function Panel(props) {
             ititalTegs={props.ititalTegs}
             items={props.items}
             class="col-sm text-left listItems"
-            setSelectPanelDicplay = {props.setSelectPanelDicplay}
+            setSelectPanelDicplay={props.setSelectPanelDicplay}
           />
 
           <Table
@@ -121,39 +121,38 @@ function Panel(props) {
             createTd={props.createTd}
             createTr={props.createTr}
             createTable={props.createTable}
-            setSelectPanelDicplay = {props.setSelectPanelDicplay}
-          /> 
-
-          
+            setSelectPanelDicplay={props.setSelectPanelDicplay}
+            find={props.find}
+          />
         </div>
 
         <div className="row p-2">
-        <Headers
-          type = {"select"}
-          setActive={props.setActive}
-          active={props.active}
-          find={props.find}
-          typeStyle={typeStyle}
-          tegs={props.tegs}
-          gTags={props.gTags}
-          izmtegs={props.izmtegs}
-          settextbl={props.settextbl}
-          setitemss={props.setitemss}
-          ititalTegs={props.ititalTegs}
-          items={props.items}
-          selectedtext={props.selectedtext}
-          setIconTags = {props.setIconTags}
-          setSelectPanelDicplay = {props.setSelectPanelDicplay}
-        />
+          <Headers
+            type={"select"}
+            setActive={props.setActive}
+            active={props.active}
+            find={props.find}
+            typeStyle={typeStyle}
+            tegs={props.tegs}
+            gTags={props.gTags}
+            izmtegs={props.izmtegs}
+            settextbl={props.settextbl}
+            setitemss={props.setitemss}
+            ititalTegs={props.ititalTegs}
+            items={props.items}
+            selectedtext={props.selectedtext}
+            setIconTags={props.setIconTags}
+            setSelectPanelDicplay={props.setSelectPanelDicplay}
+          />
           <Lincks
             setActive={props.setActive}
             active={props.active}
             class=" col-sm text-left listItems"
             gTags={props.gTags}
             setstate={setstate}
-            setSelectPanelDicplay = {props.setSelectPanelDicplay}
+            setSelectPanelDicplay={props.setSelectPanelDicplay}
           />
-        
+
           <Bold
             setActive={props.setActive}
             active={props.active}
@@ -165,7 +164,7 @@ function Panel(props) {
             selectedtext={props.selectedtext}
             types={props.types}
             class="col-sm text-left listItems"
-            setSelectPanelDicplay = {props.setSelectPanelDicplay}
+            setSelectPanelDicplay={props.setSelectPanelDicplay}
           />
           <Italic
             setActive={props.setActive}
@@ -178,7 +177,7 @@ function Panel(props) {
             selectedTextFocus={props.selectedTextFocus}
             selectedTextAncor={props.selectedTextAncor}
             class=" col-sm text-left listItems"
-            setSelectPanelDicplay = {props.setSelectPanelDicplay}
+            setSelectPanelDicplay={props.setSelectPanelDicplay}
           />
           <Strikethrough
             setActive={props.setActive}
@@ -189,7 +188,7 @@ function Panel(props) {
             selectedtext={props.selectedtext}
             types={props.types}
             class=" col-sm text-left listItems"
-            setSelectPanelDicplay = {props.setSelectPanelDicplay}
+            setSelectPanelDicplay={props.setSelectPanelDicplay}
           />
           <Underline
             setActive={props.setActive}
@@ -200,7 +199,7 @@ function Panel(props) {
             selectedtext={props.selectedtext}
             types={props.types}
             class=" col-sm text-left listItems"
-            setSelectPanelDicplay = {props.setSelectPanelDicplay}
+            setSelectPanelDicplay={props.setSelectPanelDicplay}
           />
 
           <ClinerText
@@ -212,7 +211,7 @@ function Panel(props) {
             selectedtext={props.selectedtext}
             types={props.types}
             class=" col-sm text-left listItems"
-            setSelectPanelDicplay = {props.setSelectPanelDicplay}
+            setSelectPanelDicplay={props.setSelectPanelDicplay}
           />
 
           <CloseControl
@@ -221,11 +220,9 @@ function Panel(props) {
             setsizes={props.setsizes}
             sizes={props.sizes}
             setpanelStyle={props.setpanelStyle}
-            setSelectPanelDicplay = {props.setSelectPanelDicplay}
+            setSelectPanelDicplay={props.setSelectPanelDicplay}
           />
-           
         </div>
-        
       </div>
 
       <ImgRemove
@@ -251,7 +248,7 @@ function Panel(props) {
         seturlLen={props.seturlLen}
         urlLen={props.urlLen}
         imgFloat={props.imgFloat}
-        setSelectPanelDicplay = {props.setSelectPanelDicplay}
+        setSelectPanelDicplay={props.setSelectPanelDicplay}
       />
 
       {state.link === true || props.gTags.link ? (
@@ -267,12 +264,11 @@ function Panel(props) {
           ititalTegs={props.ititalTegs}
           selectedtext={props.selectedtext}
           types={props.types}
-          setSelectPanelDicplay = {props.setSelectPanelDicplay}
+          setSelectPanelDicplay={props.setSelectPanelDicplay}
         />
       ) : (
         ""
       )}
-     
     </div>
   );
 }

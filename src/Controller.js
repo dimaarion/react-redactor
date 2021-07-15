@@ -454,7 +454,7 @@ function Controller(props) {
           onClick={(e) => {
             setfind(e.target);
             setActive(false);
-            console.log(e.target)
+           
             if (window.getSelection().toString().length > 0) {
               seteY(e.clientY);seteX(e.clientX);
               }
