@@ -46,3 +46,14 @@
 .tableRedactor svg:hover {
   padding: 2px;
 }
+.tsittens {
+  position: absolute;
+  margin-top: -27px;
+  margin-left: 14px;
+}
+.tablesreate .tsittens {
+  display: none;
+}
+.tablesreate:hover .tsittens {
+  display: block;
+}
