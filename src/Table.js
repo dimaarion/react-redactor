@@ -53,7 +53,7 @@ function Table(props) {
         </svg>
       </button>
      <div>
-       <TableColRedactor/>
+       <TableColRedactor  find={props.find}/>
      </div>
       {openTb === true ? (
         <div className="tableRedactor">

@@ -122,6 +122,7 @@ function Panel(props) {
             createTr={props.createTr}
             createTable={props.createTable}
             setSelectPanelDicplay = {props.setSelectPanelDicplay}
+            find={props.find}
           /> 
 
           

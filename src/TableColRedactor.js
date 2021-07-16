@@ -15,6 +15,6 @@ export default function TableColRedactor(props) {
     <div className="row ">
         <div className="col-sm">
         </div>
-        <input onChange = {(e)=>setCol(e.target.value)} className="form-control col-sm-1 tablecolredactor" type="text" placeholder="0" aria-label="default input example" />
+        <input onChange = {(e)=>setCol(e.target.value)} className="form-control col-sm-1 tablecolredactor" defaultValue = {colr} type="text" placeholder="0" aria-label="default input example" />
     </div>) 
 }
