@@ -4,7 +4,7 @@ export function selectedStyles(props, tag, href = false) {
 
     var documentFragment = range.getRangeAt(0).extractContents();
     let b = document.createElement(tag);
-   
+
     if (href !== false) {
       b.setAttribute("href", href);
     }
@@ -15,7 +15,6 @@ export function selectedStyles(props, tag, href = false) {
     return replaceSelected(props);
   }
 }
-
 
 export function countArray(n) {
   let a = [];

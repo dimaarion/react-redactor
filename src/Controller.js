@@ -41,19 +41,11 @@ function Controller(props) {
   const [selectPanelDicplay, setSelectPanelDicplay] = useState(false);
   const [iconTags, setIconTags] = useState("div");
 
-
-
-
-
-
-
   // eslint-disable-next-line react-hooks/exhaustive-deps
   function ititalTegs(bs = false) {
-
     let text_block = document.querySelector("." + baseSelector);
     function textChildren(text_block) {
       return Object.values(text_block.children);
-
     }
     if (bs === true) {
       return text_block;
@@ -122,34 +114,30 @@ function Controller(props) {
   ) {
     ititalTegs().map(
       (x, i) =>
-      (x.onclick = (e) => {
-        setitems(i);
-        settegs(x.tagName);
-        setfontPt(
-          x.style.fontSize.replace(/[a-z]+/, "") === ""
-            ? 14
-            : x.style.fontSize.replace(/[a-z]+/, "")
-        );
-        setfontFm(x.style.fontFamily ? x.style.fontFamily : "Georgia");
-        setalign(x.style.textAlign ? x.style.textAlign : "left");
-       
-      })
+        (x.onclick = (e) => {
+          setitems(i);
+          settegs(x.tagName);
+          setfontPt(
+            x.style.fontSize.replace(/[a-z]+/, "") === ""
+              ? 14
+              : x.style.fontSize.replace(/[a-z]+/, "")
+          );
+          setfontFm(x.style.fontFamily ? x.style.fontFamily : "Georgia");
+          setalign(x.style.textAlign ? x.style.textAlign : "left");
+        })
     );
 
     ititalTegs().map(
       (x, i) =>
-      (x.onmousemove = (e) => {
-        if (window.getSelection().toString().length > 0) {
-          setselectedtext(window.getSelection().toString());
-          setSelectedTextLen(window.getSelection().toString().length);
-          setSelectedTextAncor(window.getSelection().anchorOffset);
-          setSelectedTextFocus(window.getSelection().focusOffset);
-          setSelectedTest(window.getSelection().focusNode);
-           
-        
-          
-        }
-      })
+        (x.onmousemove = (e) => {
+          if (window.getSelection().toString().length > 0) {
+            setselectedtext(window.getSelection().toString());
+            setSelectedTextLen(window.getSelection().toString().length);
+            setSelectedTextAncor(window.getSelection().anchorOffset);
+            setSelectedTextFocus(window.getSelection().focusOffset);
+            setSelectedTest(window.getSelection().focusNode);
+          }
+        })
     );
   }
 
@@ -214,6 +202,7 @@ function Controller(props) {
         let td = document.createElement("td");
         td = document.body.appendChild(td);
         td.className = "itemsTd";
+        td.setAttribute("style", "width:100px;height:50px");
         tr.appendChild(td);
       }
     }
@@ -232,10 +221,9 @@ function Controller(props) {
       .map((x) => (x.style.fontFamily = fontFm));
   }
   function aligns(ititalTegs, items, align) {
-    if(ititalTegs.style !== undefined){
+    if (ititalTegs.style !== undefined) {
       ititalTegs.style.textAlign = align;
     }
-    
   }
 
   function cleanerTxt(ititalTegs, items) {
@@ -250,10 +238,10 @@ function Controller(props) {
         .filter(
           (l) =>
             "/" +
-            l.src
-              .split("/")
-              .filter((f, i) => i > 2)
-              .join("/") ===
+              l.src
+                .split("/")
+                .filter((f, i) => i > 2)
+                .join("/") ===
             imgurls
         )
         .map((ed) => (ed.style.width = imgWidth))
@@ -265,10 +253,10 @@ function Controller(props) {
         .filter(
           (l) =>
             "/" +
-            l.src
-              .split("/")
-              .filter((f, i) => i > 2)
-              .join("/") ===
+              l.src
+                .split("/")
+                .filter((f, i) => i > 2)
+                .join("/") ===
             imgurls
         )
         .map((ed) => (ed.style.height = imgHeight))
@@ -280,10 +268,10 @@ function Controller(props) {
         .filter(
           (l) =>
             "/" +
-            l.src
-              .split("/")
-              .filter((f, i) => i > 2)
-              .join("/") ===
+              l.src
+                .split("/")
+                .filter((f, i) => i > 2)
+                .join("/") ===
             imgurls
         )
         .map((ed) => (ed.style.padding = imgPadding))
@@ -296,10 +284,10 @@ function Controller(props) {
         .filter(
           (l) =>
             "/" +
-            l.src
-              .split("/")
-              .filter((f, i) => i > 2)
-              .join("/") ===
+              l.src
+                .split("/")
+                .filter((f, i) => i > 2)
+                .join("/") ===
             imgurls
         )
         .map((ed) => (ed.style.float = imgFloat))
@@ -370,123 +358,111 @@ function Controller(props) {
   }
   useEffect(() => {
     settextBox(innerTextBox());
-
   }, [textBox, find, active, innerTextBox]);
 
-  
- 
- 
   return (
-    <div className="contentDtext container-fluid"> 
-   
+    <div className="contentDtext container-fluid">
       <div className="contentDtext container">
+        <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
+          <div
+            className="row container text-right p-4  panel"
+            style={sizes === true ? { position: "absolute" } : panelStyle}
+          >
+            <Panel
+              settextbl={settextbl}
+              setitemss={setitemss}
+              setfontPt={setfontPt}
+              setfontFm={setfontFm}
+              setalign={setalign}
+              setimgWidth={setimgWidth}
+              setimgHeight={setimgHeight}
+              setimgurls={setimgurls}
+              selectedtext={selectedtext}
+              selectedTextAncor={selectedTextAncor}
+              selectedTextFocus={selectedTextFocus}
+              setimgPadding={setimgPadding}
+              setimgFloat={setimgFloat}
+              setimgdisplay={setimgdisplay}
+              setIconTags={setIconTags}
+              setActive={setActive}
+              setSelectPanelDicplay={setSelectPanelDicplay}
+              cildTeg={cildTeg}
+              items={items}
+              imgurls={imgurls}
+              imgdisplay={imgdisplay}
+              imgWidth={imgWidth}
+              tegs={tegs}
+              fontPt={fontPt}
+              fontFm={fontFm}
+              align={align}
+              imgHeight={imgHeight}
+              imgPadding={imgPadding}
+              fonts={fonts}
+              fontsFm={fontsFm}
+              ititalTegs={ititalTegs}
+              izmtegs={izmtegs}
+              aligns={aligns}
+              listItem={listItem}
+              types={types}
+              cleanerTxt={cleanerTxt}
+              setsizes={setsizes}
+              sizes={sizes}
+              setpanelStyle={setpanelStyle}
+              eX={eX}
+              eY={eY}
+              gTags={gTags}
+              setgTags={setgTags}
+              imgFloat={imgFloat}
+              createTable={createTable}
+              baseSelector={baseSelector}
+              createTr={createTr}
+              createTd={createTd}
+              find={find}
+              active={active}
+            />
+          </div>
 
-      <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
-     
-        <div
-          className="row container text-right p-4  panel"
-          style={sizes === true ? { position: "absolute" } : panelStyle}
-        >
-      
-          <Panel
-            settextbl={settextbl}
-            setitemss={setitemss}
-            setfontPt={setfontPt}
-            setfontFm={setfontFm}
-            setalign={setalign}
-            setimgWidth={setimgWidth}
-            setimgHeight={setimgHeight}
-            setimgurls={setimgurls}
-            selectedtext={selectedtext}
-            selectedTextAncor={selectedTextAncor}
-            selectedTextFocus={selectedTextFocus}
-            setimgPadding={setimgPadding}
-            setimgFloat={setimgFloat}
-            setimgdisplay={setimgdisplay}
-            setIconTags = {setIconTags}
-            setActive={setActive}
-            setSelectPanelDicplay = {setSelectPanelDicplay}
-            cildTeg={cildTeg}
-            items={items}
-            imgurls={imgurls}
-            imgdisplay={imgdisplay}
-            imgWidth={imgWidth}
-            tegs={tegs}
-            fontPt={fontPt}
-            fontFm={fontFm}
-            align={align}
-            imgHeight={imgHeight}
-            imgPadding={imgPadding}
-            fonts={fonts}
-            fontsFm={fontsFm}
-            ititalTegs={ititalTegs}
-            izmtegs={izmtegs}
-            aligns={aligns}
-            listItem={listItem}
-            types={types}
-            cleanerTxt={cleanerTxt}
-            setsizes={setsizes}
-            sizes={sizes}
-            setpanelStyle={setpanelStyle}
-            
-            eX={eX}
-            eY={eY}
-            gTags={gTags}
-            setgTags={setgTags}
-            imgFloat={imgFloat}
-            createTable={createTable}
-            baseSelector={baseSelector}
-            createTr={createTr}
-            createTd={createTd}
-            find={find}
-            active={active}
-            
-            
-          />
-          
-        </div>
-       
-        <div
-          style={{ marginTop: 250 + "px", height: "100%" }}
-          className={baseSelector}
-          contentEditable={true}
-         
-          onClick={(e) => {
-            setfind(e.target);
-            setActive(false);
-            console.log(e.target)
-            if (window.getSelection().toString().length > 0) {
-              seteY(e.clientY);seteX(e.clientX);
+          <div
+            style={{ marginTop: 250 + "px", height: "100%" }}
+            className={baseSelector}
+            contentEditable={true}
+            onClick={(e) => {
+              setfind(e.target);
+              setActive(false);
+
+              if (window.getSelection().toString().length > 0) {
+                seteY(e.clientY);
+                seteX(e.clientX);
               }
-          }}
-          onKeyPress={(e) => {
-            updateElements(
-              ititalTegs,
-              setselectedtext,
-              setSelectedTextLen,
-              setSelectedTextAncor,
-              setSelectedTextFocus,
-              setitems,
-              settegs,
-              setfontPt,
-              setfontFm,
-              setalign
-            );
-            settextBox(innerTextBox());
+            }}
+            onKeyPress={(e) => {
+              updateElements(
+                ititalTegs,
+                setselectedtext,
+                setSelectedTextLen,
+                setSelectedTextAncor,
+                setSelectedTextFocus,
+                setitems,
+                settegs,
+                setfontPt,
+                setfontFm,
+                setalign
+              );
+              settextBox(innerTextBox());
 
-            elMoveUpDown(ititalTegs, baseSelector);
-          }}
-          dangerouslySetInnerHTML={createMarkup(textId)}
-        />
-      </div>
-      
-      <div className="col-sm">
-        <textarea
-          style={{ display: "none" }}
-          defaultValue={textBox}
-          name={document.querySelector(textAreraId).className}
-        />
-      </div>
+              elMoveUpDown(ititalTegs, baseSelector);
+            }}
+            dangerouslySetInnerHTML={createMarkup(textId)}
+          />
+        </div>
+
+        <div className="col-sm">
+          <textarea
+            style={{ display: "none" }}
+            defaultValue={textBox}
+            name={document.querySelector(textAreraId).className}
+          />
+        </div>
       </div>
     </div>
   );
