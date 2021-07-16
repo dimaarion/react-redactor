@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./css/tablecolredactor.css";
 export default function TableColRedactor(props) {
-  const [col, setCol] = useState("");
+  const [col, setCol] = useState("100");
   const [row, setRow] = useState("50");
   const [colr, setColr] = useState("");
   const [rowr, setRowr] = useState("");
+  const [colorr, setColorr] = useState("");
+  const [color, setColor] = useState("#000000");
   const [val, setVal] = useState(false);
 
   useEffect(() => {
@@ -12,9 +14,11 @@ export default function TableColRedactor(props) {
       if (props.find.getAttribute("style") !== null) {
         setColr(props.find.style.width.replace(/[a-z\-;:]/g, ""));
         setRowr(props.find.style.height.replace(/[a-z\-;:]/g, ""));
+        setColorr(props.find.style.backgroundColor);
+        console.log(props.find.getAttributeNS("style", "background-color"));
       }
     }
-  }, [props.find, colr, rowr]);
+  }, [props.find, colr, rowr, colorr]);
 
   const STYLES = {
     close: {
@@ -29,7 +33,6 @@ export default function TableColRedactor(props) {
   };
   return (
     <div className="tableRedactor tablecolredactor">
-      {colr}
       <table className="table table-hover">
         <thead>
           <tr>
@@ -79,6 +82,17 @@ export default function TableColRedactor(props) {
             </td>
           </tr>
           <tr>
+            <td>Цвет ячейки</td>
+            <td>
+              <input
+                onChange={(e) => setColor(e.target.value)}
+                className="form-control "
+                type="color"
+                defaultValue={colorr}
+              />
+            </td>
+          </tr>
+          <tr>
             <td style={STYLES.butOk}>
               <button
                 type="button"
@@ -87,7 +101,13 @@ export default function TableColRedactor(props) {
                   if (props.find !== undefined && props.find.tagName === "TD") {
                     props.find.setAttribute(
                       "style",
-                      "width:" + col + "px;height:" + row + "px;"
+                      "width:" +
+                        col +
+                        "px;height:" +
+                        row +
+                        "px;background-color:" +
+                        color +
+                        ";"
                     );
                   }
                 }}
