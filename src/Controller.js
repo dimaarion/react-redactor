@@ -166,14 +166,14 @@ function Controller(props) {
     att(oldteg, dataD);
   }
 
-  function createTable(bas, it, w = "100%", f = "none") {
+  function createTable(bas, it, w = "100%", f = "none", r = 0) {
     let bs = document.querySelector("." + bas);
     let div = document.createElement("div");
     let tb = document.createElement("table");
     document.body.appendChild(div);
     document.body.appendChild(tb);
     tb.className = `tb${it} tbl`;
-    tb.setAttribute("style", "width:" + w + ";float:" + f + ";");
+    tb.setAttribute("style", "width:" + w + ";float:" + f + ";border-collapse:separate;border-spacing: " + r +"px "+ r +"px;");
     div.className = "divTable";
     Array.from(bs.children)
       .filter((f, i) => i === it)
@@ -202,7 +202,7 @@ function Controller(props) {
         let td = document.createElement("td");
         td = document.body.appendChild(td);
         td.className = "itemsTd";
-        td.setAttribute("style", "width:100px;height:50px");
+        td.setAttribute("data-count", j + 1);
         tr.appendChild(td);
       }
     }

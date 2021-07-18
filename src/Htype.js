@@ -1,5 +1,5 @@
 import React from "react";
-
+import {replaceElement} from "./action/index";
 function Htype(props) {
   function hActive(t, n) {
     if (t === n) {
@@ -11,11 +11,12 @@ function Htype(props) {
       type="button"
       style={props.typeStyle(props.find.tagName, props.t, "button", props.s)}
       onClick={() => {
-        props.izmtegs(props.t, props.find, props.items);
+       // props.izmtegs(props.t, props.find, props.items);
         props.settegsLocal(props.t);
         props.setActive((props.active === false) ? true : false);
         props.setIconTags(props.t);
         props.setSelectPanelDicplay(false);
+        replaceElement(props)
       }}
       className={hActive(props.tegsLocal, props.t)}
     >
