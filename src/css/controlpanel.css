@@ -1,0 +1,7 @@
+.controlPanel {
+  z-index: 9000;
+  background-color: #ffffff;
+}
+.controlPanel table tr td {
+  width: 50px;
+}

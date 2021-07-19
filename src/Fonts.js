@@ -14,7 +14,7 @@ function Fonts(props) {
     }
   }, [props.find]);
   return (
-    <div className="text-left" style={{ width: "105px" }}>
+    <div className="text-left">
       <ul id="fontsTxt">
         <li>
           {nf}
@@ -25,7 +25,7 @@ function Fonts(props) {
                 onClick={() => {
                   props.fonts(props.find, props.items, x);
                   setnf(x);
-                  props.setActive((props.active === false) ? true : false);
+                  props.setActive(props.active === false ? true : false);
                   props.setSelectPanelDicplay(false);
                 }}
               >

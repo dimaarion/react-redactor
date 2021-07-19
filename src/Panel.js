@@ -15,7 +15,7 @@ import CloseControl from "./CloseControl";
 import LinkRemove from "./LinkRemove";
 import Table from "./Table";
 import Lincks from "./Lincks";
-
+import "./css/controlpanel.css";
 import TableColRedactor from "./TableColRedactor";
 
 function typeStyle(t, g, o) {
@@ -77,7 +77,7 @@ function Panel(props) {
               </table>
             </td>
 
-            <td>
+            <td colSpan="3">
               <Aligns
                 find={props.find}
                 setActive={props.setActive}
@@ -91,7 +91,7 @@ function Panel(props) {
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
               />
             </td>
-            <td>
+            <td colSpan="7">
               <Headers
                 type={"block"}
                 setActive={props.setActive}
@@ -110,143 +110,163 @@ function Panel(props) {
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
               />
             </td>
+            <td>
+              <ListUl
+                setActive={props.setActive}
+                active={props.active}
+                find={props.find}
+                listItem={props.listItem}
+                ititalTegs={props.ititalTegs}
+                items={props.items}
+                class="text-left listItems pr-2"
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              <ListOl
+                setActive={props.setActive}
+                active={props.active}
+                find={props.find}
+                listItem={props.listItem}
+                ititalTegs={props.ititalTegs}
+                items={props.items}
+                class="text-left listItems"
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              <Table
+                setActive={props.setActive}
+                active={props.active}
+                baseSelector={props.baseSelector}
+                items={props.items}
+                createTd={props.createTd}
+                createTr={props.createTr}
+                createTable={props.createTable}
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+                find={props.find}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <Headers
+                type={"select"}
+                setActive={props.setActive}
+                active={props.active}
+                find={props.find}
+                typeStyle={typeStyle}
+                tegs={props.tegs}
+                gTags={props.gTags}
+                izmtegs={props.izmtegs}
+                settextbl={props.settextbl}
+                setitemss={props.setitemss}
+                ititalTegs={props.ititalTegs}
+                items={props.items}
+                selectedtext={props.selectedtext}
+                setIconTags={props.setIconTags}
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              <Lincks
+                setActive={props.setActive}
+                active={props.active}
+                class=" pl-2 text-left listItems"
+                gTags={props.gTags}
+                setstate={setstate}
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              <Bold
+                setActive={props.setActive}
+                active={props.active}
+                gTags={props.gTags}
+                selectedTextAncor={props.selectedTextAncor}
+                selectedTextFocus={props.selectedTextFocus}
+                items={props.items}
+                ititalTegs={props.ititalTegs}
+                selectedtext={props.selectedtext}
+                types={props.types}
+                class="pl-2 text-left listItems"
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              <Italic
+                setActive={props.setActive}
+                active={props.active}
+                gTags={props.gTags}
+                items={props.items}
+                ititalTegs={props.ititalTegs}
+                selectedtext={props.selectedtext}
+                types={props.types}
+                selectedTextFocus={props.selectedTextFocus}
+                selectedTextAncor={props.selectedTextAncor}
+                class="pl-2 text-left listItems"
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              <Strikethrough
+                setActive={props.setActive}
+                active={props.active}
+                gTags={props.gTags}
+                items={props.items}
+                ititalTegs={props.ititalTegs}
+                selectedtext={props.selectedtext}
+                types={props.types}
+                class="pl-2 text-left listItems"
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              <Underline
+                setActive={props.setActive}
+                active={props.active}
+                gTags={props.gTags}
+                items={props.items}
+                ititalTegs={props.ititalTegs}
+                selectedtext={props.selectedtext}
+                types={props.types}
+                class=" text-left listItems"
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              <ClinerText
+                setActive={props.setActive}
+                active={props.active}
+                cleanerTxt={props.cleanerTxt}
+                items={props.items}
+                ititalTegs={props.ititalTegs}
+                selectedtext={props.selectedtext}
+                types={props.types}
+                class=" col-sm text-left listItems"
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              <CloseControl
+                setActive={props.setActive}
+                active={props.active}
+                setsizes={props.setsizes}
+                sizes={props.sizes}
+                setpanelStyle={props.setpanelStyle}
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
         </tbody>
       </table>
-      <div className="row ">
-        <div className="row  p-2 list">
-          <ListUl
-            setActive={props.setActive}
-            active={props.active}
-            find={props.find}
-            listItem={props.listItem}
-            ititalTegs={props.ititalTegs}
-            items={props.items}
-            class="col-sm text-left listItems"
-            setSelectPanelDicplay={props.setSelectPanelDicplay}
-          />
-          <ListOl
-            setActive={props.setActive}
-            active={props.active}
-            find={props.find}
-            listItem={props.listItem}
-            ititalTegs={props.ititalTegs}
-            items={props.items}
-            class="col-sm text-left listItems"
-            setSelectPanelDicplay={props.setSelectPanelDicplay}
-          />
-
-          <Table
-            setActive={props.setActive}
-            active={props.active}
-            baseSelector={props.baseSelector}
-            items={props.items}
-            createTd={props.createTd}
-            createTr={props.createTr}
-            createTable={props.createTable}
-            setSelectPanelDicplay={props.setSelectPanelDicplay}
-            find={props.find}
-          />
-        </div>
-
-        <div className="row p-2">
-          <Headers
-            type={"select"}
-            setActive={props.setActive}
-            active={props.active}
-            find={props.find}
-            typeStyle={typeStyle}
-            tegs={props.tegs}
-            gTags={props.gTags}
-            izmtegs={props.izmtegs}
-            settextbl={props.settextbl}
-            setitemss={props.setitemss}
-            ititalTegs={props.ititalTegs}
-            items={props.items}
-            selectedtext={props.selectedtext}
-            setIconTags={props.setIconTags}
-            setSelectPanelDicplay={props.setSelectPanelDicplay}
-          />
-          <Lincks
-            setActive={props.setActive}
-            active={props.active}
-            class=" col-sm text-left listItems"
-            gTags={props.gTags}
-            setstate={setstate}
-            setSelectPanelDicplay={props.setSelectPanelDicplay}
-          />
-
-          <Bold
-            setActive={props.setActive}
-            active={props.active}
-            gTags={props.gTags}
-            selectedTextAncor={props.selectedTextAncor}
-            selectedTextFocus={props.selectedTextFocus}
-            items={props.items}
-            ititalTegs={props.ititalTegs}
-            selectedtext={props.selectedtext}
-            types={props.types}
-            class="col-sm text-left listItems"
-            setSelectPanelDicplay={props.setSelectPanelDicplay}
-          />
-          <Italic
-            setActive={props.setActive}
-            active={props.active}
-            gTags={props.gTags}
-            items={props.items}
-            ititalTegs={props.ititalTegs}
-            selectedtext={props.selectedtext}
-            types={props.types}
-            selectedTextFocus={props.selectedTextFocus}
-            selectedTextAncor={props.selectedTextAncor}
-            class=" col-sm text-left listItems"
-            setSelectPanelDicplay={props.setSelectPanelDicplay}
-          />
-          <Strikethrough
-            setActive={props.setActive}
-            active={props.active}
-            gTags={props.gTags}
-            items={props.items}
-            ititalTegs={props.ititalTegs}
-            selectedtext={props.selectedtext}
-            types={props.types}
-            class=" col-sm text-left listItems"
-            setSelectPanelDicplay={props.setSelectPanelDicplay}
-          />
-          <Underline
-            setActive={props.setActive}
-            active={props.active}
-            gTags={props.gTags}
-            items={props.items}
-            ititalTegs={props.ititalTegs}
-            selectedtext={props.selectedtext}
-            types={props.types}
-            class=" col-sm text-left listItems"
-            setSelectPanelDicplay={props.setSelectPanelDicplay}
-          />
-
-          <ClinerText
-            setActive={props.setActive}
-            active={props.active}
-            cleanerTxt={props.cleanerTxt}
-            items={props.items}
-            ititalTegs={props.ititalTegs}
-            selectedtext={props.selectedtext}
-            types={props.types}
-            class=" col-sm text-left listItems"
-            setSelectPanelDicplay={props.setSelectPanelDicplay}
-          />
-
-          <CloseControl
-            setActive={props.setActive}
-            active={props.active}
-            setsizes={props.setsizes}
-            sizes={props.sizes}
-            setpanelStyle={props.setpanelStyle}
-            setSelectPanelDicplay={props.setSelectPanelDicplay}
-          />
-        </div>
-      </div>
+      <div className="row "></div>
 
       <ImgRemove
         setActive={props.setActive}

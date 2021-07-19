@@ -2,7 +2,7 @@ import React from "react";
 
 function Linecenter(props) {
   return (
-    <td className="text-left">
+    <td className="text-left pr-2">
       <button
         type="button"
         className={"bi bi-justify-left " + props.itemsLine + "-itemc"}

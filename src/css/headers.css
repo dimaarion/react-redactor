@@ -1,8 +1,7 @@
 .headers {
   display: inline-flex;
-  margin-top: 8px;
-  margin-left: 35px;
-  margin-right: 5px;
+  margin-top: 5px;
+  margin-left: 5px;
 }
 .headers button {
   margin-right: 8px;
