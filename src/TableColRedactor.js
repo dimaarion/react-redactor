@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { addCell,deleteCell, addStr } from "./action/index";
+import { addCell, deleteCell, addStr, deleteStr } from "./action/index";
 import "./css/tablecolredactor.css";
 export default function TableColRedactor(props) {
   const [col, setCol] = useState("100");
@@ -8,14 +8,11 @@ export default function TableColRedactor(props) {
   const [rowr, setRowr] = useState("");
   const [colorr, setColorr] = useState("#ffffff");
 
-
   useEffect(() => {
     if (props.find !== undefined && props.find.tagName === "TD") {
       if (props.find.getAttribute("style") !== null) {
         setColr(props.find.style.width.replace(/[a-z\-;:]/g, ""));
         setRowr(props.find.style.height.replace(/[a-z\-;:]/g, ""));
-
-
       }
     }
   }, [props.find, colr, rowr]);
@@ -24,28 +21,42 @@ export default function TableColRedactor(props) {
     if (props.find !== undefined && props.find.tagName === "TD") {
       if (props.find.getAttribute("style") !== null) {
         if (props.find.getAttribute("style").split(";")[3] !== undefined) {
-          let red = document.querySelector(".tablecolredactor").querySelector(".color");
-          let redBorder = document.querySelector(".tablecolredactor").querySelector(".colorBorder");
-          let borderH = document.querySelector(".tablecolredactor").querySelector(".borderH");
-          let merge = document.querySelector(".tablecolredactor").querySelector(".merge");
-          let borderHnum = props.find.getAttribute("style").split(";")[3].replace(/[a-z;:-]/g, "").match(/[0-9]{1}/)[0];
+          let red = document
+            .querySelector(".tablecolredactor")
+            .querySelector(".color");
+          let redBorder = document
+            .querySelector(".tablecolredactor")
+            .querySelector(".colorBorder");
+          let borderH = document
+            .querySelector(".tablecolredactor")
+            .querySelector(".borderH");
+          let merge = document
+            .querySelector(".tablecolredactor")
+            .querySelector(".merge");
+          let borderHnum = props.find
+            .getAttribute("style")
+            .split(";")[3]
+            .replace(/[a-z;:-]/g, "")
+            .match(/[0-9]{1}/)[0];
           let pregBorder = `border:solid ${borderHnum}px`;
-          red.value = props.find.getAttribute("style").split(";")[2].replace(/background-color:/, "");
-          redBorder.value = props.find.getAttribute("style").split(";")[3].replace(pregBorder, "");
+          red.value = props.find
+            .getAttribute("style")
+            .split(";")[2]
+            .replace(/background-color:/, "");
+          redBorder.value = props.find
+            .getAttribute("style")
+            .split(";")[3]
+            .replace(pregBorder, "");
           borderH.value = borderHnum;
           merge.value = props.find.getAttribute("colspan");
         }
-
       }
-
     }
   }, [props.find]);
   useEffect(() => {
     if (props.find !== undefined && props.find.tagName === "TD") {
-
     }
   }, [props.find]);
-
 
   const STYLES = {
     close: {
@@ -58,12 +69,11 @@ export default function TableColRedactor(props) {
       textAlign: "left"
     },
     borderH: {
-      marginTop: "-15px",
+      marginTop: "-15px"
     }
   };
   return (
     <div className="tableRedactor tablecolredactor">
-
       <table className="table table-hover">
         <thead>
           <tr>
@@ -100,7 +110,9 @@ export default function TableColRedactor(props) {
             </td>
             <td>
               <div className="row">
-                <div className="p-2" style={STYLES.borderH}>Объеденить<br></br> ячейки</div>
+                <div className="p-2" style={STYLES.borderH}>
+                  Объеденить<br></br> ячейки
+                </div>
                 <input
                   className="form-control col-sm-5 merge"
                   type="number"
@@ -108,7 +120,6 @@ export default function TableColRedactor(props) {
                   defaultValue={1}
                 />
               </div>
-
             </td>
           </tr>
           <tr>
@@ -126,21 +137,22 @@ export default function TableColRedactor(props) {
               <button
                 type="button"
                 className="btn btn-primary m-1"
-                onClick = {()=>{
+                onClick={() => {
                   addCell(props);
-                }}>
+                }}
+              >
                 Добавить ячейку
               </button>
               <button
                 type="button"
                 className="btn btn-primary m-1"
-                onClick = {()=>{
+                onClick={() => {
                   deleteCell(props);
-                }}>
+                }}
+              >
                 Удалить ячейку
               </button>
             </td>
-           
           </tr>
           <tr>
             <td>Цвет ячейки</td>
@@ -155,17 +167,19 @@ export default function TableColRedactor(props) {
               <button
                 type="button"
                 className="btn btn-primary m-1"
-                onClick = {()=>{
+                onClick={() => {
                   addStr(props);
-                }}>
+                }}
+              >
                 Добавить строку
               </button>
               <button
                 type="button"
                 className="btn btn-primary m-1"
-                onClick = {()=>{
-                  deleteCell(props);
-                }}>
+                onClick={() => {
+                  deleteStr(props);
+                }}
+              >
                 Удалить строку
               </button>
             </td>
@@ -181,7 +195,9 @@ export default function TableColRedactor(props) {
             </td>
             <td>
               <div className="row">
-                <div className="p-2" style={STYLES.borderH}>Толщина <br></br> границ</div>
+                <div className="p-2" style={STYLES.borderH}>
+                  Толщина <br></br> границ
+                </div>
                 <input
                   className="form-control borderH col-sm-5"
                   type="number"
@@ -191,7 +207,6 @@ export default function TableColRedactor(props) {
                   step="1"
                 />
               </div>
-
             </td>
           </tr>
           <tr>
@@ -201,24 +216,33 @@ export default function TableColRedactor(props) {
                 className="btn btn-primary"
                 onClick={() => {
                   if (props.find !== undefined && props.find.tagName === "TD") {
-                    let red = document.querySelector(".tablecolredactor").querySelector(".color");
-                    let redBorder = document.querySelector(".tablecolredactor").querySelector(".colorBorder");
-                    let borderH = document.querySelector(".tablecolredactor").querySelector(".borderH");
-                    let merge = document.querySelector(".tablecolredactor").querySelector(".merge");
+                    let red = document
+                      .querySelector(".tablecolredactor")
+                      .querySelector(".color");
+                    let redBorder = document
+                      .querySelector(".tablecolredactor")
+                      .querySelector(".colorBorder");
+                    let borderH = document
+                      .querySelector(".tablecolredactor")
+                      .querySelector(".borderH");
+                    let merge = document
+                      .querySelector(".tablecolredactor")
+                      .querySelector(".merge");
                     props.find.setAttribute(
                       "style",
                       "width:" +
-                      col +
-                      "px;height:" +
-                      row +
-                      "px;background-color:" +
-                      red.value +
-                      ";border:solid " + borderH.value + "px" +
-                      redBorder.value +
-                      ";"
+                        col +
+                        "px;height:" +
+                        row +
+                        "px;background-color:" +
+                        red.value +
+                        ";border:solid " +
+                        borderH.value +
+                        "px" +
+                        redBorder.value +
+                        ";"
                     );
                     props.find.setAttribute("colspan", merge.value);
-                    
                   }
                 }}
               >
