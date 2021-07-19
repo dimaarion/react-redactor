@@ -15,6 +15,7 @@ import CloseControl from "./CloseControl";
 import LinkRemove from "./LinkRemove";
 import Table from "./Table";
 import Lincks from "./Lincks";
+
 import TableColRedactor from "./TableColRedactor";
 
 function typeStyle(t, g, o) {
@@ -39,58 +40,80 @@ function Panel(props) {
   const [state, setstate] = useState({ link: false });
   return (
     <div className="container controlPanel">
-      <div className="row ">
-        <FamelyF
-          setActive={props.setActive}
-          active={props.active}
-          setfontFm={props.setfontFm}
-          fontFm={props.fontFm}
-          fontsFm={props.fontsFm}
-          ititalTegs={props.ititalTegs}
-          items={props.items}
-          setSelectPanelDicplay={props.setSelectPanelDicplay}
-        />
-        <Fonts
-          setActive={props.setActive}
-          active={props.active}
-          find={props.find}
-          fontPt={props.fontPt}
-          setfontPt={props.setfontPt}
-          fonts={props.fonts}
-          ititalTegs={props.ititalTegs}
-          items={props.items}
-          setSelectPanelDicplay={props.setSelectPanelDicplay}
-        />
-        <Headers
-          type={"block"}
-          setActive={props.setActive}
-          active={props.active}
-          find={props.find}
-          typeStyle={typeStyle}
-          tegs={props.tegs}
-          gTags={props.gTags}
-          izmtegs={props.izmtegs}
-          settextbl={props.settextbl}
-          setitemss={props.setitemss}
-          ititalTegs={props.ititalTegs}
-          items={props.items}
-          selectedtext={props.selectedtext}
-          setIconTags={props.setIconTags}
-          setSelectPanelDicplay={props.setSelectPanelDicplay}
-        />
-        <Aligns
-          find={props.find}
-          setActive={props.setActive}
-          active={props.active}
-          typeStyle={typeStyle}
-          align={props.align}
-          aligns={props.aligns}
-          style={{ height: "auto" }}
-          ititalTegs={props.ititalTegs}
-          items={props.items}
-          setSelectPanelDicplay={props.setSelectPanelDicplay}
-        />
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <FamelyF
+                        setActive={props.setActive}
+                        active={props.active}
+                        setfontFm={props.setfontFm}
+                        fontFm={props.fontFm}
+                        fontsFm={props.fontsFm}
+                        ititalTegs={props.ititalTegs}
+                        items={props.items}
+                        setSelectPanelDicplay={props.setSelectPanelDicplay}
+                      />
+                    </td>
+                    <td>
+                      <Fonts
+                        setActive={props.setActive}
+                        active={props.active}
+                        find={props.find}
+                        fontPt={props.fontPt}
+                        setfontPt={props.setfontPt}
+                        fonts={props.fonts}
+                        ititalTegs={props.ititalTegs}
+                        items={props.items}
+                        setSelectPanelDicplay={props.setSelectPanelDicplay}
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
 
+            <td>
+              <Aligns
+                find={props.find}
+                setActive={props.setActive}
+                active={props.active}
+                typeStyle={typeStyle}
+                align={props.align}
+                aligns={props.aligns}
+                style={{ height: "auto" }}
+                ititalTegs={props.ititalTegs}
+                items={props.items}
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              <Headers
+                type={"block"}
+                setActive={props.setActive}
+                active={props.active}
+                find={props.find}
+                typeStyle={typeStyle}
+                tegs={props.tegs}
+                gTags={props.gTags}
+                izmtegs={props.izmtegs}
+                settextbl={props.settextbl}
+                setitemss={props.setitemss}
+                ititalTegs={props.ititalTegs}
+                items={props.items}
+                selectedtext={props.selectedtext}
+                setIconTags={props.setIconTags}
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div className="row ">
         <div className="row  p-2 list">
           <ListUl
             setActive={props.setActive}
@@ -121,11 +144,9 @@ function Panel(props) {
             createTd={props.createTd}
             createTr={props.createTr}
             createTable={props.createTable}
-            setSelectPanelDicplay = {props.setSelectPanelDicplay}
+            setSelectPanelDicplay={props.setSelectPanelDicplay}
             find={props.find}
-          /> 
-
-          
+          />
         </div>
 
         <div className="row p-2">

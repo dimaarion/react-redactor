@@ -2,7 +2,7 @@ import React from "react";
 
 function Linecenter(props) {
   return (
-    <div className="col-sm text-left">
+    <td className="text-left">
       <button
         type="button"
         className={"bi bi-justify-left " + props.itemsLine + "-itemc"}
@@ -26,7 +26,7 @@ function Linecenter(props) {
           />
         </svg>
       </button>
-    </div>
+    </td>
   );
 }
 export default Linecenter;

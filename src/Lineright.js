@@ -2,7 +2,7 @@ import React from "react";
 
 function Lineright(props) {
   return (
-    <div className="col-sm text-left">
+    <td className=" text-left pr-2">
       <button
         type="button"
         className={"bi bi-justify-left " + props.itemsLine + "-itemr"}
@@ -26,7 +26,7 @@ function Lineright(props) {
           />
         </svg>
       </button>
-    </div>
+    </td>
   );
 }
 export default Lineright;
