@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { selectedStyles, countArray, rgb2hex } from "./action/index";
+import "./css/palitra.css";
 export default function LiterSelectColor(props) {
-  const [rgb, setRgb] = useState(0);
+  const [rgb, setRgb] = useState([]);
   const [r, setR] = useState(255);
   const [g, setG] = useState(255);
   const [b, setB] = useState(255);
@@ -9,6 +10,14 @@ export default function LiterSelectColor(props) {
     return (
       <table style={{ position: "absolute", width: "300px", height: "300px" }}>
         <tbody>
+          <tr>
+            <td colSpan="3">
+              <h4>Палитра цветов</h4>
+            </td>
+            <td className="closePalitr">
+              <h2>&times;</h2>
+            </td>
+          </tr>
           {countArray(4).map((n) => (
             <tr key={n + 2 + "r"}>
               {countArray(4).map((j) => (
@@ -20,15 +29,7 @@ export default function LiterSelectColor(props) {
                           <td
                             key={l * 4000 + "b"}
                             onClick={(e) => {
-                              let rgbE = e.target.style.backgroundColor
-                                .split(",")
-                                .map((x) =>
-                                  x
-                                    .match(/[0-9]/g)
-                                    .join(",")
-                                    .replace(/[,]/g, "")
-                                );
-                              setRgb(rgb2hex(rgbE[0], rgbE[1], rgbE[2]));
+                              setRgb(e.target.style.backgroundColor);
                             }}
                             style={{
                               width: "50px",
@@ -102,15 +103,12 @@ export default function LiterSelectColor(props) {
               />
             </td>
           </tr>
-          <tr style={{ backgroundColor: rgb }}></tr>
         </tbody>
       </table>
     );
-    // ctx.fillRect(j*25,i*25,25,25);
   }
   return (
     <div className="listItems">
-      {rgb}
       <button
         onClick={() => {
           selectedStyles(props, "span", false, "color:red;");
@@ -127,7 +125,7 @@ export default function LiterSelectColor(props) {
           <text x="5" y="11" style={{ fontSize: "10pt" }}>
             A
           </text>
-          <rect width="21" height="5" x="0" y="12" fill="#ce2061"></rect>
+          <rect width="21" height="5" x="0" y="12" fill={rgb}></rect>
         </svg>
       </button>
       {palitra()}
