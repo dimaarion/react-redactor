@@ -1,5 +1,5 @@
-export function selectedStyles(props, tag, href = false) {
-  function replaceSelected(props) {
+export function selectedStyles(props, tag, href = false, styles = false) {
+  function replaceSelected() {
     let range = window.getSelection();
 
     var documentFragment = range.getRangeAt(0).extractContents();
@@ -8,11 +8,15 @@ export function selectedStyles(props, tag, href = false) {
     if (href !== false) {
       b.setAttribute("href", href);
     }
+    if (styles !== false) {
+      b.setAttribute("style", styles);
+    }
+
     b.appendChild(documentFragment);
     range.getRangeAt(0).insertNode(b);
   }
   if (props.selectedtext) {
-    return replaceSelected(props);
+    return replaceSelected();
   }
 }
 
@@ -70,4 +74,7 @@ export function deleteStr(props) {
       return par.remove();
     }
   }
+}
+export function rgb2hex(r, g, b) {
+  return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 }

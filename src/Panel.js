@@ -249,7 +249,19 @@ function Panel(props) {
               />
             </td>
             <td>
-              <LiterSelectColor />
+              <LiterSelectColor
+                setActive={props.setActive}
+                active={props.active}
+                gTags={props.gTags}
+                items={props.items}
+                ititalTegs={props.ititalTegs}
+                selectedtext={props.selectedtext}
+                types={props.types}
+                selectedTextFocus={props.selectedTextFocus}
+                selectedTextAncor={props.selectedTextAncor}
+                class="pl-2 text-left listItems"
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
             </td>
             <td>
               <CloseControl
