@@ -78,7 +78,7 @@ export default function TableColRedactor(props) {
         <thead>
           <tr>
             <td>Настройки таблицы</td>
-            <td style={STYLES.close}>
+            <td style={STYLES.close} colSpan="3">
               <svg
                 onClick={() => {
                   props.setDSittens(false);
@@ -249,7 +249,7 @@ export default function TableColRedactor(props) {
                 Ок
               </button>
             </td>
-            <td style={STYLES.butOt}>
+            <td style={STYLES.butOt} colSpan="3">
               <button
                 type="button"
                 className="btn btn-primary"

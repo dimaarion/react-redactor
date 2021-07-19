@@ -5,6 +5,8 @@
   position: absolute;
   background-color: #ffffff;
   z-index: 8000;
+  width: 400px;
+  margin-left: -200px;
 }
 .removeDiv {
   text-align: right;

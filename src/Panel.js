@@ -15,6 +15,7 @@ import CloseControl from "./CloseControl";
 import LinkRemove from "./LinkRemove";
 import Table from "./Table";
 import Lincks from "./Lincks";
+import LiterSelectColor from "./LiterSelectColor";
 import "./css/controlpanel.css";
 import TableColRedactor from "./TableColRedactor";
 
@@ -230,7 +231,7 @@ function Panel(props) {
                 ititalTegs={props.ititalTegs}
                 selectedtext={props.selectedtext}
                 types={props.types}
-                class=" text-left listItems"
+                class="pl-2 text-left listItems"
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
               />
             </td>
@@ -243,9 +244,12 @@ function Panel(props) {
                 ititalTegs={props.ititalTegs}
                 selectedtext={props.selectedtext}
                 types={props.types}
-                class=" col-sm text-left listItems"
+                class="pl-2 col-sm text-left listItems"
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
               />
+            </td>
+            <td>
+              <LiterSelectColor />
             </td>
             <td>
               <CloseControl
