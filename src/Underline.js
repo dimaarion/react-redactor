@@ -11,7 +11,7 @@ function Underline(props) {
             : { border: "none" }
         }
         onClick={() => {
-          selectedStyles(props, "u", false, "color:red;");
+          selectedStyles(props, "u");
           props.setActive(props.active === false ? true : false);
         }}
       >

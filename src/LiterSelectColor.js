@@ -6,16 +6,22 @@ export default function LiterSelectColor(props) {
   const [r, setR] = useState(255);
   const [g, setG] = useState(255);
   const [b, setB] = useState(255);
+  const [close, setClose] = useState(false);
   function palitra() {
     return (
-      <table style={{ position: "absolute", width: "300px", height: "300px" }}>
+      <table
+        className="palitra"
+        style={{ position: "absolute", width: "300px", height: "300px" }}
+      >
         <tbody>
           <tr>
             <td colSpan="3">
               <h4>Палитра цветов</h4>
             </td>
-            <td className="closePalitr">
-              <h2>&times;</h2>
+            <td className="closePalitr" onClick={() => setClose(false)}>
+              <h2>
+                <div>&times;</div>
+              </h2>
             </td>
           </tr>
           {countArray(4).map((n) => (
@@ -25,7 +31,7 @@ export default function LiterSelectColor(props) {
                   <table>
                     <tbody>
                       <tr>
-                        {countArray(4).map((l) => (
+                        {countArray(15).map((l) => (
                           <td
                             key={l * 4000 + "b"}
                             onClick={(e) => {
@@ -103,6 +109,19 @@ export default function LiterSelectColor(props) {
               />
             </td>
           </tr>
+          <tr>
+            <td colSpan="6">
+              <button
+                type="button"
+                className="btn btn-primary "
+                onClick={() => {
+                  selectedStyles(props, "span", false, "color:" + rgb + ";");
+                }}
+              >
+                ok
+              </button>
+            </td>
+          </tr>
         </tbody>
       </table>
     );
@@ -111,7 +130,7 @@ export default function LiterSelectColor(props) {
     <div className="listItems">
       <button
         onClick={() => {
-          selectedStyles(props, "span", false, "color:red;");
+          setClose(true);
         }}
         type="button"
         className={"bi bi-justify-left " + props.itemsLine + "-iteml"}
@@ -128,7 +147,7 @@ export default function LiterSelectColor(props) {
           <rect width="21" height="5" x="0" y="12" fill={rgb}></rect>
         </svg>
       </button>
-      {palitra()}
+      {close === true ? palitra() : ""}
     </div>
   );
 }
