@@ -38,7 +38,10 @@ function Controller(props) {
   const [gTags, setgTags] = useState({});
   const [find, setfind] = useState({});
   const [active, setActive] = useState(false);
+  const [selectPanelDicplay, setSelectPanelDicplay] = useState(false);
+  const [iconTags, setIconTags] = useState("div");
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function ititalTegs(bs = false) {
     let text_block = document.querySelector("." + baseSelector);
     function textChildren(text_block) {
@@ -51,6 +54,7 @@ function Controller(props) {
     }
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function innerTextBox() {
     return document.querySelector("." + baseSelector).innerHTML;
   }
@@ -110,7 +114,7 @@ function Controller(props) {
   ) {
     ititalTegs().map(
       (x, i) =>
-        (x.onclick = () => {
+        (x.onclick = (e) => {
           setitems(i);
           settegs(x.tagName);
           setfontPt(
@@ -122,6 +126,7 @@ function Controller(props) {
           setalign(x.style.textAlign ? x.style.textAlign : "left");
         })
     );
+
     ititalTegs().map(
       (x, i) =>
         (x.onmousemove = (e) => {
@@ -130,10 +135,7 @@ function Controller(props) {
             setSelectedTextLen(window.getSelection().toString().length);
             setSelectedTextAncor(window.getSelection().anchorOffset);
             setSelectedTextFocus(window.getSelection().focusOffset);
-            setSelectedTest(window.getSelection().focusNode.innerHTML);
-            if (e.target.children.length > 0) {
-             Array.from(e.target.children).map((x) => console.log(x));
-            }
+            setSelectedTest(window.getSelection().focusNode);
           }
         })
     );
@@ -164,14 +166,14 @@ function Controller(props) {
     att(oldteg, dataD);
   }
 
-  function createTable(bas, it, w = "100%", f = "none") {
+  function createTable(bas, it, w = "100%", f = "none", r = 0) {
     let bs = document.querySelector("." + bas);
     let div = document.createElement("div");
     let tb = document.createElement("table");
     document.body.appendChild(div);
     document.body.appendChild(tb);
     tb.className = `tb${it} tbl`;
-    tb.setAttribute("style", "width:" + w + ";float:" + f + ";");
+    tb.setAttribute("style", "width:" + w + ";float:" + f + ";border-collapse:separate;border-spacing: " + r +"px "+ r +"px;");
     div.className = "divTable";
     Array.from(bs.children)
       .filter((f, i) => i === it)
@@ -200,6 +202,7 @@ function Controller(props) {
         let td = document.createElement("td");
         td = document.body.appendChild(td);
         td.className = "itemsTd";
+        td.setAttribute("data-count", j + 1);
         tr.appendChild(td);
       }
     }
@@ -218,7 +221,9 @@ function Controller(props) {
       .map((x) => (x.style.fontFamily = fontFm));
   }
   function aligns(ititalTegs, items, align) {
-    ititalTegs.style.textAlign = align;
+    if (ititalTegs.style !== undefined) {
+      ititalTegs.style.textAlign = align;
+    }
   }
 
   function cleanerTxt(ititalTegs, items) {
@@ -297,7 +302,7 @@ function Controller(props) {
 
   useEffect(() => {
     getStart(baseSelector);
-  }, []);
+  }, [baseSelector]);
 
   useEffect(() => {
     mTop(setwindSize);
@@ -307,26 +312,26 @@ function Controller(props) {
     function () {
       imgPaddingR(ititalTegs, imgurls, imgPadding);
     },
-    [imgPadding]
+    [ititalTegs, imgurls, imgPadding]
   );
   useEffect(
     function () {
       imgWidthR(ititalTegs, imgurls, imgWidth);
     },
-    [imgWidth]
+    [ititalTegs, imgurls, imgWidth]
   );
 
   useEffect(
     function () {
       imgHeightR(ititalTegs, imgurls, imgHeight);
     },
-    [imgHeight]
+    [imgHeight, ititalTegs, imgurls]
   );
   useEffect(
     function () {
       imgFloatR(ititalTegs, imgurls, imgFloat);
     },
-    [imgurls, imgFloat]
+    [imgurls, imgFloat, ititalTegs]
   );
 
   useEffect(() => {
@@ -347,106 +352,117 @@ function Controller(props) {
       setalign
     );
     settextBox(innerTextBox());
-  }, [items, tegs, textbl, xs]);
+  }, [items, tegs, textbl, xs, ititalTegs, innerTextBox]);
   function createMarkup(x) {
     return { __html: document.getElementById(x).innerHTML };
   }
   useEffect(() => {
     settextBox(innerTextBox());
-  }, [textBox, find, active]);
+  }, [textBox, find, active, innerTextBox]);
+
   return (
-    <div className="contentDtext">
-      <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
-        <div
-          className="row container text-right p-4  panel"
-          style={sizes === true ? { position: "absolute" } : panelStyle}
-        >
-          <Panel
-            settextbl={settextbl}
-            setitemss={setitemss}
-            setfontPt={setfontPt}
-            setfontFm={setfontFm}
-            setalign={setalign}
-            setimgWidth={setimgWidth}
-            setimgHeight={setimgHeight}
-            setimgurls={setimgurls}
-            selectedtext={selectedtext}
-            selectedTextAncor={selectedTextAncor}
-            selectedTextFocus={selectedTextFocus}
-            setimgPadding={setimgPadding}
-            setimgFloat={setimgFloat}
-            setimgdisplay={setimgdisplay}
-            cildTeg={cildTeg}
-            items={items}
-            imgurls={imgurls}
-            imgdisplay={imgdisplay}
-            imgWidth={imgWidth}
-            tegs={tegs}
-            fontPt={fontPt}
-            fontFm={fontFm}
-            align={align}
-            imgHeight={imgHeight}
-            imgPadding={imgPadding}
-            fonts={fonts}
-            fontsFm={fontsFm}
-            ititalTegs={ititalTegs}
-            izmtegs={izmtegs}
-            aligns={aligns}
-            listItem={listItem}
-            types={types}
-            cleanerTxt={cleanerTxt}
-            setsizes={setsizes}
-            sizes={sizes}
-            setpanelStyle={setpanelStyle}
-            eX={eX}
-            eY={eY}
-            gTags={gTags}
-            setgTags={setgTags}
-            imgFloat={imgFloat}
-            createTable={createTable}
-            baseSelector={baseSelector}
-            createTr={createTr}
-            createTd={createTd}
-            find={find}
-            setActive={setActive}
-            active={active}
+    <div className="contentDtext container-fluid">
+      <div className="contentDtext container">
+        <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
+          <div
+            className="row container text-right p-4  panel"
+            style={sizes === true ? { position: "absolute" } : panelStyle}
+          >
+            <Panel
+              settextbl={settextbl}
+              setitemss={setitemss}
+              setfontPt={setfontPt}
+              setfontFm={setfontFm}
+              setalign={setalign}
+              setimgWidth={setimgWidth}
+              setimgHeight={setimgHeight}
+              setimgurls={setimgurls}
+              selectedtext={selectedtext}
+              selectedTextAncor={selectedTextAncor}
+              selectedTextFocus={selectedTextFocus}
+              setimgPadding={setimgPadding}
+              setimgFloat={setimgFloat}
+              setimgdisplay={setimgdisplay}
+              setIconTags={setIconTags}
+              setActive={setActive}
+              setSelectPanelDicplay={setSelectPanelDicplay}
+              cildTeg={cildTeg}
+              items={items}
+              imgurls={imgurls}
+              imgdisplay={imgdisplay}
+              imgWidth={imgWidth}
+              tegs={tegs}
+              fontPt={fontPt}
+              fontFm={fontFm}
+              align={align}
+              imgHeight={imgHeight}
+              imgPadding={imgPadding}
+              fonts={fonts}
+              fontsFm={fontsFm}
+              ititalTegs={ititalTegs}
+              izmtegs={izmtegs}
+              aligns={aligns}
+              listItem={listItem}
+              types={types}
+              cleanerTxt={cleanerTxt}
+              setsizes={setsizes}
+              sizes={sizes}
+              setpanelStyle={setpanelStyle}
+              eX={eX}
+              eY={eY}
+              gTags={gTags}
+              setgTags={setgTags}
+              imgFloat={imgFloat}
+              createTable={createTable}
+              baseSelector={baseSelector}
+              createTr={createTr}
+              createTd={createTd}
+              find={find}
+              active={active}
+            />
+          </div>
+
+          <div
+            style={{ marginTop: 250 + "px", height: "100%" }}
+            className={baseSelector}
+            contentEditable={true}
+            onClick={(e) => {
+              setfind(e.target);
+              setActive(false);
+
+              if (window.getSelection().toString().length > 0) {
+                seteY(e.clientY);
+                seteX(e.clientX);
+              }
+            }}
+            onKeyPress={(e) => {
+              updateElements(
+                ititalTegs,
+                setselectedtext,
+                setSelectedTextLen,
+                setSelectedTextAncor,
+                setSelectedTextFocus,
+                setitems,
+                settegs,
+                setfontPt,
+                setfontFm,
+                setalign
+              );
+              settextBox(innerTextBox());
+
+              elMoveUpDown(ititalTegs, baseSelector);
+            }}
+            dangerouslySetInnerHTML={createMarkup(textId)}
           />
         </div>
 
-        <div
-          style={{ marginTop: 250 + "px", height: "100%" }}
-          className={baseSelector}
-          contentEditable={true}
-          onClick={(e) => {
-            setfind(e.target);
-            setActive(false);
-          }}
-          onKeyPress={(e) => {
-            updateElements(
-              ititalTegs,
-              setselectedtext,
-              setSelectedTextLen,
-              setSelectedTextAncor,
-              setSelectedTextFocus,
-              setitems,
-              settegs,
-              setfontPt,
-              setfontFm,
-              setalign
-            );
-            settextBox(innerTextBox());
-
-            elMoveUpDown(ititalTegs, baseSelector);
-          }}
-          dangerouslySetInnerHTML={createMarkup(textId)}
-        />
-      </div>
-      <div className="col-sm">
-        <textarea
-          style={{ display: "none" }}
-          defaultValue={textBox}
-          name={document.querySelector(textAreraId).className}
-        />
+        <div className="col-sm">
+          <textarea
+            style={{ display: "none" }}
+            defaultValue={textBox}
+            name={document.querySelector(textAreraId).className}
+          />
+        </div>
       </div>
     </div>
   );

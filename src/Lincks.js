@@ -13,6 +13,7 @@ function Lincks(props) {
           onClick={() => {
             props.setstate({ link: true });
             props.setActive((props.active === false) ? true : false);
+            props.setSelectPanelDicplay(false);
           }}
           width="2em"
           viewBox="0 0 16 16"

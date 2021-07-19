@@ -12,7 +12,7 @@ function FamelyF(props) {
       <ul id="fontsTxtFamely">
         <li>{nf}
           <ul>
-            {n.map((x) => <li key={x} onClick={() => { props.fontsFm(props.ititalTegs, props.items, x); setnf(x); props.setActive((props.active === false) ? true : false); }}>{x}</li>)}
+            {n.map((x) => <li key={x} onClick={() => { props.fontsFm(props.ititalTegs, props.items, x); setnf(x); props.setActive((props.active === false) ? true : false); props.setSelectPanelDicplay(false);}}>{x}</li>)}
           </ul>
         </li>
       </ul>

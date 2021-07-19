@@ -5,7 +5,7 @@ function ListUl(props) {
     <div className={props.class}>
       <button type="button">
         <svg
-          onClick={() => {props.listItem(props.find, props.items, "ul", "li");props.setActive((props.active === false) ? true : false);}}
+          onClick={() => {props.listItem(props.find, props.items, "ul", "li");props.setActive((props.active === false) ? true : false);props.setSelectPanelDicplay(false);}}
           width="2em"
           viewBox="0 0 16 16"
           className="bi bi-list-ul"

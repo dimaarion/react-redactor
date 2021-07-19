@@ -1,5 +1,5 @@
 import React from "react";
-
+import { selectedStyles } from "./action";
 function Strikethrough(props) {
   return (
     <div className={props.class}>
@@ -10,7 +10,10 @@ function Strikethrough(props) {
             ? { backgroundColor: "#cccccc", border: "none" }
             : { border: "none" }
         }
-        onClick={() => { document.execCommand("strikeThrough", false, null); props.setActive((props.active === false) ? true : false);}}
+        onClick={() => {
+          selectedStyles(props, "s");
+          props.setActive(props.active === false ? true : false);
+        }}
       >
         <svg
           style={

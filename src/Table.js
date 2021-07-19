@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import TableColRedactor from "./TableColRedactor";
 function Table(props) {
   const [col, setCol] = useState(4);
   const [str, setStr] = useState(2);
   const [openTb, setopenTb] = useState(false);
+  const [dSittens, setDSittens] = useState(false);
   const [width, setWidth] = useState("100%");
   const [float, setFloat] = useState("none");
   let arr_en = [
@@ -35,7 +37,25 @@ function Table(props) {
   ];
   let active = { padding: "2px", border: "solid 1px #cccccc" };
   return (
-    <div>
+    <div className="tablesreate">
+      <div className="tsittens">
+        <button
+          onClick={() => setDSittens(true)}
+          type="button"
+          className="tableButton"
+          title="Настройка таблицы"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            fill="currentColor"
+            className="bi bi-wrench"
+            viewBox="0 0 16 21"
+          >
+            <path d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019.528.026.287.445.445.287.026.529L15 13l-.242.471-.026.529-.445.287-.287.445-.529.026L13 15l-.471-.242-.529-.026-.287-.445-.445-.287-.026-.529L11 13l.242-.471.026-.529.445-.287.287-.445.529-.026L13 11l.471.242z" />
+          </svg>
+        </button>
+      </div>
       <button type="button" className="tableButton">
         <svg
           onClick={() => setopenTb(true)}
@@ -51,6 +71,13 @@ function Table(props) {
           />
         </svg>
       </button>
+      <div>
+        {dSittens === true ? (
+          <TableColRedactor setDSittens={setDSittens} find={props.find} />
+        ) : (
+          ""
+        )}
+      </div>
       {openTb === true ? (
         <div className="tableRedactor">
           <table className="table table-hover">
@@ -188,7 +215,6 @@ function Table(props) {
                           }
                         : () => {}
                     }
-                    type="button"
                     className="btn btn-primary "
                   >
                     Ок
@@ -199,8 +225,7 @@ function Table(props) {
                       setopenTb(false);
                       props.setActive(props.active === false ? true : false);
                     }}
-                    type="button"
-                    class="btn btn-primary ml-2"
+                    className="btn btn-primary ml-2"
                   >
                     Отмена
                   </button>

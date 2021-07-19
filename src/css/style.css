@@ -87,11 +87,9 @@
   border: none;
   background-color: #cccccc;
 }
-.controlPanel {
-  z-index: 9000;
-  background-color: #ffffff;
-}
-.text_block, .text_block2{
-    padding-left: 20px;
-    padding-right: 20px;
+
+.text_block,
+.text_block2 {
+  padding-left: 20px;
+  padding-right: 20px;
 }

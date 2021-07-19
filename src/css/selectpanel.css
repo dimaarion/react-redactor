@@ -1,0 +1,56 @@
+.selectpanel{
+    z-index: 10000;
+    background-color: #ffffff;
+    
+}
+.selectpanel ul{
+    margin: 0px;
+    padding: 0px;
+}
+.selectpanel ul li div{
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.selectpanel ul li ul{
+   margin-left: -10px;
+    padding: 0px;
+    display: none;
+    position: absolute;
+}
+.selectpanel li{
+    text-decoration: none;
+    list-style: none;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+.selectpanel ul li:hover ul{
+    margin-top: 10px;
+    padding: 0px;
+    display: block;
+}
+.selectpanel ul li ul li{
+    padding-bottom: 0px;
+   
+}
+
+.selectpanel ul li{
+    padding-bottom: 15px;
+}
+.selectpanel td{
+    padding-bottom: 10px;
+}
+.selectpanel td div{
+    padding: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.selectpanel .listStyle{
+    width: 40px;
+}
+.selectpanel button{
+    border: none;
+}

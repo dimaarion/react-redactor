@@ -1,83 +1,80 @@
-export function selectedStyles(props, tag, href = false) {
-  if (props.selectedtext) {
-    let attr = "href=" + href + "";
+export function selectedStyles(props, tag, href = false, styles = false) {
+  function replaceSelected() {
+    let range = window.getSelection();
+
+    var documentFragment = range.getRangeAt(0).extractContents();
+    let b = document.createElement(tag);
+
     if (href !== false) {
-      attr = attr;
-    } else {
-      attr = "";
+      b.setAttribute("href", href);
     }
-    function replaceSelected(x) {
-      let regex = new RegExp(`${props.selectedtext}`, "g");
-
-      let text = x.innerHTML.split("");
-      let textSelectArr = props.selectedtext.split("");
-      let textSelect = props.selectedTextFocus;
-      let rezText = text.length - textSelect;
-
-      let ancor, n, t;
-      if (!ancor) {
-        ancor = 0;
-      } else {
-        ancor = props.selectedTextAncor;
-      }
-      if (textSelectArr.length < 1) {
-        n = 1;
-      } else {
-        n = textSelectArr.length;
-      }
-      // console.log(x.innerHTML.match(regex));
-      //console.log(
-      // x.innerHTML.matchAll("/[<i>" + props.selectedtext + "</i>]/")
-      //);
-      //console.log(x.innerHTML.matchAll("<i>" + props.selectedtext));
-      //console.log(x.innerHTML.matchAll(props.selectedtext + "</i>"));
-      let reg = new RegExp(
-        `[<i>||</i>]{${props.selectedTextAncor},${
-          props.selectedTextAncor + n
-        }}`,
-        "g"
-      );
-      /*let child = x.childNodes[0].innerHTML;
-      if (child) {
-        child = x.childNodes[0].innerHTML;
-      } else {
-        child = x.innerHTML;
-      }*/
-      // t = child.replace(reg, "");
-      //x.innerHTML = t;
-
-      // console.log(
-      // x.innerHTML.slice(props.selectedTextAncor, props.selectedTextAncor + n)
-      //  );
-      let selection = window.getSelection();
-      // console.log(x.getAttribute("class"));
-      //console.log(text);
-      //let regex2 = new RegExp(`${props.selectedtext}`, "g");
-      // let regex3 = new RegExp(`${x.innerHTML}{0,5}`, "g");
-      let selectEl = window.getSelection().anchorOffset;
-      let selectEl2 = window.getSelection().focusNode;
-
-      text.map((j) => {
-        let ind = props.selectedtext.indexOf(j);
-
-        if (ind) {
-          //console.log(ind);
-        }
-      });
-
-      for (let i = props.selectedTextAncor; i < props.selectedTextFocus; i++) {
-        //console.log(textSelectArr[i]);
-      }
-
-      x.innerHTML = x.innerHTML.replace(
-        props.selectedtext,
-        "<" + tag + " " + attr + ">" + props.selectedtext + "</" + tag + ">"
-      );
+    if (styles !== false) {
+      b.setAttribute("style", styles);
     }
 
-    props
-      .ititalTegs()
-      .filter((f, i) => i === props.items)
-      .map((x) => replaceSelected(x));
+    b.appendChild(documentFragment);
+    range.getRangeAt(0).insertNode(b);
   }
+  if (props.selectedtext) {
+    return replaceSelected();
+  }
+}
+
+export function countArray(n) {
+  let a = [];
+  for (let i = 0; i < n; i++) {
+    a[i] = i;
+  }
+  return a;
+}
+
+export function replaceElement(props) {
+  if (props.find !== undefined) {
+    let find = props.find.innerHTML;
+    let el = document.createElement(props.t);
+    el.insertAdjacentHTML("afterbegin", find);
+    props.find.replaceWith(el);
+  }
+}
+
+export function addCell(props) {
+  if (props.find !== undefined && props.find.tagName === "TD") {
+    let par = props.find.parentElement;
+    let td = document.createElement("td");
+    td.setAttribute("class", "itemsTd");
+    td.setAttribute("style", "width:100px;height:50px;");
+    par.appendChild(td);
+  }
+}
+
+export function deleteCell(props) {
+  if (props.find !== undefined && props.find.tagName === "TD") {
+    return props.find.remove();
+  }
+}
+
+export function addStr(props) {
+  if (props.find !== undefined && props.find.tagName === "TD") {
+    let par = props.find.parentElement;
+    if (par.parentElement.tagName === "TABLE") {
+      let tr = document.createElement("tr");
+      let td = document.createElement("td");
+      tr.appendChild(td);
+      tr.setAttribute("class", "tableTrN");
+      td.setAttribute("class", "itemsTd");
+      return par.parentElement.appendChild(tr);
+    }
+  }
+}
+
+export function deleteStr(props) {
+  if (props.find !== undefined && props.find.tagName === "TD") {
+    let par = props.find.parentElement;
+    if (par.tagName === "TR") {
+      return par.remove();
+    }
+  }
+}
+export function rgb2hex(r, g, b) {
+  return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 }

@@ -145,6 +145,7 @@ function ImgRemove(props) {
                   props.find.style.padding = imgPaddingR;
                   props.find.style.float = imgFloatR;
                   props.setActive(props.active === false ? true : false);
+                  props.setSelectPanelDicplay(false);
                 }
               }}
               className="col-sm"
