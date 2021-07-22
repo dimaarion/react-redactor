@@ -39,3 +39,9 @@
 #fontsTxtFamely li ul li:hover {
   background-color: #cccccc;
 }
+.fontsAdd{
+  display: none;
+}
+.fontsFm:hover .fontsAdd{
+  display: block;
+}

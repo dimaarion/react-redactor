@@ -20,7 +20,7 @@
 #fontsTxt li ul {
   position: absolute;
   display: none;
-  margin: 0px;
+  margin-top: 5px;
   padding: 0px;
   width: 65px;
   overflow: scroll;

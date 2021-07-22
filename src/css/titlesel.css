@@ -1,0 +1,14 @@
+.titlesEl{
+    margin-top: -35px;
+    margin-left: 20px;
+    display: none;
+    width: auto;
+    height: auto;
+    color: #333333;
+    background-color: #cccccc;
+    padding: 5px;
+    box-shadow: 5px 5px 10px 1px #333333;
+}
+.titlesBas:hover .titlesEl{
+    display: block;
+}

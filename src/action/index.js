@@ -1,3 +1,4 @@
+import Axios from "axios";
 export function selectedStyles(props, tag, href = false, styles = false) {
   function replaceSelected() {
     let range = window.getSelection();
@@ -33,7 +34,12 @@ export function replaceElement(props) {
     let find = props.find.innerHTML;
     let el = document.createElement(props.t);
     el.insertAdjacentHTML("afterbegin", find);
-    props.find.replaceWith(el);
+    try {
+      props.find.replaceWith(el);
+    } catch (error) {
+      //  console.log(error)
+    }
+
   }
 }
 
@@ -78,3 +84,77 @@ export function deleteStr(props) {
 export function rgb2hex(r, g, b) {
   return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 }
+
+export function storageBdInsert(props = {}) {
+  let content = props.content.replace(/[\n]/g, ",");
+  return Axios.get(`${props.url}?fonts=${content}`);
+}
+
+export function storageBd(props = {}) {
+  if (props.getFonts !== null) {
+    let fonts = props.getFonts;
+    let fontsNew = fonts.split(",").map((x) => ("family=" + x + "&").replace(/[" "]/g, "+"));
+    let fontsElStyle = fonts.split(",");
+    let fontsHead = "@import url('https://fonts.googleapis.com/css2?" + fontsNew.join().replace(/[,]/g, "") + "display=swap');"
+    Axios.get(`${props.urlFonts}`)
+      .then((rez) => props.setGetFonts(rez.data.fonts));
+    props.setGetFontsObj({ style: fontsHead, name: fontsElStyle }); 
+    if (fontsHead !== undefined && fontsHead.length > 70) {
+    let head = document.querySelector("head");
+    let styleEl = document.createElement("style");
+    head.appendChild(styleEl);
+    //styleEl.setAttribute("type", "text/html");
+    styleEl.insertAdjacentText("afterbegin", fontsHead);
+    
+  }
+    
+  }
+}
+
+
+
+export function arrayFonts(props = {}) {
+  if (props.getFonts !== undefined) {
+    if(props.getFonts !== null){
+       return  props.getFonts.split(",").concat(props.n);
+    }else{
+      return props.n;
+    }
+  
+  }
+}
+
+export function replaceFontsTextarera(props = {}){
+  if(props.getFonts !== null){
+    return props.getFonts.replace(/[","]/g,"\n");
+  }else{
+    return ""
+  }
+  
+}
+
+export function titlesContents(props){
+  switch (props.type) {
+    case "H1":
+      return "Заголовок 1"; 
+    case "H2":
+      return "Заголовок 2"; 
+    case "H3":
+      return "Заголовок 3"; 
+    case "H4":
+      return "Заголовок 4"; 
+    case "H5":
+      return "Заголовок 5"; 
+    case "P":
+      return "Обычный текст с интервалом"; 
+    case "div":
+        return "Обычный текст без интервала"; 
+    case "B":
+          return "Жирный шрифт"; 
+    case "Form":
+          return "Очистить текст"; 
+    default:
+      return "Нет описания";
+  }
+  
+} 

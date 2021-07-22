@@ -1,10 +1,20 @@
 import React from "react";
 import Sizeplus from "./Sizeplus";
 import Sizeminus from "./Sizeminus";
+import TitlesEl from "./TitlesEl";
 function CloseControl(props) {
+
+  let type = "min"
+  if(props.sizes === true){
+    type = "max";
+  }else{
+    type = "min"
+  }
+
   return (
     <div
-      className="sizes"
+    
+      className={`sizes ${props.class} titlesBas`}
       onClick={() => {
         return (
           props.setsizes(props.sizes === true ? false : true),
@@ -14,6 +24,7 @@ function CloseControl(props) {
         );
       }}
     >
+      <TitlesEl />
       {props.sizes === true ? <Sizeplus /> : <Sizeminus />}
     </div>
   );

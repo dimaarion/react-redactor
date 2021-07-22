@@ -142,7 +142,7 @@ function Headers(props) {
     return (
       <div>
         <select
-          className="form-select pb-2"
+          className="form-select p-1"
           onChange={(e) => selectedStyles(props, e.target.value)}
         >
           <option>Заголовок</option>

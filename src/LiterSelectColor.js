@@ -16,7 +16,7 @@ export default function LiterSelectColor(props) {
         <tbody>
           <tr>
             <td colSpan="3">
-              <h4>Палитра цветов</h4>
+              <h4>Цвет</h4>
             </td>
             <td className="closePalitr" onClick={() => setClose(false)}>
               <h2>
@@ -31,22 +31,22 @@ export default function LiterSelectColor(props) {
                   <table>
                     <tbody>
                       <tr>
-                        {countArray(15).map((l) => (
+                        {countArray(14).map((l) => (
                           <td
                             key={l * 4000 + "b"}
                             onClick={(e) => {
                               setRgb(e.target.style.backgroundColor);
                             }}
                             style={{
-                              width: "50px",
+                              width: "10px",
                               height: "50px",
                               backgroundColor:
                                 "rgb(" +
-                                Math.floor(255 - r * n) +
+                                Math.floor(255 - r * (n + 1)) +
                                 "," +
-                                Math.floor(255 - g * j) +
+                                Math.floor(255 - g * (j + 1)) +
                                 "," +
-                                Math.floor(255 - b * l) +
+                                Math.floor(255 - b * (l + 1)) +
                                 ")"
                             }}
                           ></td>

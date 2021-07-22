@@ -18,6 +18,8 @@ import Lincks from "./Lincks";
 import LiterSelectColor from "./LiterSelectColor";
 import "./css/controlpanel.css";
 import TableColRedactor from "./TableColRedactor";
+import LiterBgColor from "./LiterBgColor";
+import LiterLineSelectBgColor from "./LiterLineSelectBgColor";
 
 function typeStyle(t, g, o) {
   if (o === "button") {
@@ -58,6 +60,7 @@ function Panel(props) {
                         ititalTegs={props.ititalTegs}
                         items={props.items}
                         setSelectPanelDicplay={props.setSelectPanelDicplay}
+                        find={props.find}
                       />
                     </td>
                     <td>
@@ -71,6 +74,7 @@ function Panel(props) {
                         ititalTegs={props.ititalTegs}
                         items={props.items}
                         setSelectPanelDicplay={props.setSelectPanelDicplay}
+                        
                       />
                     </td>
                   </tr>
@@ -119,7 +123,7 @@ function Panel(props) {
                 listItem={props.listItem}
                 ititalTegs={props.ititalTegs}
                 items={props.items}
-                class="text-left listItems pr-2"
+                class="text-center listItems"
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
               />
             </td>
@@ -131,7 +135,7 @@ function Panel(props) {
                 listItem={props.listItem}
                 ititalTegs={props.ititalTegs}
                 items={props.items}
-                class="text-left listItems"
+                class="text-center listItems"
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
               />
             </td>
@@ -173,7 +177,7 @@ function Panel(props) {
               <Lincks
                 setActive={props.setActive}
                 active={props.active}
-                class=" pl-2 text-left listItems"
+                class="text-center listItems"
                 gTags={props.gTags}
                 setstate={setstate}
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
@@ -190,7 +194,7 @@ function Panel(props) {
                 ititalTegs={props.ititalTegs}
                 selectedtext={props.selectedtext}
                 types={props.types}
-                class="pl-2 text-left listItems"
+                class="text-center listItems"
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
               />
             </td>
@@ -205,7 +209,7 @@ function Panel(props) {
                 types={props.types}
                 selectedTextFocus={props.selectedTextFocus}
                 selectedTextAncor={props.selectedTextAncor}
-                class="pl-2 text-left listItems"
+                class="text-center listItems"
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
               />
             </td>
@@ -218,7 +222,7 @@ function Panel(props) {
                 ititalTegs={props.ititalTegs}
                 selectedtext={props.selectedtext}
                 types={props.types}
-                class="pl-2 text-left listItems"
+                class="text-center listItems"
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
               />
             </td>
@@ -231,7 +235,7 @@ function Panel(props) {
                 ititalTegs={props.ititalTegs}
                 selectedtext={props.selectedtext}
                 types={props.types}
-                class="pl-2 text-left listItems"
+                class="text-center listItems"
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
               />
             </td>
@@ -244,7 +248,7 @@ function Panel(props) {
                 ititalTegs={props.ititalTegs}
                 selectedtext={props.selectedtext}
                 types={props.types}
-                class="pl-2 col-sm text-left listItems"
+                class="text-center listItems"
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
               />
             </td>
@@ -259,8 +263,38 @@ function Panel(props) {
                 types={props.types}
                 selectedTextFocus={props.selectedTextFocus}
                 selectedTextAncor={props.selectedTextAncor}
-                class="pl-2 text-left listItems"
+                class="text-center listItems"
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              <LiterBgColor
+                setActive={props.setActive}
+                active={props.active}
+                gTags={props.gTags}
+                items={props.items}
+                ititalTegs={props.ititalTegs}
+                selectedtext={props.selectedtext}
+                types={props.types}
+                selectedTextFocus={props.selectedTextFocus}
+                selectedTextAncor={props.selectedTextAncor}
+                class="text-center listItems"
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              <LiterLineSelectBgColor
+              setActive={props.setActive}
+              active={props.active}
+              gTags={props.gTags}
+              items={props.items}
+              ititalTegs={props.ititalTegs}
+              selectedtext={props.selectedtext}
+              types={props.types}
+              selectedTextFocus={props.selectedTextFocus}
+              selectedTextAncor={props.selectedTextAncor}
+              class="text-center listItems"
+              setSelectPanelDicplay={props.setSelectPanelDicplay}
               />
             </td>
             <td>
@@ -271,14 +305,11 @@ function Panel(props) {
                 sizes={props.sizes}
                 setpanelStyle={props.setpanelStyle}
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
+                class = "text-center listItems"
               />
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            
+           
           </tr>
         </tbody>
       </table>

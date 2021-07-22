@@ -4,5 +4,9 @@
 }
 .controlPanel table tr td {
   width: 50px;
-  padding-left: 5px;
+  padding-left: 0px;
+ 
+}
+.listItems{
+  text-align: center;
 }

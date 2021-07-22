@@ -1,5 +1,6 @@
 import React from "react";
 import { replaceElement } from "./action/index";
+import TitlesEl from "./TitlesEl";
 function Htype(props) {
   function hActive(t, n) {
     if (t === n) {
@@ -7,7 +8,8 @@ function Htype(props) {
     }
   }
   return (
-    <td>
+    <td className = "titlesBas">
+      <TitlesEl type = {props.t}/>
       <button
         type="button"
         style={props.typeStyle(props.find.tagName, props.t, "button", props.s)}
