@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import TableColRedactor from "./TableColRedactor";
+import Tableinsertion from "./Tableinsertion";
+import TitlesEl from "./TitlesEl";
 function Table(props) {
   const [col, setCol] = useState(4);
   const [str, setStr] = useState(2);
@@ -37,7 +39,9 @@ function Table(props) {
   ];
   let active = { padding: "2px", border: "solid 1px #cccccc" };
   return (
-    <div className="tablesreate">
+    <div className="tablesreate listItems titlesBas">
+      {/*<TitlesEl type="Вставить таблицу" />*/}
+      <Tableinsertion />
       <div className="tsittens">
         <button
           onClick={() => setDSittens(true)}

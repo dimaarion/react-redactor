@@ -139,3 +139,21 @@ export function titlesContents(props) {
     return "Нет описания";
   }
 }
+
+export function typeStyle(t, g, o) {
+  if (o === "button") {
+    if (t === g) {
+      return { backgroundColor: "rgb(239, 241, 245)", border: "none" };
+    } else {
+      return { border: "none" };
+    }
+  } else if (o === "svg") {
+    if (t === g) {
+      return { backgroundColor: "rgb(239, 241, 245)" };
+    } else {
+      return {};
+    }
+  } else {
+    return {};
+  }
+}

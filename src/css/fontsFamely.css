@@ -29,6 +29,7 @@
   overflow: scroll;
   height: 250px;
   margin-top: 6px;
+  z-index: 10000;
 }
 #fontsTxtFamely li ul li {
   cursor: pointer;

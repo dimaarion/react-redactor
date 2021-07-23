@@ -1,8 +1,10 @@
 import React from "react";
 import { selectedStyles } from "./action";
+import TitlesEl from "./TitlesEl";
 function Strikethrough(props) {
   return (
-    <div className={props.class}>
+    <div className={`${props.class} titlesBas`}>
+      <TitlesEl type="Зачеркнутый" />
       <button
         type="button"
         style={

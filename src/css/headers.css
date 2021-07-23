@@ -1,26 +1,57 @@
 .headers {
+  margin-top: 18px;
+  position: relative;
   padding: 0px;
 }
 .headers li {
   position: relative;
+  list-style: none;
+  cursor: pointer;
+  border: solid 1px #cccccc;
+  text-align: center;
+  width: 200px;
+  background-color: #ffffff;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  z-index: 100;
+}
+.headers li:hover {
+  background-color: rgb(239, 241, 245) !important;
+  z-index: 8000;
 }
 .headers li ul {
   position: absolute;
+  display: none;
+  margin: 0px;
+  padding: 0px;
+  width: 200px;
+  height: auto;
+  margin-top: 6px;
 }
-.headers {
-  display: inline-flex;
-  margin-top: 5px;
-  margin-left: 5px;
+.headers li ul li {
+  cursor: pointer;
+}
+.headers li:hover ul {
+  display: block;
+  z-index: 8000;
+}
+.headers li ul li:hover {
+  background-color: rgb(239, 241, 245) !important;
 }
 .headers button {
   margin-right: 8px;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  padding-left: 8px;
 }
 .headers svg:hover {
   padding: 2px;
   background-color: #cccccc;
 }
 .headers button:hover {
-  background-color: #cccccc;
+  background-color: rgb(239, 241, 245) !important;
 }
 .head-button-H1,
 .head-button-H2,
@@ -28,7 +59,7 @@
 .head-button-H4,
 .head-button-H5,
 .head-button-P {
-  background-color: #cccccc;
+  background-color: rgb(239, 241, 245) !important;
 }
 .head-button-H1 svg,
 .head-button-H2 svg,
@@ -37,5 +68,5 @@
 .head-button-H5 svg,
 .head-button-P svg {
   padding: 2px;
-  background-color: #cccccc;
+  background-color: rgb(239, 241, 245) !important;
 }

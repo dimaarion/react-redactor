@@ -24,15 +24,7 @@
 .divTable:hover .removeDiv {
   display: block;
 }
-.tableButton {
-  border: none;
-}
-.tableButton:hover {
-  background-color: #cccccc;
-}
-.tableButton:hover svg {
-  padding: 2px;
-}
+
 .tbl {
   width: 100%;
   min-height: 50px;
@@ -56,4 +48,18 @@
 }
 .tablesreate:hover .tsittens {
   display: block;
+}
+.tableinsertion div {
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+}
+.tableinsertion td {
+  border: solid 1px #cccccc;
+  width: 20px !important;
+  height: 20px;
+}
+.tableinsertion {
+  position: absolute;
+  margin-left: 50px;
 }

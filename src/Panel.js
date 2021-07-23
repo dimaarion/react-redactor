@@ -20,24 +20,7 @@ import "./css/controlpanel.css";
 import TableColRedactor from "./TableColRedactor";
 import LiterBgColor from "./LiterBgColor";
 import LiterLineSelectBgColor from "./LiterLineSelectBgColor";
-
-function typeStyle(t, g, o) {
-  if (o === "button") {
-    if (t === g) {
-      return { backgroundColor: "#cccccc", border: "none" };
-    } else {
-      return { border: "none" };
-    }
-  } else if (o === "svg") {
-    if (t === g) {
-      return { backgroundColor: "#cccccc" };
-    } else {
-      return {};
-    }
-  } else {
-    return {};
-  }
-}
+import { typeStyle } from "./action/index";
 
 function Panel(props) {
   const [state, setstate] = useState({ link: false });
@@ -46,7 +29,7 @@ function Panel(props) {
       <table>
         <tbody>
           <tr>
-            <td>
+            <td colSpan = "2">
               <table>
                 <tbody>
                   <tr>
@@ -95,7 +78,7 @@ function Panel(props) {
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
               />
             </td>
-            <td>
+            <td colSpan="4">
               <Headers
                 type={"block"}
                 setActive={props.setActive}

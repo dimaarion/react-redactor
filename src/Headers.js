@@ -90,7 +90,7 @@ function Headers(props) {
       names: "Обычный текст с интервалом"
     },
     {
-      t: "div",
+      t: "DIV",
       n: 7,
       svg: (
         <text
@@ -142,19 +142,35 @@ function Headers(props) {
     );
   } else if (props.type === "select") {
     return (
-      <div>
-        <select
-          className="form-select p-1"
-          onChange={(e) => selectedStyles(props, e.target.value)}
-        >
-          <option>Заголовок</option>
-          {H.map((x, i) => (
-            <option value={x.t} key={x.t}>
-              {x.names}
-            </option>
-          ))}
-        </select>
-      </div>
+      <ul className="headers">
+        <li>
+          Заголовок
+          <ul>
+            {H.map((x, i) => (
+              <Htype
+                names={x.names}
+                key={i * 4}
+                setActive={props.setActive}
+                active={props.active}
+                svg={x.svg}
+                t={x.t}
+                n={x.n}
+                find={props.find}
+                tegsLocal={tegsLocal}
+                settegsLocal={settegsLocal}
+                izmtegs={props.izmtegs}
+                typeStyle={props.typeStyle}
+                ititalTegs={props.ititalTegs}
+                items={props.items}
+                selectedtext={props.selectedtext}
+                gTags={props.gTags}
+                setIconTags={props.setIconTags}
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            ))}
+          </ul>
+        </li>
+      </ul>
     );
   } else {
     return <div></div>;
