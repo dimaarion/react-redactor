@@ -8,8 +8,8 @@ function Htype(props) {
     }
   }
   return (
-    <td className = "titlesBas">
-      <TitlesEl type = {props.t}/>
+    <td className="titlesBas">
+      <TitlesEl type={props.names} />
       <button
         type="button"
         style={props.typeStyle(props.find.tagName, props.t, "button", props.s)}

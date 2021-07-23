@@ -1,8 +1,10 @@
 import React from "react";
 import { selectedStyles } from "./action";
+import TitlesEl from "./TitlesEl";
 function Italic(props) {
   return (
-    <div className={props.class}>
+    <div className={`${props.class} titlesBas`}>
+      <TitlesEl type="Курсив" />
       <button
         type="button"
         style={

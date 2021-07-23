@@ -1,8 +1,10 @@
 import React from "react";
+import TitlesEl from "./TitlesEl";
 
 function Linecenter(props) {
   return (
-    <td className="text-left pr-2">
+    <td className="text-left pr-2 titlesBas">
+      <TitlesEl type="Выравнивание по центру" />
       <button
         type="button"
         className={"bi bi-justify-left " + props.itemsLine + "-itemc"}
