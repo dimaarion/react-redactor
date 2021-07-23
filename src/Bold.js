@@ -4,7 +4,7 @@ import TitlesEl from "./TitlesEl";
 function Bold(props) {
   return (
     <div className={`${props.class} titlesBas`}>
-      <TitlesEl type = "B"/>
+      <TitlesEl type="Жирный шрифт" />
       <button
         type="button"
         style={

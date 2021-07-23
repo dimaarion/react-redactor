@@ -39,7 +39,6 @@ export function replaceElement(props) {
     } catch (error) {
       //  console.log(error)
     }
-
   }
 }
 
@@ -93,25 +92,27 @@ export function storageBdInsert(props = {}) {
 export function storageBd(props = {}) {
   if (props.getFonts !== null) {
     let fonts = props.getFonts;
-    let fontsNew = fonts.split(",").map((x) => ("family=" + x + "&").replace(/[" "]/g, "+"));
+    let fontsNew = fonts
+      .split(",")
+      .map((x) => ("family=" + x + "&").replace(/[" "]/g, "+"));
     let fontsElStyle = fonts.split(",");
-    let fontsHead = "@import url('https://fonts.googleapis.com/css2?" + fontsNew.join().replace(/[,]/g, "") + "display=swap');"
-    Axios.get(`${props.urlFonts}`)
-      .then((rez) => props.setGetFonts(rez.data.fonts));
+    let fontsHead =
+      "@import url('https://fonts.googleapis.com/css2?" +
+      fontsNew.join().replace(/[,]/g, "") +
+      "display=swap');";
+    Axios.get(`${props.urlFonts}`).then((rez) =>
+      props.setGetFonts(rez.data.fonts)
+    );
     props.setGetFontsObj({ style: fontsHead, name: fontsElStyle });
     if (fontsHead !== undefined && fontsHead.length > 70) {
       let head = document.querySelector("head");
       let styleEl = document.createElement("style");
       head.appendChild(styleEl);
-      //styleEl.setAttribute("type", "text/html");
+
       styleEl.insertAdjacentText("afterbegin", fontsHead);
-
     }
-
   }
 }
-
-
 
 export function arrayFonts(props = {}) {
   if (props.getFonts !== undefined) {
@@ -120,7 +121,6 @@ export function arrayFonts(props = {}) {
     } else {
       return props.n;
     }
-
   }
 }
 
@@ -128,41 +128,14 @@ export function replaceFontsTextarera(props = {}) {
   if (props.getFonts !== null) {
     return props.getFonts.replace(/[","]/g, "\n");
   } else {
-    return ""
+    return "";
   }
-
 }
 
 export function titlesContents(props) {
-  switch (props.type) {
-    case "H1":
-      return "Заголовок 1";
-    case "H2":
-      return "Заголовок 2";
-    case "H3":
-      return "Заголовок 3";
-    case "H4":
-      return "Заголовок 4";
-    case "H5":
-      return "Заголовок 5";
-    case "P":
-      return "Обычный текст с интервалом";
-    case "div":
-      return "Обычный текст без интервала";
-    case "B":
-      return "Жирный шрифт";
-    case "Form":
-      return "Очистить текст";
-    case "min":
-      return "Уменьшить";
-    case "max":
-      return "Увеличить";
-    case "gf":
-      return "Увеличить";
-    default:
-      return "Нет описания";
+  if (props.type) {
+    return props.type;
+  } else {
+    return "Нет описания";
   }
-
 }
-
-

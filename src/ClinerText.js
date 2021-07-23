@@ -3,10 +3,14 @@ import TitlesEl from "./TitlesEl";
 function ClinerText(props) {
   return (
     <div className={`${props.class} titlesBas`}>
-      <TitlesEl type = "Form"/>
+      <TitlesEl type="Очистить текст" />
       <button type="button">
         <svg
-          onClick={() => { props.cleanerTxt(props.ititalTegs, props.items); props.setActive((props.active === false) ? true : false);props.setSelectPanelDicplay(false);}}
+          onClick={() => {
+            props.cleanerTxt(props.ititalTegs, props.items);
+            props.setActive(props.active === false ? true : false);
+            props.setSelectPanelDicplay(false);
+          }}
           xmlns="http://www.w3.org/2000/svg"
           width="210mm"
           height="297mm"
