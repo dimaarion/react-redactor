@@ -7,7 +7,7 @@ function Linecenter(props) {
       <TitlesEl type="Выравнивание по центру" />
       <button
         type="button"
-        className={"bi bi-justify-left " + props.itemsLine + "-itemc"}
+        className={"bi bi-justify-left " + props.itemsLine + "-center"}
       >
         <svg
           style={props.style}

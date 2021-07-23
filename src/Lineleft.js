@@ -6,7 +6,7 @@ function Lineleft(props) {
       <TitlesEl type="Выравнивание по левому краю" />
       <button
         type="button"
-        className={"bi bi-justify-left " + props.itemsLine + "-iteml"}
+        className={"bi bi-justify-left " + props.itemsLine + "-left"}
       >
         <svg
           style={props.style}

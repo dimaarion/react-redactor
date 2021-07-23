@@ -6,7 +6,7 @@ function Lineright(props) {
       <TitlesEl type="Выравнивание по правому краю" />
       <button
         type="button"
-        className={"bi bi-justify-left " + props.itemsLine + "-itemr"}
+        className={"bi bi-justify-left " + props.itemsLine + "-right"}
       >
         <svg
           style={props.style}

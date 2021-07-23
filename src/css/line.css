@@ -1,19 +1,19 @@
-.left-iteml {
-  background-color: #cccccc;
+.left-left {
+  background-color: rgb(239, 241, 245) !important;
 }
-.left-iteml svg {
+.left-left svg {
   padding: 2px;
 }
-.center-itemc {
-  background-color: #cccccc;
+.center-center {
+  background-color: rgb(239, 241, 245) !important;
 }
-.center-itemc svg {
+.center-center svg {
   padding: 2px;
 }
-.right-itemr {
-  background-color: #cccccc;
+.right-right {
+  background-color: rgb(239, 241, 245) !important;
 }
-.right-itemr svg {
+.right-right svg {
   padding: 2px;
 }
 .aligns svg:hover {
@@ -22,7 +22,7 @@
 }
 .aligns button {
   border: none;
-  background-color: #ffffff;
+  background-color: rgb(255, 255, 255);
 }
 .aligns button:hover {
   background-color: rgb(239, 241, 245);
