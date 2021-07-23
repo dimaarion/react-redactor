@@ -9,7 +9,10 @@ export default function Tableinsertion(props) {
           <tr>
             {countArray(6).map((x2) => (
               <td>
-                <div style={styles}></div>
+                <div
+                  onMouseOver={() => setStyles({ backgroundColor: "#cccccc" })}
+                  style={styles}
+                ></div>
               </td>
             ))}
           </tr>
