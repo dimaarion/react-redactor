@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { selectedStyles, countArray, rgb2hex } from "./action/index";
+import { selectedStyles, countArray } from "./action/index";
+import TitlesEl from "./TitlesEl";
 import "./css/palitra.css";
 export default function LiterSelectColor(props) {
   const [rgb, setRgb] = useState([]);
@@ -18,10 +19,23 @@ export default function LiterSelectColor(props) {
             <td colSpan="3">
               <h4>Цвет</h4>
             </td>
-            <td className="closePalitr" onClick={() => setClose(false)}>
-              <h2>
-                <div>&times;</div>
-              </h2>
+            <td className="titlesBas">
+              <TitlesEl type="Закрыть" left={60} />
+              <button type="button" className="tableButton">
+                <svg
+                  onClick={() => setClose(false)}
+                  width="2em"
+                  viewBox="0 0 16 16"
+                  className="bi bi-grid-3x2"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                  />
+                </svg>
+              </button>
             </td>
           </tr>
           {countArray(4).map((n) => (
@@ -128,25 +142,28 @@ export default function LiterSelectColor(props) {
   }
   return (
     <div className="listItems">
-      <button
-        onClick={() => {
-          setClose(true);
-        }}
-        type="button"
-        className={"bi bi-justify-left " + props.itemsLine + "-iteml"}
-      >
-        <svg
-          width="2em"
-          viewBox="0 0 18 18"
-          fill="currentColor"
-          xmlns="http://www.w3.org/2000/svg"
+      <div className=" titlesBas">
+        <TitlesEl type="Цвет шрифта" />
+        <button
+          onClick={() => {
+            setClose(true);
+          }}
+          type="button"
+          className={"bi bi-justify-left " + props.itemsLine + "-iteml"}
         >
-          <text x="5" y="11" style={{ fontSize: "10pt" }}>
-            A
-          </text>
-          <rect width="21" height="5" x="0" y="12" fill={rgb}></rect>
-        </svg>
-      </button>
+          <svg
+            width="2em"
+            viewBox="0 0 18 18"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <text x="5" y="11" style={{ fontSize: "10pt" }}>
+              A
+            </text>
+            <rect width="21" height="5" x="0" y="12" fill={rgb}></rect>
+          </svg>
+        </button>
+      </div>
       {close === true ? palitra() : ""}
     </div>
   );

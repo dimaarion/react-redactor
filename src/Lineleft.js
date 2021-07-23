@@ -1,8 +1,9 @@
 import React from "react";
-
+import TitlesEl from "./TitlesEl";
 function Lineleft(props) {
   return (
     <td className="text-left pr-2 pl-2 titlesBas">
+      <TitlesEl type="Выравнивание по левому краю" />
       <button
         type="button"
         className={"bi bi-justify-left " + props.itemsLine + "-iteml"}
