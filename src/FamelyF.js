@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './css/fontsFamely.css'
 import { storageBd, storageBdInsert, arrayFonts, replaceFontsTextarera } from "./action/index";
+import TitlesEl from "./TitlesEl";
 function FamelyF(props) {
   let n = ["Georgia", "Roboto", "Arial", "Montserrat", "Krona One"];
   const [nf, setnf] = useState('Georgia');
@@ -49,38 +50,43 @@ function FamelyF(props) {
       position: "absolute",
       zIndex: 10000,
       marginTop: "-26px",
-      width: "352px"
+      width: "200px"
     }
   }
 
-  
+
 
   return (
     <div className="col-sm-2 form-group text-left p-0 fontsFm">
       <div className={"listItems fontsAdd"} style={STYLES.add}>
-        <button 
-        type="button"
-        
-          onClick={() => {
-            setDispPan(true);
-          }}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="1em" fill="currentColor" className="bi bi-plus-square" viewBox="0 0 16 21">
-            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-          </svg>
-        </button>
-        <button type="button"
-          onClick={() => {
-           document.location = "https://fonts.google.com/";
-          }}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="1em" fill="currentColor" className="bi bi-plus-square" viewBox="0 0 16 21">
-            <text x = "2" y = "13">
-              G
-            </text>
-          </svg>
-        </button>
+        <div className = "titlesBas">
+          <TitlesEl type = "gf"/>
+          <button
+            type="button"
+
+            onClick={() => {
+              setDispPan(true);
+            }}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" fill="currentColor" className="bi bi-plus-square" viewBox="0 0 16 21">
+              <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+              <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+            </svg>
+          </button>
+        </div>
+        <div>
+          <button type="button"
+            onClick={() => {
+              document.location = "https://fonts.google.com/";
+            }}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" fill="currentColor" className="bi bi-plus-square" viewBox="0 0 16 21">
+              <text x="2" y="13">
+                G
+              </text>
+            </svg>
+          </button>
+        </div>
       </div>
       {dispPan === true ?
         <table style={STYLES.table}>

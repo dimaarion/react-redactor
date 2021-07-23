@@ -98,16 +98,16 @@ export function storageBd(props = {}) {
     let fontsHead = "@import url('https://fonts.googleapis.com/css2?" + fontsNew.join().replace(/[,]/g, "") + "display=swap');"
     Axios.get(`${props.urlFonts}`)
       .then((rez) => props.setGetFonts(rez.data.fonts));
-    props.setGetFontsObj({ style: fontsHead, name: fontsElStyle }); 
+    props.setGetFontsObj({ style: fontsHead, name: fontsElStyle });
     if (fontsHead !== undefined && fontsHead.length > 70) {
-    let head = document.querySelector("head");
-    let styleEl = document.createElement("style");
-    head.appendChild(styleEl);
-    //styleEl.setAttribute("type", "text/html");
-    styleEl.insertAdjacentText("afterbegin", fontsHead);
-    
-  }
-    
+      let head = document.querySelector("head");
+      let styleEl = document.createElement("style");
+      head.appendChild(styleEl);
+      //styleEl.setAttribute("type", "text/html");
+      styleEl.insertAdjacentText("afterbegin", fontsHead);
+
+    }
+
   }
 }
 
@@ -115,46 +115,54 @@ export function storageBd(props = {}) {
 
 export function arrayFonts(props = {}) {
   if (props.getFonts !== undefined) {
-    if(props.getFonts !== null){
-       return  props.getFonts.split(",").concat(props.n);
-    }else{
+    if (props.getFonts !== null) {
+      return props.getFonts.split(",").concat(props.n);
+    } else {
       return props.n;
     }
-  
+
   }
 }
 
-export function replaceFontsTextarera(props = {}){
-  if(props.getFonts !== null){
-    return props.getFonts.replace(/[","]/g,"\n");
-  }else{
+export function replaceFontsTextarera(props = {}) {
+  if (props.getFonts !== null) {
+    return props.getFonts.replace(/[","]/g, "\n");
+  } else {
     return ""
   }
-  
+
 }
 
-export function titlesContents(props){
+export function titlesContents(props) {
   switch (props.type) {
     case "H1":
-      return "Заголовок 1"; 
+      return "Заголовок 1";
     case "H2":
-      return "Заголовок 2"; 
+      return "Заголовок 2";
     case "H3":
-      return "Заголовок 3"; 
+      return "Заголовок 3";
     case "H4":
-      return "Заголовок 4"; 
+      return "Заголовок 4";
     case "H5":
-      return "Заголовок 5"; 
+      return "Заголовок 5";
     case "P":
-      return "Обычный текст с интервалом"; 
+      return "Обычный текст с интервалом";
     case "div":
-        return "Обычный текст без интервала"; 
+      return "Обычный текст без интервала";
     case "B":
-          return "Жирный шрифт"; 
+      return "Жирный шрифт";
     case "Form":
-          return "Очистить текст"; 
+      return "Очистить текст";
+    case "min":
+      return "Уменьшить";
+    case "max":
+      return "Увеличить";
+    case "gf":
+      return "Увеличить";
     default:
       return "Нет описания";
   }
-  
-} 
+
+}
+
+

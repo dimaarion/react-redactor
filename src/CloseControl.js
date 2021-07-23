@@ -24,7 +24,7 @@ function CloseControl(props) {
         );
       }}
     >
-      <TitlesEl />
+      <TitlesEl type = {type}/>
       {props.sizes === true ? <Sizeplus /> : <Sizeminus />}
     </div>
   );

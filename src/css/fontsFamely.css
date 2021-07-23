@@ -42,6 +42,9 @@
 .fontsAdd{
   display: none;
 }
+.fontsAdd div{
+  float: right;
+}
 .fontsFm:hover .fontsAdd{
   display: block;
 }

@@ -475,7 +475,6 @@ function Controller(props) {
           />
         </div>
       </div>
-         <TitlesEl content = "test"/>
     </div>
   );
 }
