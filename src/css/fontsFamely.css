@@ -28,6 +28,7 @@
   width: 200px;
   overflow: scroll;
   height: 250px;
+  margin-top: 6px;
 }
 #fontsTxtFamely li ul li {
   cursor: pointer;
@@ -39,12 +40,12 @@
 #fontsTxtFamely li ul li:hover {
   background-color: #cccccc;
 }
-.fontsAdd{
+.fontsAdd {
   display: none;
 }
-.fontsAdd div{
+.fontsAdd div {
   float: right;
 }
-.fontsFm:hover .fontsAdd{
+.fontsFm:hover .fontsAdd {
   display: block;
 }

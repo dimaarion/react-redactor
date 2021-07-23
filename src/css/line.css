@@ -18,13 +18,14 @@
 }
 .aligns svg:hover {
   padding: 2px;
-  background-color: #cccccc;
+  background-color: rgb(239, 241, 245);
 }
 .aligns button {
   border: none;
+  background-color: #ffffff;
 }
 .aligns button:hover {
-  background-color: #cccccc;
+  background-color: rgb(239, 241, 245);
 }
 .list {
   margin-left: 5px;

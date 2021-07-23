@@ -110,9 +110,10 @@ function Headers(props) {
   ];
   if (props.type === "block") {
     return (
-      <table className="headers">
-        <tbody>
-          <tr>
+      <ul className="headers">
+        <li>
+          Заголовок
+          <ul>
             {H.map((x, i) => (
               <Htype
                 names={x.names}
@@ -135,9 +136,9 @@ function Headers(props) {
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
               />
             ))}
-          </tr>
-        </tbody>
-      </table>
+          </ul>
+        </li>
+      </ul>
     );
   } else if (props.type === "select") {
     return (

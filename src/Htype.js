@@ -8,7 +8,7 @@ function Htype(props) {
     }
   }
   return (
-    <td className="titlesBas">
+    <li className="titlesBas">
       <TitlesEl type={props.names} />
       <button
         type="button"
@@ -33,7 +33,7 @@ function Htype(props) {
           {props.svg}
         </svg>
       </button>
-    </td>
+    </li>
   );
 }
 export default Htype;

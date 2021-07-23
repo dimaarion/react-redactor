@@ -74,7 +74,6 @@ function Panel(props) {
                         ititalTegs={props.ititalTegs}
                         items={props.items}
                         setSelectPanelDicplay={props.setSelectPanelDicplay}
-                        
                       />
                     </td>
                   </tr>
@@ -96,7 +95,7 @@ function Panel(props) {
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
               />
             </td>
-            <td colSpan="7">
+            <td>
               <Headers
                 type={"block"}
                 setActive={props.setActive}
@@ -284,17 +283,17 @@ function Panel(props) {
             </td>
             <td>
               <LiterLineSelectBgColor
-              setActive={props.setActive}
-              active={props.active}
-              gTags={props.gTags}
-              items={props.items}
-              ititalTegs={props.ititalTegs}
-              selectedtext={props.selectedtext}
-              types={props.types}
-              selectedTextFocus={props.selectedTextFocus}
-              selectedTextAncor={props.selectedTextAncor}
-              class="text-center listItems"
-              setSelectPanelDicplay={props.setSelectPanelDicplay}
+                setActive={props.setActive}
+                active={props.active}
+                gTags={props.gTags}
+                items={props.items}
+                ititalTegs={props.ititalTegs}
+                selectedtext={props.selectedtext}
+                types={props.types}
+                selectedTextFocus={props.selectedTextFocus}
+                selectedTextAncor={props.selectedTextAncor}
+                class="text-center listItems"
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
               />
             </td>
             <td>
@@ -305,11 +304,9 @@ function Panel(props) {
                 sizes={props.sizes}
                 setpanelStyle={props.setpanelStyle}
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
-                class = "text-center listItems"
+                class="text-center listItems"
               />
             </td>
-            
-           
           </tr>
         </tbody>
       </table>
