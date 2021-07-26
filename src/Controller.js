@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Panel from "./Panel";
-import {storageBd} from"./action/index";
+import { storageBd } from "./action/index";
 import "./css/bootstrap.css";
 import "./css/style.css";
 import "./css/listitems.css";
@@ -170,7 +170,7 @@ function Controller(props) {
     att(oldteg, dataD);
   }
 
-  function createTable(bas, it, w = "100%", f = "none", r = 0) {
+  function createTable(bas, it, w = "100%", f = "none", r = 0, find = false) {
     let bs = document.querySelector("." + bas);
     let div = document.createElement("div");
     let tb = document.createElement("table");
@@ -179,10 +179,15 @@ function Controller(props) {
     tb.className = `tb${it} tbl`;
     tb.setAttribute("style", "width:" + w + ";float:" + f + ";border-collapse:separate;border-spacing: " + r + "px " + r + "px;");
     div.className = "divTable";
-    Array.from(bs.children)
-      .filter((f, i) => i === it)
-      .map((x) => x.appendChild(div));
-    div.appendChild(tb);
+    if (find !== false) {
+       find.appendChild(tb);
+    } else {
+      Array.from(bs.children)
+        .filter((f, i) => i === it)
+        .map((x) => x.appendChild(div));
+      div.appendChild(tb);
+    }
+
   }
 
   function createTr(bs, it, script, trn) {
@@ -347,7 +352,7 @@ function Controller(props) {
   useEffect(() => {
     onmousemove = (e) => setx(e.x);
   }, []);
-  
+
 
   useEffect(() => {
     updateElements(

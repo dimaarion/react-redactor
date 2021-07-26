@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import TableColRedactor from "./TableColRedactor";
 import Tableinsertion from "./Tableinsertion";
 import TitlesEl from "./TitlesEl";
+import {createTable} from "./action/index";
 function Table(props) {
   const [col, setCol] = useState(4);
   const [str, setStr] = useState(2);
@@ -41,7 +42,17 @@ function Table(props) {
   return (
     <div className="tablesreate listItems titlesBas">
       {/*<TitlesEl type="Вставить таблицу" />*/}
-      <Tableinsertion />
+      <Tableinsertion 
+      setCol = {setCol} 
+      setStr = {setStr} 
+      baseSelector =  {props.baseSelector} 
+      items = {props.items}
+      arr_en = {arr_en}
+      createTable = { props.createTable}
+      createTr = {props.createTr}
+      createTd = {props.createTd}
+      find={props.find}
+      />
       <div className="tsittens">
         <button
           onClick={() => setDSittens(true)}
@@ -149,7 +160,7 @@ function Table(props) {
                 <td className="text-left">
                   <svg
                     style={float === "left" ? active : {}}
-                    onClick={() => setFloat("left")}
+                    onClick={() => setFloat("tbLeft")}
                     width="2em"
                     viewBox="0 0 16 16"
                     fill="currentColor"
@@ -162,7 +173,7 @@ function Table(props) {
                   </svg>
                   <svg
                     style={float === "none" ? active : {}}
-                    onClick={() => setFloat("none")}
+                    onClick={() => setFloat("tbCenter")}
                     width="2em"
                     viewBox="0 0 16 16"
                     fill="currentColor"
@@ -175,7 +186,7 @@ function Table(props) {
                   </svg>
                   <svg
                     style={float === "right" ? active : {}}
-                    onClick={() => setFloat("right")}
+                    onClick={() => setFloat("tbRight")}
                     width="2em"
                     viewBox="0 0 16 16"
                     fill="currentColor"
@@ -195,29 +206,7 @@ function Table(props) {
                   <button
                     type="button"
                     onClick={
-                      col > 0 || str > 0
-                        ? () => {
-                            props.createTable(
-                              props.baseSelector,
-                              props.items,
-                              width,
-                              float
-                            );
-                            props.createTr(
-                              props.baseSelector,
-                              props.items,
-                              arr_en,
-                              str
-                            );
-                            props.createTd(
-                              props.baseSelector,
-                              props.items,
-                              arr_en,
-                              str,
-                              col
-                            );
-                          }
-                        : () => {}
+                      ()=>createTable(props,str,col,float)
                     }
                     className="btn btn-primary "
                   >
