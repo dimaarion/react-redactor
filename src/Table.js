@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import TableColRedactor from "./TableColRedactor";
 import Tableinsertion from "./Tableinsertion";
 import TitlesEl from "./TitlesEl";
+import { createTable } from "./action/index";
 function Table(props) {
   const [col, setCol] = useState(4);
   const [str, setStr] = useState(2);
@@ -204,31 +205,7 @@ function Table(props) {
                 <td>
                   <button
                     type="button"
-                    onClick={
-                      col > 0 || str > 0
-                        ? () => {
-                            props.createTable(
-                              props.baseSelector,
-                              props.items,
-                              width,
-                              float
-                            );
-                            props.createTr(
-                              props.baseSelector,
-                              props.items,
-                              arr_en,
-                              str
-                            );
-                            props.createTd(
-                              props.baseSelector,
-                              props.items,
-                              arr_en,
-                              str,
-                              col
-                            );
-                          }
-                        : () => {}
-                    }
+                    onClick={() => createTable(props, str, col)}
                     className="btn btn-primary "
                   >
                     Ок

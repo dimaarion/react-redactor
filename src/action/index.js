@@ -158,9 +158,15 @@ export function typeStyle(t, g, o) {
   }
 }
 
-export function createTable(props, row, col) {
+export function createTable(
+  props,
+  row,
+  col,
+  params = { width: "100%", float: "none" }
+) {
   let table = document.createElement("table");
   table.setAttribute("class", "tbl");
+  table.setAttribute("style", `width:${params.width}; float:${params.float};`);
   countArray(row).map((x) => {
     let tr = document.createElement("tr");
     countArray(col).map((x2) => {
