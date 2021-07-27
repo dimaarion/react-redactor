@@ -29,8 +29,15 @@ export default function TableColRedactor(props) {
         .match(/[px | % ]/g)
         .join()
         .replace(/[,]/g, "");
-      console.log(widthEd);
-      widthTb.value = props.find.parentElement.parentElement.style.width;
+      let selectTb = document
+        .querySelector(".tablecolredactor")
+        .querySelector(".selectTb");
+
+      selectTb.value = widthEd;
+      widthTb.value = props.find.parentElement.parentElement.style.width.replace(
+        /[px|%]/g,
+        ""
+      );
       if (props.find.getAttribute("style") !== null) {
         if (props.find.getAttribute("style").split(";")[3] !== undefined) {
           let red = document
@@ -120,8 +127,8 @@ export default function TableColRedactor(props) {
                   value={width}
                 />
                 <select
-                  defaultValue={"%"}
-                  className="form-control col-sm-5"
+                  defaultValue={"px"}
+                  className="form-control col-sm-5 selectTb"
                   onChange={(e) => setEd(e.target.value)}
                 >
                   <option value="%">%</option>
