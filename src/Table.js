@@ -52,6 +52,8 @@ function Table(props) {
         createTable={props.createTable}
         setSelectPanelDicplay={props.setSelectPanelDicplay}
         find={props.find}
+        setopenTb={setopenTb}
+        setDSittens={setDSittens}
       />
       <div className="tsittens">
         <button
@@ -94,12 +96,12 @@ function Table(props) {
         )}
       </div>
       {openTb === true ? (
-        <div className="tableRedactor">
+        <div className="tableRedactor boxes">
           <table className="table table-hover">
             <tbody>
               <tr>
                 <td>Вставка таблицы</td>
-                <td>
+                <td className="text-right">
                   <svg
                     onClick={() => {
                       setopenTb(false);
@@ -155,7 +157,7 @@ function Table(props) {
                   />
                 </td>
               </tr>
-              <tr>
+              {/* <tr>
                 <td className="text-right"></td>
                 <td className="text-left">
                   <svg
@@ -197,18 +199,17 @@ function Table(props) {
                       d="M6 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
                     />
                   </svg>
-                </td>
+                  </td>
                 <td className="text-left"></td>
-              </tr>
+              </tr>*/}
               <tr>
-                <td></td>
-                <td>
+                <td colSpan="2">
                   <button
                     type="button"
                     onClick={() => createTable(props, str, col)}
-                    className="btn btn-primary "
+                    className="p-2 mr-2"
                   >
-                    Ок
+                    Вставить
                   </button>
                   <button
                     type="button"
@@ -216,9 +217,9 @@ function Table(props) {
                       setopenTb(false);
                       props.setActive(props.active === false ? true : false);
                     }}
-                    className="btn btn-primary ml-2"
+                    className="p-2 ml-2"
                   >
-                    Отмена
+                    Закрыть
                   </button>
                 </td>
               </tr>

@@ -8,7 +8,7 @@
   background-color: #ffffff;
   z-index: 8000;
   width: 400px;
-  margin-left: -200px;
+  margin-left: -350px;
 }
 .removeDiv {
   text-align: right;
@@ -65,9 +65,14 @@
   position: absolute;
   margin-left: 50px;
 }
+.boxes {
+  background-color: #ffffff;
+  box-shadow: 5px 5px 5px #cccccc;
+  border-left: solid 1px #cccccc;
+  border-top: solid 1px #cccccc;
+}
 .tableinsertion {
   display: block;
-  background-color: rgb(239, 241, 245);
 }
 .tableinsertion table {
   margin-left: 16px;
@@ -75,11 +80,11 @@
 .tableinsertion .sittensTb {
   width: 100%;
   cursor: pointer;
-  background-color: rgb(239, 241, 245);
-  height: 20px;
-  margin-bottom: 15px;
+  background-color: #ffffff;
+  height: 30px;
 }
 .tableinsertion .sittensTb:hover {
+  background-color: rgb(239, 241, 245) !important;
 }
 .tablesreate:hover .tableinsertion {
   display: block;

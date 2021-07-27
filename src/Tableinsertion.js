@@ -7,7 +7,7 @@ export default function Tableinsertion(props) {
   const [row, setRow] = useState(0);
 
   return (
-    <div className="tableinsertion">
+    <div className="tableinsertion boxes">
       <div className="col-sm mt-2  sittensTb text-left">
         {row < 0 || col < 0
           ? "Вставка таблицы"
@@ -36,8 +36,18 @@ export default function Tableinsertion(props) {
           ))}
         </tbody>
       </table>
-      <div className="col-sm mt-2 sittensTb text-left">Настойки таблицы</div>
-      <div className="col-sm mt-2 sittensTb text-left">Вставить таблицу</div>
+      <div
+        className="col-sm mt-2 sittensTb text-left"
+        onClick={() => props.setDSittens(true)}
+      >
+        Настойки таблицы
+      </div>
+      <div
+        className="col-sm mt-2 sittensTb text-left"
+        onClick={() => props.setopenTb(true)}
+      >
+        Вставить таблицу
+      </div>
     </div>
   );
 }
