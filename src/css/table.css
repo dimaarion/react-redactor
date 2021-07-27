@@ -1,5 +1,7 @@
 .itemsTd {
   border: solid 1px #cccccc;
+  width: 100px;
+  height: 50px;
 }
 .tableRedactor {
   position: absolute;

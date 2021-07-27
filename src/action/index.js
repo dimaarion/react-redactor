@@ -157,3 +157,20 @@ export function typeStyle(t, g, o) {
     return {};
   }
 }
+
+export function createTable(props, row, col) {
+  let table = document.createElement("table");
+  table.setAttribute("class", "tbl");
+  countArray(row).map((x) => {
+    let tr = document.createElement("tr");
+    countArray(col).map((x2) => {
+      let td = document.createElement("td");
+      td.setAttribute("class", "itemsTd");
+      return tr.appendChild(td);
+    });
+    return table.appendChild(tr);
+  });
+  if (props.find !== undefined) {
+    return props.find.appendChild(table);
+  }
+}

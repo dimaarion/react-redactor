@@ -41,7 +41,17 @@ function Table(props) {
   return (
     <div className="tablesreate listItems titlesBas">
       {/*<TitlesEl type="Вставить таблицу" />*/}
-      <Tableinsertion />
+      <Tableinsertion
+        setActive={props.setActive}
+        active={props.active}
+        baseSelector={props.baseSelector}
+        items={props.items}
+        createTd={props.createTd}
+        createTr={props.createTr}
+        createTable={props.createTable}
+        setSelectPanelDicplay={props.setSelectPanelDicplay}
+        find={props.find}
+      />
       <div className="tsittens">
         <button
           onClick={() => setDSittens(true)}
