@@ -7,31 +7,37 @@ export default function Tableinsertion(props) {
   const [row, setRow] = useState(0);
 
   return (
-    <table
-      className="tableinsertion"
-      onClick={() => createTable(props, row + 1, col + 1)}
-    >
-      <tbody>
-        {countArray(6).map((x) => (
-          <tr key={x + "tr"}>
-            {countArray(6).map((x2) => (
-              <td key={x2 + "td"}>
-                <div
-                  data-col={x2}
-                  data-row={x}
-                  onMouseOver={(e) => {
-                    setCol(x2);
-                    setRow(x);
-                  }}
-                  style={
-                    col >= x2 && row >= x ? { backgroundColor: "#cccccc" } : {}
-                  }
-                ></div>
-              </td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <div className="tableinsertion">
+      <div className="col-sm mt-2  sittensTb text-left">
+        {row < 0 || col < 0
+          ? "Вставка таблицы"
+          : "Таблица " + (row + 1) + " / " + (col + 1)}
+      </div>
+      <table onClick={() => createTable(props, row + 1, col + 1)}>
+        <tbody>
+          {countArray(6).map((x) => (
+            <tr key={x + "tr"}>
+              {countArray(6).map((x2) => (
+                <td key={x2 + "td"}>
+                  <div
+                    onMouseOver={(e) => {
+                      setCol(x2);
+                      setRow(x);
+                    }}
+                    style={
+                      col >= x2 && row >= x
+                        ? { backgroundColor: "#cccccc" }
+                        : {}
+                    }
+                  ></div>
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className="col-sm mt-2 sittensTb text-left">Настойки таблицы</div>
+      <div className="col-sm mt-2 sittensTb text-left">Вставить таблицу</div>
+    </div>
   );
 }

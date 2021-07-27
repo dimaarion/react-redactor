@@ -176,7 +176,7 @@ export function createTable(
     });
     return table.appendChild(tr);
   });
-  if (props.find !== undefined) {
+  if (props.find !== undefined && props.find.tagName !== undefined) {
     return props.find.appendChild(table);
   }
 }

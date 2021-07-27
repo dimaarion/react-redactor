@@ -65,3 +65,22 @@
   position: absolute;
   margin-left: 50px;
 }
+.tableinsertion {
+  display: block;
+  background-color: rgb(239, 241, 245);
+}
+.tableinsertion table {
+  margin-left: 16px;
+}
+.tableinsertion .sittensTb {
+  width: 100%;
+  cursor: pointer;
+  background-color: rgb(239, 241, 245);
+  height: 20px;
+  margin-bottom: 15px;
+}
+.tableinsertion .sittensTb:hover {
+}
+.tablesreate:hover .tableinsertion {
+  display: block;
+}
