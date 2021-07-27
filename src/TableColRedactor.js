@@ -6,6 +6,9 @@ export default function TableColRedactor(props) {
   const [row, setRow] = useState("50");
   const [colr, setColr] = useState("");
   const [rowr, setRowr] = useState("");
+  const [float, setFloat] = useState("none");
+  const [width, setWidth] = useState("100");
+  const [ed, setEd] = useState("%");
   const [colorr, setColorr] = useState("#ffffff");
 
   useEffect(() => {
@@ -19,6 +22,15 @@ export default function TableColRedactor(props) {
 
   useEffect(() => {
     if (props.find !== undefined && props.find.tagName === "TD") {
+      let widthTb = document
+        .querySelector(".tablecolredactor")
+        .querySelector(".widthTb");
+      let widthEd = props.find.parentElement.parentElement.style.width
+        .match(/[px | % ]/g)
+        .join()
+        .replace(/[,]/g, "");
+      console.log(widthEd);
+      widthTb.value = props.find.parentElement.parentElement.style.width;
       if (props.find.getAttribute("style") !== null) {
         if (props.find.getAttribute("style").split(";")[3] !== undefined) {
           let red = document
@@ -68,12 +80,10 @@ export default function TableColRedactor(props) {
     butOt: {
       textAlign: "left"
     },
-    borderH: {
-      marginTop: "-15px"
-    }
+    borderH: {}
   };
   return (
-    <div className="tableRedactor tablecolredactor">
+    <div className="tableRedactor tablecolredactor boxes">
       <table className="table table-hover">
         <thead>
           <tr>
@@ -99,8 +109,30 @@ export default function TableColRedactor(props) {
         </thead>
         <tbody>
           <tr>
-            <td>Ширина столбца</td>
+            <td>Ширина таблицы</td>
+            <td></td>
             <td>
+              <div className="row p-3">
+                <input
+                  type="text"
+                  className="form-control col-sm widthTb"
+                  onChange={(e) => setWidth(e.target.value)}
+                  value={width}
+                />
+                <select
+                  defaultValue={"%"}
+                  className="form-control col-sm-5"
+                  onChange={(e) => setEd(e.target.value)}
+                >
+                  <option value="%">%</option>
+                  <option value="px">px</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Ширина столбца</p>
               <input
                 onChange={(e) => setCol(e.target.value)}
                 className="form-control "
@@ -108,23 +140,20 @@ export default function TableColRedactor(props) {
                 defaultValue={colr}
               />
             </td>
+            <td></td>
             <td>
-              <div className="row">
-                <div className="p-2" style={STYLES.borderH}>
-                  Объеденить<br></br> ячейки
-                </div>
-                <input
-                  className="form-control col-sm-5 merge"
-                  type="number"
-                  min="1"
-                  defaultValue={1}
-                />
-              </div>
+              <p>Объеденить ячейки</p>
+              <input
+                className="form-control col-sm-6 merge"
+                type="number"
+                min="1"
+                defaultValue={1}
+              />
             </td>
           </tr>
           <tr>
-            <td>Высота строки</td>
             <td>
+              <p>Высота строки</p>
               <input
                 onChange={(e) => setRow(e.target.value)}
                 className="form-control "
@@ -133,10 +162,11 @@ export default function TableColRedactor(props) {
                 defaultValue={rowr}
               />
             </td>
+            <td></td>
             <td>
               <button
                 type="button"
-                className="btn btn-primary m-1"
+                className="btnTab p-2"
                 onClick={() => {
                   addCell(props);
                 }}
@@ -145,7 +175,7 @@ export default function TableColRedactor(props) {
               </button>
               <button
                 type="button"
-                className="btn btn-primary m-1"
+                className="btnTab p-2"
                 onClick={() => {
                   deleteCell(props);
                 }}
@@ -155,18 +185,19 @@ export default function TableColRedactor(props) {
             </td>
           </tr>
           <tr>
-            <td>Цвет ячейки</td>
             <td>
+              <p>Цвет ячейки</p>
               <input
                 className="form-control color"
                 type="color"
                 defaultValue="#ffffff"
               />
             </td>
+            <td></td>
             <td>
               <button
                 type="button"
-                className="btn btn-primary m-1"
+                className="p-2 btnTab"
                 onClick={() => {
                   addStr(props);
                 }}
@@ -175,7 +206,7 @@ export default function TableColRedactor(props) {
               </button>
               <button
                 type="button"
-                className="btn btn-primary m-1"
+                className="p-2 btnTab"
                 onClick={() => {
                   deleteStr(props);
                 }}
@@ -185,37 +216,95 @@ export default function TableColRedactor(props) {
             </td>
           </tr>
           <tr>
-            <td>Цвет границ ячейки</td>
             <td>
+              <p>Цвет границ ячейки</p>
               <input
                 className="form-control colorBorder"
                 type="color"
                 defaultValue="#cccccc"
               />
             </td>
+            <td></td>
             <td>
-              <div className="row">
-                <div className="p-2" style={STYLES.borderH}>
-                  Толщина <br></br> границ
-                </div>
-                <input
-                  className="form-control borderH col-sm-5"
-                  type="number"
-                  defaultValue="1"
-                  min="1"
-                  max="10"
-                  step="1"
-                />
-              </div>
+              <p>Толщина границ</p>
+              <input
+                className="form-control borderH col-sm-5"
+                type="number"
+                defaultValue="1"
+                min="1"
+                max="10"
+                step="1"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td className="text-left" colspan="3">
+              <table style={{ width: "100%" }}>
+                <tbody>
+                  <tr>
+                    <td className="text-center">
+                      <svg
+                        onClick={() => setFloat("left")}
+                        width="2em"
+                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
+                        />
+                      </svg>
+                    </td>
+                    <td className="text-center">
+                      <svg
+                        onClick={() => setFloat("none")}
+                        width="2em"
+                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
+                        />
+                      </svg>
+                    </td>
+                    <td className="text-center">
+                      <svg
+                        onClick={() => setFloat("right")}
+                        width="2em"
+                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M6 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
+                        />
+                      </svg>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </td>
           </tr>
           <tr>
             <td style={STYLES.butOk}>
               <button
                 type="button"
-                className="btn btn-primary"
+                className="p-2 btnTab"
                 onClick={() => {
                   if (props.find !== undefined && props.find.tagName === "TD") {
+                    if (
+                      props.find.parentElement !== null &&
+                      props.find.parentElement.parentElement.tagName === "TABLE"
+                    ) {
+                      props.find.parentElement.parentElement.style.float = float;
+                      props.find.parentElement.parentElement.style.width =
+                        width + ed;
+                    }
+
                     let red = document
                       .querySelector(".tablecolredactor")
                       .querySelector(".color");
@@ -246,18 +335,18 @@ export default function TableColRedactor(props) {
                   }
                 }}
               >
-                Ок
+                Сохранить
               </button>
             </td>
             <td style={STYLES.butOt} colSpan="3">
               <button
                 type="button"
-                className="btn btn-primary"
+                className="p-2 btnTab"
                 onClick={() => {
                   props.setDSittens(false);
                 }}
               >
-                Отмена
+                Закрыть
               </button>
             </td>
           </tr>

@@ -41,7 +41,7 @@ function Table(props) {
   let active = { padding: "2px", border: "solid 1px #cccccc" };
   return (
     <div className="tablesreate listItems titlesBas">
-      {/*<TitlesEl type="Вставить таблицу" />*/}
+      <TitlesEl type="Вставить таблицу" />
       <Tableinsertion
         setActive={props.setActive}
         active={props.active}
@@ -55,24 +55,7 @@ function Table(props) {
         setopenTb={setopenTb}
         setDSittens={setDSittens}
       />
-      <div className="tsittens">
-        <button
-          onClick={() => setDSittens(true)}
-          type="button"
-          className="tableButton"
-          title="Настройка таблицы"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            fill="currentColor"
-            className="bi bi-wrench"
-            viewBox="0 0 16 21"
-          >
-            <path d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019.528.026.287.445.445.287.026.529L15 13l-.242.471-.026.529-.445.287-.287.445-.529.026L13 15l-.471-.242-.529-.026-.287-.445-.445-.287-.026-.529L11 13l.242-.471.026-.529.445-.287.287-.445.529-.026L13 11l.471.242z" />
-          </svg>
-        </button>
-      </div>
+
       <button type="button" className="tableButton">
         <svg
           onClick={() => setopenTb(true)}
@@ -157,57 +140,12 @@ function Table(props) {
                   />
                 </td>
               </tr>
-              {/* <tr>
-                <td className="text-right"></td>
-                <td className="text-left">
-                  <svg
-                    style={float === "left" ? active : {}}
-                    onClick={() => setFloat("left")}
-                    width="2em"
-                    viewBox="0 0 16 16"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
-                    />
-                  </svg>
-                  <svg
-                    style={float === "none" ? active : {}}
-                    onClick={() => setFloat("none")}
-                    width="2em"
-                    viewBox="0 0 16 16"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
-                    />
-                  </svg>
-                  <svg
-                    style={float === "right" ? active : {}}
-                    onClick={() => setFloat("right")}
-                    width="2em"
-                    viewBox="0 0 16 16"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M6 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
-                    />
-                  </svg>
-                  </td>
-                <td className="text-left"></td>
-              </tr>*/}
               <tr>
                 <td colSpan="2">
                   <button
                     type="button"
                     onClick={() => createTable(props, str, col)}
-                    className="p-2 mr-2"
+                    className="p-2 mr-2 btnTab"
                   >
                     Вставить
                   </button>
@@ -217,7 +155,7 @@ function Table(props) {
                       setopenTb(false);
                       props.setActive(props.active === false ? true : false);
                     }}
-                    className="p-2 ml-2"
+                    className="p-2 ml-2 btnTab"
                   >
                     Закрыть
                   </button>

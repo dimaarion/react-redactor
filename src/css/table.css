@@ -34,6 +34,10 @@
 .tbl td {
   height: 50px;
 }
+.tableRedactor td {
+  padding-left: 10px !important;
+  text-align: left;
+}
 .tableRedactor svg {
   margin-right: 15px;
 }
@@ -72,7 +76,7 @@
   border-top: solid 1px #cccccc;
 }
 .tableinsertion {
-  display: block;
+  display: none;
 }
 .tableinsertion table {
   margin-left: 16px;
@@ -88,4 +92,8 @@
 }
 .tablesreate:hover .tableinsertion {
   display: block;
+}
+.btnTab {
+  border: solid 1px #cccccc !important;
+  width: 150px;
 }
