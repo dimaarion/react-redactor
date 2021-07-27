@@ -116,6 +116,7 @@ function Headers(props) {
           <ul>
             {H.map((x, i) => (
               <Htype
+                type={props.type}
                 names={x.names}
                 key={i * 4}
                 setActive={props.setActive}
@@ -148,6 +149,7 @@ function Headers(props) {
           <ul>
             {H.map((x, i) => (
               <Htype
+                type={props.type}
                 names={x.names}
                 key={i * 4}
                 setActive={props.setActive}

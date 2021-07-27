@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Panel from "./Panel";
-import {storageBd} from"./action/index";
+import { storageBd } from "./action/index";
 import "./css/bootstrap.css";
 import "./css/style.css";
 import "./css/listitems.css";
@@ -49,7 +49,9 @@ function Controller(props) {
   function ititalTegs(bs = false) {
     let text_block = document.querySelector("." + baseSelector);
     function textChildren(text_block) {
-      return Object.values(text_block.children);
+      if (text_block !== null && text_block.children !== null) {
+        return Object.values(text_block.children);
+      }
     }
     if (bs === true) {
       return text_block;
@@ -118,30 +120,30 @@ function Controller(props) {
   ) {
     ititalTegs().map(
       (x, i) =>
-      (x.onclick = (e) => {
-        setitems(i);
-        settegs(x.tagName);
-        setfontPt(
-          x.style.fontSize.replace(/[a-z]+/, "") === ""
-            ? 14
-            : x.style.fontSize.replace(/[a-z]+/, "")
-        );
-        setfontFm(x.style.fontFamily ? x.style.fontFamily : "Georgia");
-        setalign(x.style.textAlign ? x.style.textAlign : "left");
-      })
+        (x.onclick = (e) => {
+          setitems(i);
+          settegs(x.tagName);
+          setfontPt(
+            x.style.fontSize.replace(/[a-z]+/, "") === ""
+              ? 14
+              : x.style.fontSize.replace(/[a-z]+/, "")
+          );
+          setfontFm(x.style.fontFamily ? x.style.fontFamily : "Georgia");
+          setalign(x.style.textAlign ? x.style.textAlign : "left");
+        })
     );
 
     ititalTegs().map(
       (x, i) =>
-      (x.onmousemove = (e) => {
-        if (window.getSelection().toString().length > 0) {
-          setselectedtext(window.getSelection().toString());
-          setSelectedTextLen(window.getSelection().toString().length);
-          setSelectedTextAncor(window.getSelection().anchorOffset);
-          setSelectedTextFocus(window.getSelection().focusOffset);
-          setSelectedTest(window.getSelection().focusNode);
-        }
-      })
+        (x.onmousemove = (e) => {
+          if (window.getSelection().toString().length > 0) {
+            setselectedtext(window.getSelection().toString());
+            setSelectedTextLen(window.getSelection().toString().length);
+            setSelectedTextAncor(window.getSelection().anchorOffset);
+            setSelectedTextFocus(window.getSelection().focusOffset);
+            setSelectedTest(window.getSelection().focusNode);
+          }
+        })
     );
   }
 
@@ -177,7 +179,18 @@ function Controller(props) {
     document.body.appendChild(div);
     document.body.appendChild(tb);
     tb.className = `tb${it} tbl`;
-    tb.setAttribute("style", "width:" + w + ";float:" + f + ";border-collapse:separate;border-spacing: " + r + "px " + r + "px;");
+    tb.setAttribute(
+      "style",
+      "width:" +
+        w +
+        ";float:" +
+        f +
+        ";border-collapse:separate;border-spacing: " +
+        r +
+        "px " +
+        r +
+        "px;"
+    );
     div.className = "divTable";
     Array.from(bs.children)
       .filter((f, i) => i === it)
@@ -225,9 +238,7 @@ function Controller(props) {
       if (props.find.style !== undefined) {
         props.find.style.fontFamily = fontFm;
       }
-
     }
-
   }
 
   function aligns(ititalTegs, items, align) {
@@ -248,10 +259,10 @@ function Controller(props) {
         .filter(
           (l) =>
             "/" +
-            l.src
-              .split("/")
-              .filter((f, i) => i > 2)
-              .join("/") ===
+              l.src
+                .split("/")
+                .filter((f, i) => i > 2)
+                .join("/") ===
             imgurls
         )
         .map((ed) => (ed.style.width = imgWidth))
@@ -263,10 +274,10 @@ function Controller(props) {
         .filter(
           (l) =>
             "/" +
-            l.src
-              .split("/")
-              .filter((f, i) => i > 2)
-              .join("/") ===
+              l.src
+                .split("/")
+                .filter((f, i) => i > 2)
+                .join("/") ===
             imgurls
         )
         .map((ed) => (ed.style.height = imgHeight))
@@ -278,10 +289,10 @@ function Controller(props) {
         .filter(
           (l) =>
             "/" +
-            l.src
-              .split("/")
-              .filter((f, i) => i > 2)
-              .join("/") ===
+              l.src
+                .split("/")
+                .filter((f, i) => i > 2)
+                .join("/") ===
             imgurls
         )
         .map((ed) => (ed.style.padding = imgPadding))
@@ -294,10 +305,10 @@ function Controller(props) {
         .filter(
           (l) =>
             "/" +
-            l.src
-              .split("/")
-              .filter((f, i) => i > 2)
-              .join("/") ===
+              l.src
+                .split("/")
+                .filter((f, i) => i > 2)
+                .join("/") ===
             imgurls
         )
         .map((ed) => (ed.style.float = imgFloat))
@@ -347,7 +358,6 @@ function Controller(props) {
   useEffect(() => {
     onmousemove = (e) => setx(e.x);
   }, []);
-  
 
   useEffect(() => {
     updateElements(

@@ -18,7 +18,11 @@ function Htype(props) {
           props.setActive(props.active === false ? true : false);
           props.setIconTags(props.t);
           props.setSelectPanelDicplay(false);
-          selectedStyles(props, props.t);
+          if (props.type === "block") {
+            replaceElement(props);
+          } else {
+            selectedStyles(props, props.t);
+          }
         }}
         className={hActive(props.tegsLocal, props.t)}
       >
