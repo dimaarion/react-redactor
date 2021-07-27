@@ -31,7 +31,6 @@
 }
 .tbl td {
   height: 50px;
-  width: 100px;
 }
 .tableRedactor svg {
   margin-right: 15px;
@@ -63,13 +62,4 @@
 .tableinsertion {
   position: absolute;
   margin-left: 50px;
-}
-.tbCenter{
-  float: none;
-}
-.tbLeft{
-  float: right;
-}
-.tbRight{
-  float: left;
 }

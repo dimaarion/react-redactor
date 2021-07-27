@@ -30,7 +30,7 @@ export function countArray(n) {
 }
 
 export function replaceElement(props) {
-  if (props.find !== undefined && props.find.tagName !== undefined) {
+  if (props.find !== undefined) {
     let find = props.find.innerHTML;
     let el = document.createElement(props.t);
     el.insertAdjacentHTML("afterbegin", find);
@@ -155,28 +155,5 @@ export function typeStyle(t, g, o) {
     }
   } else {
     return {};
-  }
-}
-
-export function createTable(props, row, col, cl = "tbCenter") {
-
-  if (props.find !== undefined && props.find.tagName !== undefined) {
-    let table = document.createElement("table");
-    table.setAttribute("class", "tbl " + cl);
-    props.find.appendChild(table);
-    countArray(row).map((x) => {
-      let tr = document.createElement("tr");
-      countArray(col).map((x2) => {
-        let td = document.createElement("td");
-        td.setAttribute("class", "itemsTd");
-        return tr.appendChild(td);
-      });
-      return table.appendChild(tr);
-    })
-
-
-
-
-
   }
 }
