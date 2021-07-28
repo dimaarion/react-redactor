@@ -384,6 +384,7 @@ function Controller(props) {
 
   return (
     <div className="contentDtext container-fluid">
+      <ColorsPanel />
       <div className="contentDtext container">
         <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
           <div
@@ -477,7 +478,7 @@ function Controller(props) {
             dangerouslySetInnerHTML={createMarkup(textId)}
           />
         </div>
-        <ColorsPanel />
+        
         <div className="col-sm">
           <textarea
             style={{ display: "none" }}
