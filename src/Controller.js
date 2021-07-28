@@ -8,6 +8,7 @@ import "./css/listitems.css";
 import "./css/table.css";
 import "./css/titlesel.css";
 import TitlesEl from "./TitlesEl";
+import ColorsPanel from "./ColorsPanel";
 
 function Controller(props) {
   const baseSelector = props.baseSelector;
@@ -476,7 +477,7 @@ function Controller(props) {
             dangerouslySetInnerHTML={createMarkup(textId)}
           />
         </div>
-
+        <ColorsPanel />
         <div className="col-sm">
           <textarea
             style={{ display: "none" }}
