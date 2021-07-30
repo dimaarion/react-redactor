@@ -7,6 +7,7 @@ import "./css/style.css";
 import "./css/listitems.css";
 import "./css/table.css";
 import "./css/titlesel.css";
+import "./css/colorpanel.css";
 import TitlesEl from "./TitlesEl";
 import ColorsPanel from "./ColorsPanel";
 

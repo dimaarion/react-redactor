@@ -1,18 +1,93 @@
-import React from "react";
-import {countArray} from "./action/index";
+import React, { useState } from "react";
+import { countArray } from "./action/index";
 export default function ColorsPanel(props) {
-  let colorDf = 200;
-  let widthDf = "100px";
-  let heightDf = "0.2px";
-  let Colors = {
-    rgb:[1,0,0]
+  const[row, setRow] = useState(0);
+  let styles = {
+    colorDf: 255,
+    minus: 0,
+    widthDf: "15px",
+    heightDf: "0.1px",
+    top: "-5px"
   }
-  return (<div>
-{countArray(255).map((color)=><div key = {color + "r" } style = {{width:widthDf,height:"0.2px", backgroundColor:`rgb(${color},${colorDf},${colorDf})`}}></div>)}
-{countArray(255).map((color)=><div key = {color + "g" } style = {{width:widthDf,height:"1px", backgroundColor:`rgb(${colorDf},${color},${colorDf})`}}></div>)}
-{countArray(255).map((color)=><div key = {color + "b" } style = {{width:widthDf,height:"1px", backgroundColor:`rgb(${colorDf},${colorDf},${color})`}}></div>)}
-{countArray(255).map((color)=><div key = {color + "j" } style = {{width:widthDf,height:"1px", backgroundColor:`rgb(${color},${color},${colorDf})`}}></div>)}
-{countArray(255).map((color)=><div key = {color + "w" } style = {{width:widthDf,height:"1px", backgroundColor:`rgb(${color},${colorDf},${color})`}}></div>)}
-  </div>);
-  
+
+  let Colors = {
+    rgb: [
+      {
+        id: 1,
+        r: 0,
+        g: 1,
+        b: 1
+      },
+      {
+        id: 2,
+        r: 1,
+        g: 0,
+        b: 1
+      },
+      {
+        id: 3,
+        r: 1,
+        g: 0,
+        b: 0
+      },
+      {
+        id: 4,
+        r: 0,
+        g: 0,
+        b: 1
+      },
+      {
+        id: 5,
+        r: 0,
+        g: 1,
+        b: 0
+      },
+      {
+        id: 6,
+        r: 1,
+        g: 1,
+        b: 0
+      },
+      {
+        id: 7,
+        r: 0,
+        g: 0,
+        b: 0
+      }
+    ]
+  }
+
+
+  return (
+    <div>
+    
+      <table className="table">
+        <tbody>
+          <tr>
+            <td>
+              <div>
+                <div>
+                 
+                </div>
+              </div>
+            </td>
+            <td >
+              <div>
+                {countArray(255).map((c) => <div style={{ width: styles.widthDf, height: styles.heightDf, backgroundColor: `rgb(${255},${0},${c})` }}></div>)}
+                {countArray(255).map((c) => <div style={{ width: styles.widthDf, height: styles.heightDf, backgroundColor: `rgb(${255 - c},${0},${255})` }}></div>)}
+                {countArray(255).map((c) => <div style={{ width: styles.widthDf, height: styles.heightDf, backgroundColor: `rgb(${0},${c},${255})` }}></div>)}
+                {countArray(255).map((c) => <div style={{ width: styles.widthDf, height: styles.heightDf, backgroundColor: `rgb(${0},${255},${255 - c})` }}></div>)}
+                {countArray(255).map((c) => <div style={{ width: styles.widthDf, height: styles.heightDf, backgroundColor: `rgb(${c},${255},${0})` }}></div>)}
+                {countArray(255).map((c) => <div style={{ width: styles.widthDf, height: styles.heightDf, backgroundColor: `rgb(${255},${255 - c},${0})` }}></div>)}
+              </div>
+
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+  {row + " row "}
+    </div>
+  );
+
 }
