@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Sketch from "react-p5";
 import { countArray } from "./action/index";
 export default function ColorsPanel(props) {
   const [row, setRow] = useState(0);
@@ -59,7 +60,27 @@ export default function ColorsPanel(props) {
       }
     ]
   };
-
+  let imges;
+  const preload = (p5) => {
+    imges = p5.loadImage(
+      "https://uploads.codesandbox.io/uploads/user/f0ec9a1a-dbb6-4f1c-875a-49dd16e23056/gBkC-scena.png"
+    );
+  };
+  const setup = (p5, canvasParentRef) => {
+    p5.createCanvas(255, 255).parent(canvasParentRef);
+    // p5.background(255);
+  };
+  const draw = (p5) => {
+    p5.rect(p5.mouseX, p5.mouseY, 10, 10);
+    p5.image(imges, 10, 10, 10, 10);
+    // p5.background(255);
+    // p5.image(imges, p5.mouseX, p5.mouseY, 10, 10);
+    //p5.background("red");
+    // p5.fill(100);
+    // p5.rect(p5.mouseX, p5.mouseY, 10, 10);
+  };
+  const keyPressed = (p5) => {};
+  const keyReleased = (p5) => {};
   function pick(event) {}
 
   return (
@@ -76,12 +97,13 @@ export default function ColorsPanel(props) {
                     height: "255px"
                   }}
                 >
-                  <canvas
-                    width="255"
-                    height="255"
-                    id="lineGradient"
-                    onClick={(event) => pick(event)}
-                  ></canvas>
+                  <Sketch
+                    setup={setup}
+                    draw={draw}
+                    preload={preload}
+                    keyPressed={keyPressed}
+                    keyReleased={keyReleased}
+                  />
                 </div>
               </div>
             </td>
