@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { countArray } from "./action/index";
 export default function ColorsPanel(props) {
   const [row, setRow] = useState(0);
+  const [x, setX] = useState(1);
+  const [y, setY] = useState(1);
+  const [canv, setCanv] = useState({});
   let styles = {
     colorDf: 255,
     minus: 0,
@@ -56,14 +59,12 @@ export default function ColorsPanel(props) {
       }
     ]
   };
-  useEffect(() => {
-    let lineGradient = document.getElementById("lineGradient");
-    let ctx = lineGradient.getContext("2d");
-    ctx.fillStyle = "green";
-    ctx.fillRect(0, 0, 100, 100);
-  }, []);
+
+  function pick(event) {}
+
   return (
     <div>
+      <div style={{ width: "100px", height: "100px" }}></div>
       <table className="table">
         <tbody>
           <tr>
@@ -75,7 +76,12 @@ export default function ColorsPanel(props) {
                     height: "255px"
                   }}
                 >
-                  <canvas width="255" height="255" id="lineGradient"></canvas>
+                  <canvas
+                    width="255"
+                    height="255"
+                    id="lineGradient"
+                    onClick={(event) => pick(event)}
+                  ></canvas>
                 </div>
               </div>
             </td>
