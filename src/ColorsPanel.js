@@ -48,6 +48,16 @@ export default function ColorsPanel(props) {
     return false;
   };
 
+  function ControllerTriangle(props) {
+    props.p5.fill(255);
+    props.p5.stroke(255)
+    props.p5.rect(0, props.len + 20, 270, props.h);
+    props.p5.fill(0);
+    props.p5.stroke(0);
+    props.p5.triangle(props.x, 27 + props.len, 5 + props.x, 22 + props.len , 10 + props.x, 27 + props.len)
+  }
+
+
   function setGradient(p5, c1, c2, w = 100, h = 100, l = 0) {
     for (var y = 0; y < h; y++) {
       var inter = p5.map(y, 0, h, 0, 1);
@@ -83,7 +93,7 @@ export default function ColorsPanel(props) {
 
     let c2 = p5.color(p.color);
     gr(p5, c1, c2, 160, 255, 180);
-    let hit = p.collige(p5, 0, 0, 200, 200, p5.mouseX, p5.mouseY, 1)
+    let hit = p.collige(p5, 0, 160, 255, 40, p5.mouseX, p5.mouseY, 1)
     if (p.press === 1 && hit) {
       p.setX(p5.mouseX);
       p.setY(p5.mouseY);
@@ -94,10 +104,7 @@ export default function ColorsPanel(props) {
     c = p5.get(p.x, p.y);
     cl(c);
     p5.fill(c)
-    //p5.stroke(255)
-    //p5.ellipse(p.x, p.y, 15, 15)
-    // p5.stroke(0)
-    //p5.ellipse(p.x, p.y, 14, 14)
+    ControllerTriangle({p5:p5,len:160,x:p.x,h:20})
 
   }
 
@@ -120,16 +127,10 @@ export default function ColorsPanel(props) {
     if (p.press === 1 && hit) {
       p.setXSt(p5.mouseX);
       p.setYSt(p5.mouseY);
-
     }
     let gCol = p5.get(p.x, p.y);
     cl(gCol);
-    p5.fill(255);
-    p5.stroke(255)
-    p5.rect(0, len + 20, 270, h);
-    p5.fill(0);
-    p5.stroke(0);
-    p5.triangle(p.x, 7 + len + 20, 5 + p.x, 2 + len + 20, 10 + p.x, 7 + len + 20)
+    ControllerTriangle({p5:p5,len:len,x:p.x,h:h})
   }
 
   function addColorGradient(p5, gr, cl, p) {
