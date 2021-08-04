@@ -1,0 +1,17 @@
+.closePalitr {
+  text-align: center;
+  cursor: pointer;
+}
+.closePalitr div {
+  text-align: center;
+  background-color: #ffffff;
+  margin-left: 20px;
+  margin-top: 5px;
+  width: 45px;
+  height: 45px;
+  border-radius: 40px;
+  transition: 1s;
+}
+.closePalitr:hover div {
+  background-color: #cccccc;
+}

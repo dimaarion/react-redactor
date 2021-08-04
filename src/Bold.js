@@ -1,16 +1,22 @@
 import React from "react";
-
+import { selectedStyles } from "./action";
+import TitlesEl from "./TitlesEl";
 function Bold(props) {
   return (
-    <div className={props.class}>
+    <div className={`${props.class} titlesBas`}>
+      <TitlesEl type="Жирный шрифт" />
       <button
-      type = "button"
+        type="button"
         style={
           props.gTags.teg === "B"
             ? { backgroundColor: "#cccccc", border: "none" }
             : { border: "none" }
         }
-        onClick={() => { document.execCommand("bold", false, null); props.setActive((props.active === false) ? true : false);}}
+        onClick={() => {
+          selectedStyles(props, "b");
+          props.setActive(props.active === false ? true : false);
+          props.setSelectPanelDicplay(false);
+        }}
       >
         <svg
           style={

@@ -1,8 +1,10 @@
 import React from "react";
+import TitlesEl from "./TitlesEl";
 
 function Lincks(props) {
   return (
-    <div className={props.class}>
+    <div className={`${props.class} titlesBas`}>
+      <TitlesEl type="Добавить ссылку" />
       <button type="button">
         <svg
           style={
@@ -12,7 +14,8 @@ function Lincks(props) {
           }
           onClick={() => {
             props.setstate({ link: true });
-            props.setActive((props.active === false) ? true : false);
+            props.setActive(props.active === false ? true : false);
+            props.setSelectPanelDicplay(false);
           }}
           width="2em"
           viewBox="0 0 16 16"

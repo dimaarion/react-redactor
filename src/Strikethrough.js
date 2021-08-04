@@ -1,8 +1,10 @@
 import React from "react";
-
+import { selectedStyles } from "./action";
+import TitlesEl from "./TitlesEl";
 function Strikethrough(props) {
   return (
-    <div className={props.class}>
+    <div className={`${props.class} titlesBas`}>
+      <TitlesEl type="Зачеркнутый" />
       <button
         type="button"
         style={
@@ -10,7 +12,10 @@ function Strikethrough(props) {
             ? { backgroundColor: "#cccccc", border: "none" }
             : { border: "none" }
         }
-        onClick={() => { document.execCommand("strikeThrough", false, null); props.setActive((props.active === false) ? true : false);}}
+        onClick={() => {
+          selectedStyles(props, "s");
+          props.setActive(props.active === false ? true : false);
+        }}
       >
         <svg
           style={

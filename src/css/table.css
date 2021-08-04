@@ -1,10 +1,14 @@
 .itemsTd {
   border: solid 1px #cccccc;
+  width: 100px;
+  height: 50px;
 }
 .tableRedactor {
   position: absolute;
   background-color: #ffffff;
   z-index: 8000;
+  width: 400px;
+  margin-left: -350px;
 }
 .removeDiv {
   text-align: right;
@@ -22,17 +26,7 @@
 .divTable:hover .removeDiv {
   display: block;
 }
-.tableButton {
-  border: none;
-  margin-right: 30px;
-  margin-left: 15px;
-}
-.tableButton:hover {
-  background-color: #cccccc;
-}
-.tableButton:hover svg {
-  padding: 2px;
-}
+
 .tbl {
   width: 100%;
   min-height: 50px;
@@ -40,9 +34,66 @@
 .tbl td {
   height: 50px;
 }
+.tableRedactor td {
+  padding-left: 10px !important;
+  text-align: left;
+}
 .tableRedactor svg {
   margin-right: 15px;
 }
 .tableRedactor svg:hover {
   padding: 2px;
+}
+.tsittens {
+  position: absolute;
+  margin-top: -27px;
+  margin-left: 14px;
+}
+.tablesreate .tsittens {
+  display: none;
+}
+.tablesreate:hover .tsittens {
+  display: block;
+}
+.tableinsertion div {
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+}
+.tableinsertion td {
+  border: solid 1px #cccccc;
+  width: 20px !important;
+  height: 20px;
+}
+.tableinsertion {
+  position: absolute;
+  margin-left: 50px;
+}
+.boxes {
+  background-color: #ffffff;
+  box-shadow: 5px 5px 5px #cccccc;
+  border-left: solid 1px #cccccc;
+  border-top: solid 1px #cccccc;
+}
+.tableinsertion {
+  display: none;
+}
+.tableinsertion table {
+  margin-left: 16px;
+}
+.tableinsertion .sittensTb {
+  width: 100%;
+  cursor: pointer;
+  background-color: #ffffff;
+  height: 30px;
+}
+.tableinsertion .sittensTb:hover {
+  background-color: rgb(239, 241, 245) !important;
+}
+.tablesreate:hover .tableinsertion {
+  display: block;
+}
+.btnTab {
+  border: solid 1px #cccccc !important;
+  width: 150px;
 }

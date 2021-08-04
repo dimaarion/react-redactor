@@ -1,5 +1,5 @@
 import React from "react";
-
+import { selectedStyles } from "./action";
 function Underline(props) {
   return (
     <div className={props.class}>
@@ -10,7 +10,10 @@ function Underline(props) {
             ? { backgroundColor: "#cccccc", border: "none" }
             : { border: "none" }
         }
-        onClick={() => { document.execCommand("underline", false, null); props.setActive((props.active === false) ? true : false);}}
+        onClick={() => {
+          selectedStyles(props, "u");
+          props.setActive(props.active === false ? true : false);
+        }}
       >
         <svg
           style={

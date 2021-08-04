@@ -15,179 +15,285 @@ import CloseControl from "./CloseControl";
 import LinkRemove from "./LinkRemove";
 import Table from "./Table";
 import Lincks from "./Lincks";
-
-function typeStyle(t, g, o) {
-  if (o === "button") {
-    if (t === g) {
-      return { backgroundColor: "#cccccc", border: "none" };
-    } else {
-      return { border: "none" };
-    }
-  } else if (o === "svg") {
-    if (t === g) {
-      return { backgroundColor: "#cccccc" };
-    } else {
-      return {};
-    }
-  } else {
-    return {};
-  }
-}
+import LiterSelectColor from "./LiterSelectColor";
+import "./css/controlpanel.css";
+import TableColRedactor from "./TableColRedactor";
+import LiterBgColor from "./LiterBgColor";
+import LiterLineSelectBgColor from "./LiterLineSelectBgColor";
+import { typeStyle } from "./action/index";
 
 function Panel(props) {
   const [state, setstate] = useState({ link: false });
   return (
     <div className="container controlPanel">
-      <div className="row ">
-        <FamelyF
-          setActive={props.setActive}
-          active={props.active}
-          setfontFm={props.setfontFm}
-          fontFm={props.fontFm}
-          fontsFm={props.fontsFm}
-          ititalTegs={props.ititalTegs}
-          items={props.items}
-        />
-        <Fonts
-          setActive={props.setActive}
-          active={props.active}
-          find={props.find}
-          fontPt={props.fontPt}
-          setfontPt={props.setfontPt}
-          fonts={props.fonts}
-          ititalTegs={props.ititalTegs}
-          items={props.items}
-        />
-        <Headers
-          setActive={props.setActive}
-          active={props.active}
-          find={props.find}
-          typeStyle={typeStyle}
-          tegs={props.tegs}
-          gTags={props.gTags}
-          izmtegs={props.izmtegs}
-          settextbl={props.settextbl}
-          setitemss={props.setitemss}
-          ititalTegs={props.ititalTegs}
-          items={props.items}
-        />
-        <Aligns
-          find={props.find}
-          setActive={props.setActive}
-          active={props.active}
-          typeStyle={typeStyle}
-          align={props.align}
-          aligns={props.aligns}
-          style={{ height: "auto" }}
-          ititalTegs={props.ititalTegs}
-          items={props.items}
-        />
+      <table>
+        <tbody>
+          <tr>
+            <td colSpan = "2">
+              <table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <FamelyF
+                        setActive={props.setActive}
+                        active={props.active}
+                        setfontFm={props.setfontFm}
+                        fontFm={props.fontFm}
+                        fontsFm={props.fontsFm}
+                        ititalTegs={props.ititalTegs}
+                        items={props.items}
+                        setSelectPanelDicplay={props.setSelectPanelDicplay}
+                        find={props.find}
+                      />
+                    </td>
+                    <td>
+                      <Fonts
+                        setActive={props.setActive}
+                        active={props.active}
+                        find={props.find}
+                        fontPt={props.fontPt}
+                        setfontPt={props.setfontPt}
+                        fonts={props.fonts}
+                        ititalTegs={props.ititalTegs}
+                        items={props.items}
+                        setSelectPanelDicplay={props.setSelectPanelDicplay}
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
 
-        <div className="row  p-2 list">
-          <ListUl
-            setActive={props.setActive}
-            active={props.active}
-            find={props.find}
-            listItem={props.listItem}
-            ititalTegs={props.ititalTegs}
-            items={props.items}
-            class="col-sm text-left listItems"
-          />
-          <ListOl
-            setActive={props.setActive}
-            active={props.active}
-            find={props.find}
-            listItem={props.listItem}
-            ititalTegs={props.ititalTegs}
-            items={props.items}
-            class="col-sm text-left listItems"
-          />
-
-          <Lincks
-            setActive={props.setActive}
-            active={props.active}
-            class=" col-sm text-left listItems"
-            gTags={props.gTags}
-            setstate={setstate}
-          />
-
-          <Table
-            setActive={props.setActive}
-            active={props.active}
-            baseSelector={props.baseSelector}
-            items={props.items}
-            createTd={props.createTd}
-            createTr={props.createTr}
-            createTable={props.createTable}
-          />
-        </div>
-
-        <div className="row p-2">
-          <Bold
-            setActive={props.setActive}
-            active={props.active}
-            gTags={props.gTags}
-            selectedTextAncor={props.selectedTextAncor}
-            selectedTextFocus={props.selectedTextFocus}
-            items={props.items}
-            ititalTegs={props.ititalTegs}
-            selectedtext={props.selectedtext}
-            types={props.types}
-            class="col-sm text-left listItems"
-          />
-          <Italic
-            setActive={props.setActive}
-            active={props.active}
-            gTags={props.gTags}
-            items={props.items}
-            ititalTegs={props.ititalTegs}
-            selectedtext={props.selectedtext}
-            types={props.types}
-            selectedTextFocus={props.selectedTextFocus}
-            selectedTextAncor={props.selectedTextAncor}
-            class=" col-sm text-left listItems"
-          />
-          <Strikethrough
-            setActive={props.setActive}
-            active={props.active}
-            gTags={props.gTags}
-            items={props.items}
-            ititalTegs={props.ititalTegs}
-            selectedtext={props.selectedtext}
-            types={props.types}
-            class=" col-sm text-left listItems"
-          />
-          <Underline
-            setActive={props.setActive}
-            active={props.active}
-            gTags={props.gTags}
-            items={props.items}
-            ititalTegs={props.ititalTegs}
-            selectedtext={props.selectedtext}
-            types={props.types}
-            class=" col-sm text-left listItems"
-          />
-
-          <ClinerText
-            setActive={props.setActive}
-            active={props.active}
-            cleanerTxt={props.cleanerTxt}
-            items={props.items}
-            ititalTegs={props.ititalTegs}
-            selectedtext={props.selectedtext}
-            types={props.types}
-            class=" col-sm text-left listItems"
-          />
-
-          <CloseControl
-            setActive={props.setActive}
-            active={props.active}
-            setsizes={props.setsizes}
-            sizes={props.sizes}
-            setpanelStyle={props.setpanelStyle}
-          />
-        </div>
-      </div>
+            <td colSpan="3">
+              <Aligns
+                find={props.find}
+                setActive={props.setActive}
+                active={props.active}
+                typeStyle={typeStyle}
+                align={props.align}
+                aligns={props.aligns}
+                style={{ height: "auto" }}
+                ititalTegs={props.ititalTegs}
+                items={props.items}
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td colSpan="4">
+              <Headers
+                type={"block"}
+                setActive={props.setActive}
+                active={props.active}
+                find={props.find}
+                typeStyle={typeStyle}
+                tegs={props.tegs}
+                gTags={props.gTags}
+                izmtegs={props.izmtegs}
+                settextbl={props.settextbl}
+                setitemss={props.setitemss}
+                ititalTegs={props.ititalTegs}
+                items={props.items}
+                selectedtext={props.selectedtext}
+                setIconTags={props.setIconTags}
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              <ListUl
+                setActive={props.setActive}
+                active={props.active}
+                find={props.find}
+                listItem={props.listItem}
+                ititalTegs={props.ititalTegs}
+                items={props.items}
+                class="text-center listItems"
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              <ListOl
+                setActive={props.setActive}
+                active={props.active}
+                find={props.find}
+                listItem={props.listItem}
+                ititalTegs={props.ititalTegs}
+                items={props.items}
+                class="text-center listItems"
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              <Table
+                setActive={props.setActive}
+                active={props.active}
+                baseSelector={props.baseSelector}
+                items={props.items}
+                createTd={props.createTd}
+                createTr={props.createTr}
+                createTable={props.createTable}
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+                find={props.find}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <Headers
+                type={"select"}
+                setActive={props.setActive}
+                active={props.active}
+                find={props.find}
+                typeStyle={typeStyle}
+                tegs={props.tegs}
+                gTags={props.gTags}
+                izmtegs={props.izmtegs}
+                settextbl={props.settextbl}
+                setitemss={props.setitemss}
+                ititalTegs={props.ititalTegs}
+                items={props.items}
+                selectedtext={props.selectedtext}
+                setIconTags={props.setIconTags}
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              <Lincks
+                setActive={props.setActive}
+                active={props.active}
+                class="text-center listItems"
+                gTags={props.gTags}
+                setstate={setstate}
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              <Bold
+                setActive={props.setActive}
+                active={props.active}
+                gTags={props.gTags}
+                selectedTextAncor={props.selectedTextAncor}
+                selectedTextFocus={props.selectedTextFocus}
+                items={props.items}
+                ititalTegs={props.ititalTegs}
+                selectedtext={props.selectedtext}
+                types={props.types}
+                class="text-center listItems"
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              <Italic
+                setActive={props.setActive}
+                active={props.active}
+                gTags={props.gTags}
+                items={props.items}
+                ititalTegs={props.ititalTegs}
+                selectedtext={props.selectedtext}
+                types={props.types}
+                selectedTextFocus={props.selectedTextFocus}
+                selectedTextAncor={props.selectedTextAncor}
+                class="text-center listItems"
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              <Strikethrough
+                setActive={props.setActive}
+                active={props.active}
+                gTags={props.gTags}
+                items={props.items}
+                ititalTegs={props.ititalTegs}
+                selectedtext={props.selectedtext}
+                types={props.types}
+                class="text-center listItems"
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              <Underline
+                setActive={props.setActive}
+                active={props.active}
+                gTags={props.gTags}
+                items={props.items}
+                ititalTegs={props.ititalTegs}
+                selectedtext={props.selectedtext}
+                types={props.types}
+                class="text-center listItems"
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              <ClinerText
+                setActive={props.setActive}
+                active={props.active}
+                cleanerTxt={props.cleanerTxt}
+                items={props.items}
+                ititalTegs={props.ititalTegs}
+                selectedtext={props.selectedtext}
+                types={props.types}
+                class="text-center listItems"
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              <LiterSelectColor
+                setActive={props.setActive}
+                active={props.active}
+                gTags={props.gTags}
+                items={props.items}
+                ititalTegs={props.ititalTegs}
+                selectedtext={props.selectedtext}
+                types={props.types}
+                selectedTextFocus={props.selectedTextFocus}
+                selectedTextAncor={props.selectedTextAncor}
+                class="text-center listItems"
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              <LiterBgColor
+                setActive={props.setActive}
+                active={props.active}
+                gTags={props.gTags}
+                items={props.items}
+                ititalTegs={props.ititalTegs}
+                selectedtext={props.selectedtext}
+                types={props.types}
+                selectedTextFocus={props.selectedTextFocus}
+                selectedTextAncor={props.selectedTextAncor}
+                class="text-center listItems"
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              <LiterLineSelectBgColor
+                setActive={props.setActive}
+                active={props.active}
+                gTags={props.gTags}
+                items={props.items}
+                ititalTegs={props.ititalTegs}
+                selectedtext={props.selectedtext}
+                types={props.types}
+                selectedTextFocus={props.selectedTextFocus}
+                selectedTextAncor={props.selectedTextAncor}
+                class="text-center listItems"
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              <CloseControl
+                setActive={props.setActive}
+                active={props.active}
+                setsizes={props.setsizes}
+                sizes={props.sizes}
+                setpanelStyle={props.setpanelStyle}
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+                class="text-center listItems"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div className="row "></div>
 
       <ImgRemove
         setActive={props.setActive}
@@ -212,6 +318,7 @@ function Panel(props) {
         seturlLen={props.seturlLen}
         urlLen={props.urlLen}
         imgFloat={props.imgFloat}
+        setSelectPanelDicplay={props.setSelectPanelDicplay}
       />
 
       {state.link === true || props.gTags.link ? (
@@ -227,6 +334,7 @@ function Panel(props) {
           ititalTegs={props.ititalTegs}
           selectedtext={props.selectedtext}
           types={props.types}
+          setSelectPanelDicplay={props.setSelectPanelDicplay}
         />
       ) : (
         ""

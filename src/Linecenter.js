@@ -1,11 +1,13 @@
 import React from "react";
+import TitlesEl from "./TitlesEl";
 
 function Linecenter(props) {
   return (
-    <div className="col-sm text-left">
+    <td className="text-left pr-2 titlesBas">
+      <TitlesEl type="Выравнивание по центру" />
       <button
         type="button"
-        className={"bi bi-justify-left " + props.itemsLine + "-itemc"}
+        className={"bi bi-justify-left " + props.itemsLine + "-center"}
       >
         <svg
           style={props.style}
@@ -13,6 +15,7 @@ function Linecenter(props) {
             props.aligns(props.find, props.items, props.a);
             props.setitemsLine(props.a);
             props.setActive(props.active === false ? true : false);
+            props.setSelectPanelDicplay(false);
           }}
           width="2em"
           viewBox="0 0 16 16"
@@ -25,7 +28,7 @@ function Linecenter(props) {
           />
         </svg>
       </button>
-    </div>
+    </td>
   );
 }
 export default Linecenter;

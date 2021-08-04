@@ -1,41 +1,37 @@
-#fontsTxt{
-    margin-top: 8px;
-    width: 50px;
-    margin-left: 25px;
-
+#fontsTxt {
+  margin-top: 18px;
+  padding: 0px;
 }
-#fontsTxt li{
-    position: relative;
-    list-style: none;
-    cursor: pointer;
-    border: solid 1px #cccccc;
-    text-align: center;
-    width: 50px;
-    background-color: #ffffff;
-    padding-top: 5px;
-    padding-bottom: 5px;
-     z-index: 8000;
+#fontsTxt li {
+  position: relative;
+  list-style: none;
+  cursor: pointer;
+  border: solid 1px #cccccc;
+  text-align: center;
+  width: 50px;
+  background-color: #ffffff;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  z-index: 8000;
 }
-#fontsTxt li:hover{
-    background-color: #cccccc;
+#fontsTxt li:hover {
+  background-color: #cccccc;
 }
-#fontsTxt li ul{
-    position: absolute;
-    display: none;
-    margin: 0px;
-    padding: 0px;
-    width: 65px;
-    overflow: scroll;
-    height: 250px;
+#fontsTxt li ul {
+  position: absolute;
+  display: none;
+  margin-top: 5px;
+  padding: 0px;
+  width: 65px;
+  overflow: scroll;
+  height: 250px;
 }
-#fontsTxt li ul li{
-    cursor: pointer;
+#fontsTxt li ul li {
+  cursor: pointer;
 }
-#fontsTxt li:hover ul{
-    display: block;
-    
-   
+#fontsTxt li:hover ul {
+  display: block;
 }
-#fontsTxt li ul li:hover{
-    background-color: #cccccc;
+#fontsTxt li ul li:hover {
+  background-color: #cccccc;
 }

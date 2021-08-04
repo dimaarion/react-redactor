@@ -1,42 +1,52 @@
-#fontsTxtFamely{
-    margin-top: 8px;
-     z-index: 8000;
+#fontsTxtFamely {
+  margin-top: 18px;
+  z-index: 8000;
+  position: relative;
+  padding: 0px;
 }
-#fontsTxtFamely li{
-    position: relative;
-    list-style: none;
-    cursor: pointer;
-    border: solid 1px #cccccc;
-    text-align: center;
-    width: 200px;
-    background-color: #ffffff;
-    padding-top: 5px;
-    padding-bottom: 5px;
-     z-index: 8000;
+#fontsTxtFamely li {
+  position: relative;
+  list-style: none;
+  cursor: pointer;
+  border: solid 1px #cccccc;
+  text-align: center;
+  width: 200px;
+  background-color: #ffffff;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  z-index: 8000;
 }
-#fontsTxtFamely li:hover{
-    background-color: #cccccc;
-    z-index: 8000;
+#fontsTxtFamely li:hover {
+  background-color: rgb(239, 241, 245) !important;
+  z-index: 8000;
 }
-#fontsTxtFamely li ul{
-    position: absolute;
-    display: none;
-    margin: 0px;
-    padding: 0px;
-    width: 200px;
-    overflow: scroll;
-    height: 250px;
-      
+#fontsTxtFamely li ul {
+  position: absolute;
+  display: none;
+  margin: 0px;
+  padding: 0px;
+  width: 200px;
+  overflow: scroll;
+  height: 250px;
+  margin-top: 6px;
+  z-index: 10000;
 }
-#fontsTxtFamely li ul li{
-    cursor: pointer;
+#fontsTxtFamely li ul li {
+  cursor: pointer;
 }
-#fontsTxtFamely li:hover ul{
-    display: block;
-    z-index: 8000;
-    
-   
+#fontsTxtFamely li:hover ul {
+  display: block;
+  z-index: 8000;
 }
-#fontsTxtFamely li ul li:hover{
-    background-color: #cccccc;
+#fontsTxtFamely li ul li:hover {
+  background-color: rgb(239, 241, 245) !important;
+}
+.fontsAdd {
+  display: none;
+}
+.fontsAdd div {
+  float: right;
+}
+.fontsFm:hover .fontsAdd {
+  display: block;
 }

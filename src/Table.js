@@ -1,8 +1,13 @@
 import React, { useState } from "react";
+import TableColRedactor from "./TableColRedactor";
+import Tableinsertion from "./Tableinsertion";
+import TitlesEl from "./TitlesEl";
+import { createTable } from "./action/index";
 function Table(props) {
   const [col, setCol] = useState(4);
   const [str, setStr] = useState(2);
   const [openTb, setopenTb] = useState(false);
+  const [dSittens, setDSittens] = useState(false);
   const [width, setWidth] = useState("100%");
   const [float, setFloat] = useState("none");
   let arr_en = [
@@ -35,7 +40,22 @@ function Table(props) {
   ];
   let active = { padding: "2px", border: "solid 1px #cccccc" };
   return (
-    <div>
+    <div className="tablesreate listItems titlesBas">
+      <TitlesEl type="Вставить таблицу" />
+      <Tableinsertion
+        setActive={props.setActive}
+        active={props.active}
+        baseSelector={props.baseSelector}
+        items={props.items}
+        createTd={props.createTd}
+        createTr={props.createTr}
+        createTable={props.createTable}
+        setSelectPanelDicplay={props.setSelectPanelDicplay}
+        find={props.find}
+        setopenTb={setopenTb}
+        setDSittens={setDSittens}
+      />
+
       <button type="button" className="tableButton">
         <svg
           onClick={() => setopenTb(true)}
@@ -51,13 +71,20 @@ function Table(props) {
           />
         </svg>
       </button>
+      <div>
+        {dSittens === true ? (
+          <TableColRedactor setDSittens={setDSittens} find={props.find} />
+        ) : (
+          ""
+        )}
+      </div>
       {openTb === true ? (
-        <div className="tableRedactor">
+        <div className="tableRedactor boxes">
           <table className="table table-hover">
             <tbody>
               <tr>
                 <td>Вставка таблицы</td>
-                <td>
+                <td className="text-right">
                   <svg
                     onClick={() => {
                       setopenTb(false);
@@ -114,84 +141,13 @@ function Table(props) {
                 </td>
               </tr>
               <tr>
-                <td className="text-right"></td>
-                <td className="text-left">
-                  <svg
-                    style={float === "left" ? active : {}}
-                    onClick={() => setFloat("left")}
-                    width="2em"
-                    viewBox="0 0 16 16"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
-                    />
-                  </svg>
-                  <svg
-                    style={float === "none" ? active : {}}
-                    onClick={() => setFloat("none")}
-                    width="2em"
-                    viewBox="0 0 16 16"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
-                    />
-                  </svg>
-                  <svg
-                    style={float === "right" ? active : {}}
-                    onClick={() => setFloat("right")}
-                    width="2em"
-                    viewBox="0 0 16 16"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M6 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
-                    />
-                  </svg>
-                </td>
-                <td className="text-left"></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>
+                <td colSpan="2">
                   <button
                     type="button"
-                    onClick={
-                      col > 0 || str > 0
-                        ? () => {
-                            props.createTable(
-                              props.baseSelector,
-                              props.items,
-                              width,
-                              float
-                            );
-                            props.createTr(
-                              props.baseSelector,
-                              props.items,
-                              arr_en,
-                              str
-                            );
-                            props.createTd(
-                              props.baseSelector,
-                              props.items,
-                              arr_en,
-                              str,
-                              col
-                            );
-                          }
-                        : () => {}
-                    }
-                    type="button"
-                    className="btn btn-primary "
+                    onClick={() => createTable(props, str, col)}
+                    className="p-2 mr-2 btnTab"
                   >
-                    Ок
+                    Вставить
                   </button>
                   <button
                     type="button"
@@ -199,10 +155,9 @@ function Table(props) {
                       setopenTb(false);
                       props.setActive(props.active === false ? true : false);
                     }}
-                    type="button"
-                    class="btn btn-primary ml-2"
+                    className="p-2 ml-2 btnTab"
                   >
-                    Отмена
+                    Закрыть
                   </button>
                 </td>
               </tr>
