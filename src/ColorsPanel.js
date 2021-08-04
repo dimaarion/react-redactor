@@ -5,8 +5,8 @@ export default function ColorsPanel(props) {
   const [row, setRow] = useState(0);
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
-  const [xSt, setXSt] = useState(0);
-  const [ySt, setYSt] = useState(240);
+  const [xSt, setXSt] = useState(200);
+  const [ySt, setYSt] = useState(0);
   const [xAd, setXAd] = useState(0);
   const [yAd, setYAd] = useState(0);
   const [xMix, setXMix] = useState(0);
@@ -16,19 +16,21 @@ export default function ColorsPanel(props) {
   const [colorGr, setColorGr] = useState("0");
   const [press, setPress] = useState(0);
   const [addColor, setAddColor] = useState(0);
+  const [r, setR] = useState(0);
+  const [g, setG] = useState(0);
+  const [b, setB] = useState(0);
 
-
-const collideRectRect = function (x, y, w, h, x2, y2, w2, h2) {
-  //2d
-  //add in a thing to detect rectMode CENTER
-  if (x + w >= x2 &&    // r1 right edge past r2 left
+  const collideRectRect = function (x, y, w, h, x2, y2, w2, h2) {
+    //2d
+    //add in a thing to detect rectMode CENTER
+    if (x + w >= x2 &&    // r1 right edge past r2 left
       x <= x2 + w2 &&    // r1 left edge past r2 right
       y + h >= y2 &&    // r1 top edge past r2 bottom
       y <= y2 + h2) {    // r1 bottom edge past r2 top
-        return true;
-  }
-  return false;
-};
+      return true;
+    }
+    return false;
+  };
 
   const collideCircleCircle = function (p5, x, y, d, x2, y2, d2) {
     if (p5.dist(x, y, x2, y2) <= (d / 2) + (d2 / 2)) {
@@ -62,138 +64,48 @@ const collideRectRect = function (x, y, w, h, x2, y2, w2, h2) {
     return false;
   };
 
-  function ControllerTriangle(props) {
-    props.p5.fill(255);
-    props.p5.stroke(255)
-    props.p5.rect(0, props.len + 20, 270, props.h);
-    props.p5.fill(0);
-    props.p5.stroke(0);
-    props.p5.triangle(props.x, 27 + props.len, 5 + props.x, 22 + props.len, 10 + props.x, 27 + props.len)
-  }
 
 
-  function setGradient(p5, c1, c2, w = 100, h = 100, l = 0) {
-    for (var y = 0; y < h; y++) {
-      var inter = p5.map(y, 0, h, 0, 1);
-      var cl = p5.lerpColor(c1, c2, inter);
-      p5.stroke(cl);
-      p5.line(y, l, y, w);
-
+  function ellipseCursor(props) {
+    let hit = props.collige(0, 0, 200, 200, props.p5.mouseX, props.p5.mouseY, 200, 200,)
+    if (hit && props.press === 1) {
+      props.sX(props.p5.mouseX);
+      props.sY(props.p5.mouseY);
     }
+    let colors = props.p5.get(props.x, props.y);
+    props.setColor(colors);
+    
+    
+  
   }
 
-  function setMultiGradient(p5, c1, c2, w = 100, h = 100, l = 0, mixColor = 0) {
-    let left = w;
-    p5.colorMode(p5.RGB, 100);
-    for (var y = 0; y < h; y++) {
-      for (let i = left; i < l; i++) {
-        p5.stroke(i - left, y, mixColor);
-        p5.point(i, y);
+
+
+
+  function colorPalete(props) {
+    props.p5.colorMode(props.p5.HSB, props.w);
+    for (let i = 0; i < props.w; i++) {
+      for (let j = 0; j < props.w; j++) {
+        props.p5.stroke(i, j, props.t);
+
       }
+      props.p5.rect(i, props.y, 1, props.h);
     }
-
-
-  }
-
-  function basicPalet(p5, gr, cl, p = { color: 255, press: 0, x: 0, y: 0 }) {
-    let c = 0;
-    let c1, c2;
-
-    if (p.addColor[0] === 0 && p.addColor[1] === 0 && p.addColor[2] === 0) {
-      c1 = p5.color(255, 0, 0);
-      c2 = p5.color(255);
-    } else {
-      c2 = p5.color(p.color);
-      c1 = p5.color(p.addColor);
-    }
-    
-     
-    p5.push();
-    gr(p5, c1, c2, 160, 255, 180);
-    p5.pop()
-    let hit = p.collige(p5, 0, 160, 255, 40, p5.mouseX, p5.mouseY, 1)
-    if (p.press === 1 && hit) {
-      p.setX(p5.mouseX);
-      p.setY(p5.mouseY);
-
-
-    }
-
-    c = p5.get(p.x, p.y);
-    cl(c);
-    p5.fill(c)
-    ControllerTriangle({ p5: p5, len: 160, x: p.x, h: 20 })
-
-  }
-
-  function settingGradient(p5, gr, cl, p) {
-    let c1 = p5.color(0);
-    let c2 = p5.color(255);
-    let len = 195;
-    let h = 20;
-    let wR = 255;
-    p5.push()
-    countArray(wR).map((c, i) => {
-      var inter = p5.map(i, 0, wR, 0, 1);
-      var cl = p5.lerpColor(c1, c2, inter);
-      p5.stroke(cl);
-      p5.rect(c, len, 1, h);
+    props.p5.colorMode(props.p5.RGB, 100);
+    props.p5.noStroke()
+    countArray(100).map((x) => {
+      let chj = props.p5.color(255, 100 - x);
+      props.p5.fill(chj)
+      props.p5.rect(0, x, 200, 1);
     })
-    p5.pop()
-    let hit = p.collige(p5, 0, len, wR, h, p5.mouseX, p5.mouseY, 1);
-    if (p.press === 1 && hit) {
-      p.setXSt(p5.mouseX);
-      p.setYSt(p5.mouseY);
+    props.p5.colorMode(props.p5.RGB, 60);
+    props.p5.noStroke()
+    for (let x2 = 130; x2 < 200; x2++) {
+      let chj2 = props.p5.color(0, x2 - 130);
+      props.p5.fill(chj2)
+      props.p5.rect(0, x2, 200, 1);
     }
-    let gCol = p5.get(p.x, p.y);
-    cl(gCol);
-    ControllerTriangle({ p5: p5, len: len, x: p.x, h: h })
-  }
 
-  function addColorGradient(p5, gr, cl, p) {
-    let rad = 10;
-    let ot = (rad / 2);
-    let c1 = p5.color(0);
-    let c2 = p5.color(255);
-    let h = 150;
-    let lF = 0;
-    let lA = 150;
-    let wR = lA - lF;
-    let hR = 5;
-    let c = 0;
-    gr(p5, c1, c2, lF, h, lA, p.xMix);
-    let hit = p.collige(p5, lF + ot, ot, wR - rad, h - rad, p5.mouseX, p5.mouseY, 1);
-    if (p.press === 1 && hit) {
-      p.sX(p5.mouseX);
-      p.sY(p5.mouseY);
-
-    }
-    c = p5.get(p.x, p.y);
-    cl(c);
-    p5.fill(h - p.y);
-    
-  }
-
-  function mixingColor(props) {
-    let top = 240;
-    let left = 0;
-    let width = 255;
-    let h = 20;
-    let x = props.p5.mouseX;
-    let y = props.p5.mouseY;
-    let p5 = props.p5;
-    let hit = props.collige(left,top,width,h,x,y,1,1);
-  if(hit && props.press){
-    props.sX(x);
-  }
-    
-    p5.rect(left,top,width,h);
-    p5.push();
-    p5.fill(255,0,0)
-    p5.rect(left,top,20,h);
-    p5.pop();
-    props.triange({ p5:p5, len: top, x: props.x, h: h });
-    
   }
 
   function mousePressed(e) {
@@ -203,41 +115,49 @@ const collideRectRect = function (x, y, w, h, x2, y2, w2, h2) {
     setPress(0);
 
   }
-  let imgColor;
+  
   const preload = (p5) => {
-    imgColor = p5.loadImage("/img/color.png");
+    
   };
   const setup = (p5, canvasParentRef) => {
-    p5.createCanvas(800, 400).parent(canvasParentRef);
-   
-p5.background(255);
+    p5.createCanvas(200, 200).parent(canvasParentRef);
+    p5.background(255);
+    colorPalete({ p5: p5, x: 200, w: 200, t: 200, h: 200, y: 0 })
+
+
   };
   const draw = (p5) => {
-    p5.image(imgColor,0,0,100,100);
-  //  basicPalet(p5, setGradient, setColor, { color: colorGr, press: press, x: x, y: y, collige: collideRectCircle, setX: setX, setY: setY, addColor: addColor });
-   // settingGradient(p5, setGradient, setColorGr, { collige: collideRectCircle, setXSt: setXSt, setYSt: setYSt, x: xSt, y: ySt, press: press });
-   // addColorGradient(p5, setMultiGradient, setAddColor, { collige: collideRectCircle, sX: setXAd, sY: setYAd, x: xAd, y: yAd, press: press,xMix:xMix });
-   // mixingColor({p5:p5,collige:collideRectRect,triange:ControllerTriangle,x:xMix,y:yMix,sX:setXMix,sY:setYMix, press: press});
+    
+    ellipseCursor({p5:p5, sX:setXAd,sY:setYAd,x:xAd,y:yAd,collige:collideRectRect,setColor:setColor,press:press})
+   
+
 
   };
 
+  function ellipsColor(e) {
+    let r = 0;
+    e.target.onmousemove = (ev) => {
+       setX(ev.offsetX);
+       setY(ev.offsetY - 200);
+     }
+     e.target.onmouseup = (ev) => {
+      setX(ev.offsetX);
+      setY(ev.offsetY - 200);
+    }
 
+
+  }
 
   return (
     <div>
-      {press}
+      { x + "  /  " + y }
       <div style={{ width: "100px", height: "100px" }}></div>
       <table className="table">
         <tbody>
           <tr>
             <td>
               <div>
-                <div
-                  style={{
-                    width: "255px",
-                    height: "255px"
-                  }}
-                >
+                <div onMouseDownCapture = {(e)=>ellipsColor(e)}>
                   <Sketch
                     setup={setup}
                     draw={draw}
@@ -246,9 +166,10 @@ p5.background(255);
                     mouseReleased={mouseReleased}
                   />
                 </div>
+                <div style={{ position: "absolute", marginLeft: x + "px", marginTop: y + "px", background: "url('/img/cursor.png')", width: "20px", height: "20px" }}></div>
               </div>
             </td>
-            <td style={{ backgroundColor: `rgb(${color[0]},${color[1]},${color[2]},${color[3]})` }}></td>
+            <td style={{ backgroundColor: `rgb(${color[0]},${color[1]},${color[2]}` }}></td>
 
           </tr>
         </tbody>

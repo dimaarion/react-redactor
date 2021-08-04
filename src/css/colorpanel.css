@@ -3,3 +3,12 @@
     height: 500px;
     background-color: red;
 }
+.ellipsColor{
+    background: url("/img/color.png");
+    border: solid 1px #000;
+    border-radius: 190px;
+    width: 198px;
+    height: 198px;
+    background-repeat: no-repeat;
+    position: absolute;
+}
