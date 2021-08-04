@@ -16,6 +16,18 @@ export default function ColorsPanel(props) {
   const [addColor, setAddColor] = useState(0);
 
 
+const collideRectRect = function (x, y, w, h, x2, y2, w2, h2) {
+  //2d
+  //add in a thing to detect rectMode CENTER
+  if (x + w >= x2 &&    // r1 right edge past r2 left
+      x <= x2 + w2 &&    // r1 left edge past r2 right
+      y + h >= y2 &&    // r1 top edge past r2 bottom
+      y <= y2 + h2) {    // r1 bottom edge past r2 top
+        return true;
+  }
+  return false;
+};
+
   const collideCircleCircle = function (p5, x, y, d, x2, y2, d2) {
     if (p5.dist(x, y, x2, y2) <= (d / 2) + (d2 / 2)) {
       return true;
@@ -54,7 +66,7 @@ export default function ColorsPanel(props) {
     props.p5.rect(0, props.len + 20, 270, props.h);
     props.p5.fill(0);
     props.p5.stroke(0);
-    props.p5.triangle(props.x, 27 + props.len, 5 + props.x, 22 + props.len , 10 + props.x, 27 + props.len)
+    props.p5.triangle(props.x, 27 + props.len, 5 + props.x, 22 + props.len, 10 + props.x, 27 + props.len)
   }
 
 
@@ -84,7 +96,7 @@ export default function ColorsPanel(props) {
   function basicPalet(p5, gr, cl, p = { color: 255, press: 0, x: 0, y: 0 }) {
     let c = 0;
     let c1;
-    
+
     if (p.addColor[0] === 0 && p.addColor[1] === 0 && p.addColor[2] === 0) {
       c1 = p5.color(255, 0, 0);
     } else {
@@ -104,7 +116,7 @@ export default function ColorsPanel(props) {
     c = p5.get(p.x, p.y);
     cl(c);
     p5.fill(c)
-    ControllerTriangle({p5:p5,len:160,x:p.x,h:20})
+    ControllerTriangle({ p5: p5, len: 160, x: p.x, h: 20 })
 
   }
 
@@ -130,7 +142,7 @@ export default function ColorsPanel(props) {
     }
     let gCol = p5.get(p.x, p.y);
     cl(gCol);
-    ControllerTriangle({p5:p5,len:len,x:p.x,h:h})
+    ControllerTriangle({ p5: p5, len: len, x: p.x, h: h })
   }
 
   function addColorGradient(p5, gr, cl, p) {
@@ -154,9 +166,12 @@ export default function ColorsPanel(props) {
     c = p5.get(p.x, p.y);
     cl(c);
     p5.fill(h - p.y);
-    // p5.ellipse(p.x, p.y, rad, rad);
+    
   }
 
+  function mixingColor(props) {
+    props.p5.rect(0,240,255,20);
+  }
 
   function mousePressed(e) {
     setPress(1)
@@ -170,13 +185,13 @@ export default function ColorsPanel(props) {
   };
   const setup = (p5, canvasParentRef) => {
     p5.createCanvas(800, 400).parent(canvasParentRef);
-
+p5.background(255);
   };
   const draw = (p5) => {
     basicPalet(p5, setGradient, setColor, { color: colorGr, press: press, x: x, y: y, collige: collideRectCircle, setX: setX, setY: setY, addColor: addColor });
     settingGradient(p5, setGradient, setColorGr, { collige: collideRectCircle, setXSt: setXSt, setYSt: setYSt, x: xSt, y: ySt, press: press });
     addColorGradient(p5, setMultiGradient, setAddColor, { collige: collideRectCircle, sX: setXAd, sY: setYAd, x: xAd, y: yAd, press: press });
-
+    mixingColor({p5:p5,collige:collideRectRect,triange:ControllerTriangle})
 
   };
 
