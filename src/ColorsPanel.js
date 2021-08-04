@@ -9,6 +9,8 @@ export default function ColorsPanel(props) {
   const [ySt, setYSt] = useState(240);
   const [xAd, setXAd] = useState(0);
   const [yAd, setYAd] = useState(0);
+  const [xMix, setXMix] = useState(0);
+  const [yMix, setYMix] = useState(0);
   const [canv, setCanv] = useState({});
   const [color, setColor] = useState("0");
   const [colorGr, setColorGr] = useState("0");
@@ -79,13 +81,13 @@ const collideRectRect = function (x, y, w, h, x2, y2, w2, h2) {
 
     }
   }
-  function setMultiGradient(p5, c1, c2, w = 100, h = 100, l = 0) {
+
+  function setMultiGradient(p5, c1, c2, w = 100, h = 100, l = 0, mixColor = 0) {
     let left = w;
     p5.colorMode(p5.RGB, 100);
     for (var y = 0; y < h; y++) {
       for (let i = left; i < l; i++) {
-
-        p5.stroke(i - left, y, 0);
+        p5.stroke(i - left, y, mixColor);
         p5.point(i, y);
       }
     }
@@ -95,16 +97,20 @@ const collideRectRect = function (x, y, w, h, x2, y2, w2, h2) {
 
   function basicPalet(p5, gr, cl, p = { color: 255, press: 0, x: 0, y: 0 }) {
     let c = 0;
-    let c1;
+    let c1, c2;
 
     if (p.addColor[0] === 0 && p.addColor[1] === 0 && p.addColor[2] === 0) {
       c1 = p5.color(255, 0, 0);
+      c2 = p5.color(255);
     } else {
+      c2 = p5.color(p.color);
       c1 = p5.color(p.addColor);
     }
-
-    let c2 = p5.color(p.color);
+    
+     
+    p5.push();
     gr(p5, c1, c2, 160, 255, 180);
+    p5.pop()
     let hit = p.collige(p5, 0, 160, 255, 40, p5.mouseX, p5.mouseY, 1)
     if (p.press === 1 && hit) {
       p.setX(p5.mouseX);
@@ -127,7 +133,6 @@ const collideRectRect = function (x, y, w, h, x2, y2, w2, h2) {
     let h = 20;
     let wR = 255;
     p5.push()
-
     countArray(wR).map((c, i) => {
       var inter = p5.map(i, 0, wR, 0, 1);
       var cl = p5.lerpColor(c1, c2, inter);
@@ -156,7 +161,7 @@ const collideRectRect = function (x, y, w, h, x2, y2, w2, h2) {
     let wR = lA - lF;
     let hR = 5;
     let c = 0;
-    gr(p5, c1, c2, lF, h, lA);
+    gr(p5, c1, c2, lF, h, lA, p.xMix);
     let hit = p.collige(p5, lF + ot, ot, wR - rad, h - rad, p5.mouseX, p5.mouseY, 1);
     if (p.press === 1 && hit) {
       p.sX(p5.mouseX);
@@ -170,7 +175,25 @@ const collideRectRect = function (x, y, w, h, x2, y2, w2, h2) {
   }
 
   function mixingColor(props) {
-    props.p5.rect(0,240,255,20);
+    let top = 240;
+    let left = 0;
+    let width = 255;
+    let h = 20;
+    let x = props.p5.mouseX;
+    let y = props.p5.mouseY;
+    let p5 = props.p5;
+    let hit = props.collige(left,top,width,h,x,y,1,1);
+  if(hit && props.press){
+    props.sX(x);
+  }
+    
+    p5.rect(left,top,width,h);
+    p5.push();
+    p5.fill(255,0,0)
+    p5.rect(left,top,20,h);
+    p5.pop();
+    props.triange({ p5:p5, len: top, x: props.x, h: h });
+    
   }
 
   function mousePressed(e) {
@@ -180,18 +203,21 @@ const collideRectRect = function (x, y, w, h, x2, y2, w2, h2) {
     setPress(0);
 
   }
+  let imgColor;
   const preload = (p5) => {
-
+    imgColor = p5.loadImage("/img/color.png");
   };
   const setup = (p5, canvasParentRef) => {
     p5.createCanvas(800, 400).parent(canvasParentRef);
+   
 p5.background(255);
   };
   const draw = (p5) => {
-    basicPalet(p5, setGradient, setColor, { color: colorGr, press: press, x: x, y: y, collige: collideRectCircle, setX: setX, setY: setY, addColor: addColor });
-    settingGradient(p5, setGradient, setColorGr, { collige: collideRectCircle, setXSt: setXSt, setYSt: setYSt, x: xSt, y: ySt, press: press });
-    addColorGradient(p5, setMultiGradient, setAddColor, { collige: collideRectCircle, sX: setXAd, sY: setYAd, x: xAd, y: yAd, press: press });
-    mixingColor({p5:p5,collige:collideRectRect,triange:ControllerTriangle})
+    p5.image(imgColor,0,0,100,100);
+  //  basicPalet(p5, setGradient, setColor, { color: colorGr, press: press, x: x, y: y, collige: collideRectCircle, setX: setX, setY: setY, addColor: addColor });
+   // settingGradient(p5, setGradient, setColorGr, { collige: collideRectCircle, setXSt: setXSt, setYSt: setYSt, x: xSt, y: ySt, press: press });
+   // addColorGradient(p5, setMultiGradient, setAddColor, { collige: collideRectCircle, sX: setXAd, sY: setYAd, x: xAd, y: yAd, press: press,xMix:xMix });
+   // mixingColor({p5:p5,collige:collideRectRect,triange:ControllerTriangle,x:xMix,y:yMix,sX:setXMix,sY:setYMix, press: press});
 
   };
 
