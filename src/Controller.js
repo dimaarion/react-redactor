@@ -385,7 +385,6 @@ function Controller(props) {
 
   return (
     <div className="contentDtext container-fluid">
-      <ColorsPanel />
       <div className="contentDtext container">
         <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
           <div

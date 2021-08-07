@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { selectedStyles, countArray } from "./action/index";
 import TitlesEl from "./TitlesEl";
 import "./css/palitra.css";
+import ColorsPanel from "./ColorsPanel";
 export default function LiterSelectColor(props) {
   const [rgb, setRgb] = useState([]);
   const [r, setR] = useState(255);
@@ -164,7 +165,7 @@ export default function LiterSelectColor(props) {
           </svg>
         </button>
       </div>
-      {close === true ? palitra() : ""}
+      {close === true ? <ColorsPanel/> : ""}
     </div>
   );
 }

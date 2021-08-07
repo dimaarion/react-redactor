@@ -1,5 +1,5 @@
 import Axios from "axios";
-export function selectedStyles(props, tag, href = false, styles = false) {
+export function selectedStyles(props, tag = "span", href = false, styles = false) {
   function replaceSelected() {
     let range = window.getSelection();
 
@@ -185,4 +185,9 @@ export function createTable(
   if (props.find !== undefined && props.find.tagName !== undefined) {
     return props.find.appendChild(table);
   }
+}
+
+export function isMetod(obj,m) {
+let j = Object.getOwnPropertyNames(obj);
+return j.filter((x)=>x === m).length > 0?true:false;
 }

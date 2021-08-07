@@ -1,14 +1,37 @@
 .colorPanel{
-    width: 50px;
+    width: 400px;
     height: 500px;
-    background-color: red;
-}
-.ellipsColor{
-    background: url("/img/color.png");
-    border: solid 1px #000;
-    border-radius: 190px;
-    width: 198px;
-    height: 198px;
-    background-repeat: no-repeat;
     position: absolute;
+}
+
+.palete{
+    width: 200px;
+    height: 200px;
+    border: solid 1px #000;
+}
+.rezPalete{
+    width: 200px!important;
+    height: 100px;
+
+}
+.basicColor {
+  margin-left: 15px;
+
+}
+.bsEl{
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  margin-top: 5px;
+  cursor: pointer;
+  border: solid 1px #ccc;
+  border-radius: 2px;
+   transition: 0.1s;
+}
+.bsEl:hover{
+    border: solid 3px #ccc;
+    
+}
+.react-p5{
+  margin-left: 12px;
 }
