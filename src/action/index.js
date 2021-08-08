@@ -191,3 +191,8 @@ export function isMetod(obj,m) {
 let j = Object.getOwnPropertyNames(obj);
 return j.filter((x)=>x === m).length > 0?true:false;
 }
+
+export function colorSvg(select,elements,attr,fill) {
+let l = document.querySelector("." + select + "");
+ return  Object.values(l.children).filter((el) => el.tagName === elements).map((x) =>x.setAttribute(attr,fill));
+}

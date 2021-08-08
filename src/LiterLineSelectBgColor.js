@@ -31,7 +31,7 @@ export default function LiterLineSelectBgColor(props) {
         </button>
       </div>
 
-      {close === true ? <ColorsPanel select = "literLineSelectBgColor" setRgb = {setRgb} rgb = {rgb}  setClose = {setClose}  params = {props}   element = "div"/> : ""}
+      {close === true ? <ColorsPanel select = "literLineSelectBgColor" setRgb = {setRgb} rgb = {rgb} styles = "background-color"  setClose = {setClose}  params = {props}   element = "div"/> : ""}
     </div>
   );
 }

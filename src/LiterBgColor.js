@@ -35,7 +35,7 @@ export default function LiterBgColor(props) {
         </button>
       </div>
 
-      {close === true ? <ColorsPanel select = "literBgColor" setRgb = {setRgb} rgb = {rgb}  setClose = {setClose}  params = {props} setRgbInv = {setRgbInv} element = "span"/> : ""}
+      {close === true ? <ColorsPanel select = "literBgColor" setRgb = {setRgb} rgb = {rgb} styles = "background-color"  setClose = {setClose}  params = {props} setRgbInv = {setRgbInv} element = "span"/> : ""}
     </div>
   );
 }
