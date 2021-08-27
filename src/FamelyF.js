@@ -18,9 +18,16 @@ function FamelyF(props) {
   const [dispPan, setDispPan] = useState(false);
   const [getFonts, setGetFonts] = useState("");
   const [getFontsObj, setGetFontsObj] = useState({});
+ 
+  let url = window.location.host;
+  if(window.location.host === "localhost:3000"){
+    url = "adminpanel";
+  }else{
+    url = window.location.host
+  }
   let storObj = {
-    url: "http://fk-i-s.local/adminpanel/editor/",
-    urlFonts: "http://fk-i-s.local/adminpanel/editor/fonts.php",
+    url: "http://"+ url +"/adminpanel/editor/",
+    urlFonts: "http://adminpanel/adminpanel/editor/fonts.php",
     setGetFonts: setGetFonts,
     getFonts: getFonts,
     content: storageFonts.content,
