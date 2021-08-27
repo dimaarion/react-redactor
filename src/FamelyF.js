@@ -23,11 +23,11 @@ function FamelyF(props) {
   if(window.location.host === "localhost:3000"){
     url = "adminpanel";
   }else{
-    url = window.location.host
+    url = window.location.host;
   }
   let storObj = {
     url: "http://"+ url +"/adminpanel/editor/",
-    urlFonts: "http://adminpanel/adminpanel/editor/fonts.php",
+    urlFonts: "http://"+ url +"/adminpanel/editor/fonts.php",
     setGetFonts: setGetFonts,
     getFonts: getFonts,
     content: storageFonts.content,
