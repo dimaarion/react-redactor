@@ -1,6 +1,4 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import App2 from "./App2";
-ReactDOM.render(<App />, document.getElementById("Dredactor"));
-ReactDOM.render(<App2 />, document.getElementById("Dredactor2"));
+ReactDOM.render(<App />, document.getElementById("Dredactor2"));

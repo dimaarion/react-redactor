@@ -246,19 +246,13 @@ export default function ColorsPanel(props) {
 
   return (
     <div className="colorPanel">
-      {xAd + " / " + yAd}
       <table className="table">
         <tbody>
           <tr>
             <td>Цвет</td>
             <td className="text-right">
               <div className=" titlesBas"><TitlesEl type="Закрыть" left={150} />
-                <button type="button" className="tableButton" onClick={() => { 
-                  colorSvg(props.select,"rect","fill",`rgb(${color[0]},${color[1]},${color[2]})`);
-                  colorSvg(props.select,"text","style",`color:rgb(${color[0]},${color[1]},${color[2]});`);
-                  if (isMetod(props, "setClose")) { props.setClose(false); } 
-                  
-                  }}>
+                <button type="button" className="tableButton" onClick={() => { if (isMetod(props, "setClose")) { props.setClose(false); } }}>
                   <svg
                    
                     width="2em"

@@ -7,9 +7,9 @@ function App() {
   return (
     <div className="container-fluid">
       <Controller
-        baseSelector="text_block"
-        textId="Dtext"
-        textAreraId="#Dredactor"
+        baseSelector="text_block2"
+        textId="Dtext2"
+        textAreraId="#Dredactor2"
       />
     </div>
   );
