@@ -25,10 +25,14 @@ export default function TableColRedactor(props) {
       let widthTb = document
         .querySelector(".tablecolredactor")
         .querySelector(".widthTb");
-      let widthEd = props.find.parentElement.parentElement.style.width
-        .match(/[px | % ]/g)
-        .join()
-        .replace(/[,]/g, "");
+        let widthEd = props.find.parentElement.parentElement.style.width;
+      if (props.find.parentElement.parentElement.style.width.match(/[px | % ]/g) !== null) {
+           widthEd = props.find.parentElement.parentElement.style.width
+          .match(/[px | % ]/g)
+          .join()
+          .replace(/[,]/g, "");
+      }
+
       let selectTb = document
         .querySelector(".tablecolredactor")
         .querySelector(".selectTb");
@@ -327,16 +331,16 @@ export default function TableColRedactor(props) {
                     props.find.setAttribute(
                       "style",
                       "width:" +
-                        col +
-                        "px;height:" +
-                        row +
-                        "px;background-color:" +
-                        red.value +
-                        ";border:solid " +
-                        borderH.value +
-                        "px" +
-                        redBorder.value +
-                        ";"
+                      col +
+                      "px;height:" +
+                      row +
+                      "px;background-color:" +
+                      red.value +
+                      ";border:solid " +
+                      borderH.value +
+                      "px" +
+                      redBorder.value +
+                      ";"
                     );
                     props.find.setAttribute("colspan", merge.value);
                   }
