@@ -120,7 +120,7 @@ export function storageBd(props = {}) {
   }
 }
 
-export function arrayFonts(props = {}) {
+export function arrayFonts(props = {getFonts:"",n:[]}) {
   if (props.getFonts !== undefined) {
     if (props.getFonts !== null) {
       return props.getFonts.split(",").concat(props.n);
