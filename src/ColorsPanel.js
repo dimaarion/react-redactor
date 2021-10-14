@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Sketch from "react-p5";
-import { countArray, isMetod, selectedStyles,colorSvg } from "./action/index";
+import { countArray, isMetod, selectedStyles, colorSvg } from "./action/index";
 import TitlesEl from "./TitlesEl";
 export default function ColorsPanel(props) {
   const [xAd, setXAd] = useState(0);
@@ -25,7 +25,7 @@ export default function ColorsPanel(props) {
   useEffect(() => {
     let l = document.querySelector("." + props.select + "");
     if (xAd === 0 && yAd === 0) {
-      Object.values(l.children).filter((el) => el.tagName === "rect").map((x) => { props.setRgb(x.getAttribute("fill")); console.log(x.getAttribute("fill")) })
+      Object.values(l.children).filter((el) => el.tagName === "rect").map((x) => { props.setRgb(x.getAttribute("fill")); x.getAttribute("fill") })
     }
   }, [xAd, yAd, color])
 
@@ -84,6 +84,7 @@ export default function ColorsPanel(props) {
     }
     let colors = props.p5.get(props.x, props.y);
     props.setColor(colors);
+
   }
 
 
@@ -254,7 +255,7 @@ export default function ColorsPanel(props) {
               <div className=" titlesBas"><TitlesEl type="Закрыть" left={150} />
                 <button type="button" className="tableButton" onClick={() => { if (isMetod(props, "setClose")) { props.setClose(false); } }}>
                   <svg
-                   
+
                     width="2em"
                     viewBox="0 0 16 16"
                     className="bi bi-grid-3x2"
@@ -284,7 +285,12 @@ export default function ColorsPanel(props) {
                   keyReleased={keyReleased}
                 />
               </div>
-              <div style={{ position: "absolute", marginLeft: xAd + 3 + "px", marginTop: yAd - 245 + "px", background: "url('/img/cursor.png')", width: "20px", height: "20px" }}></div>
+              <div style={{ position: "absolute", marginLeft: xAd + 3 + "px", marginTop: yAd - 245 + "px", width: "20px", height: "20px" }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" className="bi bi-circle" viewBox="0 0 20 20">
+                <circle cx = "10" cy = "10" r = "8"/>
+                <circle fill = "#ffffff" cx = "10" cy = "10" r = "5"/>
+              </svg>
+              </div>
             </td>
             <td className="rezPalete" style={{ backgroundColor: `rgb(${color[0]},${color[1]},${color[2]}` }} ></td>
 
@@ -344,7 +350,7 @@ export default function ColorsPanel(props) {
                 type="button"
                 className="btnTab "
                 onClick={() => {
-                 if (isMetod(props, "params")) {
+                  if (isMetod(props, "params")) {
                     selectedStyles(
                       props.params,
                       props.element,

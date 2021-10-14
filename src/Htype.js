@@ -1,6 +1,5 @@
 import React from "react";
 import { replaceElement, typeStyle, selectedStyles } from "./action/index";
-import TitlesEl from "./TitlesEl";
 function Htype(props) {
   function hActive(t, n) {
     if (t === n) {

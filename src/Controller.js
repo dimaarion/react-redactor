@@ -52,7 +52,13 @@ function Controller(props) {
     let text_block = document.querySelector("." + baseSelector);
     function textChildren(text_block) {
       if (text_block !== null && text_block.children !== null) {
-        return Object.values(text_block.children);
+        if (text_block !== undefined) {
+          if (text_block.children !== undefined) {
+            return Object.values(text_block.children);
+          }
+
+        }
+
       }
     }
     if (bs === true) {
@@ -76,9 +82,12 @@ function Controller(props) {
 
   function elMoveUpDown(ititalTegs, baseSelector) {
     let c = 0;
-    ititalTegs().map((x) => {
-      return x.setAttribute("data-d", "1" + c++);
-    });
+    if (ititalTegs() !== undefined) {
+      ititalTegs().map((x) => {
+        return x.setAttribute("data-d", "1" + c++);
+      });
+    }
+
   }
   function izmtegs(textbl, tegs, items) {
     let dataD = "1" + items;
@@ -120,8 +129,9 @@ function Controller(props) {
     setfontFm,
     setalign
   ) {
-    ititalTegs().map(
-      (x, i) =>
+    if (ititalTegs() !== undefined) {
+      ititalTegs().map(
+        (x, i) =>
         (x.onclick = (e) => {
           setitems(i);
           settegs(x.tagName);
@@ -133,10 +143,12 @@ function Controller(props) {
           setfontFm(x.style.fontFamily ? x.style.fontFamily : "Georgia");
           setalign(x.style.textAlign ? x.style.textAlign : "left");
         })
-    );
+      );
+    }
 
-    ititalTegs().map(
-      (x, i) =>
+    if (ititalTegs() !== undefined) {
+      ititalTegs().map(
+        (x, i) =>
         (x.onmousemove = (e) => {
           if (window.getSelection().toString().length > 0) {
             setselectedtext(window.getSelection().toString());
@@ -146,15 +158,17 @@ function Controller(props) {
             setSelectedTest(window.getSelection().focusNode);
           }
         })
-    );
+      );
+    }
+
   }
 
   function listItem(ititalTegs, items, list, subList) {
     let oldteg = document.createElement(list);
-    let dataD = "1" + items;
+    let dataD = "list";
 
     function att(o, d) {
-      return o.setAttribute("data-d", d);
+      return o.setAttribute("class", d);
     }
     function rCild(b, n, l, s) {
       if (b.parentNode) {
@@ -184,14 +198,14 @@ function Controller(props) {
     tb.setAttribute(
       "style",
       "width:" +
-        w +
-        ";float:" +
-        f +
-        ";border-collapse:separate;border-spacing: " +
-        r +
-        "px " +
-        r +
-        "px;"
+      w +
+      ";float:" +
+      f +
+      ";border-collapse:separate;border-spacing: " +
+      r +
+      "px " +
+      r +
+      "px;"
     );
     div.className = "divTable";
     Array.from(bs.children)
@@ -250,71 +264,86 @@ function Controller(props) {
   }
 
   function cleanerTxt(ititalTegs, items) {
-    ititalTegs()
-      .filter((f, i) => i === items)
-      .map((x) => (x.outerHTML = `<div data-d=1${items}>${x.innerText}</div>`));
+    if (ititalTegs() !== undefined) {
+      ititalTegs()
+        .filter((f, i) => i === items)
+        .map((x) => (x.outerHTML = `<div>${x.innerText}</div>`));
+    }
+
   }
 
   function imgWidthR(ititalTegs, imgurls, imgWidth) {
-    ititalTegs().map((x) =>
-      Object.values(x.getElementsByTagName("img"))
-        .filter(
-          (l) =>
-            "/" +
+    if (ititalTegs() !== undefined) {
+      ititalTegs().map((x) =>
+        Object.values(x.getElementsByTagName("img"))
+          .filter(
+            (l) =>
+              "/" +
               l.src
                 .split("/")
                 .filter((f, i) => i > 2)
                 .join("/") ===
-            imgurls
-        )
-        .map((ed) => (ed.style.width = imgWidth))
-    );
+              imgurls
+          )
+          .map((ed) => (ed.style.width = imgWidth))
+      );
+    }
+
   }
   function imgHeightR(ititalTegs, imgurls, imgHeight) {
-    ititalTegs().map((x) =>
-      Object.values(x.getElementsByTagName("img"))
-        .filter(
-          (l) =>
-            "/" +
+    if (ititalTegs() !== undefined) {
+      ititalTegs().map((x) =>
+        Object.values(x.getElementsByTagName("img"))
+          .filter(
+            (l) =>
+              "/" +
               l.src
                 .split("/")
                 .filter((f, i) => i > 2)
                 .join("/") ===
-            imgurls
-        )
-        .map((ed) => (ed.style.height = imgHeight))
-    );
+              imgurls
+          )
+          .map((ed) => (ed.style.height = imgHeight))
+      );
+    }
+
   }
   function imgPaddingR(ititalTegs, imgurls, imgPadding) {
-    ititalTegs().map((x) =>
-      Object.values(x.getElementsByTagName("img"))
-        .filter(
-          (l) =>
-            "/" +
+    if (ititalTegs() !== undefined) {
+      ititalTegs().map((x) =>
+        Object.values(x.getElementsByTagName("img"))
+          .filter(
+            (l) =>
+              "/" +
               l.src
                 .split("/")
                 .filter((f, i) => i > 2)
                 .join("/") ===
-            imgurls
-        )
-        .map((ed) => (ed.style.padding = imgPadding))
-    );
+              imgurls
+          )
+          .map((ed) => (ed.style.padding = imgPadding))
+      );
+    }
+
   }
 
   function imgFloatR(ititalTegs, imgurls, imgFloat) {
-    ititalTegs().map((x) =>
-      Object.values(x.getElementsByTagName("img"))
-        .filter(
-          (l) =>
-            "/" +
+    if (ititalTegs() !== undefined) {
+      ititalTegs().map((x) =>
+        Object.values(x.getElementsByTagName("img"))
+          .filter(
+            (l) =>
+              "/" +
               l.src
                 .split("/")
                 .filter((f, i) => i > 2)
                 .join("/") ===
-            imgurls
-        )
-        .map((ed) => (ed.style.float = imgFloat))
-    );
+              imgurls
+          )
+          .map((ed) => (ed.style.float = imgFloat))
+      );
+    }
+
   }
 
   function mTop(setwindSize) {
@@ -473,12 +502,12 @@ function Controller(props) {
               );
               settextBox(innerTextBox());
 
-              elMoveUpDown(ititalTegs, baseSelector);
+              //elMoveUpDown(ititalTegs, baseSelector);
             }}
             dangerouslySetInnerHTML={createMarkup(textId)}
           />
         </div>
-        
+
         <div className="col-sm">
           <textarea
             style={{ display: "none" }}

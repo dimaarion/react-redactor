@@ -21,6 +21,7 @@ import TableColRedactor from "./TableColRedactor";
 import LiterBgColor from "./LiterBgColor";
 import LiterLineSelectBgColor from "./LiterLineSelectBgColor";
 import { typeStyle } from "./action/index";
+import AddStroke from "./AddStroke";
 
 function Panel(props) {
   const [state, setstate] = useState({ link: false });
@@ -29,7 +30,7 @@ function Panel(props) {
       <table>
         <tbody>
           <tr>
-            <td colSpan = "2">
+            <td colSpan="2">
               <table>
                 <tbody>
                   <tr>
@@ -279,6 +280,7 @@ function Panel(props) {
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
               />
             </td>
+            <td><AddStroke ititalTegs={props.ititalTegs} baseSelector = {props.baseSelector} class="text-center listItems" /></td>
             <td>
               <CloseControl
                 setActive={props.setActive}

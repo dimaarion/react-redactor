@@ -1,8 +1,10 @@
 import React from "react";
 import { selectedStyles } from "./action";
+import TitlesEl from "./TitlesEl";
 function Underline(props) {
   return (
-    <div className={props.class}>
+    <div className={`${props.class} titlesBas`}>
+      <TitlesEl type="Подчеркивание" />
       <button
         type="button"
         style={
