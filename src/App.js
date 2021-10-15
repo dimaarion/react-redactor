@@ -2,6 +2,7 @@ import React from "react";
 import "./css/bootstrap.css";
 import "./css/style.css";
 import "./css/listitems.css";
+import "./css/error.css";
 import Controller from "./Controller";
 function App() {
   return (

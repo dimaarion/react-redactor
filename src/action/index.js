@@ -100,15 +100,13 @@ export function storageBd(props = {}) {
       "@import url('https://fonts.googleapis.com/css2?" +
       fontsNew.join().replace(/[,]/g, "") +
       "display=swap');";
-    Axios.get(`${props.urlFonts}`).then((rez) => {
-      try {
-        return props.setGetFonts(rez.data.fonts);
-      } catch (error) {
-        return console.log("error");
-      }
 
-    }
-    );
+    Axios.get(`${props.urlFonts}`)
+    .then((rez) => {return props.setGetFonts(rez.data.fonts);})
+    .catch(function () {
+       props.setHostError("Ошибка подключения к папке с шрифтами");
+  })
+
     props.setGetFontsObj({ style: fontsHead, name: fontsElStyle });
     if (fontsHead !== undefined && fontsHead.length > 70) {
       let head = document.querySelector("head");

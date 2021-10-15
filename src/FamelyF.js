@@ -18,13 +18,16 @@ function FamelyF(props) {
   const [dispPan, setDispPan] = useState(false);
   const [getFonts, setGetFonts] = useState("");
   const [getFontsObj, setGetFontsObj] = useState({});
- 
+  const [hostError, setHostError] = useState("");
+
+
+
+
   let inital_base_url = 'http://adminpanel';
- 
 if (window.location.hostname === "localhost") {
     inital_base_url = 'http://adminpanel';
 }else{
-   inital_base_url = window.location.protocol + "//" + window.location.hostname; 
+   inital_base_url = window.location.protocol + "//" + window.location.hostname;
    }
   let storObj = {
     url: inital_base_url + "/adminpanel/editor/",
@@ -33,6 +36,7 @@ if (window.location.hostname === "localhost") {
     getFonts: getFonts,
     content: storageFonts.content,
     setGetFontsObj: setGetFontsObj,
+    setHostError:setHostError,
     n: n
   };
   useEffect(() => {
@@ -48,8 +52,10 @@ if (window.location.hostname === "localhost") {
   useEffect(() => {
     storageBd(storObj);
   }, [getFonts]);
-
+if(arrayFonts(storObj) !== undefined){
   n = arrayFonts(storObj);
+}
+
 
   const STYLES = {
     table: {
@@ -69,6 +75,7 @@ if (window.location.hostname === "localhost") {
 
   return (
     <div className="col-sm-2 form-group text-left p-0 fontsFm">
+   {hostError !== ""? <div className = "error">{hostError}</div>:""}
       <div className={"listItems fontsAdd"} style={STYLES.add}>
         <div className="titlesBas">
           <TitlesEl type="Добавить шрифт" />

@@ -49,10 +49,13 @@ export default function AddStroke(props) {
            {disp? <div class="list-group add_stroke_list text-left boxes">
                 {list.map((x) => <button onClick = {()=>{
                  let baseSelector =   document.querySelector("." + props.baseSelector);
-                  let el =  document.createElement(x.type);
+                 if(baseSelector !== null){
+                    let el =  document.createElement(x.type);
                     document.body.appendChild(el);
                     baseSelector.appendChild(el);
                     el.innerHTML = x.names;
+                 }
+
                 }} type="button" class="list-group-item list-group-item-action">{x.names}</button>)}
 
             </div>:""}

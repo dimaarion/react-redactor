@@ -70,7 +70,11 @@ function Controller(props) {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   function innerTextBox() {
-    return document.querySelector("." + baseSelector).innerHTML;
+    let s = document.querySelector("." + baseSelector);
+    if(s !== null){
+      return s.innerHTML;
+    }
+
   }
 
   function getStart(baseSelector) {
