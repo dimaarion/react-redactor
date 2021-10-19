@@ -3,9 +3,12 @@
   background-color: #ffffff;
 }
 .controlPanel table tr td {
-  width: 50px;
+  width: 80px;
   padding-left: 0px;
- 
+
+}
+.controlPanel table tr td select{
+  margin-top: 22px;
 }
 .listItems{
   text-align: center;

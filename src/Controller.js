@@ -46,6 +46,7 @@ function Controller(props) {
   const [active, setActive] = useState(false);
   const [selectPanelDicplay, setSelectPanelDicplay] = useState(false);
   const [iconTags, setIconTags] = useState("div");
+  const [countClick, setCountClick] = useState(0);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   function ititalTegs(bs = false) {
@@ -475,6 +476,7 @@ function Controller(props) {
               createTd={createTd}
               find={find}
               active={active}
+              countClick = {countClick}
             />
           </div>
 
@@ -485,7 +487,7 @@ function Controller(props) {
             onClick={(e) => {
               setfind(e.target);
               setActive(false);
-
+              setCountClick(countClick + 1)
               if (window.getSelection().toString().length > 0) {
                 seteY(e.clientY);
                 seteX(e.clientX);

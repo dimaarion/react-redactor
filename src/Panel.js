@@ -96,6 +96,7 @@ function Panel(props) {
                 selectedtext={props.selectedtext}
                 setIconTags={props.setIconTags}
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
+                countClick = {props.countClick}
               />
             </td>
             <td>
@@ -321,6 +322,7 @@ function Panel(props) {
         urlLen={props.urlLen}
         imgFloat={props.imgFloat}
         setSelectPanelDicplay={props.setSelectPanelDicplay}
+        countClick = {props.countClick}
       />
 
       {state.link === true || props.gTags.link ? (

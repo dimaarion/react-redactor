@@ -43,7 +43,7 @@ function ImgRemove(props) {
         " "
       )
     );
-  }, [props.find]);
+  }, [props.find,props.countClick]);
   useEffect(() => {
     seturlImj(urlImj);
   }, [urlImj]);
@@ -64,6 +64,7 @@ function ImgRemove(props) {
   if (close === "IMG") {
     return (
       <table className="imgRemove">
+      <tbody>
         <tr>
           <td className="text-left">
             url
@@ -154,6 +155,7 @@ function ImgRemove(props) {
             </button>
           </td>
         </tr>
+        </tbody>
       </table>
     );
   } else {

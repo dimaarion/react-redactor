@@ -111,6 +111,7 @@ function Headers(props) {
   if (props.type === "block") {
     return (
       <ul className="headers">
+      {tegsLocal}
         <li>
           Заголовок
           <ul>
@@ -135,6 +136,7 @@ function Headers(props) {
                 gTags={props.gTags}
                 setIconTags={props.setIconTags}
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
+                countClick = {props.countClick}
               />
             ))}
           </ul>
@@ -168,6 +170,7 @@ function Headers(props) {
                 gTags={props.gTags}
                 setIconTags={props.setIconTags}
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
+                countClick = {props.countClick}
               />
             ))}
           </ul>
