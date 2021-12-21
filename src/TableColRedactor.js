@@ -249,7 +249,7 @@ export default function TableColRedactor(props) {
             </td>
           </tr>
           <tr>
-            <td className="text-left" colspan="3">
+            <td className="text-left" colSpan="3">
               <table style={{ width: "100%" }}>
                 <tbody>
                   <tr>

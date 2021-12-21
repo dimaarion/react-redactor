@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { selectedStyles, countArray } from "./action/index";
 import TitlesEl from "./TitlesEl";
 import "./css/palitra.css";
 import ColorsPanel from "./ColorsPanel";

@@ -68,6 +68,7 @@
 .tableinsertion {
   position: absolute;
   margin-left: 50px;
+  width: 170px;
 }
 .boxes {
   background-color: #ffffff;

@@ -22,6 +22,7 @@ import LiterBgColor from "./LiterBgColor";
 import LiterLineSelectBgColor from "./LiterLineSelectBgColor";
 import { typeStyle } from "./action/index";
 import AddStroke from "./AddStroke";
+import HeadingSvg from "./HeadingSvg";
 
 function Panel(props) {
   const [state, setstate] = useState({ link: false });
@@ -293,6 +294,22 @@ function Panel(props) {
                 class="text-center listItems"
               />
             </td>
+          </tr>
+          <tr>
+            <td><HeadingSvg
+           find={props.find}
+           setActive={props.setActive}
+           active={props.active}
+           gTags={props.gTags}
+           selectedTextAncor={props.selectedTextAncor}
+           selectedTextFocus={props.selectedTextFocus}
+           items={props.items}
+           ititalTegs={props.ititalTegs}
+           selectedtext={props.selectedtext}
+           types={props.types}
+           class="text-center listItems"
+           setSelectPanelDicplay={props.setSelectPanelDicplay}
+            /></td>
           </tr>
         </tbody>
       </table>
