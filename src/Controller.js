@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Panel from "./Panel";
-import { storageBd } from "./action/index";
 import "./css/bootstrap.css";
 import "./css/style.css";
 import "./css/listitems.css";
 import "./css/table.css";
 import "./css/titlesel.css";
 import "./css/colorpanel.css";
-import TitlesEl from "./TitlesEl";
-import ColorsPanel from "./ColorsPanel";
+
 
 function Controller(props) {
   const baseSelector = props.baseSelector;

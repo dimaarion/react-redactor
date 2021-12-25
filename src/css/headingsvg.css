@@ -1,6 +1,6 @@
 .cssElements{
     min-width: 300px;
-    height: auto;
+    min-height: 150px;
     position: absolute;
     display: none;
     text-align: left;
@@ -10,5 +10,8 @@
 display: block;
 }
 .cssElementsBtn{
-    
+    position: absolute;
+    margin-top: -40px;
+    margin-left: 130px;
+
 }

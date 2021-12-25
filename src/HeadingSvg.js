@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TitlesEl from "./TitlesEl";
 import "./css/headingsvg.css";
 import { selectedStyles } from "./action";
 export default function HeadingSvg(props) {
     const [stylesEl, setStylesEl] = useState("");
+    useEffect(() => {
+        if (props.find.tagName !== undefined) {
+            if (props.find.getAttribute("style") != null) {
+                setStylesEl(props.find.getAttribute("style"));
+            }
+        }
+    }, [props.find])
     return (
         <div className={`${props.class} titlesBas headingBtn`}>
             <TitlesEl type="Стиль элемента" />
@@ -14,9 +21,6 @@ export default function HeadingSvg(props) {
                         : { border: "none" }
                 }
                 onClick={() => {
-                    selectedStyles(props, "b");
-                    props.setActive(props.active === false ? true : false);
-                    props.setSelectPanelDicplay(false);
                     if (props.find.tagName !== undefined) {
                         if (props.find.getAttribute("style") != null) {
                             setStylesEl(props.find.getAttribute("style"));
@@ -36,10 +40,17 @@ export default function HeadingSvg(props) {
                     <text x={0} y={11} style={{ fontSize: "9pt", color: "#000" }}>css</text>
                 </svg>
             </button>
-            <div className="boxes cssElements" contenteditable="true">
-                {stylesEl}
-                <button contenteditable="false" className="cssElementsBtn form-control col-5">Сохранить</button>
-            </div>
+            <div className="boxes cssElements" dangerouslySetInnerHTML={{ __html: stylesEl }} contentEditable={true} onKeyUp={(e) => {
+                if (props.find.tagName !== undefined) {
+                    if (props.find.getAttribute("style") != null) {
+                    props.find.setAttribute("style", e.target.innerHTML);
+                    }
+                }
+
+            }} />
+
+
+
         </div>
     )
 }

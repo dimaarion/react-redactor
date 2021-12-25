@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, {useState} from "react";
 import TitlesEl from "./TitlesEl";
 import "./css/addstroke.css";
 export default function AddStroke(props) {
     const[disp,setDisp]=useState(false);
-    useEffect(() => {
-        console.log(props.ititalTegs)
-    }, [])
+    
 
     let list = [
         {
@@ -46,8 +44,8 @@ export default function AddStroke(props) {
                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                 </svg>
             </button>
-           {disp? <div class="list-group add_stroke_list text-left boxes">
-                {list.map((x) => <button onClick = {()=>{
+           {disp? <div className="list-group add_stroke_list text-left boxes">
+                {list.map((x) => <button key={x.type} onClick = {()=>{
                  let baseSelector =   document.querySelector("." + props.baseSelector);
                  if(baseSelector !== null){
                     let el =  document.createElement(x.type);
@@ -56,7 +54,7 @@ export default function AddStroke(props) {
                     el.innerHTML = x.names;
                  }
 
-                }} type="button" class="list-group-item list-group-item-action">{x.names}</button>)}
+                }} type="button" className="list-group-item list-group-item-action">{x.names}</button>)}
 
             </div>:""}
         </div>

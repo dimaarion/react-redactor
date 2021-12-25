@@ -17,12 +17,12 @@ import Table from "./Table";
 import Lincks from "./Lincks";
 import LiterSelectColor from "./LiterSelectColor";
 import "./css/controlpanel.css";
-import TableColRedactor from "./TableColRedactor";
 import LiterBgColor from "./LiterBgColor";
 import LiterLineSelectBgColor from "./LiterLineSelectBgColor";
 import { typeStyle } from "./action/index";
 import AddStroke from "./AddStroke";
 import HeadingSvg from "./HeadingSvg";
+import LincksDelete from "./LincksDelete"
 
 function Panel(props) {
   const [state, setstate] = useState({ link: false });
@@ -97,7 +97,7 @@ function Panel(props) {
                 selectedtext={props.selectedtext}
                 setIconTags={props.setIconTags}
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
-                countClick = {props.countClick}
+                countClick={props.countClick}
               />
             </td>
             <td>
@@ -282,7 +282,7 @@ function Panel(props) {
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
               />
             </td>
-            <td><AddStroke ititalTegs={props.ititalTegs} baseSelector = {props.baseSelector} class="text-center listItems" /></td>
+            <td><AddStroke ititalTegs={props.ititalTegs} baseSelector={props.baseSelector} class="text-center listItems" /></td>
             <td>
               <CloseControl
                 setActive={props.setActive}
@@ -296,20 +296,35 @@ function Panel(props) {
             </td>
           </tr>
           <tr>
-            <td><HeadingSvg
-           find={props.find}
-           setActive={props.setActive}
-           active={props.active}
-           gTags={props.gTags}
-           selectedTextAncor={props.selectedTextAncor}
-           selectedTextFocus={props.selectedTextFocus}
-           items={props.items}
-           ititalTegs={props.ititalTegs}
-           selectedtext={props.selectedtext}
-           types={props.types}
-           class="text-center listItems"
-           setSelectPanelDicplay={props.setSelectPanelDicplay}
-            /></td>
+            <td>
+              <HeadingSvg
+                find={props.find}
+                setActive={props.setActive}
+                active={props.active}
+                gTags={props.gTags}
+                selectedTextAncor={props.selectedTextAncor}
+                selectedTextFocus={props.selectedTextFocus}
+                items={props.items}
+                ititalTegs={props.ititalTegs}
+                selectedtext={props.selectedtext}
+                types={props.types}
+                class="text-center listItems"
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
+            <td>
+              
+            <LincksDelete
+                t = "span"
+                find={props.find}
+                setActive={props.setActive}
+                active={props.active}
+                class="text-center listItems"
+                gTags={props.gTags}
+                setstate={setstate}
+                setSelectPanelDicplay={props.setSelectPanelDicplay}
+              />
+            </td>
           </tr>
         </tbody>
       </table>
@@ -339,7 +354,7 @@ function Panel(props) {
         urlLen={props.urlLen}
         imgFloat={props.imgFloat}
         setSelectPanelDicplay={props.setSelectPanelDicplay}
-        countClick = {props.countClick}
+        countClick={props.countClick}
       />
 
       {state.link === true || props.gTags.link ? (
