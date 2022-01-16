@@ -89,40 +89,6 @@ export function storageBdInsert(props = {}) {
   return Axios.get(`${props.url}?fonts=${content}`);
 }
 
-export function storageBd(props = {}) {
-  if (props.getFonts !== null) {
-    let fonts = props.getFonts;
-    if(fonts !== undefined){
-       let fontsNew = fonts
-      .split(",")
-      .map((x) => ("family=" + x + "&").replace(/[" "]/g, "+"));
-    let fontsElStyle = fonts.split(",");
-    let fontsHead =
-      "@import url('https://fonts.googleapis.com/css2?" +
-      fontsNew.join().replace(/[,]/g, "") +
-      "display=swap');";
-    }
-   
-
-    Axios.get(`${props.urlFonts}`)
-    .then((rez) => {return props.setGetFonts(rez.data.fonts);})
-    .catch(function () {
-       props.setHostError("Ошибка подключения к папке с шрифтами");
-  })
-/*if(fontsHead){
-   props.setGetFontsObj({ style: fontsHead, name: fontsElStyle });
-    if (fontsHead !== undefined && fontsHead.length > 70) {
-      let head = document.querySelector("head");
-      let styleEl = document.createElement("style");
-      head.appendChild(styleEl);
-
-      styleEl.insertAdjacentText("afterbegin", fontsHead);
-    }
-}*/
-   
-
-  }
-}
 
 export function arrayFonts(props = {getFonts:"",n:[]}) {
   if (props.getFonts !== undefined) {
