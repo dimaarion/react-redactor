@@ -11,7 +11,7 @@ function LinkRemove(props) {
         name="Ссылка"
         divStyle={{ position: "absolute" }}
         type="text"
-        col="sm-4"
+        col="sm"
         c="link"
         cange={setlinks}
       />
@@ -19,13 +19,18 @@ function LinkRemove(props) {
         type="button"
         className="closeLinck"
         onClick={() => {
-         // props.types(links);
+          // props.types(links);
           props.setstate({ link: false });
           props.setActive(props.active === false ? true : false);
           selectedStyles(props, "a", links);
           props.setSelectPanelDicplay(false);
         }}
-        style={{ cursor: "pointer", border: "none" }}
+        style={{
+          cursor: "pointer",
+          border: "none",
+          position: "absolute",
+          zIndex: 10000
+        }}
       >
         ok
       </button>

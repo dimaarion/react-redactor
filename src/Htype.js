@@ -6,8 +6,10 @@ function Htype(props) {
       return "head-button-" + t;
     }
   }
+
   return (
     <li className="titlesBas">
+      {props.count}
       <button
         type="button"
         style={typeStyle(props.find.tagName, props.t, "button")}
@@ -17,7 +19,8 @@ function Htype(props) {
           props.setActive(props.active === false ? true : false);
           props.setIconTags(props.t);
           props.setSelectPanelDicplay(false);
-          if (props.type === "block") {
+
+          if (props.count < 3) {
             replaceElement(props);
           } else {
             selectedStyles(props, props.t);

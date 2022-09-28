@@ -5,11 +5,8 @@
 .controlPanel table tr td {
   width: 80px;
   padding-left: 0px;
+}
 
-}
-.controlPanel table tr td select{
-  /*margin-top: 22px;*/
-}
-.listItems{
+.listItems {
   text-align: center;
 }

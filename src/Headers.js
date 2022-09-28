@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "./css/headers.css";
 import Htype from "./Htype";
-import { selectedStyles } from "./action";
 function Headers(props) {
   const [tegsLocal, settegsLocal] = useState("div");
-
+  const [count, setCount] = useState(0);
   useEffect(() => {
     settegsLocal(props.tegs);
     settegsLocal(props.gTags.teg);
   }, [props.gTags.teg, props.tegs]);
 
+  useEffect(() => {
+    setCount(props.selectedtext.length);
+  }, [props.selectedtext]);
   const H = [
     {
       t: "H1",
@@ -108,9 +110,9 @@ function Headers(props) {
       names: "Обычный текст без интервала"
     }
   ];
-  if (props.type === "block") {
+  if (props.type) {
     return (
-      <ul className="headers">
+      <ul className="headers" onClick={() => setCount(0)}>
         <li>
           Заголовок
           <ul>
@@ -135,41 +137,8 @@ function Headers(props) {
                 gTags={props.gTags}
                 setIconTags={props.setIconTags}
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
-                countClick = {props.countClick}
-              />
-            ))}
-          </ul>
-        </li>
-      </ul>
-    );
-  } else if (props.type === "select") {
-    return (
-      <ul className="headers">
-        <li>
-          Заголовок
-          <ul>
-            {H.map((x, i) => (
-              <Htype
-                type={props.type}
-                names={x.names}
-                key={i * 4}
-                setActive={props.setActive}
-                active={props.active}
-                svg={x.svg}
-                t={x.t}
-                n={x.n}
-                find={props.find}
-                tegsLocal={tegsLocal}
-                settegsLocal={settegsLocal}
-                izmtegs={props.izmtegs}
-                typeStyle={props.typeStyle}
-                ititalTegs={props.ititalTegs}
-                items={props.items}
-                selectedtext={props.selectedtext}
-                gTags={props.gTags}
-                setIconTags={props.setIconTags}
-                setSelectPanelDicplay={props.setSelectPanelDicplay}
-                countClick = {props.countClick}
+                countClick={props.countClick}
+                count={count}
               />
             ))}
           </ul>
