@@ -111,7 +111,6 @@ function Headers(props) {
   if (props.type === "block") {
     return (
       <ul className="headers">
-      {tegsLocal}
         <li>
           Заголовок
           <ul>
