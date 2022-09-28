@@ -9,7 +9,6 @@ function Htype(props) {
 
   return (
     <li className="titlesBas">
-      {props.count}
       <button
         type="button"
         style={typeStyle(props.find.tagName, props.t, "button")}

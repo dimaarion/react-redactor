@@ -1,24 +1,24 @@
-.colorPanel{
-    width: 420px;
-    height: 500px;
-    position: absolute;
+.colorPanel {
+  width: 420px;
+  height: 500px;
+  position: absolute;
+  background-color: #ffffff;
+  z-index: 10000;
 }
 
-.palete{
-    width: 220px;
-    height: 200px;
-    border: solid 1px #000;
+.palete {
+  width: 220px;
+  height: 200px;
+  border: solid 1px #000;
 }
-.rezPalete{
-    width: 200px!important;
-    height: 100px;
-
+.rezPalete {
+  width: 200px !important;
+  height: 100px;
 }
 .basicColor {
   margin-left: 15px;
-
 }
-.bsEl{
+.bsEl {
   width: 20px;
   height: 20px;
   margin-left: 5px;
@@ -26,12 +26,11 @@
   cursor: pointer;
   border: solid 1px #ccc;
   border-radius: 2px;
-   transition: 0.1s;
+  transition: 0.1s;
 }
-.bsEl:hover{
-    border: solid 3px #ccc;
-    
+.bsEl:hover {
+  border: solid 3px #ccc;
 }
-.react-p5{
+.react-p5 {
   margin-left: 12px;
 }

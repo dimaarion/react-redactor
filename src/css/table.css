@@ -78,6 +78,7 @@
 }
 .tableinsertion {
   display: none;
+  z-index: 1000;
 }
 .tableinsertion table {
   margin-left: 16px;

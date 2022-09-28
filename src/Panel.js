@@ -23,6 +23,7 @@ import { typeStyle } from "./action/index";
 import AddStroke from "./AddStroke";
 import HeadingSvg from "./HeadingSvg";
 import LincksDelete from "./LincksDelete";
+import AddClass from "./AddClass";
 
 function Panel(props) {
   const [state, setstate] = useState({ link: false });
@@ -217,12 +218,27 @@ function Panel(props) {
       setSelectPanelDicplay={props.setSelectPanelDicplay}
     />,
     <AddStroke
+      find={props.find}
       ititalTegs={props.ititalTegs}
       baseSelector={props.baseSelector}
       class="text-center listItems"
     />,
 
     <HeadingSvg
+      find={props.find}
+      setActive={props.setActive}
+      active={props.active}
+      gTags={props.gTags}
+      selectedTextAncor={props.selectedTextAncor}
+      selectedTextFocus={props.selectedTextFocus}
+      items={props.items}
+      ititalTegs={props.ititalTegs}
+      selectedtext={props.selectedtext}
+      types={props.types}
+      class="text-center listItems"
+      setSelectPanelDicplay={props.setSelectPanelDicplay}
+    />,
+    <AddClass
       find={props.find}
       setActive={props.setActive}
       active={props.active}
