@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { selectedStyles } from "./action";
 import TitlesEl from "./TitlesEl";
 export default function AddClass(props) {
   const [stylesEl, setStylesEl] = useState("");
   useEffect(() => {
     addCl(props);
   }, [props.find]);
-
 
   function addCl(props, option = {}) {
     if (props.find.tagName !== undefined) {
@@ -19,23 +17,22 @@ export default function AddClass(props) {
             props.find.setAttribute("class", cl + " add_reclama");
             setStylesEl(cl + " add_reclama");
           }
-
         } else {
           props.find.className = "add_reclama";
         }
-
-      } if (option.e) {
-
+      }
+      if (option.e) {
         if (props.find.getAttribute("class") != null) {
           props.find.setAttribute("class", option.e.target.textContent);
         } else {
           props.find.className = option.e.target.textContent;
         }
-
       } else {
         if (props.find.tagName !== undefined) {
           if (props.find.getAttribute("class") != null) {
             setStylesEl(props.find.getAttribute("class"));
+          } else {
+            setStylesEl("");
           }
         }
       }
@@ -51,7 +48,7 @@ export default function AddClass(props) {
             : { border: "none" }
         }
         onMouseOver={() => {
-          addCl(props)
+          addCl(props);
         }}
         type="button"
         className={"bi bi-justify-left " + props.itemsLine + "-iteml"}
@@ -72,7 +69,7 @@ export default function AddClass(props) {
         className="cssElementsReclama"
         onClick={(e) => {
           setStylesEl("add_reclama");
-          addCl(props, { reclama: true })
+          addCl(props, { reclama: true });
         }}
       >
         Реклама

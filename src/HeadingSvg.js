@@ -6,8 +6,11 @@ export default function HeadingSvg(props) {
   const [stylesEl, setStylesEl] = useState("");
   useEffect(() => {
     if (props.find.tagName !== undefined) {
+      console.log(props.find.getAttribute("style"));
       if (props.find.getAttribute("style") != null) {
         setStylesEl(props.find.getAttribute("style"));
+      } else {
+        setStylesEl("");
       }
     }
   }, [props.find]);
@@ -20,7 +23,7 @@ export default function HeadingSvg(props) {
             ? { backgroundColor: "#cccccc", border: "none" }
             : { border: "none" }
         }
-        onClick={() => {
+        onMouseOver={() => {
           if (props.find.tagName !== undefined) {
             if (props.find.getAttribute("style") != null) {
               setStylesEl(props.find.getAttribute("style"));
@@ -47,11 +50,8 @@ export default function HeadingSvg(props) {
         dangerouslySetInnerHTML={{ __html: stylesEl }}
         contentEditable={true}
         onKeyUp={(e) => {
-         
           if (props.find.tagName !== undefined) {
-            if (props.find.getAttribute("style") != null) {
-              props.find.setAttribute("style", e.target.textContent);
-            }
+            props.find.setAttribute("style", e.target.textContent);
           }
         }}
       />
