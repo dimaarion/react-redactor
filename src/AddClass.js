@@ -4,13 +4,43 @@ import TitlesEl from "./TitlesEl";
 export default function AddClass(props) {
   const [stylesEl, setStylesEl] = useState("");
   useEffect(() => {
-    if (props.find.tagName !== undefined) {
-      if (props.find.getAttribute("class") != null) {
-        setStylesEl(props.find.getAttribute("class"));
-      }
-    }
+    addCl(props);
   }, [props.find]);
 
+
+  function addCl(props, option = {}) {
+    if (props.find.tagName !== undefined) {
+      if (option.reclama === true) {
+        if (props.find.getAttribute("class") != null) {
+          let cl = props.find.getAttribute("class");
+          setStylesEl(cl);
+          let pregCl = cl.match(/add_reclama/g);
+          if (!pregCl) {
+            props.find.setAttribute("class", cl + " add_reclama");
+            setStylesEl(cl + " add_reclama");
+          }
+
+        } else {
+          props.find.className = "add_reclama";
+        }
+
+      } if (option.e) {
+
+        if (props.find.getAttribute("class") != null) {
+          props.find.setAttribute("class", option.e.target.textContent);
+        } else {
+          props.find.className = option.e.target.textContent;
+        }
+
+      } else {
+        if (props.find.tagName !== undefined) {
+          if (props.find.getAttribute("class") != null) {
+            setStylesEl(props.find.getAttribute("class"));
+          }
+        }
+      }
+    }
+  }
   return (
     <div className={`${props.class} titlesBas headingBtn`}>
       <TitlesEl type="Класс элемента" />
@@ -20,12 +50,8 @@ export default function AddClass(props) {
             ? { backgroundColor: "#cccccc", border: "none" }
             : { border: "none" }
         }
-        onClick={() => {
-          if (props.find.tagName !== undefined) {
-            if (props.find.getAttribute("class") != null) {
-              setStylesEl(props.find.getAttribute("class"));
-            }
-          }
+        onMouseOver={() => {
+          addCl(props)
         }}
         type="button"
         className={"bi bi-justify-left " + props.itemsLine + "-iteml"}
@@ -46,11 +72,7 @@ export default function AddClass(props) {
         className="cssElementsReclama"
         onClick={(e) => {
           setStylesEl("add_reclama");
-          if (props.find.tagName !== undefined) {
-            if (props.find.getAttribute("class") != null) {
-              props.find.setAttribute("class", "add_reclama");
-            }
-          }
+          addCl(props, { reclama: true })
         }}
       >
         Реклама
@@ -60,11 +82,7 @@ export default function AddClass(props) {
         dangerouslySetInnerHTML={{ __html: stylesEl }}
         contentEditable={true}
         onKeyUp={(e) => {
-          if (props.find.tagName !== undefined) {
-            if (props.find.getAttribute("class") != null) {
-              props.find.setAttribute("class", e.target.textContent);
-            }
-          }
+          addCl(props, { e: e });
         }}
       />
     </div>

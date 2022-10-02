@@ -69,7 +69,7 @@ function Controller(props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   function innerTextBox() {
     let s = document.querySelector("." + baseSelector);
-    if(s !== null){
+    if (s !== null) {
       return s.innerHTML;
     }
 
@@ -473,7 +473,7 @@ function Controller(props) {
               createTd={createTd}
               find={find}
               active={active}
-              countClick = {countClick}
+              countClick={countClick}
             />
           </div>
 

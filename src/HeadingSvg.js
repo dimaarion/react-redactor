@@ -47,7 +47,7 @@ export default function HeadingSvg(props) {
         dangerouslySetInnerHTML={{ __html: stylesEl }}
         contentEditable={true}
         onKeyUp={(e) => {
-          console.log(props.find.setAttribute("style", e.target.textContent));
+         
           if (props.find.tagName !== undefined) {
             if (props.find.getAttribute("style") != null) {
               props.find.setAttribute("style", e.target.textContent);
