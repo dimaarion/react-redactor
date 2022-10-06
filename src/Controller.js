@@ -44,6 +44,7 @@ function Controller(props) {
   const [iconTags, setIconTags] = useState("div");
   const [countClick, setCountClick] = useState(0);
   const [displayTextarera, setDisplayTextarera] = useState({ display: "none" });
+  const [stateCode, setStateCode] = useState(true);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   function ititalTegs(bs = false) {
     let text_block = document.querySelector("." + baseSelector);
@@ -395,23 +396,32 @@ function Controller(props) {
       setalign
     );
     settextBox(innerTextBox());
-  }, [items, tegs, textbl, xs, ititalTegs, innerTextBox]);
-  function createMarkup(x) {
-    return { __html: document.getElementById(x).innerHTML };
+  }, [items, tegs, textbl, xs, ititalTegs, innerTextBox, stateCode]);
+
+  function createMarkup(x, x2) {
+    return {
+      __html: !stateCode
+        ? (document.getElementById(x).innerHTML = x2)
+        : document.getElementById(x).innerHTML
+    };
   }
   useEffect(() => {
     settextBox(innerTextBox());
-  }, [textBox, find, active, innerTextBox]);
+  }, [textBox, find, active, innerTextBox, stateCode]);
 
   return (
     <div className="contentDtext container-fluid">
       <div className="contentDtext container">
         <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
           <div
-            className="row container text-right p-4  panel"
-            style={sizes === true ? { position: "absolute" } : panelStyle}
+            className={
+              sizes === true
+                ? "content_min row container text-right p-4  panel"
+                : "content_full row container text-right p-4  panel"
+            }
           >
             <Panel
+              panelStyle={panelStyle}
               settextbl={settextbl}
               setitemss={setitemss}
               setfontPt={setfontPt}
@@ -464,12 +474,12 @@ function Controller(props) {
               active={active}
               countClick={countClick}
               setDisplayTextarera={setDisplayTextarera}
+              setStateCode={setStateCode}
             />
           </div>
 
           <div
-            style={{ marginTop: 250 + "px", height: "100%" }}
-            className={baseSelector}
+            className={baseSelector + " main"}
             contentEditable={true}
             onClick={(e) => {
               setfind(e.target);
@@ -497,16 +507,32 @@ function Controller(props) {
 
               //elMoveUpDown(ititalTegs, baseSelector);
             }}
-            dangerouslySetInnerHTML={createMarkup(textId)}
+            dangerouslySetInnerHTML={createMarkup(textId, textBox)}
           />
         </div>
 
         <div className="col-sm">
-          <textarea
-            style={displayTextarera}
-            defaultValue={textBox}
-            name={document.querySelector(textAreraId).className}
-          />
+          {stateCode ? (
+            <textarea
+            onChange={(e) => {
+                settextBox(e.target.value);
+                console.log(e.target.value);
+              }}
+              style={displayTextarera}
+              value={textBox}
+              name={document.querySelector(textAreraId).className}
+            />
+          ) : (
+            <textarea
+              onChange={(e) => {
+                settextBox(e.target.value);
+                console.log(e.target.value);
+              }}
+              style={displayTextarera}
+              defaultValue={textBox}
+              name={document.querySelector(textAreraId).className}
+            />
+          )}
         </div>
       </div>
     </div>

@@ -275,6 +275,8 @@ function Panel(props) {
       types={props.types}
       class="text-center listItems"
       setDisplayTextarera={props.setDisplayTextarera}
+      panelStyle={props.panelStyle}
+      setStateCode={props.setStateCode}
     />,
     <CloseControl
       setActive={props.setActive}

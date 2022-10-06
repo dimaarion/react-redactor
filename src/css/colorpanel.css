@@ -5,7 +5,14 @@
   background-color: #ffffff;
   z-index: 10000;
 }
-
+.content_min {
+  position: absolute;
+  max-width: 100%;
+}
+.content_full {
+  max-width: 100%;
+  position: fixed;
+}
 .palete {
   width: 220px;
   height: 200px;

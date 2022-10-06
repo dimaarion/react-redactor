@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Sizeplus from "./Sizeplus";
 import Sizeminus from "./Sizeminus";
 import TitlesEl from "./TitlesEl";
@@ -9,14 +9,29 @@ function CloseControl(props) {
   } else {
     type = "Уменьшить";
   }
-
+  useEffect(() => {
+    if (!props.sizes) {
+      props.setpanelStyle({
+        position: "fixed",
+        maxWidth: "100%",
+        margin: "auto",
+        top: "140px",
+        height: "100%"
+      });
+    } else {
+      props.setpanelStyle({
+        position: "absolute",
+        maxWidth: "100%",
+        marginTop: "-722px"
+      });
+    }
+  }, [props.sizes]);
   return (
     <div
       className={`sizes ${props.class} titlesBas`}
       onClick={() => {
         return (
           props.setsizes(props.sizes === true ? false : true),
-          props.setpanelStyle({ position: "fixed", maxWidth: "100%" }),
           props.setActive(props.active === false ? true : false),
           props.setSelectPanelDicplay(false)
         );
