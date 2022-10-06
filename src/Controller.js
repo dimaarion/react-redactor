@@ -7,7 +7,6 @@ import "./css/table.css";
 import "./css/titlesel.css";
 import "./css/colorpanel.css";
 
-
 function Controller(props) {
   const baseSelector = props.baseSelector;
   const textId = props.textId;
@@ -44,7 +43,7 @@ function Controller(props) {
   const [selectPanelDicplay, setSelectPanelDicplay] = useState(false);
   const [iconTags, setIconTags] = useState("div");
   const [countClick, setCountClick] = useState(0);
-
+  const [displayTextarera, setDisplayTextarera] = useState({ display: "none" });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   function ititalTegs(bs = false) {
     let text_block = document.querySelector("." + baseSelector);
@@ -54,9 +53,7 @@ function Controller(props) {
           if (text_block.children !== undefined) {
             return Object.values(text_block.children);
           }
-
         }
-
       }
     }
     if (bs === true) {
@@ -72,7 +69,6 @@ function Controller(props) {
     if (s !== null) {
       return s.innerHTML;
     }
-
   }
 
   function getStart(baseSelector) {
@@ -89,7 +85,6 @@ function Controller(props) {
         return x.setAttribute("data-d", "1" + c++);
       });
     }
-
   }
   function izmtegs(textbl, tegs, items) {
     let dataD = "1" + items;
@@ -134,35 +129,34 @@ function Controller(props) {
     if (ititalTegs() !== undefined) {
       ititalTegs().map(
         (x, i) =>
-        (x.onclick = (e) => {
-          setitems(i);
-          settegs(x.tagName);
-          setfontPt(
-            x.style.fontSize.replace(/[a-z]+/, "") === ""
-              ? 14
-              : x.style.fontSize.replace(/[a-z]+/, "")
-          );
-          setfontFm(x.style.fontFamily ? x.style.fontFamily : "Georgia");
-          setalign(x.style.textAlign ? x.style.textAlign : "left");
-        })
+          (x.onclick = (e) => {
+            setitems(i);
+            settegs(x.tagName);
+            setfontPt(
+              x.style.fontSize.replace(/[a-z]+/, "") === ""
+                ? 14
+                : x.style.fontSize.replace(/[a-z]+/, "")
+            );
+            setfontFm(x.style.fontFamily ? x.style.fontFamily : "Georgia");
+            setalign(x.style.textAlign ? x.style.textAlign : "left");
+          })
       );
     }
 
     if (ititalTegs() !== undefined) {
       ititalTegs().map(
         (x, i) =>
-        (x.onmousemove = (e) => {
-          if (window.getSelection().toString().length > 0) {
-            setselectedtext(window.getSelection().toString());
-            setSelectedTextLen(window.getSelection().toString().length);
-            setSelectedTextAncor(window.getSelection().anchorOffset);
-            setSelectedTextFocus(window.getSelection().focusOffset);
-            setSelectedTest(window.getSelection().focusNode);
-          }
-        })
+          (x.onmousemove = (e) => {
+            if (window.getSelection().toString().length > 0) {
+              setselectedtext(window.getSelection().toString());
+              setSelectedTextLen(window.getSelection().toString().length);
+              setSelectedTextAncor(window.getSelection().anchorOffset);
+              setSelectedTextFocus(window.getSelection().focusOffset);
+              setSelectedTest(window.getSelection().focusNode);
+            }
+          })
       );
     }
-
   }
 
   function listItem(ititalTegs, items, list, subList) {
@@ -200,14 +194,14 @@ function Controller(props) {
     tb.setAttribute(
       "style",
       "width:" +
-      w +
-      ";float:" +
-      f +
-      ";border-collapse:separate;border-spacing: " +
-      r +
-      "px " +
-      r +
-      "px;"
+        w +
+        ";float:" +
+        f +
+        ";border-collapse:separate;border-spacing: " +
+        r +
+        "px " +
+        r +
+        "px;"
     );
     div.className = "divTable";
     Array.from(bs.children)
@@ -271,7 +265,6 @@ function Controller(props) {
         .filter((f, i) => i === items)
         .map((x) => (x.outerHTML = `<div>${x.innerText}</div>`));
     }
-
   }
 
   function imgWidthR(ititalTegs, imgurls, imgWidth) {
@@ -281,16 +274,15 @@ function Controller(props) {
           .filter(
             (l) =>
               "/" +
-              l.src
-                .split("/")
-                .filter((f, i) => i > 2)
-                .join("/") ===
+                l.src
+                  .split("/")
+                  .filter((f, i) => i > 2)
+                  .join("/") ===
               imgurls
           )
           .map((ed) => (ed.style.width = imgWidth))
       );
     }
-
   }
   function imgHeightR(ititalTegs, imgurls, imgHeight) {
     if (ititalTegs() !== undefined) {
@@ -299,16 +291,15 @@ function Controller(props) {
           .filter(
             (l) =>
               "/" +
-              l.src
-                .split("/")
-                .filter((f, i) => i > 2)
-                .join("/") ===
+                l.src
+                  .split("/")
+                  .filter((f, i) => i > 2)
+                  .join("/") ===
               imgurls
           )
           .map((ed) => (ed.style.height = imgHeight))
       );
     }
-
   }
   function imgPaddingR(ititalTegs, imgurls, imgPadding) {
     if (ititalTegs() !== undefined) {
@@ -317,16 +308,15 @@ function Controller(props) {
           .filter(
             (l) =>
               "/" +
-              l.src
-                .split("/")
-                .filter((f, i) => i > 2)
-                .join("/") ===
+                l.src
+                  .split("/")
+                  .filter((f, i) => i > 2)
+                  .join("/") ===
               imgurls
           )
           .map((ed) => (ed.style.padding = imgPadding))
       );
     }
-
   }
 
   function imgFloatR(ititalTegs, imgurls, imgFloat) {
@@ -336,16 +326,15 @@ function Controller(props) {
           .filter(
             (l) =>
               "/" +
-              l.src
-                .split("/")
-                .filter((f, i) => i > 2)
-                .join("/") ===
+                l.src
+                  .split("/")
+                  .filter((f, i) => i > 2)
+                  .join("/") ===
               imgurls
           )
           .map((ed) => (ed.style.float = imgFloat))
       );
     }
-
   }
 
   function mTop(setwindSize) {
@@ -474,6 +463,7 @@ function Controller(props) {
               find={find}
               active={active}
               countClick={countClick}
+              setDisplayTextarera={setDisplayTextarera}
             />
           </div>
 
@@ -484,7 +474,7 @@ function Controller(props) {
             onClick={(e) => {
               setfind(e.target);
               setActive(false);
-              setCountClick(countClick + 1)
+              setCountClick(countClick + 1);
               if (window.getSelection().toString().length > 0) {
                 seteY(e.clientY);
                 seteX(e.clientX);
@@ -513,7 +503,7 @@ function Controller(props) {
 
         <div className="col-sm">
           <textarea
-            style={{ display: "none" }}
+            style={displayTextarera}
             defaultValue={textBox}
             name={document.querySelector(textAreraId).className}
           />

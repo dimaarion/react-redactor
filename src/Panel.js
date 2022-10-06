@@ -24,7 +24,7 @@ import AddStroke from "./AddStroke";
 import HeadingSvg from "./HeadingSvg";
 import LincksDelete from "./LincksDelete";
 import AddClass from "./AddClass";
-
+import Code from "./Code";
 function Panel(props) {
   const [state, setstate] = useState({ link: false });
   const arrayPanel = [
@@ -262,7 +262,20 @@ function Panel(props) {
       setstate={setstate}
       setSelectPanelDicplay={props.setSelectPanelDicplay}
     />,
-
+    <Code
+      find={props.find}
+      setActive={props.setActive}
+      active={props.active}
+      gTags={props.gTags}
+      selectedTextAncor={props.selectedTextAncor}
+      selectedTextFocus={props.selectedTextFocus}
+      items={props.items}
+      ititalTegs={props.ititalTegs}
+      selectedtext={props.selectedtext}
+      types={props.types}
+      class="text-center listItems"
+      setDisplayTextarera={props.setDisplayTextarera}
+    />,
     <CloseControl
       setActive={props.setActive}
       active={props.active}
