@@ -7,10 +7,18 @@ function ClinerText(props) {
       <button type="button">
         <svg
           onClick={() => {
-            props.cleanerTxt(props.ititalTegs, props.items);
-            props.setActive(props.active === false ? true : false);
-            props.setSelectPanelDicplay(false);
-          }}
+            
+            Array.from(props.find.children).map((index) => {
+              if (index.getAttribute("style") !== null) {
+                index.removeAttribute("style")
+              }
+              if (index.getAttribute("class") !== null) {
+                index.removeAttribute("class")
+              }
+
+            })
+          }
+          }
           xmlns="http://www.w3.org/2000/svg"
           width="210mm"
           height="297mm"

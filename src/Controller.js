@@ -411,13 +411,13 @@ function Controller(props) {
 
   return (
     <div className="contentDtext container-fluid">
-      <div className="contentDtext container">
+      <div className="contentDtext ">
         <div className={sizes === true ? "cintent_text" : "cintent_text_full"}>
           <div
             className={
               sizes === true
                 ? "content_min row container text-right p-4  panel"
-                : "content_full row container text-right p-4  panel"
+                : "content_full row container-fluid text-right p-4  panel"
             }
           >
             <Panel
@@ -516,7 +516,7 @@ function Controller(props) {
             <textarea
             onChange={(e) => {
                 settextBox(e.target.value);
-                console.log(e.target.value);
+                
               }}
               style={displayTextarera}
               value={textBox}
@@ -526,7 +526,7 @@ function Controller(props) {
             <textarea
               onChange={(e) => {
                 settextBox(e.target.value);
-                console.log(e.target.value);
+                
               }}
               style={displayTextarera}
               defaultValue={textBox}

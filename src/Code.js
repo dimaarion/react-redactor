@@ -13,7 +13,7 @@ export default function Code(props) {
             {
               marginTop: "-720px",
               width: "100%",
-              zIndex: 2,
+              zIndex: 4,
               left: 0,
               height: "700px"
             },

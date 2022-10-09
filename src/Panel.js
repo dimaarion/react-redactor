@@ -177,6 +177,8 @@ function Panel(props) {
       types={props.types}
       class="text-center listItems"
       setSelectPanelDicplay={props.setSelectPanelDicplay}
+      baseSelector = {props.baseSelector}
+      find={props.find}
     />,
     <LiterSelectColor
       setActive={props.setActive}

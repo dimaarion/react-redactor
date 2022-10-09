@@ -11,7 +11,7 @@
   background-color: #ffffff;
 }
 .cintent_text_full {
-  z-index: 1;
+  z-index: 3;
   overflow: scroll;
   position: fixed;
   top: 0px;
