@@ -7,16 +7,27 @@ function ClinerText(props) {
       <button type="button">
         <svg
           onClick={() => {
-            
-            Array.from(props.find.children).map((index) => {
-              if (index.getAttribute("style") !== null) {
-                index.removeAttribute("style")
-              }
-              if (index.getAttribute("class") !== null) {
-                index.removeAttribute("class")
-              }
+            let arrTag = ["div", "span", "b", "u", "s", "h1", "h2", "h3", "h4", "h5"]
+            arrTag.map((tag) => {
+              let tagList = Array.from(document.getElementsByClassName(props.baseSelector)[0].getElementsByTagName(tag))
+              if (tagList) {
+                tagList.map((index) => {
+                  if (index) {
+                    if (index.getAttribute("style") !== null) {
+                      index.removeAttribute("style")
+                    }
+                    if (index.getAttribute("class") !== null) {
+                      index.removeAttribute("class")
+                    }
+                  }
 
+
+                })
+              }
             })
+            console.log(document.getElementsByClassName(props.baseSelector)[0].getElementsByTagName("div"));
+            console.log(document.getElementsByClassName(props.baseSelector)[0].getElementsByTagName("b"));
+
           }
           }
           xmlns="http://www.w3.org/2000/svg"
