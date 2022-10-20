@@ -139,6 +139,7 @@ function Headers(props) {
                 setSelectPanelDicplay={props.setSelectPanelDicplay}
                 countClick={props.countClick}
                 count={count}
+                baseSelector = {props.baseSelector}
               />
             ))}
           </ul>

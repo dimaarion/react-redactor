@@ -18,14 +18,16 @@ function Htype(props) {
           props.setActive(props.active === false ? true : false);
           props.setIconTags(props.t);
           props.setSelectPanelDicplay(false);
-
-          if (props.count < 3) {
-            replaceElement(props);
-          } else {
-            selectedStyles(props, props.t);
+          if(props.find.className != undefined){
+            if(!props.find.className.match(props.baseSelector)){
+              replaceElement(props);
+           }
           }
+          
+          //  selectedStyles(props, props.t);
+          
         }}
-        className={hActive(props.tegsLocal, props.t)}
+        className ={hActive(props.tegsLocal, props.t)}
       >
         {props.names}
       </button>

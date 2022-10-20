@@ -79,6 +79,7 @@ function Panel(props) {
       setIconTags={props.setIconTags}
       setSelectPanelDicplay={props.setSelectPanelDicplay}
       countClick={props.countClick}
+      baseSelector = {props.baseSelector}
     />,
     <ListUl
       setActive={props.setActive}
@@ -89,6 +90,7 @@ function Panel(props) {
       items={props.items}
       class="text-center listItems"
       setSelectPanelDicplay={props.setSelectPanelDicplay}
+      baseSelector = {props.baseSelector}
     />,
     <ListOl
       setActive={props.setActive}
@@ -99,6 +101,7 @@ function Panel(props) {
       items={props.items}
       class="text-center listItems"
       setSelectPanelDicplay={props.setSelectPanelDicplay}
+      baseSelector = {props.baseSelector}
     />,
     <Table
       setActive={props.setActive}

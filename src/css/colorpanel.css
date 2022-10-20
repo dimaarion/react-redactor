@@ -43,4 +43,9 @@
 }
 .removeTag{
   position: absolute;
+  margin-left: 8px;
+  display: none;
+}
+.cliner-text:hover > .removeTag{
+  display: block;
 }
