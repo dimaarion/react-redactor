@@ -20,13 +20,10 @@ function ClinerText(props) {
                       index.removeAttribute("class")
                     }
                   }
-
-
                 })
               }
             })
-            console.log(document.getElementsByClassName(props.baseSelector)[0].getElementsByTagName("div"));
-            console.log(document.getElementsByClassName(props.baseSelector)[0].getElementsByTagName("b"));
+
 
           }
           }
@@ -104,6 +101,32 @@ function ClinerText(props) {
           </g>
         </svg>
       </button>
+      <div className="removeTag">
+        <button onClick={()=>{props.find.outerHTML = `${props.find.innerText}`}}>
+          <svg xmlns="http://www.w3.org/2000/svg" 
+            width="2em"
+            viewBox="0 0 16 16" 
+            fill="currentColor" 
+            className="bi bi-x-lg" >
+              <text  
+                y="10"
+                x="2.6"
+                style={{
+                  fontStyle: "normal",
+                  fontWeight: "normal",
+                  fontSize: "9",
+                  lineHeight: "1.25",
+                  fontFamily: "sans-serif",
+                  fill: "#000000",
+                  fillOpacity: 1,
+                  stroke: "none",
+                  strokeWidth: "2.45014"
+                }}>tag</text>
+            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+          </svg>
+        </button>
+
+      </div>
     </div>
   );
 }
