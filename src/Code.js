@@ -22,7 +22,7 @@ export default function Code(props) {
         );
   }, [state, props.panelStyle]);
   useEffect(() => {
-    console.log(props.panelStyle);
+    
   }, [props.panelStyle]);
   return (
     <div className={`${props.class} titlesBas headingBtn`}>

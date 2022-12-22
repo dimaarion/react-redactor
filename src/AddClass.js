@@ -65,7 +65,7 @@ export default function AddClass(props) {
           </text>
         </svg>
       </button>
-      <div
+      {/*<div
         className="cssElementsReclama"
         onClick={(e) => {
           setStylesEl("add_reclama");
@@ -73,7 +73,7 @@ export default function AddClass(props) {
         }}
       >
         Реклама
-      </div>
+      </div>*/}
       <div
         className="boxes cssElements"
         dangerouslySetInnerHTML={{ __html: stylesEl }}

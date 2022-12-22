@@ -35,6 +35,7 @@ if(props.find.className != undefined){
   return (
     <div className={`${props.class} titlesBas cliner-text`}>
       <TitlesEl type="Очистить текст" />
+      <div>
       <button type="button">
         <svg
           onClick={() => removeStyleClass(props)}
@@ -112,8 +113,9 @@ if(props.find.className != undefined){
           </g>
         </svg>
       </button>
+      </div>
       <div className="removeTag">
-        <button onClick={() => removeTag(props) }>
+        <button type="button" onClick={() => removeTag(props) }>
         <svg
           onClick={() => removeStyleClass(props)}
           xmlns="http://www.w3.org/2000/svg"
